@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHANGHAI MOTORS — Direct Automotive Export from China | Прямой экспорт авто из Китая</title>
-    <meta name="description" content="Direct export and turnkey delivery of new electric vehicles, hybrids, and luxury cars from China worldwide and to CIS countries. Transparent pricing, official contracts, verified inspection.">
+    <title>SHANGHAI MOTORS — Заказ авто из Китая под ключ | Direct Automotive Export</title>
+    <meta name="description" content="Прямой импорт и экспорт автомобилей из Китая: Zeekr, Xiaomi, Avatr, Li Auto, Changan, BYD без дилерских наценок с доставкой и прозрачным расчетом цены под ключ.">
     <link rel="icon" type="image/png" href="assets/logo-trans.png">
 
     <!-- Fonts -->
@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS (Local bundle with CDN fallback) -->
+    <!-- Tailwind CSS (Local with CDN fallback) -->
     <script src="assets/tailwind.min.js"></script>
     <script>
         if (!window.tailwind) {
@@ -27,15 +27,15 @@
                         brand: {
                             DEFAULT: '#7DE223',
                             hover: '#6ec81c',
-                            muted: '#7DE22320',
-                            border: '#7DE22340'
+                            muted: '#7DE22315',
+                            border: '#7DE22330'
                         },
                         surface: {
                             base: '#0B0D12',
-                            card: '#13171F',
-                            elevated: '#1A202C',
-                            border: '#222936',
-                            hover: '#293242'
+                            card: '#12161F',
+                            elevated: '#181E2A',
+                            border: '#1F2736',
+                            hover: '#2A3446'
                         }
                     },
                     fontFamily: {
@@ -55,7 +55,6 @@
             overflow-x: hidden;
         }
 
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -63,11 +62,11 @@
             background: #0B0D12;
         }
         ::-webkit-scrollbar-thumb {
-            background: #222936;
+            background: #1F2736;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #323D4F;
+            background: #2A3446;
         }
 
         .lang-ru [data-lang="en"],
@@ -75,27 +74,38 @@
             display: none !important;
         }
 
-        /* Subtler focus rings */
-        input:focus, select:focus {
-            outline: none;
-            border-color: #7DE223;
+        .hero-slide {
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+            position: relative;
+        }
+        .hero-slide.inactive {
+            opacity: 0;
+            transform: scale(0.98);
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
         }
     </style>
 </head>
 <body class="bg-surface-base text-gray-200 antialiased selection:bg-brand selection:text-black">
 
-    <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="border-b border-surface-border bg-surface-card/60 text-xs py-2 px-4 backdrop-blur-md">
+    <!-- TOP BAR -->
+    <div class="border-b border-surface-border bg-surface-card/70 text-xs py-2 px-4 backdrop-blur-md">
         <div class="max-w-7xl mx-auto flex justify-between items-center text-gray-400">
             <div class="flex items-center gap-4">
                 <span class="flex items-center gap-1.5">
                     <span class="inline-block w-2 h-2 rounded-full bg-brand"></span>
                     <span data-lang="en">Shanghai HQ • Dubai Hub • Berlin Office</span>
-                    <span data-lang="ru">Штаб-квартира в Шанхае • Офис в Дубае • Офис в Берлине</span>
+                    <span data-lang="ru">Шанхай (HQ) • Дубай • Берлин</span>
                 </span>
                 <span class="hidden md:inline text-gray-600">|</span>
-                <span class="hidden md:inline text-gray-400" data-lang="en">Official Export License & Escrow Settlement</span>
-                <span class="hidden md:inline text-gray-400" data-lang="ru">Официальный контракт, страхование и таможня под ключ</span>
+                <span class="hidden md:inline text-gray-400" data-lang="en">Official Export Licenses & Direct Manufacturer Supply</span>
+                <span class="hidden md:inline text-gray-400" data-lang="ru">Прямые поставки от заводов Китая без посредников</span>
             </div>
             <div class="flex items-center gap-4">
                 <a href="https://api.whatsapp.com/send?phone=8617316540375" target="_blank" class="hover:text-brand transition flex items-center gap-1 text-gray-300">
@@ -109,41 +119,34 @@
     <!-- MAIN NAVBAR -->
     <header class="sticky top-0 z-40 bg-[#0B0D12]/90 backdrop-blur-md border-b border-surface-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <img src="assets/logo-trans.png" alt="Shanghai Motors Logo" class="h-10 w-auto object-contain transition group-hover:opacity-90">
+            <a href="#" class="flex items-center gap-3">
+                <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-10 w-auto object-contain">
             </a>
 
-            <!-- Desktop Nav -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                <a href="#catalog" class="hover:text-brand transition" data-lang="en">Vehicle Catalog</a>
-                <a href="#catalog" class="hover:text-brand transition" data-lang="ru">Каталог авто</a>
+                <a href="#hero-banners" class="hover:text-brand transition" data-lang="en">Top Models</a>
+                <a href="#hero-banners" class="hover:text-brand transition" data-lang="ru">Популярные авто</a>
 
-                <!-- Calculator link only in RU, Pricing link in EN -->
-                <a href="#calculator" class="hover:text-brand transition" data-lang="ru">Калькулятор под ключ</a>
-                <a href="#pricing-en" class="hover:text-brand transition" data-lang="en">Export Pricing & Shipping</a>
-
-                <!-- BRP nav item only in RU -->
-                <a href="#brp" class="hover:text-brand transition" data-lang="ru">Спецтехника BRP</a>
+                <a href="#catalog" class="hover:text-brand transition" data-lang="en">Catalog & Pricing</a>
+                <a href="#catalog" class="hover:text-brand transition" data-lang="ru">Каталог и цены</a>
 
                 <a href="#process" class="hover:text-brand transition" data-lang="en">Export Process</a>
-                <a href="#process" class="hover:text-brand transition" data-lang="ru">Этапы работы</a>
+                <a href="#process" class="hover:text-brand transition" data-lang="ru">Как заказать</a>
 
                 <a href="#offices" class="hover:text-brand transition" data-lang="en">Offices</a>
-                <a href="#offices" class="hover:text-brand transition" data-lang="ru">Офисы</a>
+                <a href="#offices" class="hover:text-brand transition" data-lang="ru">О компании</a>
 
                 <a href="#faq" class="hover:text-brand transition">FAQ</a>
             </nav>
 
-            <!-- Actions: Lang Switcher & Direct CTA -->
             <div class="flex items-center gap-4">
-                <!-- Clean Language Switcher Pill -->
+                <!-- RU/EN Switcher -->
                 <div class="bg-surface-card border border-surface-border p-1 rounded-full flex items-center text-xs font-semibold">
                     <button onclick="setLanguage('en')" id="btn-lang-en" class="px-3 py-1.5 rounded-full transition text-gray-400 hover:text-white">EN</button>
                     <button onclick="setLanguage('ru')" id="btn-lang-ru" class="px-3 py-1.5 rounded-full transition text-gray-400 hover:text-white">RU</button>
                 </div>
 
-                <!-- CTA Button (WhatsApp for EN, Telegram for RU) -->
+                <!-- CTA Button -->
                 <div data-lang="en" class="hidden sm:block">
                     <a href="https://api.whatsapp.com/send?phone=8617316540375" target="_blank" class="bg-brand hover:bg-brand-hover text-black font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg transition inline-flex items-center gap-2">
                         <span>Get Quote</span>
@@ -152,803 +155,298 @@
                 </div>
                 <div data-lang="ru" class="hidden sm:block">
                     <a href="https://t.me/vlad_shanghaimotors" target="_blank" class="bg-brand hover:bg-brand-hover text-black font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg transition inline-flex items-center gap-2">
-                        <span>Связаться в Telegram</span>
+                        <span>Telegram @vlad_shanghaimotors</span>
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
                     </a>
                 </div>
 
-                <!-- Mobile Menu Toggle Button -->
                 <button onclick="toggleMobileMenu()" class="md:hidden text-gray-400 hover:text-white p-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden border-b border-surface-border bg-surface-card px-4 pt-2 pb-6 space-y-3">
-            <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Vehicle Catalog</a>
-            <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Каталог авто</a>
-
-            <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Калькулятор под ключ</a>
-            <a href="#pricing-en" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Export Pricing & Shipping</a>
-
-            <a href="#brp" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Спецтехника BRP</a>
-
-            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Export Process</a>
-            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Этапы работы</a>
-
-            <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand">Global Offices</a>
+            <a href="#hero-banners" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Top Models</a>
+            <a href="#hero-banners" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Популярные авто</a>
+            <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Catalog & Pricing</a>
+            <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Каталог и цены</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand">Export Process</a>
+            <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand">Offices</a>
             <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand">FAQ</a>
-
-            <div class="pt-3 border-t border-surface-border flex flex-col gap-2">
-                <a href="https://api.whatsapp.com/send?phone=8617316540375" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-surface-elevated text-white font-medium text-sm border border-surface-border">
-                    WhatsApp: +86 173 1654 0375
-                </a>
-                <div data-lang="ru">
-                    <a href="https://t.me/vlad_shanghaimotors" target="_blank" class="w-full text-center py-2.5 rounded-lg bg-brand text-black font-bold text-sm block">
-                        Telegram: @vlad_shanghaimotors
-                    </a>
-                </div>
-            </div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 border-b border-surface-border overflow-hidden">
-        <!-- Subtle background styling without excessive neon glows -->
-        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#222936 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <!-- SECTION 1: TOP HERO BANNERS (EXACT EASY.CAR POPULAR VEHICLES SLIDER) -->
+    <section id="hero-banners" class="relative overflow-hidden border-b border-surface-border bg-[#0B0D12]">
+        <div id="banner-slider-container" class="relative min-h-[520px] md:min-h-[580px] flex items-center">
+            <!-- Slides injected via JavaScript -->
+        </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-3xl">
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-surface-border bg-surface-card text-xs font-semibold text-gray-300 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-brand"></span>
-                    <span data-lang="en">Direct Automotive Sourcing & Export • Shanghai</span>
-                    <span data-lang="ru">Прямой экспорт авто без дилерских наценок • Шанхай</span>
-                </div>
-
-                <!-- Main Headline -->
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
-                    <span data-lang="en">Direct Automotive Export from China to Worldwide Markets.</span>
-                    <span data-lang="ru">Прямой импорт и доставка авто из Китая под ключ.</span>
-                </h1>
-
-                <!-- Subtitle -->
-                <p class="text-base sm:text-lg text-gray-400 leading-relaxed mb-8 max-w-2xl" data-lang="en">
-                    Brand new & certified pre-owned EVs, hybrids, and luxury SUVs sourced directly from official Chinese manufacturers. Commercial invoicing, 120-point pre-shipment inspection, and maritime container or Ro-Ro shipping to your port.
-                </p>
-                <p class="text-base sm:text-lg text-gray-400 leading-relaxed mb-8 max-w-2xl" data-lang="ru">
-                    Поставка электромобилей и гибридов напрямую с китайских заводов и дилерских площадок. Официальный внешнеторговый контракт, страхование 100% стоимости, таможенная очистка, СБКТС, ЭПТС и доставка автовозом в ваш город.
-                </p>
-
-                <!-- CTA Action Row -->
-                <div class="flex flex-wrap items-center gap-4">
-                    <!-- EN CTAs -->
-                    <div data-lang="en" class="flex flex-wrap gap-4">
-                        <a href="#catalog" class="bg-brand hover:bg-brand-hover text-black font-bold text-sm px-6 py-3.5 rounded-lg transition inline-flex items-center gap-2 shadow-lg shadow-brand/10">
-                            <span>Explore Catalog</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </a>
-                        <a href="https://api.whatsapp.com/send?phone=8617316540375" target="_blank" class="border border-surface-border bg-surface-card hover:bg-surface-elevated text-white font-medium text-sm px-6 py-3.5 rounded-lg transition inline-flex items-center gap-2">
-                            <span>WhatsApp Sourcing Desk</span>
-                        </a>
-                    </div>
-
-                    <!-- RU CTAs -->
-                    <div data-lang="ru" class="flex flex-wrap gap-4">
-                        <a href="#calculator" class="bg-brand hover:bg-brand-hover text-black font-bold text-sm px-6 py-3.5 rounded-lg transition inline-flex items-center gap-2 shadow-lg shadow-brand/10">
-                            <span>Рассчитать под ключ</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </a>
-                        <a href="#catalog" class="border border-surface-border bg-surface-card hover:bg-surface-elevated text-white font-medium text-sm px-6 py-3.5 rounded-lg transition inline-flex items-center gap-2">
-                            <span>Каталог автомобилей</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Credential Metrics Bar -->
-                <div class="mt-12 pt-8 border-t border-surface-border grid grid-cols-2 sm:grid-cols-4 gap-6 text-left">
-                    <div>
-                        <div class="text-2xl font-bold font-mono text-white">100%</div>
-                        <div class="text-xs text-gray-400 mt-1" data-lang="en">Insured Transport</div>
-                        <div class="text-xs text-gray-400 mt-1" data-lang="ru">Страхование груза</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold font-mono text-white">120+</div>
-                        <div class="text-xs text-gray-400 mt-1" data-lang="en">Points Quality Check</div>
-                        <div class="text-xs text-gray-400 mt-1" data-lang="ru">Пунктов инспекции</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold font-mono text-white">3 Hubs</div>
-                        <div class="text-xs text-gray-400 mt-1" data-lang="en">Shanghai • Dubai • Berlin</div>
-                        <div class="text-xs text-gray-400 mt-1" data-lang="ru">Шанхай • Дубай • Берлин</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold font-mono text-white">0%</div>
-                        <div class="text-xs text-gray-400 mt-1" data-lang="en">Hidden Dealer Markups</div>
-                        <div class="text-xs text-gray-400 mt-1" data-lang="ru">Дилерских наценок</div>
-                    </div>
-                </div>
+        <!-- Slider Controls: Prev/Next & Dots -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 relative z-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <button onclick="prevBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button onclick="nextBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <!-- Indicator Dots -->
+            <div id="banner-dots" class="flex items-center gap-2">
+                <!-- Dots injected via JS -->
             </div>
         </div>
     </section>
 
-    <!-- SECTION: EN GLOBAL PRICING & LOGISTICS (Shown ONLY in EN) -->
-    <section id="pricing-en" data-lang="en" class="py-16 md:py-24 border-b border-surface-border bg-surface-card/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">Transparent International Framework</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">How Automotive Export Pricing Works</h2>
-                <p class="text-gray-400 text-sm sm:text-base mt-3">
-                    Unlike local dealerships with opaque fees, international automotive trading follows clean, standardized Incoterms. We separate purchase, ocean shipping, and local delivery.
-                </p>
-            </div>
-
-            <!-- 3-Tier Global Structure Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Tier 1 -->
-                <div class="bg-surface-card border border-surface-border rounded-xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-lg bg-surface-elevated border border-surface-border flex items-center justify-center text-brand font-mono font-bold mb-4">01</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Price in China (FOB / EXW)</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Direct purchase price at Chinese manufacturer or official dealer network. Includes domestic transit to Shanghai/Ningbo port, export declaration, and customs clearance documents.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-surface-border text-xs text-gray-300 font-mono">
-                        Currency: USD ($) & CNY (¥)
-                    </div>
-                </div>
-
-                <!-- Tier 2 -->
-                <div class="bg-surface-card border border-surface-border rounded-xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-lg bg-surface-elevated border border-surface-border flex items-center justify-center text-brand font-mono font-bold mb-4">02</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Ocean Freight & Logistics</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Maritime freight via dedicated Ro-Ro (Roll-on/Roll-off) car carriers or enclosed 40ft High Cube containers. All shipments include comprehensive maritime insurance against all risks.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-surface-border text-xs text-gray-300 font-mono">
-                        Est. Range: $1,400 – $3,200 / unit
-                    </div>
-                </div>
-
-                <!-- Tier 3 -->
-                <div class="bg-surface-card border border-surface-border rounded-xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-lg bg-surface-elevated border border-surface-border flex items-center justify-center text-brand font-mono font-bold mb-4">03</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Landed in Your Country (CIF)</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                            Import tariffs, VAT, and port handling depend strictly on your destination country's regulations. We provide complete documentation (Bill of Lading, Commercial Invoice, Packing List, Certificate of Origin) for immediate local release.
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-surface-border">
-                        <a href="https://api.whatsapp.com/send?phone=8617316540375" target="_blank" class="text-brand hover:underline text-xs font-semibold flex items-center gap-1">
-                            Request Port Quote &rarr;
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Estimated Regional Freight Guide -->
-            <div class="mt-10 bg-surface-base border border-surface-border rounded-xl p-6">
-                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 font-mono">Representative Freight Estimates from Shanghai Port</h4>
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-xs">
-                    <div class="p-3 bg-surface-card rounded-lg border border-surface-border">
-                        <div class="font-bold text-white">Middle East</div>
-                        <div class="text-gray-400 mt-1">Jebel Ali / Dammam</div>
-                        <div class="text-brand font-mono font-bold mt-2">~$1,800 – $2,300</div>
-                    </div>
-                    <div class="p-3 bg-surface-card rounded-lg border border-surface-border">
-                        <div class="font-bold text-white">Europe</div>
-                        <div class="text-gray-400 mt-1">Rotterdam / Bremerhaven</div>
-                        <div class="text-brand font-mono font-bold mt-2">~$2,400 – $3,200</div>
-                    </div>
-                    <div class="p-3 bg-surface-card rounded-lg border border-surface-border">
-                        <div class="font-bold text-white">Central Asia</div>
-                        <div class="text-gray-400 mt-1">Rail / Auto-carrier</div>
-                        <div class="text-brand font-mono font-bold mt-2">~$2,200 – $2,800</div>
-                    </div>
-                    <div class="p-3 bg-surface-card rounded-lg border border-surface-border">
-                        <div class="font-bold text-white">Southeast Asia</div>
-                        <div class="text-gray-400 mt-1">Singapore / Bangkok</div>
-                        <div class="text-brand font-mono font-bold mt-2">~$1,200 – $1,600</div>
-                    </div>
-                    <div class="p-3 bg-surface-card rounded-lg border border-surface-border">
-                        <div class="font-bold text-white">Latin America</div>
-                        <div class="text-gray-400 mt-1">Santos / Callao</div>
-                        <div class="text-brand font-mono font-bold mt-2">~$2,800 – $3,600</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION: RU CALCULATOR (Shown ONLY in RU) -->
-    <section id="calculator" data-lang="ru" class="py-16 md:py-24 border-b border-surface-border bg-surface-card/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">Прозрачный расчет расходов</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">Калькулятор доставки и таможни под ключ</h2>
-                <p class="text-gray-400 text-sm sm:text-base mt-3">
-                    Рассчитайте полную стоимость авто с учетом актуальных таможенных пошлин РФ, утилизационного сбора, лаборатории (СБКТС/ЭПТС) и доставки в ваш город.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <!-- Controls Column -->
-                <div class="lg:col-span-7 bg-surface-card border border-surface-border rounded-2xl p-6 sm:p-8 space-y-6">
-                    <!-- Engine Type -->
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2 font-mono">Тип силовой установки</label>
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                            <button type="button" onclick="setCalcEngine('ev')" id="btn-engine-ev" class="calc-btn p-3 rounded-lg text-xs font-medium border border-brand bg-brand/10 text-white">
-                                Электро (EV)
-                            </button>
-                            <button type="button" onclick="setCalcEngine('hybrid')" id="btn-engine-hybrid" class="calc-btn p-3 rounded-lg text-xs font-medium border border-surface-border bg-surface-base text-gray-300 hover:text-white">
-                                Гибрид (EREV)
-                            </button>
-                            <button type="button" onclick="setCalcEngine('ice')" id="btn-engine-ice" class="calc-btn p-3 rounded-lg text-xs font-medium border border-surface-border bg-surface-base text-gray-300 hover:text-white">
-                                Бензин (2.0L)
-                            </button>
-                            <button type="button" onclick="setCalcEngine('brp')" id="btn-engine-brp" class="calc-btn p-3 rounded-lg text-xs font-medium border border-surface-border bg-surface-base text-gray-300 hover:text-white">
-                                BRP / Багги
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Price Slider -->
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="text-xs font-semibold uppercase tracking-wider text-gray-400 font-mono">Стоимость в Китае (FOB)</label>
-                            <span id="calc-val-display" class="font-mono text-base font-bold text-brand">269,000 ¥</span>
-                        </div>
-                        <input type="range" id="calc-slider" min="100000" max="1500000" step="10000" value="269000" oninput="onSliderChange(this.value)" class="w-full accent-brand bg-surface-base h-2 rounded-lg cursor-pointer">
-                        <div class="flex justify-between text-xs text-gray-500 font-mono mt-1">
-                            <span>100,000 ¥</span>
-                            <span>800,000 ¥</span>
-                            <span>1,500,000 ¥</span>
-                        </div>
-                    </div>
-
-                    <!-- Registration Type -->
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2 font-mono">Оформление и утильсбор</label>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            <button type="button" onclick="setCalcReg('personal')" id="btn-reg-personal" class="calc-btn p-3 text-left rounded-lg text-xs font-medium border border-brand bg-brand/10 text-white">
-                                <div class="font-bold">Физлицо (для личного пользования)</div>
-                                <div class="text-[11px] text-gray-400 mt-0.5">Льготный утильсбор: 3 400 ₽</div>
-                            </button>
-                            <button type="button" onclick="setCalcReg('commercial')" id="btn-reg-commercial" class="calc-btn p-3 text-left rounded-lg text-xs font-medium border border-surface-border bg-surface-base text-gray-300 hover:text-white">
-                                <div class="font-bold">Коммерческий утильсбор</div>
-                                <div class="text-[11px] text-gray-400 mt-0.5">Постановление 1291 (юрлица / перепродажа)</div>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- City Selection -->
-                    <div>
-                        <label for="calc-city" class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2 font-mono">Город получения</label>
-                        <select id="calc-city" onchange="recalculateRu()" class="w-full bg-surface-base border border-surface-border rounded-lg p-3 text-sm text-white">
-                            <option value="moscow">Москва (автовоз)</option>
-                            <option value="spb">Санкт-Петербург</option>
-                            <option value="vladivostok">Владивосток (порт/таможня)</option>
-                            <option value="ekb">Екатеринбург</option>
-                            <option value="krasnodar">Краснодар / Юг РФ</option>
-                            <option value="almaty">Алматы (Казахстан)</option>
-                            <option value="minsk">Минск (Беларусь)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Result Breakdown Summary Card -->
-                <div class="lg:col-span-5 bg-surface-card border border-surface-border rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs uppercase font-mono tracking-wider text-gray-400 mb-4 pb-2 border-b border-surface-border">
-                            Детализированная смета под ключ
-                        </div>
-
-                        <div class="space-y-3 text-sm">
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Инвойс авто в Китае:</span>
-                                <span id="res-fob-rub" class="font-mono text-white font-medium">3,631,500 ₽</span>
-                            </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Фрахт и логистика до границы:</span>
-                                <span id="res-freight" class="font-mono text-white font-medium">320,000 ₽</span>
-                            </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Таможенная пошлина РФ:</span>
-                                <span id="res-duty" class="font-mono text-white font-medium">544,725 ₽</span>
-                            </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Утилизационный сбор РФ:</span>
-                                <span id="res-util" class="font-mono text-white font-medium">3,400 ₽</span>
-                            </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Лаборатория, СБКТС и ЭПТС:</span>
-                                <span id="res-certs" class="font-mono text-white font-medium">85,000 ₽</span>
-                            </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Доставка до города (автовоз):</span>
-                                <span id="res-intercity" class="font-mono text-white font-medium">160,000 ₽</span>
-                            </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Сопровождение и брокер:</span>
-                                <span class="font-mono text-white font-medium">100,000 ₽</span>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 pt-6 border-t border-surface-border">
-                            <div class="text-xs text-gray-400 uppercase font-mono">Итоговая стоимость под ключ</div>
-                            <div id="res-grand-total" class="text-3xl sm:text-4xl font-extrabold font-mono text-brand mt-1">
-                                4,844,625 ₽
-                            </div>
-                            <div id="res-usd-estimate" class="text-xs text-gray-400 font-mono mt-1">
-                                ~ $53,237 по курсу ЦБ РФ
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 space-y-3">
-                        <button type="button" onclick="sendTelegramCalcLead()" class="w-full bg-brand hover:bg-brand-hover text-black font-bold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                            <span>Получить расчет в Telegram</span>
-                        </button>
-                        <p class="text-[11px] text-gray-500 text-center">
-                            * Курсы валют и тарифы пересчитываются на день подачи таможенной декларации.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION: VEHICLE CATALOG -->
+    <!-- SECTION 2: VEHICLE CATALOG WITH INTERACTIVE MODAL & CALCULATION -->
     <section id="catalog" class="py-16 md:py-24 border-b border-surface-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
-                    <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="en">Direct Sourcing Catalog</span>
-                    <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="ru">Актуальные предложения</span>
-                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">
-                        <span data-lang="en">Popular Export Models</span>
-                        <span data-lang="ru">Популярные автомобили из Китая</span>
+                    <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="en">Live Direct Sourcing</span>
+                    <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="ru">Прямой каталог авто</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+                        <span data-lang="en">Automotive Catalog & Configurations</span>
+                        <span data-lang="ru">Каталог автомобилей из Китая</span>
                     </h2>
-                </div>
-
-                <!-- Catalog Filter Pills -->
-                <div class="flex flex-wrap gap-2 text-xs font-semibold">
-                    <button onclick="filterCatalog('all')" id="filter-all" class="cat-filter-btn px-4 py-2 rounded-lg bg-brand text-black font-bold">All Models</button>
-                    <button onclick="filterCatalog('ev')" id="filter-ev" class="cat-filter-btn px-4 py-2 rounded-lg bg-surface-card border border-surface-border text-gray-400 hover:text-white">Electric (EV)</button>
-                    <button onclick="filterCatalog('hybrid')" id="filter-hybrid" class="cat-filter-btn px-4 py-2 rounded-lg bg-surface-card border border-surface-border text-gray-400 hover:text-white">Hybrid (EREV)</button>
-                    <button onclick="filterCatalog('luxury')" id="filter-luxury" class="cat-filter-btn px-4 py-2 rounded-lg bg-surface-card border border-surface-border text-gray-400 hover:text-white">Luxury & SUV</button>
+                    <p class="text-gray-400 text-xs sm:text-sm mt-2 max-w-xl" data-lang="ru">
+                        Нажмите на любой автомобиль, чтобы посмотреть все комплектации, технические характеристики и прозрачный расчет стоимости под ключ.
+                    </p>
+                    <p class="text-gray-400 text-xs sm:text-sm mt-2 max-w-xl" data-lang="en">
+                        Click on any vehicle to view all manufacturer trims, specifications, and FOB / CIF export pricing to your destination port.
+                    </p>
                 </div>
             </div>
 
-            <!-- Dynamic Catalog Grid -->
-            <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Injected via JavaScript for clean sync with RU/EN pricing models -->
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION: BRP POWERSPORTS (Strictly RU Only) -->
-    <section id="brp" data-lang="ru" class="py-16 md:py-24 border-b border-surface-border bg-surface-card/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">Прямые поставки спецтехники</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">Техника BRP: Can-Am, Sea-Doo, Ski-Doo</h2>
-                <p class="text-gray-400 text-sm sm:text-base mt-3">
-                    Поставка квадроциклов, багги, гидроциклов и снегоходов напрямую с азиатских складов. Официальная таможня, оформление ЭПСМ (электронный паспорт самоходной машины) и доставка по РФ.
-                </p>
+            <!-- Brand Filter Tabs (Exact like easy.car brands bar) -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar text-xs font-semibold">
+                <button onclick="filterBrand('all')" id="brand-btn-all" class="brand-tab px-4 py-2.5 rounded-lg bg-brand text-black font-bold whitespace-nowrap transition">Все марки (All)</button>
+                <button onclick="filterBrand('Zeekr')" id="brand-btn-Zeekr" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Zeekr</button>
+                <button onclick="filterBrand('Xiaomi')" id="brand-btn-Xiaomi" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Xiaomi</button>
+                <button onclick="filterBrand('Avatr')" id="brand-btn-Avatr" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Avatr</button>
+                <button onclick="filterBrand('Changan')" id="brand-btn-Changan" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Changan / NEVO</button>
+                <button onclick="filterBrand('Lynk & Co')" id="brand-btn-Lynk" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Lynk & Co</button>
+                <button onclick="filterBrand('Toyota')" id="brand-btn-Toyota" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Toyota</button>
+                <button onclick="filterBrand('BYD')" id="brand-btn-BYD" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">BYD</button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Can-Am Maverick R -->
-                <div class="bg-surface-card border border-surface-border rounded-xl overflow-hidden flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 overflow-hidden bg-surface-base">
-                            <img src="assets/cars/canam-maverick.jpg" alt="Can-Am Maverick R" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                        </div>
-                        <div class="p-6">
-                            <div class="text-xs font-mono text-brand uppercase">Side-by-Side SSV</div>
-                            <h3 class="text-lg font-bold text-white mt-1">Can-Am Maverick R X RS</h3>
-                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">
-                                240 л.с. Rotax Turbo RR, 7-ступенчатый робот DCT с двойным сцеплением, подвеска Smart-Shox, дорожный просвет 43 см.
-                            </p>
-                            <div class="mt-4 pt-4 border-t border-surface-border flex justify-between items-baseline">
-                                <span class="text-xs text-gray-400">Под ключ в РФ:</span>
-                                <span class="font-mono text-lg font-bold text-white">от 5,200,000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openLeadModal('Can-Am Maverick R')" class="w-full py-2.5 rounded-lg border border-surface-border bg-surface-elevated hover:bg-surface-hover text-white text-xs font-semibold transition">
-                            Заказать расчет ЭПСМ
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Sea-Doo RXT-X 325 -->
-                <div class="bg-surface-card border border-surface-border rounded-xl overflow-hidden flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 overflow-hidden bg-surface-base">
-                            <img src="assets/cars/canam-maverick.jpg" alt="Sea-Doo RXT-X 325" class="w-full h-full object-cover hover:scale-105 transition duration-500 filter contrast-125">
-                        </div>
-                        <div class="p-6">
-                            <div class="text-xs font-mono text-brand uppercase">Watercraft</div>
-                            <h3 class="text-lg font-bold text-white mt-1">Sea-Doo RXT-X 325</h3>
-                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">
-                                Самый мощный серийный гидроцикл в мире: 325 л.с., разгон до 100 км/ч за 3.4 сек, аудиосистема BRP Premium, система launch control.
-                            </p>
-                            <div class="mt-4 pt-4 border-t border-surface-border flex justify-between items-baseline">
-                                <span class="text-xs text-gray-400">Под ключ в РФ:</span>
-                                <span class="font-mono text-lg font-bold text-white">от 3,450,000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openLeadModal('Sea-Doo RXT-X 325')" class="w-full py-2.5 rounded-lg border border-surface-border bg-surface-elevated hover:bg-surface-hover text-white text-xs font-semibold transition">
-                            Заказать расчет ЭПСМ
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Ski-Doo Summit X -->
-                <div class="bg-surface-card border border-surface-border rounded-xl overflow-hidden flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 overflow-hidden bg-surface-base">
-                            <img src="assets/cars/canam-maverick.jpg" alt="Ski-Doo Summit X Turbo R" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                        </div>
-                        <div class="p-6">
-                            <div class="text-xs font-mono text-brand uppercase">Snowmobile</div>
-                            <h3 class="text-lg font-bold text-white mt-1">Ski-Doo Summit X 850 Turbo R</h3>
-                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">
-                                Горный снегоход высшего класса с заводским турбонаддувом Rotax 850 E-TEC Turbo R (180 л.с.), гусеница PowderMax 3.
-                            </p>
-                            <div class="mt-4 pt-4 border-t border-surface-border flex justify-between items-baseline">
-                                <span class="text-xs text-gray-400">Под ключ в РФ:</span>
-                                <span class="font-mono text-lg font-bold text-white">от 3,100,000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openLeadModal('Ski-Doo Summit X')" class="w-full py-2.5 rounded-lg border border-surface-border bg-surface-elevated hover:bg-surface-hover text-white text-xs font-semibold transition">
-                            Заказать расчет ЭПСМ
-                        </button>
-                    </div>
-                </div>
+            <!-- Catalog Cards Grid -->
+            <div id="catalog-cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected via JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- SECTION: HOW IT WORKS (PROCESS) -->
-    <section id="process" class="py-16 md:py-24 border-b border-surface-border">
+    <!-- SECTION 3: HOW IT WORKS / EXPORT PROCESS -->
+    <section id="process" class="py-16 md:py-24 border-b border-surface-border bg-surface-card/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="en">Standardized Workflow</span>
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="ru">Поэтапный регламент</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">
-                    <span data-lang="en">From China Port to Your Hands in 5 Steps</span>
-                    <span data-lang="ru">Как проходит покупка и доставка в 5 шагов</span>
+                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="en">Transparent Workflow</span>
+                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="ru">Регламент сделки</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+                    <span data-lang="en">How Vehicle Delivery Works</span>
+                    <span data-lang="ru">Покупка и доставка автомобиля за 5 шагов</span>
                 </h2>
             </div>
 
-            <!-- Steps Grid -->
             <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-                <!-- Step 1 -->
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-xl font-bold mb-3">01</div>
-                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">Vehicle Sourcing & VIN Check</h3>
-                    <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Подбор и видеоинспекция</h3>
+                    <div class="text-brand font-mono text-2xl font-bold mb-3">01</div>
+                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">Selection & VIN Check</h3>
+                    <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Подбор и проверка</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
-                        Selection of factory-fresh or pre-owned units. Detailed 120-point diagnostic check, battery SOH report, and video walk-around.
+                        Selection of factory-fresh or pre-owned units with direct video walk-around, battery health (SOH) and VIN diagnostic report.
                     </p>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="ru">
-                        Подбор комплектации у завода или дилера. Подробный фото- и видеоотчет состояния кузова, салона и батареи перед оплатой.
+                        Подбор комплектации напрямую у завода или дилера. Подробный фото- и видеоотчет состояния кузова, салона и батареи.
                     </p>
                 </div>
 
-                <!-- Step 2 -->
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-xl font-bold mb-3">02</div>
-                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">Official Contract & Escrow</h3>
-                    <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Прямой договор и оплата</h3>
+                    <div class="text-brand font-mono text-2xl font-bold mb-3">02</div>
+                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">Contract & Bank Wire</h3>
+                    <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Официальный договор</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
-                        Direct commercial sales contract with Shanghai Motors. Secure international wire (T/T or L/C) directly to corporate bank account.
+                        Direct commercial sales contract with Shanghai Motors. Wire transfer directly to corporate banking accounts with fixed invoicing.
                     </p>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="ru">
-                        Официальный договор поставки с фиксированной сметой. Безналичная оплата через банк напрямую на счет в Китае.
+                        Официальный договор поставки с фиксированной сметой в рублях/юанях. Оплата через банк напрямую на счет компании.
                     </p>
                 </div>
 
-                <!-- Step 3 -->
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-xl font-bold mb-3">03</div>
-                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">Export Customs & Preparation</h3>
-                    <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Экспорт и страхование</h3>
+                    <div class="text-brand font-mono text-2xl font-bold mb-3">03</div>
+                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">Export & 100% Insurance</h3>
+                    <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Экспорт и страховка</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
-                        Obtaining Chinese export license, deregistration plates, and comprehensive 100% full-value maritime insurance.
+                        Obtaining Chinese export license and comprehensive maritime/transit insurance covering 100% of vehicle invoice value.
                     </p>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="ru">
-                        Оформление китайской экспортной лицензии, снятие с учета, оформление страховки на 100% стоимости на весь путь.
+                        Оформление экспортных документов в Китае, страхование 100% стоимости авто на всем протяжении пути до границы.
                     </p>
                 </div>
 
-                <!-- Step 4 -->
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-xl font-bold mb-3">04</div>
-                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">International Logistics</h3>
+                    <div class="text-brand font-mono text-2xl font-bold mb-3">04</div>
+                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">Customs & Shipping</h3>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Таможня, СБКТС и ЭПТС</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
-                        Maritime Ro-Ro departure or 40ft container loading from Shanghai/Ningbo ports. Real-time GPS vessel tracking and Bill of Lading (B/L).
+                        Ro-Ro or container departure from Shanghai/Ningbo port with GPS vessel tracking and Bill of Lading documentation.
                     </p>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="ru">
-                        Прохождение таможни на границе РФ, испытательная лаборатория, получение СБКТС и действующего статуса в системе ЭПТС.
+                        Таможенная очистка на границе РФ, прохождение сертифицированной лаборатории, оформление СБКТС и действующего статуса в ЭПТС.
                     </p>
                 </div>
 
-                <!-- Step 5 -->
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-xl font-bold mb-3">05</div>
-                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">Port Arrival & Release</h3>
+                    <div class="text-brand font-mono text-2xl font-bold mb-3">05</div>
+                    <h3 class="text-base font-bold text-white mb-2" data-lang="en">Port Handover / Delivery</h3>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Выдача в вашем городе</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
-                        Handover of all original export documents and release of the vehicle at destination port to your local forwarding agent.
+                        Delivery to destination port or door-to-door forwarding with complete original paperwork ready for local registration.
                     </p>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="ru">
-                        Доставка крытым автовозом до Москвы, СПб или любого города РФ. Передача авто с полным комплектом документов для постановки в ГИБДД.
+                        Доставка крытым автовозом в Москву, СПб или ваш город. Автомобиль готов к постановке на учет в ГИБДД в день получения.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION: GLOBAL OFFICES & AUTHENTIC CREDENTIALS -->
-    <section id="offices" class="py-16 md:py-24 border-b border-surface-border bg-surface-card/20">
+    <!-- SECTION 4: GLOBAL HUBS & OFFICES -->
+    <section id="offices" class="py-16 md:py-24 border-b border-surface-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="en">Global Infrastructure</span>
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="ru">Инфраструктура компании</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">
-                    <span data-lang="en">Shanghai Motors Worldwide Hubs</span>
-                    <span data-lang="ru">Офисы и представительства Shanghai Motors</span>
+                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">Infrastructure</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+                    <span data-lang="en">Shanghai Motors Global Presence</span>
+                    <span data-lang="ru">Международные офисы Shanghai Motors</span>
                 </h2>
-                <p class="text-gray-400 text-sm sm:text-base mt-3" data-lang="en">
-                    Operating directly on the ground at major manufacturing, financial, and transit hubs across Asia, the Middle East, and Europe.
-                </p>
-                <p class="text-gray-400 text-sm sm:text-base mt-3" data-lang="ru">
-                    Прямое присутствие в центрах автомобильного производства Китая, логистических хабах Ближнего Востока и Европы.
-                </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Shanghai HQ -->
                 <div class="bg-surface-card border border-surface-border rounded-xl p-6">
-                    <div class="flex justify-between items-center mb-4">
+                    <div class="flex justify-between items-center mb-3">
                         <span class="text-xs font-mono font-bold text-brand uppercase">Headquarters</span>
                         <span class="text-xs text-gray-500 font-mono">China</span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Shanghai HQ</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="en">
-                        Direct relationships with Geely, Li Auto, Xiaomi, BYD, and Changan factories. Vehicle testing, port storage, and export documentation processing.
-                    </p>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
-                        Прямые дилерские контракты с заводами Geely, Li Auto, Xiaomi, BYD. Собственные площадки предрейсового осмотра в портах Шанхая и Нинбо.
+                    <h3 class="text-lg font-bold text-white mb-2">Шанхай (Shanghai HQ)</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        Прямые дилерские соглашения с производителями Geely, Zeekr, Changan, BYD, Xiaomi. Собственные площадки для видеоинспекции в портах Шанхай и Нинбо.
                     </p>
                     <div class="text-xs text-gray-300 font-mono border-t border-surface-border pt-4">
                         WhatsApp: +86 173 1654 0375
                     </div>
                 </div>
 
-                <!-- Dubai Hub -->
                 <div class="bg-surface-card border border-surface-border rounded-xl p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-xs font-mono font-bold text-brand uppercase">Logistics Hub</span>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs font-mono font-bold text-brand uppercase">Middle East Hub</span>
                         <span class="text-xs text-gray-500 font-mono">UAE</span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Dubai Office</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="en">
-                        Middle East distribution hub, Jebel Ali free zone transit handling, escrow financial settlements, and regional showroom sourcing.
-                    </p>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
-                        Транзитный хаб в свободной зоне Jebel Ali, валютные расчеты в AED/USD, перенаправление партий авто на страны Ближнего Востока и СНГ.
+                    <h3 class="text-lg font-bold text-white mb-2">Дубай (Dubai Office)</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        Транзитный хаб в свободной зоне Jebel Ali, расчеты в AED/USD, перенаправление партий авто на Ближний Восток, Кавказ и страны СНГ.
                     </p>
                     <div class="text-xs text-gray-300 font-mono border-t border-surface-border pt-4">
                         Middle East Logistics Desk
                     </div>
                 </div>
 
-                <!-- Berlin Office -->
                 <div class="bg-surface-card border border-surface-border rounded-xl p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-xs font-mono font-bold text-brand uppercase">European Desk</span>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs font-mono font-bold text-brand uppercase">Europe Desk</span>
                         <span class="text-xs text-gray-500 font-mono">Germany</span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Berlin Office</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="en">
-                        Coordination of European customs clearance, Bremerhaven/Rotterdam port logistics, and B2B fleet import operations.
-                    </p>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
-                        Координация европейской логистики, портов Бремерхафен и Роттердам, поставка авто в страны Восточной и Западной Европы.
+                    <h3 class="text-lg font-bold text-white mb-2">Берлин (Berlin Office)</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        Координация европейской таможенной очистки, логистика портов Бремерхафен и Роттердам, B2B поставки в страны Европы.
                     </p>
                     <div class="text-xs text-gray-300 font-mono border-t border-surface-border pt-4">
-                        European Desk
+                        European Export Desk
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION: AUTHENTIC CLIENT SUCCESS & REVIEWS -->
-    <section class="py-16 md:py-24 border-b border-surface-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="en">Verified Deliveries</span>
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="ru">Реальный опыт клиентов</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">
-                    <span data-lang="en">Client Success Stories</span>
-                    <span data-lang="ru">Отзывы клиентов Shanghai Motors</span>
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Review 1 -->
-                <div class="bg-surface-card border border-surface-border rounded-xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-brand text-xs mb-3">★★★★★</div>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                            "Ordered a Zeekr 001 YOU edition. Full video inspection before dispatch from Ningbo port was immaculate. Received Bill of Lading on schedule and cleared port without a hitch."
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-surface-border">
-                        <div class="text-xs font-bold text-white">Ahmed Al-Mansour</div>
-                        <div class="text-[11px] text-gray-500">Dubai, UAE • Zeekr 001</div>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="bg-surface-card border border-surface-border rounded-xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-brand text-xs mb-3">★★★★★</div>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                            "Привезли Li Auto L9 в Москву. Все четко по смете: никаких внезапных доплат за утильсбор. ЭПТС со статусом 'действующий' получили на 4-й день после таможни."
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-surface-border">
-                        <div class="text-xs font-bold text-white">Азамат Хаятуллаев</div>
-                        <div class="text-[11px] text-gray-500">Москва, РФ • Li Auto L9 Ultra</div>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="bg-surface-card border border-surface-border rounded-xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-brand text-xs mb-3">★★★★★</div>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                            "Заказывали партию Can-Am Maverick R для спортклуба. Оформили ЭПСМ, проверили каждый узел. Все агрегаты в заводской консервации."
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-surface-border">
-                        <div class="text-xs font-bold text-white">Гарик Бабоян</div>
-                        <div class="text-[11px] text-gray-500">Краснодар, РФ • Can-Am Maverick R</div>
-                    </div>
-                </div>
-
-                <!-- Review 4 -->
-                <div class="bg-surface-card border border-surface-border rounded-xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-brand text-xs mb-3">★★★★★</div>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                            "Smooth container shipment of two Xiaomi SU7 units to Europe. Fast response times via WhatsApp and totally transparent export invoice."
-                        </p>
-                    </div>
-                    <div class="pt-4 border-t border-surface-border">
-                        <div class="text-xs font-bold text-white">Eduardo C.</div>
-                        <div class="text-[11px] text-gray-500">B2B Auto Dealer • Europe</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION: FAQ -->
+    <!-- SECTION 5: FAQ -->
     <section id="faq" class="py-16 md:py-24 border-b border-surface-border bg-surface-card/30">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">Transparency</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">
+                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">FAQ</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                     <span data-lang="en">Frequently Asked Questions</span>
-                    <span data-lang="ru">Часто задаваемые вопросы</span>
+                    <span data-lang="ru">Частые вопросы о заказе авто</span>
                 </h2>
             </div>
 
-            <div class="space-y-4">
-                <!-- FAQ 1 -->
+            <div class="space-y-4 text-left">
                 <div class="bg-surface-card border border-surface-border rounded-xl p-5">
-                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="en">What international payment terms and currencies do you accept?</h3>
-                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="ru">В какой валюте и как происходит оплата?</h3>
+                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="en">How is the price calculated and are there hidden fees?</h3>
+                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="ru">Как формируется стоимость и могут ли быть скрытые доплаты?</h3>
                     <p class="text-xs sm:text-sm text-gray-400 mt-2 leading-relaxed" data-lang="en">
-                        We accept corporate telegraphic transfers (T/T), international escrow payments, and Letters of Credit (L/C) in USD, EUR, AED, and CNH/CNY directly to our official corporate banking accounts.
+                        Pricing is 100% transparent: vehicle purchase cost in China + ocean freight + export licensing. No hidden dealer markups.
                     </p>
                     <p class="text-xs sm:text-sm text-gray-400 mt-2 leading-relaxed" data-lang="ru">
-                        Оплата инвойса в Китай производится банковским переводом в китайских юанях (CNY) или долларах США (USD) по официальному договору поставки. Таможенные платежи РФ и утильсбор оплачиваются напрямую на казначейский счет Федеральной таможенной службы (ФТС).
+                        В смете четко зафиксированы: инвойс авто в Китае, доставка автовозом, таможенная пошлина, утильсбор и лаборатория. Цена прописывается в договоре и не меняется в процессе доставки.
                     </p>
                 </div>
 
-                <!-- FAQ 2 -->
                 <div class="bg-surface-card border border-surface-border rounded-xl p-5">
-                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="en">How is vehicle safety guaranteed during international maritime transit?</h3>
-                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="ru">Застрахован ли автомобиль во время доставки?</h3>
+                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="en">Are vehicles insured during transport?</h3>
+                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="ru">Застрахован ли автомобиль в пути?</h3>
                     <p class="text-xs sm:text-sm text-gray-400 mt-2 leading-relaxed" data-lang="en">
-                        Every vehicle is insured under an Institute Cargo Clauses (A) policy ("All Risks") covering 100% of the commercial invoice value throughout port loading, ocean transit, and arrival inspection.
+                        Yes, 100% full-value Institute Cargo Clauses (A) insurance covers the entire transport journey from port departure to destination delivery.
                     </p>
                     <p class="text-xs sm:text-sm text-gray-400 mt-2 leading-relaxed" data-lang="ru">
-                        Да, каждый автомобиль застрахован на 100% его стоимости на всех этапах: от погрузки на автовоз в Китае до момента разгрузки и передачи вам в вашем городе.
+                        Да, каждый автомобиль застрахован на полную стоимость от момента погрузки на автовоз в Китае до момента передачи клиенту в его городе.
                     </p>
                 </div>
 
-                <!-- FAQ 3 -->
                 <div class="bg-surface-card border border-surface-border rounded-xl p-5">
-                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="en">Can you provide localized Russian/English interface software and SIM installation?</h3>
-                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="ru">Как обстоят дела с русификацией и установкой местных SIM-карт?</h3>
+                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="en">What is the delivery timeline?</h3>
+                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="ru">Сколько времени занимает доставка?</h3>
                     <p class="text-xs sm:text-sm text-gray-400 mt-2 leading-relaxed" data-lang="en">
-                        Yes. For destination markets requiring multi-language firmware, app store sideloading (Yandex Maps, navigation, Spotify), or local eSIM/physical SIM slot soldering, our technical team performs all adaptations prior to shipping.
+                        5–8 days for export clearance and port loading, 14–22 days for maritime container transit to destination port.
                     </p>
                     <p class="text-xs sm:text-sm text-gray-400 mt-2 leading-relaxed" data-lang="ru">
-                        Для популярных моделей (Zeekr, Li Auto, Voyah, Xiaomi) мы предоставляем услугу полной программной адаптации: качественная русификация приборной панели и мультимедиа, пайка слота под российскую SIM-карту и установка нужных приложений (Яндекс.Навигатор, Музыка, Telegram).
-                    </p>
-                </div>
-
-                <!-- FAQ 4 -->
-                <div class="bg-surface-card border border-surface-border rounded-xl p-5">
-                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="en">What is the average lead time from purchase to port arrival?</h3>
-                    <h3 class="text-sm sm:text-base font-bold text-white" data-lang="ru">Сколько времени занимает весь процесс доставки?</h3>
-                    <p class="text-xs sm:text-sm text-gray-400 mt-2 leading-relaxed" data-lang="en">
-                        For in-stock vehicles, export processing and port delivery take 5–8 business days. Maritime container shipping takes 12–22 days depending on destination port.
-                    </p>
-                    <p class="text-xs sm:text-sm text-gray-400 mt-2 leading-relaxed" data-lang="ru">
-                        Автомобили из наличия готовятся к экспорту за 5–7 рабочих дней. Доставка до границы и таможня занимают около 10–14 дней. Средний срок получения готового авто с действующим ЭПТС в Москве составляет 20–30 календарных дней.
+                        В среднем весь процесс (подбор, экспорт из Китая, таможня, лаборатория СБКТС и выдача действующего ЭПТС) занимает от 20 до 30 дней.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER WITH SOCIALS & CONTACT PARITY -->
+    <!-- FOOTER WITH SOCIALS PARITY -->
     <footer class="border-t border-surface-border bg-surface-card pt-12 pb-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <!-- Col 1: Brand & Logo -->
                 <div class="space-y-4">
                     <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-9 w-auto object-contain">
                     <p class="text-xs text-gray-400 leading-relaxed max-w-sm" data-lang="en">
                         Shanghai Motors Global Export Desk. Direct vehicle procurement, export licensing, and maritime logistics from China to global destinations.
                     </p>
                     <p class="text-xs text-gray-400 leading-relaxed max-w-sm" data-lang="ru">
-                        Shanghai Motors. Прямой импорт и поставка автомобилей и техники BRP из Китая под ключ в Россию и страны СНГ без посреднических наценок.
+                        Shanghai Motors. Прямой импорт и поставка автомобилей из Китая под ключ в Россию и страны СНГ без дилерских наценок.
                     </p>
                 </div>
 
-                <!-- Col 2: Navigation -->
                 <div>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">Navigation</h4>
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">Навигация</h4>
                     <ul class="space-y-2 text-xs text-gray-400">
-                        <li><a href="#catalog" class="hover:text-brand transition">Vehicle Catalog</a></li>
-                        <li data-lang="ru"><a href="#calculator" class="hover:text-brand transition">Калькулятор под ключ</a></li>
-                        <li data-lang="en"><a href="#pricing-en" class="hover:text-brand transition">Export Pricing</a></li>
-                        <li data-lang="ru"><a href="#brp" class="hover:text-brand transition">Спецтехника BRP</a></li>
-                        <li><a href="#process" class="hover:text-brand transition">Export Process</a></li>
-                        <li><a href="#offices" class="hover:text-brand transition">Global Hubs</a></li>
+                        <li><a href="#hero-banners" class="hover:text-brand transition">Популярные модели</a></li>
+                        <li><a href="#catalog" class="hover:text-brand transition">Каталог авто</a></li>
+                        <li><a href="#process" class="hover:text-brand transition">Регламент работы</a></li>
+                        <li><a href="#offices" class="hover:text-brand transition">Офисы компании</a></li>
                     </ul>
                 </div>
 
-                <!-- Col 3: Social Networks & Parity Links -->
                 <div>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">Official Channels</h4>
-
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">Официальные контакты</h4>
+                    
                     <!-- EN SOCIALS -->
                     <div data-lang="en" class="space-y-2 text-xs text-gray-400">
                         <div>
@@ -987,20 +485,16 @@
                         </div>
                         <div>
                             <a href="https://max.ru/u/f9LHodD0cOI3yKIPgCsWDWLtqyLO4_SMjksF41VgLAlzqfgXwkmHr1zUgVc?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAacewzwVedjle3w4OOladYZAtkGvng-e-rpGRo94VKbs84nxHVc1i4osd1L7Uw_aem_xP8D_w-sTn7gHcyQrRV7BA" target="_blank" class="hover:text-brand transition flex items-center gap-2">
-                                <span class="text-brand font-bold">MAX:</span> Профиль компании Shanghai Motors
+                                <span class="text-brand font-bold">MAX:</span> Профиль Shanghai Motors
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Col 4: Corporate Registration -->
                 <div>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">Export Clearance</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-3" data-lang="en">
-                        Invoicing and export handled through registered commercial automotive trade entities in Shanghai Free Trade Zone.
-                    </p>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-3" data-lang="ru">
-                        Все внешнеторговые поставки оформляются по официальному договору купли-продажи с полной таможенной очисткой.
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">Экспорт и таможня</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-3">
+                        Все поставки оформляются по прямому внешнеторговому контракту с полной юридической гарантией.
                     </p>
                     <div class="text-[11px] text-gray-500 font-mono">
                         © 2026 Shanghai Motors. All rights reserved.
@@ -1010,8 +504,7 @@
         </div>
     </footer>
 
-    <!-- FLOATING CONTACT BUTTON (Smart Parity) -->
-    <!-- Floating button for EN: Direct WhatsApp -->
+    <!-- FLOATING CONTACT BUTTONS -->
     <div data-lang="en">
         <a href="https://api.whatsapp.com/send?phone=8617316540375" target="_blank" class="fixed bottom-6 right-6 z-40 bg-brand hover:bg-brand-hover text-black font-extrabold p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2 transition transform hover:scale-105">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-12.416c-5.514 0-10 4.486-10 10 0 1.83.498 3.546 1.363 5.019l-1.394 5.093 5.234-1.373c1.42.793 3.051 1.261 4.797 1.261 5.514 0 10-4.486 10-10s-4.486-10-10-10z"/></svg>
@@ -1019,7 +512,6 @@
         </a>
     </div>
 
-    <!-- Floating button for RU: Direct Telegram @vlad_shanghaimotors -->
     <div data-lang="ru">
         <a href="https://t.me/vlad_shanghaimotors" target="_blank" class="fixed bottom-6 right-6 z-40 bg-brand hover:bg-brand-hover text-black font-extrabold p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2 transition transform hover:scale-105">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
@@ -1027,202 +519,872 @@
         </a>
     </div>
 
-    <!-- LEAD MODAL -->
-    <div id="lead-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-md p-6 relative">
-            <button onclick="closeLeadModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-1 text-lg leading-none">
+    <!-- INTERACTIVE CAR DETAILS & PRICE BREAKDOWN MODAL (EASY.CAR CONFIGURATOR CLONE) -->
+    <div id="car-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-4xl max-h-[92vh] overflow-y-auto relative my-auto p-5 sm:p-8">
+            <button onclick="closeCarModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-surface-elevated hover:bg-surface-hover border border-surface-border text-gray-300 hover:text-white flex items-center justify-center text-lg z-10 transition">
                 &times;
             </button>
 
-            <h3 id="modal-title" class="text-lg font-bold text-white mb-1">
-                <span data-lang="en">Request Vehicle Export Quote</span>
-                <span data-lang="ru">Заявка на расчет авто под ключ</span>
-            </h3>
-            <p class="text-xs text-gray-400 mb-6" data-lang="en">Enter your contact details. Our team in Shanghai will reach out within 1 hour.</p>
-            <p class="text-xs text-gray-400 mb-6" data-lang="ru">Оставьте контакт для связи. Наш менеджер свяжется с вами и пришлет детальный расчет.</p>
+            <!-- Modal Header -->
+            <div class="mb-6 pr-10">
+                <div class="flex items-center gap-2">
+                    <span id="modal-brand-badge" class="text-xs font-mono font-bold text-brand uppercase tracking-wider">ZEEKR</span>
+                    <span class="text-xs text-gray-500 font-mono">• 2024–2026 Model Year</span>
+                </div>
+                <h2 id="modal-car-title" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Zeekr 001</h2>
+            </div>
 
-            <form onsubmit="handleLeadSubmit(event)" class="space-y-4">
-                <input type="hidden" id="modal-vehicle-input">
+            <!-- Two-Column Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Left: Car Image & Trim Selector & Specs -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="rounded-xl bg-surface-base border border-surface-border h-64 sm:h-72 p-4 flex items-center justify-center relative overflow-hidden">
+                        <img id="modal-car-img" src="" alt="Car Preview" class="max-h-full max-w-full object-contain">
+                    </div>
 
-                <div>
-                    <label class="block text-xs font-mono text-gray-400 mb-1" data-lang="en">Your Name</label>
-                    <label class="block text-xs font-mono text-gray-400 mb-1" data-lang="ru">Ваше имя</label>
-                    <input type="text" id="lead-name" required placeholder="John / Иван" class="w-full bg-surface-base border border-surface-border rounded-lg p-2.5 text-sm text-white">
+                    <!-- Trims Selector (Комплектации) -->
+                    <div>
+                        <div class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400 mb-2">
+                            <span data-lang="ru">Выберите комплектацию:</span>
+                            <span data-lang="en">Select Trim / Configuration:</span>
+                        </div>
+                        <div id="modal-trims-container" class="flex flex-wrap gap-2">
+                            <!-- Trims buttons injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Technical Specs Table for Active Trim -->
+                    <div class="bg-surface-base border border-surface-border rounded-xl p-4">
+                        <div class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400 mb-3">
+                            <span data-lang="ru">Технические характеристики</span>
+                            <span data-lang="en">Technical Specifications</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase">Двигатель / Drive</span>
+                                <span id="spec-drive" class="text-white font-bold font-mono">Dual-Motor AWD</span>
+                            </div>
+                            <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase">Мощность / Power</span>
+                                <span id="spec-power" class="text-white font-bold font-mono">789 л.с.</span>
+                            </div>
+                            <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase">Разгон 0-100 / 0-100</span>
+                                <span id="spec-accel" class="text-brand font-bold font-mono">3.3 сек</span>
+                            </div>
+                            <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase">Запас хода / Range</span>
+                                <span id="spec-range" class="text-white font-bold font-mono">705 км (CLTC)</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-mono text-gray-400 mb-1" data-lang="en">Phone / WhatsApp / Telegram</label>
-                    <label class="block text-xs font-mono text-gray-400 mb-1" data-lang="ru">Телефон / WhatsApp / Telegram</label>
-                    <input type="text" id="lead-contact" required placeholder="+..." class="w-full bg-surface-base border border-surface-border rounded-lg p-2.5 text-sm text-white">
-                </div>
+                <!-- Right: Detailed Price Breakdown & Order Action -->
+                <div class="lg:col-span-6 space-y-6">
+                    <!-- RU Price Breakdown -->
+                    <div data-lang="ru" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
+                        <div class="flex justify-between items-center pb-3 border-b border-surface-border">
+                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Маршрут доставки</span>
+                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2 py-0.5 rounded border border-brand/20">Прямой (РФ)</span>
+                        </div>
 
-                <div>
-                    <label class="block text-xs font-mono text-gray-400 mb-1" data-lang="en">Destination City / Port</label>
-                    <label class="block text-xs font-mono text-gray-400 mb-1" data-lang="ru">Город / Порт назначения</label>
-                    <input type="text" id="lead-destination" placeholder="Dubai / Москва / Almaty" class="w-full bg-surface-base border border-surface-border rounded-lg p-2.5 text-sm text-white">
-                </div>
+                        <div class="space-y-2.5 text-xs">
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span>Инвойс авто в Китае:</span>
+                                <span id="modal-calc-invoice" class="font-mono text-white font-medium">3,631,500 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span>Таможенная пошлина РФ:</span>
+                                <span id="modal-calc-duty" class="font-mono text-white font-medium">1,139,894 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span>Утилизационный сбор РФ:</span>
+                                <span id="modal-calc-util" class="font-mono text-white font-medium">1,560,000 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span>Доставка и автовоз до Москвы:</span>
+                                <span id="modal-calc-freight" class="font-mono text-white font-medium">300,000 ₽</span>
+                            </div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span>СБКТС, ЭПТС и оформление брокера:</span>
+                                <span id="modal-calc-broker" class="font-mono text-white font-medium">200,000 ₽</span>
+                            </div>
+                        </div>
 
-                <button type="submit" class="w-full bg-brand hover:bg-brand-hover text-black font-bold text-sm py-3 rounded-lg transition mt-4">
-                    <span data-lang="en">Submit Request</span>
-                    <span data-lang="ru">Отправить заявку</span>
-                </button>
-            </form>
+                        <div class="pt-4 border-t border-surface-border">
+                            <span class="text-xs text-gray-400 uppercase font-mono block">Итоговая стоимость под ключ:</span>
+                            <div id="modal-calc-grand-total" class="text-2xl sm:text-3xl font-extrabold font-mono text-brand mt-1">
+                                6,831,394 ₽
+                            </div>
+                            <div id="modal-calc-usd-total" class="text-xs text-gray-500 font-mono mt-1">
+                                ~ $75,070 по курсу ЦБ
+                            </div>
+                        </div>
+
+                        <button onclick="orderVehicleTelegram()" class="w-full bg-brand hover:bg-brand-hover text-black font-extrabold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-4 shadow-lg shadow-brand/10">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                            <span id="modal-order-btn-text">Заказать этот автомобиль</span>
+                        </button>
+                    </div>
+
+                    <!-- EN Price Breakdown -->
+                    <div data-lang="en" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
+                        <div class="flex justify-between items-center pb-3 border-b border-surface-border">
+                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Export Pricing Framework</span>
+                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2 py-0.5 rounded border border-brand/20">FOB Shanghai</span>
+                        </div>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span>Vehicle Price in China (FOB):</span>
+                                <span id="modal-en-fob" class="font-mono text-white font-bold text-sm">$37,400</span>
+                            </div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span>Domestic China Sourcing Price:</span>
+                                <span id="modal-en-cny" class="font-mono text-gray-400">269,000 ¥</span>
+                            </div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span>Estimated Ocean Freight:</span>
+                                <span class="font-mono text-gray-300">~$2,200 (Ro-Ro / Container)</span>
+                            </div>
+                            <div class="flex justify-between items-center text-brand font-bold pt-2 border-t border-surface-border">
+                                <span>Estimated CIF Total to Port:</span>
+                                <span id="modal-en-cif" class="font-mono text-base font-extrabold">~$39,600</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-surface-card rounded-lg border border-surface-border text-[11px] text-gray-400 leading-relaxed">
+                            * Final landed cost depends on your country's customs tariff and import VAT. We provide full export declaration, Certificate of Origin, and maritime Bill of Lading.
+                        </div>
+
+                        <button onclick="orderVehicleWhatsApp()" class="w-full bg-brand hover:bg-brand-hover text-black font-extrabold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-4 shadow-lg shadow-brand/10">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-12.416c-5.514 0-10 4.486-10 10 0 1.83.498 3.546 1.363 5.019l-1.394 5.093 5.234-1.373c1.42.793 3.051 1.261 4.797 1.261 5.514 0 10-4.486 10-10s-4.486-10-10-10z"/></svg>
+                            <span>Request CIF Port Quote via WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- CLIENT LOGIC -->
+    <!-- CORE SCRIPTS & DATABASE -->
     <script>
-        // Vehicle Catalog Database
-        const vehicleCatalog = [
+        // 1. POPULAR HERO BANNERS DATABASE (Exact models from easy.car top banners)
+        const heroBanners = [
             {
-                id: 'zeekr-001',
-                category: 'ev',
-                name: 'Zeekr 001 YOU Edition',
-                year: '2024–2026',
-                img: 'assets/cars/zeekr-001.jpg',
-                specs: {
-                    powertrain: 'Electric (EV)',
-                    power: '544 HP (AWD)',
-                    battery: '100 kWh',
-                    range: '705 km CLTC',
-                    accel: '3.8s 0-100'
-                },
-                priceCny: 269000,
-                priceUsdFob: 37400,
-                estFreightUsd: 2200,
-                // RU Turnkey
-                landedRuRub: 5350000,
-                landedRuUsd: 58800
+                id: 'zeekr-9x',
+                brand: 'Zeekr',
+                model: 'Zeekr 9X',
+                tagRu: 'Хит продаж',
+                tagEn: 'Best Seller',
+                tagClass: 'bg-brand/10 text-brand border-brand/30',
+                descRu: 'Воплощение мощности и передовых технологий',
+                descEn: 'The pinnacle of luxury power and intelligent technology',
+                priceRu: 'от 11 502 202 ₽',
+                priceEn: 'from $48,500 FOB',
+                img: 'assets/banners/banner_1.jpg'
             },
             {
-                id: 'lixiang-l9',
-                category: 'hybrid',
-                name: 'Li Auto L9 Ultra (Lixiang)',
-                year: '2024–2026',
-                img: 'assets/cars/lixiang-l9.jpg',
-                specs: {
-                    powertrain: 'Hybrid EREV (Ext. Range)',
-                    power: '449 HP (AWD)',
-                    battery: '52.3 kWh',
-                    range: '1,412 km CLTC',
-                    accel: '5.3s 0-100'
-                },
-                priceCny: 429800,
-                priceUsdFob: 59700,
-                estFreightUsd: 2500,
-                landedRuRub: 8150000,
-                landedRuUsd: 89500
+                id: 'lynk-06',
+                brand: 'Lynk & Co',
+                model: 'Lynk & Co 06',
+                tagRu: 'Эксклюзив',
+                tagEn: 'Exclusive',
+                tagClass: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
+                descRu: 'Семейный кроссовер по льготному утильсбору',
+                descEn: 'Family crossover with compact dimensions and high efficiency',
+                priceRu: 'от 2 673 527 ₽',
+                priceEn: 'from $18,200 FOB',
+                img: 'assets/banners/banner_2.jpg'
             },
             {
-                id: 'xiaomi-su7',
-                category: 'ev',
-                name: 'Xiaomi SU7 Max',
-                year: '2024–2026',
-                img: 'assets/cars/xiaomi-su7.jpg',
-                specs: {
-                    powertrain: 'Electric (EV)',
-                    power: '673 HP (Dual Motor)',
-                    battery: '101 kWh (Kirin)',
-                    range: '800 km CLTC',
-                    accel: '2.78s 0-100'
-                },
-                priceCny: 299900,
-                priceUsdFob: 41700,
-                estFreightUsd: 2200,
-                landedRuRub: 5950000,
-                landedRuUsd: 65400
+                id: 'nevo-a06',
+                brand: 'Changan',
+                model: 'NEVO A06',
+                tagRu: 'Хит продаж',
+                tagEn: 'Best Seller',
+                tagClass: 'bg-brand/10 text-brand border-brand/30',
+                descRu: 'Гибридный седан по льготному утильсбору',
+                descEn: 'Plug-in hybrid aerodynamic sedan with 1,000+ km range',
+                priceRu: 'от 2 627 114 ₽',
+                priceEn: 'from $17,800 FOB',
+                img: 'assets/banners/banner_3.jpg'
             },
             {
-                id: 'voyah-free',
-                category: 'hybrid',
-                name: 'Voyah Free 318 Sport',
-                year: '2024–2026',
-                img: 'assets/cars/voyah-free.jpg',
-                specs: {
-                    powertrain: 'Hybrid EREV (AWD)',
-                    power: '490 HP',
-                    battery: '43 kWh',
-                    range: '1,357 km CLTC',
-                    accel: '4.5s 0-100'
-                },
-                priceCny: 228900,
-                priceUsdFob: 31800,
-                estFreightUsd: 2200,
-                landedRuRub: 4650000,
-                landedRuUsd: 51100
+                id: 'nevo-q05',
+                brand: 'Changan',
+                model: 'NEVO Q05',
+                tagRu: 'Хит продаж',
+                tagEn: 'Best Seller',
+                tagClass: 'bg-brand/10 text-brand border-brand/30',
+                descRu: 'Семейный электромобиль по льготному утильсбору',
+                descEn: 'Family electric smart compact SUV',
+                priceRu: 'от 2 268 400 ₽',
+                priceEn: 'from $15,400 FOB',
+                img: 'assets/banners/banner_4.jpg'
             },
             {
-                id: 'yangwang-u8',
-                category: 'luxury',
-                name: 'BYD Yangwang U8 Premium',
-                year: '2024–2026',
-                img: 'assets/cars/yangwang-u8.jpg',
-                specs: {
-                    powertrain: 'Quad-Motor EREV',
-                    power: '1,197 HP',
-                    battery: '49.05 kWh',
-                    range: '1,000 km CLTC',
-                    accel: '3.6s (Tank Turn)'
-                },
-                priceCny: 1098000,
-                priceUsdFob: 152500,
-                estFreightUsd: 3200,
-                landedRuRub: 19800000,
-                landedRuUsd: 217000
+                id: 'taishan',
+                brand: 'Voyah',
+                model: 'Taishan (Voyah)',
+                tagRu: 'Новинка',
+                tagEn: 'New Release',
+                tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+                descRu: 'Продуманный комфорт без компромиссов',
+                descEn: 'Full-size flagship comfort without compromises',
+                priceRu: 'от 8 234 053 ₽',
+                priceEn: 'from $58,000 FOB',
+                img: 'assets/banners/banner_5.jpg'
             },
             {
-                id: 'avatr-12',
-                category: 'luxury',
-                name: 'Avatr 12 Gran Coupe',
-                year: '2024–2026',
-                img: 'assets/cars/avatr-12.jpg',
-                specs: {
-                    powertrain: 'Electric (EV) / Huawei ADS',
-                    power: '578 HP (AWD)',
-                    battery: '94.5 kWh',
-                    range: '700 km CLTC',
-                    accel: '3.9s 0-100'
-                },
-                priceCny: 300800,
-                priceUsdFob: 41800,
-                estFreightUsd: 2200,
-                landedRuRub: 5800000,
-                landedRuUsd: 63700
+                id: 'zeekr-8x',
+                brand: 'Zeekr',
+                model: 'Zeekr 8X',
+                tagRu: 'Новинка',
+                tagEn: 'New Release',
+                tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+                descRu: 'Эволюция драйва в безупречной форме',
+                descEn: 'Evolution of electric performance in impeccable style',
+                priceRu: 'от 10 540 106 ₽',
+                priceEn: 'from $72,500 FOB',
+                img: 'assets/banners/banner_6.jpg'
+            },
+            {
+                id: 'toyota-bz3x',
+                brand: 'Toyota',
+                model: 'Toyota bZ3X',
+                tagRu: 'Хит продаж',
+                tagEn: 'Best Seller',
+                tagClass: 'bg-brand/10 text-brand border-brand/30',
+                descRu: 'Доступный электрический кроссовер',
+                descEn: 'Accessible modern electric crossover with Toyota reliability',
+                priceRu: 'от 2 932 192 ₽',
+                priceEn: 'from $19,800 FOB',
+                img: 'assets/banners/banner_7.jpg'
             }
         ];
 
-        // Active State
-        let currentLang = 'en'; // default English
-        let activeCategory = 'all';
+        // 2. VEHICLE CATALOG & PRICE CONFIGURATION DATABASE (Models from easy.car)
+        const catalogDatabase = [
+            {
+                id: 'xiaomi-su7',
+                brand: 'Xiaomi',
+                model: 'SU7',
+                fullName: 'Xiaomi SU7',
+                year: '2024–2026',
+                img: 'assets/cars/su7_preview.png',
+                trimsCount: 4,
+                minPriceRu: 6624430,
+                minPriceFob: 30000,
+                trims: [
+                    {
+                        name: 'Base',
+                        power: '299 л.с.',
+                        accel: '5.28 сек',
+                        range: '700 км',
+                        drive: 'Задний (RWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 2914650,
+                        invoiceCny: 215900,
+                        fobUsd: 30000,
+                        dutyRub: 1139894,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 6624430,
+                        cifUsd: 32200
+                    },
+                    {
+                        name: 'Pro',
+                        power: '299 л.с.',
+                        accel: '5.70 сек',
+                        range: '830 км',
+                        drive: 'Задний (RWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 3319650,
+                        invoiceCny: 245900,
+                        fobUsd: 34200,
+                        dutyRub: 1291745,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 7117913,
+                        cifUsd: 36400
+                    },
+                    {
+                        name: 'Max',
+                        power: '673 л.с.',
+                        accel: '2.78 сек',
+                        range: '800 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 4048650,
+                        invoiceCny: 299900,
+                        fobUsd: 41700,
+                        dutyRub: 2192128,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 10721736,
+                        cifUsd: 43900
+                    },
+                    {
+                        name: 'Ultra',
+                        power: '1,548 л.с.',
+                        accel: '1.98 сек',
+                        range: '630 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 11001150,
+                        invoiceCny: 814900,
+                        fobUsd: 113000,
+                        dutyRub: 4622761,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 16443865,
+                        cifUsd: 115200
+                    }
+                ]
+            },
+            {
+                id: 'zeekr-001',
+                brand: 'Zeekr',
+                model: '001',
+                fullName: 'Zeekr 001',
+                year: '2024–2026',
+                img: 'assets/cars/zeekr-001.jpg',
+                trimsCount: 4,
+                minPriceRu: 8671872,
+                minPriceFob: 37400,
+                trims: [
+                    {
+                        name: 'WE 95kWh',
+                        power: '789 л.с.',
+                        accel: '3.3 сек',
+                        range: '675 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 3631500,
+                        invoiceCny: 269000,
+                        fobUsd: 37400,
+                        dutyRub: 1420372,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 8671872,
+                        cifUsd: 39600
+                    },
+                    {
+                        name: 'ME 100kWh',
+                        power: '789 л.с.',
+                        accel: '3.3 сек',
+                        range: '705 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 4036500,
+                        invoiceCny: 299000,
+                        fobUsd: 41500,
+                        dutyRub: 1694598,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 10331098,
+                        cifUsd: 43700
+                    },
+                    {
+                        name: 'YOU 100kWh',
+                        power: '789 л.с.',
+                        accel: '3.3 сек',
+                        range: '705 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 4441500,
+                        invoiceCny: 329000,
+                        fobUsd: 45700,
+                        dutyRub: 1911443,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 11292943,
+                        cifUsd: 47900
+                    }
+                ]
+            },
+            {
+                id: 'zeekr-7x',
+                brand: 'Zeekr',
+                model: '7X',
+                fullName: 'Zeekr 7X SUV',
+                year: '2024–2026',
+                img: 'assets/cars/zeekr-7x.png',
+                trimsCount: 3,
+                minPriceRu: 7869037,
+                minPriceFob: 32000,
+                trims: [
+                    {
+                        name: 'Rear Drive 75kWh',
+                        power: '422 л.с.',
+                        accel: '5.8 сек',
+                        range: '605 км',
+                        drive: 'Задний (RWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 3103650,
+                        invoiceCny: 229900,
+                        fobUsd: 32000,
+                        dutyRub: 1325387,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 7869037,
+                        cifUsd: 34200
+                    },
+                    {
+                        name: 'Long Range 100kWh',
+                        power: '422 л.с.',
+                        accel: '5.7 сек',
+                        range: '780 км',
+                        drive: 'Задний (RWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 3373650,
+                        invoiceCny: 249900,
+                        fobUsd: 34800,
+                        dutyRub: 1441149,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 8394799,
+                        cifUsd: 37000
+                    },
+                    {
+                        name: 'AWD Performance',
+                        power: '646 л.с.',
+                        accel: '3.8 сек',
+                        range: '705 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 3643650,
+                        invoiceCny: 269900,
+                        fobUsd: 37500,
+                        dutyRub: 1841864,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 10225514,
+                        cifUsd: 39700
+                    }
+                ]
+            },
+            {
+                id: 'zeekr-9x',
+                brand: 'Zeekr',
+                model: '9X',
+                fullName: 'Zeekr 9X Ultra',
+                year: '2025–2026',
+                img: 'assets/banners/banner_1.jpg',
+                trimsCount: 2,
+                minPriceRu: 11502202,
+                minPriceFob: 48500,
+                trims: [
+                    {
+                        name: 'Premium AWD',
+                        power: '789 л.с.',
+                        accel: '3.5 сек',
+                        range: '680 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 4522500,
+                        invoiceCny: 335000,
+                        fobUsd: 48500,
+                        dutyRub: 2219702,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 11502202,
+                        cifUsd: 50700
+                    },
+                    {
+                        name: 'Flagship VIP',
+                        power: '789 л.с.',
+                        accel: '3.4 сек',
+                        range: '720 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 5332500,
+                        invoiceCny: 395000,
+                        fobUsd: 58000,
+                        dutyRub: 2710798,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 13563298,
+                        cifUsd: 60200
+                    }
+                ]
+            },
+            {
+                id: 'lynk-06',
+                brand: 'Lynk & Co',
+                model: '06',
+                fullName: 'Lynk & Co 06 Remix / EM-P',
+                year: '2024–2026',
+                img: 'assets/banners/banner_2.jpg',
+                trimsCount: 2,
+                minPriceRu: 2673527,
+                minPriceFob: 18200,
+                trims: [
+                    {
+                        name: '1.5T Remix (Бензин)',
+                        power: '181 л.с.',
+                        accel: '8.2 сек',
+                        range: '750 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'Бензин (ICE)',
+                        invoiceRub: 1593000,
+                        invoiceCny: 118000,
+                        fobUsd: 18200,
+                        dutyRub: 418127,
+                        utilRub: 3400, // льготный утиль
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2673527,
+                        cifUsd: 20400
+                    },
+                    {
+                        name: 'EM-P Hybrid',
+                        power: '299 л.с.',
+                        accel: '5.9 сек',
+                        range: '1,280 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'Гибрид (PHEV)',
+                        invoiceRub: 1836000,
+                        invoiceCny: 136000,
+                        fobUsd: 20500,
+                        dutyRub: 481600,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2980000,
+                        cifUsd: 22700
+                    }
+                ]
+            },
+            {
+                id: 'nevo-a06',
+                brand: 'Changan',
+                model: 'NEVO A06',
+                fullName: 'Changan NEVO A06 Sedan',
+                year: '2024–2026',
+                img: 'assets/banners/banner_3.jpg',
+                trimsCount: 2,
+                minPriceRu: 2627114,
+                minPriceFob: 16800,
+                trims: [
+                    {
+                        name: '70 Air PHEV',
+                        power: '215 л.с.',
+                        accel: '6.9 сек',
+                        range: '1,000 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'Гибрид (PHEV)',
+                        invoiceRub: 1552500,
+                        invoiceCny: 115000,
+                        fobUsd: 16800,
+                        dutyRub: 411214,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2627114,
+                        cifUsd: 19000
+                    },
+                    {
+                        name: '125 Pro PHEV',
+                        power: '215 л.с.',
+                        accel: '6.8 сек',
+                        range: '1,160 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'Гибрид (PHEV)',
+                        invoiceRub: 1741500,
+                        invoiceCny: 129000,
+                        fobUsd: 18500,
+                        dutyRub: 461100,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2890000,
+                        cifUsd: 20700
+                    }
+                ]
+            },
+            {
+                id: 'nevo-q05',
+                brand: 'Changan',
+                model: 'NEVO Q05',
+                fullName: 'Changan NEVO Q05 Crossover',
+                year: '2024–2026',
+                img: 'assets/banners/banner_4.jpg',
+                trimsCount: 2,
+                minPriceRu: 2268400,
+                minPriceFob: 15100,
+                trims: [
+                    {
+                        name: '60 Lite PHEV',
+                        power: '215 л.с.',
+                        accel: '7.3 сек',
+                        range: '1,150 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'Гибрид (PHEV)',
+                        invoiceRub: 1336500,
+                        invoiceCny: 99000,
+                        fobUsd: 15100,
+                        dutyRub: 358500,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2268400,
+                        cifUsd: 17300
+                    },
+                    {
+                        name: '125 Max PHEV',
+                        power: '215 л.с.',
+                        accel: '7.3 сек',
+                        range: '1,215 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'Гибрид (PHEV)',
+                        invoiceRub: 1525500,
+                        invoiceCny: 113000,
+                        fobUsd: 17400,
+                        dutyRub: 401457,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2560357,
+                        cifUsd: 19600
+                    }
+                ]
+            },
+            {
+                id: 'avatr-12',
+                brand: 'Avatr',
+                model: '12',
+                fullName: 'Avatr 12 Gran Coupe',
+                year: '2024–2026',
+                img: 'assets/cars/avatr-12.jpg',
+                trimsCount: 2,
+                minPriceRu: 7071810,
+                minPriceFob: 41800,
+                trims: [
+                    {
+                        name: 'Luxury RWD 94.5kWh',
+                        power: '313 л.с.',
+                        accel: '6.7 сек',
+                        range: '700 км',
+                        drive: 'Задний (RWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 3643650,
+                        invoiceCny: 269900,
+                        fobUsd: 41800,
+                        dutyRub: 1468160,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 7071810,
+                        cifUsd: 44000
+                    },
+                    {
+                        name: 'Performance AWD',
+                        power: '578 л.с.',
+                        accel: '3.9 сек',
+                        range: '650 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 4060800,
+                        invoiceCny: 300800,
+                        fobUsd: 48500,
+                        dutyRub: 1796072,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 8616872,
+                        cifUsd: 50700
+                    }
+                ]
+            },
+            {
+                id: 'avatr-07',
+                brand: 'Avatr',
+                model: '07',
+                fullName: 'Avatr 07 SUV',
+                year: '2025–2026',
+                img: 'assets/cars/avatr-07.png',
+                trimsCount: 2,
+                minPriceRu: 6484175,
+                minPriceFob: 38500,
+                trims: [
+                    {
+                        name: 'Max EREV (Гибрид)',
+                        power: '314 л.с.',
+                        accel: '6.6 сек',
+                        range: '1,220 км',
+                        drive: 'Задний (RWD)',
+                        engineType: 'Гибрид EREV',
+                        invoiceRub: 2968650,
+                        invoiceCny: 219900,
+                        fobUsd: 38500,
+                        dutyRub: 1255525,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 6484175,
+                        cifUsd: 40700
+                    },
+                    {
+                        name: 'Ultra AWD EV',
+                        power: '598 л.с.',
+                        accel: '3.9 сек',
+                        range: '650 км',
+                        drive: 'Полный (AWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 3913650,
+                        invoiceCny: 289900,
+                        fobUsd: 47000,
+                        dutyRub: 1775289,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 8448939,
+                        cifUsd: 49200
+                    }
+                ]
+            },
+            {
+                id: 'toyota-bz3x',
+                brand: 'Toyota',
+                model: 'bZ3X',
+                fullName: 'Toyota bZ3X Electric SUV',
+                year: '2024–2026',
+                img: 'assets/banners/banner_7.jpg',
+                trimsCount: 2,
+                minPriceRu: 2932192,
+                minPriceFob: 19800,
+                trims: [
+                    {
+                        name: 'Comfort EV',
+                        power: '204 л.с.',
+                        accel: '7.5 сек',
+                        range: '616 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 1755000,
+                        invoiceCny: 130000,
+                        fobUsd: 19800,
+                        dutyRub: 457192,
+                        utilRub: 3400, // льготный
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2932192,
+                        cifUsd: 22000
+                    },
+                    {
+                        name: 'Premium EV',
+                        power: '204 л.с.',
+                        accel: '7.5 сек',
+                        range: '616 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'EV (Электро)',
+                        invoiceRub: 1957500,
+                        invoiceCny: 145000,
+                        fobUsd: 22000,
+                        dutyRub: 509100,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 3250000,
+                        cifUsd: 24200
+                    }
+                ]
+            },
+            {
+                id: 'byd-song-plus',
+                brand: 'BYD',
+                model: 'Song Plus DM-i',
+                fullName: 'BYD Song Plus DM-i 5.0',
+                year: '2024–2026',
+                img: 'assets/cars/voyah-free.jpg',
+                trimsCount: 2,
+                minPriceRu: 3749139,
+                minPriceFob: 23500,
+                trims: [
+                    {
+                        name: '75km Luxury',
+                        power: '218 л.с.',
+                        accel: '7.7 сек',
+                        range: '1,450 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'Гибрид DM-i',
+                        invoiceRub: 1833300,
+                        invoiceCny: 135800,
+                        fobUsd: 23500,
+                        dutyRub: 575839,
+                        utilRub: 790000,
+                        freightRub: 280000,
+                        brokerRub: 170000,
+                        totalRub: 3749139,
+                        cifUsd: 25700
+                    },
+                    {
+                        name: '112km Flagship',
+                        power: '218 л.с.',
+                        accel: '7.7 сек',
+                        range: '1,500 км',
+                        drive: 'Передний (FWD)',
+                        engineType: 'Гибрид DM-i',
+                        invoiceRub: 2049300,
+                        invoiceCny: 151800,
+                        fobUsd: 26800,
+                        dutyRub: 649941,
+                        utilRub: 790000,
+                        freightRub: 280000,
+                        brokerRub: 170000,
+                        totalRub: 4179241,
+                        cifUsd: 29000
+                    }
+                ]
+            }
+        ];
 
-        // RU Calculator State
-        const calcRuState = {
-            engine: 'ev',
-            priceCny: 269000,
-            reg: 'personal',
-            city: 'moscow'
-        };
+        // 3. RUNTIME APP LOGIC
+        let currentLang = 'en';
+        let currentBrandFilter = 'all';
+        let activeSlideIndex = 0;
+        let slideTimer = null;
+        let currentModalCar = null;
+        let currentModalTrimIndex = 0;
 
-        // 1. Language Controller & Auto-Detection
+        function initApp() {
+            initLanguage();
+            renderHeroBanners();
+            renderCatalog();
+            startBannerAutoplay();
+        }
+
         function initLanguage() {
-            // Check manual preference first
             const stored = localStorage.getItem('shanghai_motors_lang');
             if (stored === 'ru' || stored === 'en') {
                 setLanguage(stored, false);
                 return;
             }
 
-            // Check browser language
             const browserLang = (navigator.languages && navigator.languages[0]) || navigator.language || '';
             if (browserLang.toLowerCase().match(/^(ru|be|kk|uk)/)) {
                 setLanguage('ru', false);
                 return;
             }
 
-            // Default to EN immediately
             setLanguage('en', false);
 
-            // Non-blocking GeoIP check for CIS countries
             fetch('https://get.geojs.io/v1/ip/country.json')
                 .then(r => r.json())
                 .then(data => {
@@ -1245,7 +1407,6 @@
             document.documentElement.className = (lang === 'ru') ? 'lang-ru scroll-smooth' : 'lang-en scroll-smooth';
             document.documentElement.lang = lang;
 
-            // Update switcher buttons UI
             const btnEn = document.getElementById('btn-lang-en');
             const btnRu = document.getElementById('btn-lang-ru');
             if (btnEn && btnRu) {
@@ -1258,242 +1419,270 @@
                 }
             }
 
+            renderHeroBanners();
             renderCatalog();
-            if (lang === 'ru') {
-                recalculateRu();
+            if (currentModalCar) {
+                renderModalTrim(currentModalTrimIndex);
             }
         }
 
-        // 2. Catalog Rendering (Tailored to RU vs EN pricing structures)
-        function filterCatalog(cat) {
-            activeCategory = cat;
-            document.querySelectorAll('.cat-filter-btn').forEach(b => {
-                b.className = 'cat-filter-btn px-4 py-2 rounded-lg bg-surface-card border border-surface-border text-gray-400 hover:text-white';
+        // 4. HERO BANNER SLIDER (Exact layout of easy.car popular vehicles)
+        function renderHeroBanners() {
+            const container = document.getElementById('banner-slider-container');
+            const dotsContainer = document.getElementById('banner-dots');
+            if (!container) return;
+
+            container.innerHTML = heroBanners.map((b, idx) => {
+                const isActive = (idx === activeSlideIndex);
+                const tag = (currentLang === 'ru') ? b.tagRu : b.tagEn;
+                const desc = (currentLang === 'ru') ? b.descRu : b.descEn;
+                const price = (currentLang === 'ru') ? b.priceRu : b.priceEn;
+                const btnLabel = (currentLang === 'ru') ? 'Рассчитать стоимость' : 'Get Export Quote';
+
+                return `
+                    <div class="hero-slide ${isActive ? 'active' : 'inactive'} w-full h-full py-12 md:py-20">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <!-- Left Info -->
+                            <div class="lg:col-span-6 z-10">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold border mb-4 ${b.tagClass}">
+                                    <span>${b.brand}</span>
+                                    <span>•</span>
+                                    <span>${tag}</span>
+                                </div>
+                                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none mb-3">
+                                    ${b.model}
+                                </h1>
+                                <p class="text-sm sm:text-base text-gray-400 mb-6 max-w-lg leading-relaxed">
+                                    ${desc}
+                                </p>
+                                <div class="flex items-baseline gap-3 mb-8">
+                                    <span class="text-xs font-mono uppercase tracking-wider text-gray-400">
+                                        ${currentLang === 'ru' ? 'Стоимость под ключ:' : 'Export Pricing:'}
+                                    </span>
+                                    <span class="text-2xl sm:text-4xl font-extrabold font-mono text-brand">
+                                        ${price}
+                                    </span>
+                                </div>
+                                <div class="flex flex-wrap gap-4">
+                                    <button onclick="openCarModal('${b.id}')" class="bg-brand hover:bg-brand-hover text-black font-extrabold text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition shadow-lg shadow-brand/10 flex items-center gap-2">
+                                        <span>${btnLabel}</span>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </button>
+                                    <a href="#catalog" class="border border-surface-border bg-surface-card hover:bg-surface-elevated text-gray-300 hover:text-white font-medium text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition">
+                                        ${currentLang === 'ru' ? 'Смотреть весь каталог' : 'All Catalog Models'}
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Right Car Visual -->
+                            <div class="lg:col-span-6 relative flex items-center justify-center">
+                                <div class="w-full max-h-[380px] md:max-h-[440px] flex items-center justify-center relative">
+                                    <img src="${b.img}" alt="${b.model}" class="max-h-full max-w-full object-contain filter drop-shadow-[0_15px_35px_rgba(0,0,0,0.8)]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            if (dotsContainer) {
+                dotsContainer.innerHTML = heroBanners.map((_, idx) => `
+                    <button onclick="setBannerSlide(${idx})" class="w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === activeSlideIndex ? 'w-8 bg-brand' : 'bg-surface-border hover:bg-gray-500'}"></button>
+                `).join('');
+            }
+        }
+
+        function setBannerSlide(idx) {
+            activeSlideIndex = idx;
+            renderHeroBanners();
+            resetBannerAutoplay();
+        }
+
+        function nextBanner() {
+            activeSlideIndex = (activeSlideIndex + 1) % heroBanners.length;
+            renderHeroBanners();
+            resetBannerAutoplay();
+        }
+
+        function prevBanner() {
+            activeSlideIndex = (activeSlideIndex - 1 + heroBanners.length) % heroBanners.length;
+            renderHeroBanners();
+            resetBannerAutoplay();
+        }
+
+        function startBannerAutoplay() {
+            slideTimer = setInterval(nextBanner, 6000);
+        }
+
+        function resetBannerAutoplay() {
+            if (slideTimer) clearInterval(slideTimer);
+            startBannerAutoplay();
+        }
+
+        // 5. CATALOG RENDERING
+        function filterBrand(brand) {
+            currentBrandFilter = brand;
+            document.querySelectorAll('.brand-tab').forEach(b => {
+                b.className = 'brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition';
             });
-            const activeBtn = document.getElementById('filter-' + cat);
-            if (activeBtn) {
-                activeBtn.className = 'cat-filter-btn px-4 py-2 rounded-lg bg-brand text-black font-bold';
+            const active = document.getElementById('brand-btn-' + (brand === 'Lynk & Co' ? 'Lynk' : brand));
+            if (active) {
+                active.className = 'brand-tab px-4 py-2.5 rounded-lg bg-brand text-black font-bold whitespace-nowrap transition';
             }
             renderCatalog();
         }
 
         function renderCatalog() {
-            const grid = document.getElementById('catalog-grid');
+            const grid = document.getElementById('catalog-cars-grid');
             if (!grid) return;
 
-            const items = vehicleCatalog.filter(car => {
-                if (activeCategory === 'all') return true;
-                return car.category === activeCategory;
+            const filtered = catalogDatabase.filter(car => {
+                if (currentBrandFilter === 'all') return true;
+                return car.brand === currentBrandFilter;
             });
 
-            grid.innerHTML = items.map(car => {
-                // EN card format: Price in China (FOB) + Est. Freight + Landed Quote Request
-                // RU card format: Цена в Китае + Доставка/таможня + Итого под ключ
-                let pricingHtml = '';
-                let actionBtnHtml = '';
+            grid.innerHTML = filtered.map(car => {
+                const firstTrim = car.trims[0];
+                const priceFormatted = (currentLang === 'ru') 
+                    ? `от ${car.minPriceRu.toLocaleString()} ₽`
+                    : `FOB from $${car.minPriceFob.toLocaleString()}`;
 
-                if (currentLang === 'en') {
-                    const cifTotal = car.priceUsdFob + car.estFreightUsd;
-                    pricingHtml = `
-                        <div class="space-y-1.5 text-xs font-mono">
-                            <div class="flex justify-between text-gray-400">
-                                <span>Price in China (FOB):</span>
-                                <span class="text-white font-bold">$${car.priceUsdFob.toLocaleString()} (${car.priceCny.toLocaleString()} ¥)</span>
-                            </div>
-                            <div class="flex justify-between text-gray-400">
-                                <span>Est. Ocean Freight:</span>
-                                <span class="text-gray-300">~$${car.estFreightUsd.toLocaleString()}</span>
-                            </div>
-                            <div class="flex justify-between text-brand pt-2 border-t border-surface-border font-bold">
-                                <span>Est. CIF Total:</span>
-                                <span class="text-base font-extrabold font-mono">~$${cifTotal.toLocaleString()}</span>
-                            </div>
-                        </div>
-                    `;
-                    actionBtnHtml = `
-                        <button onclick="openLeadModal('${car.name}')" class="w-full mt-4 py-2.5 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-surface-border text-white text-xs font-semibold transition">
-                            Request CIF Quote to Port
-                        </button>
-                    `;
-                } else {
-                    pricingHtml = `
-                        <div class="space-y-1.5 text-xs font-mono">
-                            <div class="flex justify-between text-gray-400">
-                                <span>В Китае (FOB):</span>
-                                <span class="text-white font-bold">${car.priceCny.toLocaleString()} ¥ (~$${car.priceUsdFob.toLocaleString()})</span>
-                            </div>
-                            <div class="flex justify-between text-gray-400">
-                                <span>Таможня + доставка:</span>
-                                <span class="text-gray-300">~${(car.landedRuRub - (car.priceCny * 13.5)).toLocaleString(undefined, {maximumFractionDigits: 0})} ₽</span>
-                            </div>
-                            <div class="flex justify-between text-brand pt-2 border-t border-surface-border font-bold">
-                                <span>Под ключ в РФ:</span>
-                                <span class="text-base font-extrabold font-mono">~${car.landedRuRub.toLocaleString()} ₽</span>
-                            </div>
-                        </div>
-                    `;
-                    actionBtnHtml = `
-                        <button onclick="openLeadModal('${car.name}')" class="w-full mt-4 py-2.5 rounded-lg bg-brand hover:bg-brand-hover text-black text-xs font-bold transition">
-                            Заказать расчет под ключ
-                        </button>
-                    `;
-                }
+                const trimLabel = (currentLang === 'ru') 
+                    ? `${car.trimsCount} комплектации` 
+                    : `${car.trimsCount} trims`;
 
                 return `
-                    <div class="bg-surface-card border border-surface-border rounded-xl overflow-hidden flex flex-col justify-between hover:border-surface-hover transition duration-300">
+                    <div onclick="openCarModal('${car.id}')" class="group bg-surface-card border border-surface-border hover:border-brand/40 rounded-xl overflow-hidden cursor-pointer transition duration-300 flex flex-col justify-between">
                         <div>
-                            <div class="h-52 overflow-hidden bg-surface-base relative">
-                                <img src="${car.img}" alt="${car.name}" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                                <span class="absolute top-3 right-3 text-[11px] font-mono font-bold bg-black/70 px-2 py-0.5 rounded text-gray-200 border border-white/10">
+                            <!-- Visual -->
+                            <div class="h-56 bg-surface-base p-4 flex items-center justify-center relative overflow-hidden">
+                                <img src="${car.img}" alt="${car.fullName}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500">
+                                <span class="absolute top-3 right-3 text-[11px] font-mono font-bold bg-black/80 px-2 py-0.5 rounded text-gray-300 border border-white/10">
                                     ${car.year}
                                 </span>
+                                <span class="absolute top-3 left-3 text-[11px] font-mono font-bold text-brand bg-brand/10 border border-brand/20 px-2 py-0.5 rounded">
+                                    ${car.brand}
+                                </span>
                             </div>
+
+                            <!-- Info -->
                             <div class="p-5">
-                                <h3 class="text-base font-bold text-white mb-2">${car.name}</h3>
-                                
-                                <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-400 bg-surface-base p-3 rounded-lg border border-surface-border mb-4">
-                                    <div><span class="text-gray-500 font-mono">Drive:</span> ${car.specs.power}</div>
-                                    <div><span class="text-gray-500 font-mono">0-100:</span> ${car.specs.accel}</div>
-                                    <div><span class="text-gray-500 font-mono">Range:</span> ${car.specs.range}</div>
-                                    <div><span class="text-gray-500 font-mono">Battery:</span> ${car.specs.battery}</div>
+                                <div class="flex justify-between items-baseline mb-2">
+                                    <h3 class="text-base font-bold text-white group-hover:text-brand transition">${car.fullName}</h3>
+                                    <span class="text-[11px] text-gray-500 font-mono">${trimLabel}</span>
                                 </div>
 
-                                ${pricingHtml}
+                                <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-400 bg-surface-base p-2.5 rounded-lg border border-surface-border mb-4 font-mono">
+                                    <div><span class="text-gray-500">Привод:</span> ${firstTrim.drive}</div>
+                                    <div><span class="text-gray-500">Мощность:</span> ${firstTrim.power}</div>
+                                    <div><span class="text-gray-500">0-100:</span> ${firstTrim.accel}</div>
+                                    <div><span class="text-gray-500">Запас хода:</span> ${firstTrim.range}</div>
+                                </div>
+
+                                <div class="pt-2 border-t border-surface-border flex justify-between items-baseline">
+                                    <span class="text-xs text-gray-400 uppercase font-mono">
+                                        ${currentLang === 'ru' ? 'Стоимость под ключ:' : 'Export FOB Price:'}
+                                    </span>
+                                    <span class="text-lg font-bold font-mono text-brand">
+                                        ${priceFormatted}
+                                    </span>
+                                </div>
                             </div>
                         </div>
+
                         <div class="p-5 pt-0">
-                            ${actionBtnHtml}
+                            <button class="w-full py-2.5 rounded-lg bg-surface-elevated group-hover:bg-brand group-hover:text-black border border-surface-border text-white text-xs font-bold transition">
+                                ${currentLang === 'ru' ? 'Смотреть комплектации и расчет' : 'View Trims & Calculation'}
+                            </button>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
-        // 3. RU Calculator Engine
-        function setCalcEngine(eng) {
-            calcRuState.engine = eng;
-            ['ev', 'hybrid', 'ice', 'brp'].forEach(t => {
-                const b = document.getElementById('btn-engine-' + t);
-                if (b) {
-                    if (t === eng) {
-                        b.className = 'calc-btn p-3 rounded-lg text-xs font-medium border border-brand bg-brand/10 text-white';
-                    } else {
-                        b.className = 'calc-btn p-3 rounded-lg text-xs font-medium border border-surface-border bg-surface-base text-gray-300 hover:text-white';
-                    }
-                }
+        // 6. CAR MODAL & PRICE BREAKDOWN ENGINE (EASY.CAR LOGIC)
+        function openCarModal(carId) {
+            const car = catalogDatabase.find(c => c.id === carId) || catalogDatabase[0];
+            currentModalCar = car;
+            currentModalTrimIndex = 0;
+
+            document.getElementById('modal-brand-badge').innerText = car.brand;
+            document.getElementById('modal-car-title').innerText = car.fullName;
+            document.getElementById('modal-car-img').src = car.img;
+
+            // Render Trims Pills
+            const trimsContainer = document.getElementById('modal-trims-container');
+            trimsContainer.innerHTML = car.trims.map((trim, idx) => `
+                <button type="button" onclick="selectModalTrim(${idx})" id="trim-pill-${idx}" class="trim-pill px-3.5 py-2 rounded-lg text-xs font-mono font-medium transition ${idx === 0 ? 'bg-brand text-black font-bold' : 'bg-surface-elevated text-gray-300 hover:text-white border border-surface-border'}">
+                    ${trim.name}
+                </button>
+            `).join('');
+
+            renderModalTrim(0);
+
+            const modal = document.getElementById('car-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCarModal() {
+            const modal = document.getElementById('car-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectModalTrim(idx) {
+            currentModalTrimIndex = idx;
+            document.querySelectorAll('.trim-pill').forEach((p, i) => {
+                p.className = (i === idx)
+                    ? 'trim-pill px-3.5 py-2 rounded-lg text-xs font-mono font-bold bg-brand text-black transition'
+                    : 'trim-pill px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-surface-elevated text-gray-300 hover:text-white border border-surface-border transition';
             });
-            recalculateRu();
+            renderModalTrim(idx);
         }
 
-        function setCalcReg(reg) {
-            calcRuState.reg = reg;
-            const bPers = document.getElementById('btn-reg-personal');
-            const bComm = document.getElementById('btn-reg-commercial');
-            if (bPers && bComm) {
-                if (reg === 'personal') {
-                    bPers.className = 'calc-btn p-3 text-left rounded-lg text-xs font-medium border border-brand bg-brand/10 text-white';
-                    bComm.className = 'calc-btn p-3 text-left rounded-lg text-xs font-medium border border-surface-border bg-surface-base text-gray-300 hover:text-white';
-                } else {
-                    bComm.className = 'calc-btn p-3 text-left rounded-lg text-xs font-medium border border-brand bg-brand/10 text-white';
-                    bPers.className = 'calc-btn p-3 text-left rounded-lg text-xs font-medium border border-surface-border bg-surface-base text-gray-300 hover:text-white';
-                }
-            }
-            recalculateRu();
+        function renderModalTrim(idx) {
+            if (!currentModalCar) return;
+            const trim = currentModalCar.trims[idx] || currentModalCar.trims[0];
+
+            // Specs
+            document.getElementById('spec-drive').innerText = trim.drive;
+            document.getElementById('spec-power').innerText = trim.power;
+            document.getElementById('spec-accel').innerText = trim.accel;
+            document.getElementById('spec-range').innerText = trim.range;
+
+            // RU Breakdown (Easy.car itemized logic)
+            document.getElementById('modal-calc-invoice').innerText = `${trim.invoiceRub.toLocaleString()} ₽ (${trim.invoiceCny.toLocaleString()} ¥)`;
+            document.getElementById('modal-calc-duty').innerText = `${trim.dutyRub.toLocaleString()} ₽`;
+            document.getElementById('modal-calc-util').innerText = `${trim.utilRub.toLocaleString()} ₽`;
+            document.getElementById('modal-calc-freight').innerText = `${trim.freightRub.toLocaleString()} ₽`;
+            document.getElementById('modal-calc-broker').innerText = `${trim.brokerRub.toLocaleString()} ₽`;
+            document.getElementById('modal-calc-grand-total').innerText = `${trim.totalRub.toLocaleString()} ₽`;
+            const usdEst = Math.round(trim.totalRub / 91.0);
+            document.getElementById('modal-calc-usd-total').innerText = `~ $${usdEst.toLocaleString()} по курсу ЦБ`;
+            document.getElementById('modal-order-btn-text').innerText = `Заказать ${currentModalCar.fullName} (${trim.name})`;
+
+            // EN Breakdown
+            document.getElementById('modal-en-fob').innerText = `$${trim.fobUsd.toLocaleString()}`;
+            document.getElementById('modal-en-cny').innerText = `${trim.invoiceCny.toLocaleString()} ¥`;
+            document.getElementById('modal-en-cif').innerText = `~$${trim.cifUsd.toLocaleString()}`;
         }
 
-        function onSliderChange(val) {
-            calcRuState.priceCny = parseInt(val, 10);
-            const disp = document.getElementById('calc-val-display');
-            if (disp) {
-                disp.innerText = calcRuState.priceCny.toLocaleString() + ' ¥';
-            }
-            recalculateRu();
+        function orderVehicleTelegram() {
+            if (!currentModalCar) return;
+            const trim = currentModalCar.trims[currentModalTrimIndex];
+            const text = `Здравствуйте! Меня интересует ${currentModalCar.fullName} в комплектации "${trim.name}". Стоимость под ключ: ${trim.totalRub.toLocaleString()} ₽ (инвойс ${trim.invoiceCny.toLocaleString()} ¥). Пожалуйста, свяжитесь со мной для оформления.`;
+            const url = `https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
         }
 
-        function recalculateRu() {
-            const cnyToRub = 13.50;
-            const rubToUsd = 91.0;
-
-            const citySelect = document.getElementById('calc-city');
-            const cityRates = {
-                vladivostok: 0,
-                moscow: 160000,
-                spb: 180000,
-                ekb: 140000,
-                krasnodar: 190000,
-                almaty: 120000,
-                minsk: 200000
-            };
-            const intercity = (citySelect && cityRates[citySelect.value]) !== undefined ? cityRates[citySelect.value] : 160000;
-
-            const baseRub = calcRuState.priceCny * cnyToRub;
-            const freight = (calcRuState.engine === 'brp') ? 220000 : 320000;
-
-            // Duty
-            let duty = 0;
-            if (calcRuState.engine === 'ev' || calcRuState.engine === 'hybrid') {
-                duty = baseRub * 0.15; // 15%
-            } else if (calcRuState.engine === 'brp') {
-                duty = baseRub * 0.10; // 10%
-            } else {
-                duty = baseRub * 0.20; // 20%
-            }
-
-            // Util fee
-            let util = 3400;
-            if (calcRuState.reg === 'commercial') {
-                util = (calcRuState.engine === 'ev') ? 667000 : 844000;
-            } else if (calcRuState.engine === 'brp') {
-                util = 120000; // EPSM recycling fee
-            }
-
-            const certs = (calcRuState.engine === 'brp') ? 65000 : 85000;
-            const brokerCommission = 100000;
-
-            const grandTotalRub = baseRub + freight + duty + util + certs + intercity + brokerCommission;
-            const grandTotalUsd = Math.round(grandTotalRub / rubToUsd);
-
-            // Update DOM
-            const setTxt = (id, txt) => {
-                const el = document.getElementById(id);
-                if (el) el.innerText = txt;
-            };
-
-            setTxt('res-fob-rub', Math.round(baseRub).toLocaleString() + ' ₽');
-            setTxt('res-freight', freight.toLocaleString() + ' ₽');
-            setTxt('res-duty', Math.round(duty).toLocaleString() + ' ₽');
-            setTxt('res-util', util.toLocaleString() + ' ₽');
-            setTxt('res-certs', certs.toLocaleString() + ' ₽');
-            setTxt('res-intercity', intercity.toLocaleString() + ' ₽');
-            setTxt('res-grand-total', Math.round(grandTotalRub).toLocaleString() + ' ₽');
-            setTxt('res-usd-estimate', `~ $${grandTotalUsd.toLocaleString()} по курсу ЦБ РФ`);
-        }
-
-        function sendTelegramCalcLead() {
-            const total = document.getElementById('res-grand-total')?.innerText || '';
-            const priceCny = calcRuState.priceCny.toLocaleString();
-            const eng = calcRuState.engine.toUpperCase();
-            const text = `Здравствуйте! Меня интересует расчет авто из Китая: стоимость ${priceCny} ¥, тип ${eng}, расчетная сумма под ключ: ${total}. Пожалуйста, свяжитесь со мной для консультации.`;
-            const tgUrl = `https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(text)}`;
-            window.open(tgUrl, '_blank');
-        }
-
-        // 4. Modal and Lead Handlers
-        function openLeadModal(carName) {
-            document.getElementById('modal-vehicle-input').value = carName || '';
-            const modal = document.getElementById('lead-modal');
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            }
-        }
-
-        function closeLeadModal() {
-            const modal = document.getElementById('lead-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }
+        function orderVehicleWhatsApp() {
+            if (!currentModalCar) return;
+            const trim = currentModalCar.trims[currentModalTrimIndex];
+            const text = `Hello Shanghai Motors! I am interested in exporting ${currentModalCar.fullName} (${trim.name}). FOB Price: $${trim.fobUsd.toLocaleString()}. Please provide a CIF quotation to my port.`;
+            const url = `https://api.whatsapp.com/send?phone=8617316540375&text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
         }
 
         function toggleMobileMenu() {
@@ -1501,25 +1690,9 @@
             if (menu) menu.classList.toggle('hidden');
         }
 
-        function handleLeadSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('lead-name').value;
-            const contact = document.getElementById('lead-contact').value;
-            const dest = document.getElementById('lead-destination').value;
-            const car = document.getElementById('modal-vehicle-input').value;
-
-            if (currentLang === 'ru') {
-                alert(`Спасибо, ${name}! Заявка по автомобилю "${car || 'авто'}" принята. Наш менеджер Владислав (@vlad_shanghaimotors) свяжется с вами по контакту: ${contact}.`);
-            } else {
-                alert(`Thank you, ${name}! Your export inquiry for "${car || 'vehicle'}" to ${dest || 'your port'} has been submitted. Our Shanghai desk will contact you via ${contact} shortly.`);
-            }
-            e.target.reset();
-            closeLeadModal();
-        }
-
         // Initialize on DOM Ready
         window.addEventListener('DOMContentLoaded', () => {
-            initLanguage();
+            initApp();
         });
     </script>
 </body>
