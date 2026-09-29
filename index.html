@@ -220,16 +220,17 @@
                 </div>
             </div>
 
-            <!-- Brand Filter Tabs (Exact like easy.car brands bar) -->
+            <!-- Brand Filter Tabs -->
             <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar text-xs font-semibold">
                 <button onclick="filterBrand('all')" id="brand-btn-all" class="brand-tab px-4 py-2.5 rounded-lg bg-brand text-black font-bold whitespace-nowrap transition">Все марки (All)</button>
                 <button onclick="filterBrand('Zeekr')" id="brand-btn-Zeekr" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Zeekr</button>
                 <button onclick="filterBrand('Xiaomi')" id="brand-btn-Xiaomi" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Xiaomi</button>
+                <button onclick="filterBrand('Voyah')" id="brand-btn-Voyah" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Voyah</button>
+                <button onclick="filterBrand('XPeng')" id="brand-btn-XPeng" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">XPeng</button>
+                <button onclick="filterBrand('Lynk & Co')" id="brand-btn-Lynk" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Lynk & Co</button>
                 <button onclick="filterBrand('Avatr')" id="brand-btn-Avatr" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Avatr</button>
                 <button onclick="filterBrand('Changan')" id="brand-btn-Changan" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Changan / NEVO</button>
-                <button onclick="filterBrand('Lynk & Co')" id="brand-btn-Lynk" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Lynk & Co</button>
                 <button onclick="filterBrand('Toyota')" id="brand-btn-Toyota" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Toyota</button>
-                <button onclick="filterBrand('BYD')" id="brand-btn-BYD" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">BYD</button>
             </div>
 
             <!-- Catalog Cards Grid -->
@@ -543,6 +544,23 @@
                         <img id="modal-car-img" src="" alt="Car Preview" class="max-h-full max-w-full object-contain">
                     </div>
 
+                    <!-- Shanghai Motors Official Proposal Link -->
+                    <div id="modal-proposal-box" class="hidden">
+                        <a id="modal-proposal-link" href="#" target="_blank" class="flex items-center justify-between p-3.5 rounded-xl bg-brand/5 border border-brand/30 hover:border-brand hover:bg-brand/10 transition group">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-brand/20 text-brand flex items-center justify-center text-sm font-bold">📄</span>
+                                <div>
+                                    <div id="modal-proposal-title" class="text-xs font-bold text-white group-hover:text-brand transition">Коммерческое предложение Shanghai Motors</div>
+                                    <div id="modal-proposal-subtitle" class="text-[11px] text-gray-400">Официальная спецификация, цвета и заводские опции</div>
+                                </div>
+                            </div>
+                            <span id="modal-proposal-action" class="text-brand text-xs font-bold font-mono group-hover:translate-x-1 transition flex items-center gap-1">
+                                <span>Открыть</span>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </a>
+                    </div>
+
                     <!-- Trims Selector (Комплектации) -->
                     <div>
                         <div class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400 mb-2">
@@ -671,7 +689,7 @@
 
     <!-- CORE SCRIPTS & DATABASE -->
     <script>
-        // 1. POPULAR HERO BANNERS DATABASE (Exact models from easy.car top banners)
+        // 1. POPULAR HERO BANNERS DATABASE
         const heroBanners = [
             {
                 id: 'zeekr-9x',
@@ -680,10 +698,10 @@
                 tagRu: 'Хит продаж',
                 tagEn: 'Best Seller',
                 tagClass: 'bg-brand/10 text-brand border-brand/30',
-                descRu: 'Воплощение мощности и передовых технологий',
+                descRu: 'Воплощение мощности, роскоши и передовых технологий',
                 descEn: 'The pinnacle of luxury power and intelligent technology',
                 priceRu: 'от 11 502 202 ₽',
-                priceEn: 'from $48,500 FOB',
+                priceEn: 'from $79,250 CIP',
                 img: 'assets/banners/banner_1.jpg'
             },
             {
@@ -709,7 +727,7 @@
                 descRu: 'Гибридный седан по льготному утильсбору',
                 descEn: 'Plug-in hybrid aerodynamic sedan with 1,000+ km range',
                 priceRu: 'от 2 627 114 ₽',
-                priceEn: 'from $17,800 FOB',
+                priceEn: 'from $16,800 FOB',
                 img: 'assets/banners/banner_3.jpg'
             },
             {
@@ -722,20 +740,20 @@
                 descRu: 'Семейный электромобиль по льготному утильсбору',
                 descEn: 'Family electric smart compact SUV',
                 priceRu: 'от 2 268 400 ₽',
-                priceEn: 'from $15,400 FOB',
+                priceEn: 'from $15,100 FOB',
                 img: 'assets/banners/banner_4.jpg'
             },
             {
-                id: 'taishan',
+                id: 'voyah-taishan',
                 brand: 'Voyah',
-                model: 'Taishan (Voyah)',
+                model: 'Voyah Taishan',
                 tagRu: 'Новинка',
                 tagEn: 'New Release',
                 tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
                 descRu: 'Продуманный комфорт без компромиссов',
                 descEn: 'Full-size flagship comfort without compromises',
                 priceRu: 'от 8 234 053 ₽',
-                priceEn: 'from $58,000 FOB',
+                priceEn: 'from $66,300 CIP',
                 img: 'assets/banners/banner_5.jpg'
             },
             {
@@ -747,8 +765,8 @@
                 tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
                 descRu: 'Эволюция драйва в безупречной форме',
                 descEn: 'Evolution of electric performance in impeccable style',
-                priceRu: 'от 10 540 106 ₽',
-                priceEn: 'from $72,500 FOB',
+                priceRu: 'от 9 750 000 ₽',
+                priceEn: 'from $67,100 CIP',
                 img: 'assets/banners/banner_6.jpg'
             },
             {
@@ -766,14 +784,14 @@
             }
         ];
 
-        // 2. VEHICLE CATALOG & PRICE CONFIGURATION DATABASE (Models from easy.car)
+        // 2. VEHICLE CATALOG & PRICE CONFIGURATION DATABASE
         const catalogDatabase = [
             {
                 id: 'xiaomi-su7',
                 brand: 'Xiaomi',
                 model: 'SU7',
-                fullName: 'Xiaomi SU7',
-                year: '2024–2026',
+                fullName: 'Xiaomi SU7 Fastback',
+                year: '2024鈥?026',
                 img: 'assets/cars/su7_preview.png',
                 trimsCount: 4,
                 minPriceRu: 6624430,
@@ -781,11 +799,11 @@
                 trims: [
                     {
                         name: 'Base',
-                        power: '299 л.с.',
-                        accel: '5.28 сек',
-                        range: '700 км',
-                        drive: 'Задний (RWD)',
-                        engineType: 'EV (Электро)',
+                        power: '299 谢.褋.',
+                        accel: '5.28 褋械泻',
+                        range: '700 泻屑',
+                        drive: '袟邪写薪懈泄 (RWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 2914650,
                         invoiceCny: 215900,
                         fobUsd: 30000,
@@ -798,11 +816,11 @@
                     },
                     {
                         name: 'Pro',
-                        power: '299 л.с.',
-                        accel: '5.70 сек',
-                        range: '830 км',
-                        drive: 'Задний (RWD)',
-                        engineType: 'EV (Электро)',
+                        power: '299 谢.褋.',
+                        accel: '5.70 褋械泻',
+                        range: '830 泻屑',
+                        drive: '袟邪写薪懈泄 (RWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 3319650,
                         invoiceCny: 245900,
                         fobUsd: 34200,
@@ -814,12 +832,12 @@
                         cifUsd: 36400
                     },
                     {
-                        name: 'Max',
-                        power: '673 л.с.',
-                        accel: '2.78 сек',
-                        range: '800 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
+                        name: 'Max AWD',
+                        power: '673 谢.褋.',
+                        accel: '2.78 褋械泻',
+                        range: '800 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 4048650,
                         invoiceCny: 299900,
                         fobUsd: 41700,
@@ -832,11 +850,11 @@
                     },
                     {
                         name: 'Ultra',
-                        power: '1,548 л.с.',
-                        accel: '1.98 сек',
-                        range: '630 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
+                        power: '1,548 谢.褋.',
+                        accel: '1.98 褋械泻',
+                        range: '630 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 11001150,
                         invoiceCny: 814900,
                         fobUsd: 113000,
@@ -850,66 +868,166 @@
                 ]
             },
             {
-                id: 'zeekr-001',
+                id: 'zeekr-9x',
                 brand: 'Zeekr',
-                model: '001',
-                fullName: 'Zeekr 001',
-                year: '2024–2026',
-                img: 'assets/cars/zeekr-001.jpg',
+                model: '9X',
+                fullName: 'Zeekr 9X Flagship SUV',
+                year: '2025鈥?026',
+                img: 'assets/banners/banner_1.jpg',
+                proposalPoster: 'assets/cars/Zeekr9x/zeekr_9x_en.png',
                 trimsCount: 4,
-                minPriceRu: 8671872,
-                minPriceFob: 37400,
+                minPriceRu: 11502202,
+                minPriceFob: 79250,
                 trims: [
                     {
-                        name: 'WE 95kWh',
-                        power: '789 л.с.',
-                        accel: '3.3 сек',
-                        range: '675 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
-                        invoiceRub: 3631500,
-                        invoiceCny: 269000,
-                        fobUsd: 37400,
-                        dutyRub: 1420372,
+                        name: 'MAX',
+                        power: '789 谢.褋.',
+                        accel: '3.5 褋械泻',
+                        range: '700 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 4522500,
+                        invoiceCny: 335000,
+                        fobUsd: 79250,
+                        dutyRub: 2219702,
                         utilRub: 1560000,
                         freightRub: 320000,
                         brokerRub: 200000,
-                        totalRub: 8671872,
-                        cifUsd: 39600
+                        totalRub: 11502202,
+                        cifUsd: 81450
                     },
                     {
-                        name: 'ME 100kWh',
-                        power: '789 л.с.',
-                        accel: '3.3 сек',
-                        range: '705 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
-                        invoiceRub: 4036500,
-                        invoiceCny: 299000,
-                        fobUsd: 41500,
-                        dutyRub: 1694598,
+                        name: 'ULTRA',
+                        power: '789 谢.褋.',
+                        accel: '3.4 褋械泻',
+                        range: '720 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 4950000,
+                        invoiceCny: 366000,
+                        fobUsd: 84300,
+                        dutyRub: 2420000,
                         utilRub: 1560000,
                         freightRub: 320000,
                         brokerRub: 200000,
-                        totalRub: 10331098,
-                        cifUsd: 43700
+                        totalRub: 12250000,
+                        cifUsd: 86500
                     },
                     {
-                        name: 'YOU 100kWh',
-                        power: '789 л.с.',
-                        accel: '3.3 сек',
-                        range: '705 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
-                        invoiceRub: 4441500,
-                        invoiceCny: 329000,
-                        fobUsd: 45700,
-                        dutyRub: 1911443,
+                        name: 'HYPER',
+                        power: '1,200 谢.褋.',
+                        accel: '2.8 褋械泻',
+                        range: '680 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 5800000,
+                        invoiceCny: 430000,
+                        fobUsd: 96300,
+                        dutyRub: 2850000,
                         utilRub: 1560000,
                         freightRub: 320000,
                         brokerRub: 200000,
-                        totalRub: 11292943,
-                        cifUsd: 47900
+                        totalRub: 13950000,
+                        cifUsd: 98500
+                    },
+                    {
+                        name: 'BLACK OBSIDIAN',
+                        power: '1,200 谢.褋.',
+                        accel: '2.7 褋械泻',
+                        range: '680 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 6200000,
+                        invoiceCny: 460000,
+                        fobUsd: 102100,
+                        dutyRub: 3050000,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 14800000,
+                        cifUsd: 104300
+                    }
+                ]
+            },
+            {
+                id: 'zeekr-8x',
+                brand: 'Zeekr',
+                model: '8X',
+                fullName: 'Zeekr 8X Luxury SUV',
+                year: '2025鈥?026',
+                img: 'assets/banners/banner_6.jpg',
+                proposalPoster: 'assets/cars/Zeekr8x/zeekr_8x_en.png',
+                trimsCount: 4,
+                minPriceRu: 9750000,
+                minPriceFob: 67100,
+                trims: [
+                    {
+                        name: 'MAX',
+                        power: '646 谢.褋.',
+                        accel: '3.8 褋械泻',
+                        range: '705 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 3850000,
+                        invoiceCny: 285000,
+                        fobUsd: 67100,
+                        dutyRub: 1950000,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 9750000,
+                        cifUsd: 69300
+                    },
+                    {
+                        name: 'ULTRA',
+                        power: '646 谢.褋.',
+                        accel: '3.8 褋械泻',
+                        range: '740 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 4150000,
+                        invoiceCny: 307000,
+                        fobUsd: 71100,
+                        dutyRub: 2100000,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 10350000,
+                        cifUsd: 73300
+                    },
+                    {
+                        name: 'ULTRA+',
+                        power: '789 谢.褋.',
+                        accel: '3.3 褋械泻',
+                        range: '720 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 4600000,
+                        invoiceCny: 340000,
+                        fobUsd: 77500,
+                        dutyRub: 2320000,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 11250000,
+                        cifUsd: 79700
+                    },
+                    {
+                        name: 'OBSIDIAN SHADOW',
+                        power: '1,500 谢.褋.',
+                        accel: '2.5 褋械泻',
+                        range: '650 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 5300000,
+                        invoiceCny: 392000,
+                        fobUsd: 87500,
+                        dutyRub: 2680000,
+                        utilRub: 1560000,
+                        freightRub: 320000,
+                        brokerRub: 200000,
+                        totalRub: 12700000,
+                        cifUsd: 89700
                     }
                 ]
             },
@@ -917,8 +1035,8 @@
                 id: 'zeekr-7x',
                 brand: 'Zeekr',
                 model: '7X',
-                fullName: 'Zeekr 7X SUV',
-                year: '2024–2026',
+                fullName: 'Zeekr 7X Smart SUV',
+                year: '2024鈥?026',
                 img: 'assets/cars/zeekr-7x.png',
                 trimsCount: 3,
                 minPriceRu: 7869037,
@@ -926,11 +1044,11 @@
                 trims: [
                     {
                         name: 'Rear Drive 75kWh',
-                        power: '422 л.с.',
-                        accel: '5.8 сек',
-                        range: '605 км',
-                        drive: 'Задний (RWD)',
-                        engineType: 'EV (Электро)',
+                        power: '422 谢.褋.',
+                        accel: '5.8 褋械泻',
+                        range: '605 泻屑',
+                        drive: '袟邪写薪懈泄 (RWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 3103650,
                         invoiceCny: 229900,
                         fobUsd: 32000,
@@ -943,11 +1061,11 @@
                     },
                     {
                         name: 'Long Range 100kWh',
-                        power: '422 л.с.',
-                        accel: '5.7 сек',
-                        range: '780 км',
-                        drive: 'Задний (RWD)',
-                        engineType: 'EV (Электро)',
+                        power: '422 谢.褋.',
+                        accel: '5.7 褋械泻',
+                        range: '780 泻屑',
+                        drive: '袟邪写薪懈泄 (RWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 3373650,
                         invoiceCny: 249900,
                         fobUsd: 34800,
@@ -960,11 +1078,11 @@
                     },
                     {
                         name: 'AWD Performance',
-                        power: '646 л.с.',
-                        accel: '3.8 сек',
-                        range: '705 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
+                        power: '646 谢.褋.',
+                        accel: '3.8 褋械泻',
+                        range: '705 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 3643650,
                         invoiceCny: 269900,
                         fobUsd: 37500,
@@ -978,49 +1096,197 @@
                 ]
             },
             {
-                id: 'zeekr-9x',
-                brand: 'Zeekr',
-                model: '9X',
-                fullName: 'Zeekr 9X Ultra',
-                year: '2025–2026',
-                img: 'assets/banners/banner_1.jpg',
+                id: 'voyah-taishan',
+                brand: 'Voyah',
+                model: 'Taishan',
+                fullName: 'Voyah Taishan Luxury SUV',
+                year: '2025鈥?026',
+                img: 'assets/banners/banner_5.jpg',
+                proposalPoster: 'assets/cars/Voyah Taishan/voyah_taishan_en.png',
                 trimsCount: 2,
-                minPriceRu: 11502202,
-                minPriceFob: 48500,
+                minPriceRu: 8234053,
+                minPriceFob: 66300,
                 trims: [
                     {
-                        name: 'Premium AWD',
-                        power: '789 л.с.',
-                        accel: '3.5 сек',
-                        range: '680 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
-                        invoiceRub: 4522500,
-                        invoiceCny: 335000,
-                        fobUsd: 48500,
-                        dutyRub: 2219702,
+                        name: 'MAX+ Luxury',
+                        power: '510 谢.褋.',
+                        accel: '4.8 褋械泻',
+                        range: '1,200 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: '袚懈斜褉懈写 EREV',
+                        invoiceRub: 3950000,
+                        invoiceCny: 292000,
+                        fobUsd: 66300,
+                        dutyRub: 1604053,
                         utilRub: 1560000,
-                        freightRub: 320000,
+                        freightRub: 300000,
                         brokerRub: 200000,
-                        totalRub: 11502202,
-                        cifUsd: 50700
+                        totalRub: 8234053,
+                        cifUsd: 68500
                     },
                     {
-                        name: 'Flagship VIP',
-                        power: '789 л.с.',
-                        accel: '3.4 сек',
-                        range: '720 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
-                        invoiceRub: 5332500,
-                        invoiceCny: 395000,
-                        fobUsd: 58000,
-                        dutyRub: 2710798,
+                        name: 'ULTRA Huawei ADS',
+                        power: '510 谢.褋.',
+                        accel: '4.8 褋械泻',
+                        range: '1,200 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: '袚懈斜褉懈写 EREV',
+                        invoiceRub: 4350000,
+                        invoiceCny: 322000,
+                        fobUsd: 72800,
+                        dutyRub: 1780000,
                         utilRub: 1560000,
-                        freightRub: 320000,
+                        freightRub: 300000,
                         brokerRub: 200000,
-                        totalRub: 13563298,
-                        cifUsd: 60200
+                        totalRub: 8980000,
+                        cifUsd: 75000
+                    }
+                ]
+            },
+            {
+                id: 'xpeng-gx',
+                brand: 'XPeng',
+                model: 'GX',
+                fullName: 'XPeng GX 6-Seat Flagship',
+                year: '2025鈥?026',
+                img: 'assets/cars/xpeng-gx.png',
+                proposalPoster: 'assets/cars/XpengGX/xpengGx_en.png',
+                trimsCount: 4,
+                minPriceRu: 6950000,
+                minPriceFob: 50300,
+                trims: [
+                    {
+                        name: 'GX EV 665 MAX',
+                        power: '420 谢.褋.',
+                        accel: '5.2 褋械泻',
+                        range: '665 泻屑',
+                        drive: '袟邪写薪懈泄 (RWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 3200000,
+                        invoiceCny: 237000,
+                        fobUsd: 50300,
+                        dutyRub: 1350000,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 6950000,
+                        cifUsd: 52500
+                    },
+                    {
+                        name: 'GX REEV 1585 MAX 4WD',
+                        power: '577 谢.褋.',
+                        accel: '4.2 褋械泻',
+                        range: '1,585 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: '袚懈斜褉懈写 (REEV)',
+                        invoiceRub: 3300000,
+                        invoiceCny: 244000,
+                        fobUsd: 51300,
+                        dutyRub: 1380000,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 7100000,
+                        cifUsd: 53500
+                    },
+                    {
+                        name: 'GX REEV 1585 ULTRA 4WD',
+                        power: '577 谢.褋.',
+                        accel: '4.2 褋械泻',
+                        range: '1,585 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: '袚懈斜褉懈写 (REEV)',
+                        invoiceRub: 3750000,
+                        invoiceCny: 277000,
+                        fobUsd: 57300,
+                        dutyRub: 1540000,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 7900000,
+                        cifUsd: 59500
+                    },
+                    {
+                        name: 'GX EV 750 ULTRA FLAGSHIP',
+                        power: '577 谢.褋.',
+                        accel: '3.9 褋械泻',
+                        range: '750 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 4050000,
+                        invoiceCny: 300000,
+                        fobUsd: 61300,
+                        dutyRub: 1670000,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 8480000,
+                        cifUsd: 63500
+                    }
+                ]
+            },
+            {
+                id: 'lynk-900',
+                brand: 'Lynk & Co',
+                model: '900',
+                fullName: 'Lynk & Co 900 Flagship SUV',
+                year: '2025鈥?026',
+                img: 'assets/cars/lynk-co-900.png',
+                proposalPoster: 'assets/cars/Lync&CO/lynk_co_900_en.png',
+                trimsCount: 3,
+                minPriceRu: 7200000,
+                minPriceFob: 52000,
+                trims: [
+                    {
+                        name: '1.5 ULTRA AWD',
+                        power: '390 谢.褋.',
+                        accel: '5.3 褋械泻',
+                        range: '1,300 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: '袚懈斜褉懈写 EM-P',
+                        invoiceRub: 3400000,
+                        invoiceCny: 251000,
+                        fobUsd: 52000,
+                        dutyRub: 1420000,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 7200000,
+                        cifUsd: 54200
+                    },
+                    {
+                        name: '2.0 ULTRA AWD',
+                        power: '490 谢.褋.',
+                        accel: '4.6 褋械泻',
+                        range: '1,350 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: '袚懈斜褉懈写 EM-P',
+                        invoiceRub: 3650000,
+                        invoiceCny: 270000,
+                        fobUsd: 55500,
+                        dutyRub: 1530000,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 7680000,
+                        cifUsd: 57700
+                    },
+                    {
+                        name: '2.0 EXPLORER 3-Motor',
+                        power: '600 谢.褋.',
+                        accel: '4.1 褋械泻',
+                        range: '1,300 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: '袚懈斜褉懈写 EM-P',
+                        invoiceRub: 4100000,
+                        invoiceCny: 303000,
+                        fobUsd: 61700,
+                        dutyRub: 1720000,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 8550000,
+                        cifUsd: 63900
                     }
                 ]
             },
@@ -1029,24 +1295,24 @@
                 brand: 'Lynk & Co',
                 model: '06',
                 fullName: 'Lynk & Co 06 Remix / EM-P',
-                year: '2024–2026',
+                year: '2024鈥?026',
                 img: 'assets/banners/banner_2.jpg',
                 trimsCount: 2,
                 minPriceRu: 2673527,
                 minPriceFob: 18200,
                 trims: [
                     {
-                        name: '1.5T Remix (Бензин)',
-                        power: '181 л.с.',
-                        accel: '8.2 сек',
-                        range: '750 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'Бензин (ICE)',
+                        name: '1.5T Remix (袘械薪蟹懈薪)',
+                        power: '181 谢.褋.',
+                        accel: '8.2 褋械泻',
+                        range: '750 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: '袘械薪蟹懈薪 (ICE)',
                         invoiceRub: 1593000,
                         invoiceCny: 118000,
                         fobUsd: 18200,
                         dutyRub: 418127,
-                        utilRub: 3400, // льготный утиль
+                        utilRub: 3400,
                         freightRub: 280000,
                         brokerRub: 150000,
                         totalRub: 2673527,
@@ -1054,11 +1320,11 @@
                     },
                     {
                         name: 'EM-P Hybrid',
-                        power: '299 л.с.',
-                        accel: '5.9 сек',
-                        range: '1,280 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'Гибрид (PHEV)',
+                        power: '299 谢.褋.',
+                        accel: '5.9 褋械泻',
+                        range: '1,280 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: '袚懈斜褉懈写 (PHEV)',
                         invoiceRub: 1836000,
                         invoiceCny: 136000,
                         fobUsd: 20500,
@@ -1072,164 +1338,23 @@
                 ]
             },
             {
-                id: 'nevo-a06',
-                brand: 'Changan',
-                model: 'NEVO A06',
-                fullName: 'Changan NEVO A06 Sedan',
-                year: '2024–2026',
-                img: 'assets/banners/banner_3.jpg',
-                trimsCount: 2,
-                minPriceRu: 2627114,
-                minPriceFob: 16800,
-                trims: [
-                    {
-                        name: '70 Air PHEV',
-                        power: '215 л.с.',
-                        accel: '6.9 сек',
-                        range: '1,000 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'Гибрид (PHEV)',
-                        invoiceRub: 1552500,
-                        invoiceCny: 115000,
-                        fobUsd: 16800,
-                        dutyRub: 411214,
-                        utilRub: 3400,
-                        freightRub: 280000,
-                        brokerRub: 150000,
-                        totalRub: 2627114,
-                        cifUsd: 19000
-                    },
-                    {
-                        name: '125 Pro PHEV',
-                        power: '215 л.с.',
-                        accel: '6.8 сек',
-                        range: '1,160 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'Гибрид (PHEV)',
-                        invoiceRub: 1741500,
-                        invoiceCny: 129000,
-                        fobUsd: 18500,
-                        dutyRub: 461100,
-                        utilRub: 3400,
-                        freightRub: 280000,
-                        brokerRub: 150000,
-                        totalRub: 2890000,
-                        cifUsd: 20700
-                    }
-                ]
-            },
-            {
-                id: 'nevo-q05',
-                brand: 'Changan',
-                model: 'NEVO Q05',
-                fullName: 'Changan NEVO Q05 Crossover',
-                year: '2024–2026',
-                img: 'assets/banners/banner_4.jpg',
-                trimsCount: 2,
-                minPriceRu: 2268400,
-                minPriceFob: 15100,
-                trims: [
-                    {
-                        name: '60 Lite PHEV',
-                        power: '215 л.с.',
-                        accel: '7.3 сек',
-                        range: '1,150 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'Гибрид (PHEV)',
-                        invoiceRub: 1336500,
-                        invoiceCny: 99000,
-                        fobUsd: 15100,
-                        dutyRub: 358500,
-                        utilRub: 3400,
-                        freightRub: 280000,
-                        brokerRub: 150000,
-                        totalRub: 2268400,
-                        cifUsd: 17300
-                    },
-                    {
-                        name: '125 Max PHEV',
-                        power: '215 л.с.',
-                        accel: '7.3 сек',
-                        range: '1,215 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'Гибрид (PHEV)',
-                        invoiceRub: 1525500,
-                        invoiceCny: 113000,
-                        fobUsd: 17400,
-                        dutyRub: 401457,
-                        utilRub: 3400,
-                        freightRub: 280000,
-                        brokerRub: 150000,
-                        totalRub: 2560357,
-                        cifUsd: 19600
-                    }
-                ]
-            },
-            {
-                id: 'avatr-12',
-                brand: 'Avatr',
-                model: '12',
-                fullName: 'Avatr 12 Gran Coupe',
-                year: '2024–2026',
-                img: 'assets/cars/avatr-12.jpg',
-                trimsCount: 2,
-                minPriceRu: 7071810,
-                minPriceFob: 41800,
-                trims: [
-                    {
-                        name: 'Luxury RWD 94.5kWh',
-                        power: '313 л.с.',
-                        accel: '6.7 сек',
-                        range: '700 км',
-                        drive: 'Задний (RWD)',
-                        engineType: 'EV (Электро)',
-                        invoiceRub: 3643650,
-                        invoiceCny: 269900,
-                        fobUsd: 41800,
-                        dutyRub: 1468160,
-                        utilRub: 1560000,
-                        freightRub: 300000,
-                        brokerRub: 200000,
-                        totalRub: 7071810,
-                        cifUsd: 44000
-                    },
-                    {
-                        name: 'Performance AWD',
-                        power: '578 л.с.',
-                        accel: '3.9 сек',
-                        range: '650 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
-                        invoiceRub: 4060800,
-                        invoiceCny: 300800,
-                        fobUsd: 48500,
-                        dutyRub: 1796072,
-                        utilRub: 1560000,
-                        freightRub: 300000,
-                        brokerRub: 200000,
-                        totalRub: 8616872,
-                        cifUsd: 50700
-                    }
-                ]
-            },
-            {
                 id: 'avatr-07',
                 brand: 'Avatr',
                 model: '07',
-                fullName: 'Avatr 07 SUV',
-                year: '2025–2026',
+                fullName: 'Avatr 07 Smart SUV',
+                year: '2025鈥?026',
                 img: 'assets/cars/avatr-07.png',
                 trimsCount: 2,
                 minPriceRu: 6484175,
                 minPriceFob: 38500,
                 trims: [
                     {
-                        name: 'Max EREV (Гибрид)',
-                        power: '314 л.с.',
-                        accel: '6.6 сек',
-                        range: '1,220 км',
-                        drive: 'Задний (RWD)',
-                        engineType: 'Гибрид EREV',
+                        name: 'Max EREV (袚懈斜褉懈写)',
+                        power: '314 谢.褋.',
+                        accel: '6.6 褋械泻',
+                        range: '1,220 泻屑',
+                        drive: '袟邪写薪懈泄 (RWD)',
+                        engineType: '袚懈斜褉懈写 EREV',
                         invoiceRub: 2968650,
                         invoiceCny: 219900,
                         fobUsd: 38500,
@@ -1242,11 +1367,11 @@
                     },
                     {
                         name: 'Ultra AWD EV',
-                        power: '598 л.с.',
-                        accel: '3.9 сек',
-                        range: '650 км',
-                        drive: 'Полный (AWD)',
-                        engineType: 'EV (Электро)',
+                        power: '598 谢.褋.',
+                        accel: '3.9 褋械泻',
+                        range: '650 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 3913650,
                         invoiceCny: 289900,
                         fobUsd: 47000,
@@ -1260,11 +1385,199 @@
                 ]
             },
             {
+                id: 'avatr-06',
+                brand: 'Avatr',
+                model: '06',
+                fullName: 'Avatr 06 Fastback Sedan',
+                year: '2025鈥?026',
+                img: 'assets/cars/avatr-06.png',
+                trimsCount: 2,
+                minPriceRu: 6750000,
+                minPriceFob: 39800,
+                trims: [
+                    {
+                        name: 'Luxury RWD 90kWh',
+                        power: '313 谢.褋.',
+                        accel: '6.5 褋械泻',
+                        range: '710 泻屑',
+                        drive: '袟邪写薪懈泄 (RWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 3450000,
+                        invoiceCny: 255000,
+                        fobUsd: 39800,
+                        dutyRub: 1420000,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 6750000,
+                        cifUsd: 42000
+                    },
+                    {
+                        name: 'Performance AWD',
+                        power: '598 谢.褋.',
+                        accel: '3.8 褋械泻',
+                        range: '660 泻屑',
+                        drive: '袩芯谢薪褘泄 (AWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
+                        invoiceRub: 3950000,
+                        invoiceCny: 292000,
+                        fobUsd: 46500,
+                        dutyRub: 1720000,
+                        utilRub: 1560000,
+                        freightRub: 300000,
+                        brokerRub: 200000,
+                        totalRub: 8250000,
+                        cifUsd: 48700
+                    }
+                ]
+            },
+            {
+                id: 'nevo-q07',
+                brand: 'Changan',
+                model: 'NEVO Q07',
+                fullName: 'Changan NEVO Q07 Smart SUV',
+                year: '2025鈥?026',
+                img: 'assets/cars/nevo-q07.png',
+                trimsCount: 2,
+                minPriceRu: 3150000,
+                minPriceFob: 21000,
+                trims: [
+                    {
+                        name: 'Air PHEV',
+                        power: '215 谢.褋.',
+                        accel: '7.1 褋械泻',
+                        range: '1,250 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: '袚懈斜褉懈写 (PHEV)',
+                        invoiceRub: 1850000,
+                        invoiceCny: 137000,
+                        fobUsd: 21000,
+                        dutyRub: 480000,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 3150000,
+                        cifUsd: 23200
+                    },
+                    {
+                        name: 'Max PHEV',
+                        power: '215 谢.褋.',
+                        accel: '7.0 褋械泻',
+                        range: '1,300 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: '袚懈斜褉懈写 (PHEV)',
+                        invoiceRub: 2150000,
+                        invoiceCny: 159000,
+                        fobUsd: 24500,
+                        dutyRub: 560000,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 3550000,
+                        cifUsd: 26700
+                    }
+                ]
+            },
+            {
+                id: 'nevo-q05',
+                brand: 'Changan',
+                model: 'NEVO Q05',
+                fullName: 'Changan NEVO Q05 Crossover',
+                year: '2024鈥?026',
+                img: 'assets/banners/banner_4.jpg',
+                trimsCount: 2,
+                minPriceRu: 2268400,
+                minPriceFob: 15100,
+                trims: [
+                    {
+                        name: '60 Lite PHEV',
+                        power: '215 谢.褋.',
+                        accel: '7.3 褋械泻',
+                        range: '1,150 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: '袚懈斜褉懈写 (PHEV)',
+                        invoiceRub: 1336500,
+                        invoiceCny: 99000,
+                        fobUsd: 15100,
+                        dutyRub: 358500,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2268400,
+                        cifUsd: 17300
+                    },
+                    {
+                        name: '125 Max PHEV',
+                        power: '215 谢.褋.',
+                        accel: '7.3 褋械泻',
+                        range: '1,215 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: '袚懈斜褉懈写 (PHEV)',
+                        invoiceRub: 1525500,
+                        invoiceCny: 113000,
+                        fobUsd: 17400,
+                        dutyRub: 401457,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2560357,
+                        cifUsd: 19600
+                    }
+                ]
+            },
+            {
+                id: 'nevo-a06',
+                brand: 'Changan',
+                model: 'NEVO A06',
+                fullName: 'Changan NEVO A06 Sedan',
+                year: '2024鈥?026',
+                img: 'assets/banners/banner_3.jpg',
+                trimsCount: 2,
+                minPriceRu: 2627114,
+                minPriceFob: 16800,
+                trims: [
+                    {
+                        name: '70 Air PHEV',
+                        power: '215 谢.褋.',
+                        accel: '6.9 褋械泻',
+                        range: '1,000 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: '袚懈斜褉懈写 (PHEV)',
+                        invoiceRub: 1552500,
+                        invoiceCny: 115000,
+                        fobUsd: 16800,
+                        dutyRub: 411214,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2627114,
+                        cifUsd: 19000
+                    },
+                    {
+                        name: '125 Pro PHEV',
+                        power: '215 谢.褋.',
+                        accel: '6.8 褋械泻',
+                        range: '1,160 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: '袚懈斜褉懈写 (PHEV)',
+                        invoiceRub: 1741500,
+                        invoiceCny: 129000,
+                        fobUsd: 18500,
+                        dutyRub: 461100,
+                        utilRub: 3400,
+                        freightRub: 280000,
+                        brokerRub: 150000,
+                        totalRub: 2890000,
+                        cifUsd: 20700
+                    }
+                ]
+            },
+            {
                 id: 'toyota-bz3x',
                 brand: 'Toyota',
                 model: 'bZ3X',
                 fullName: 'Toyota bZ3X Electric SUV',
-                year: '2024–2026',
+                year: '2024鈥?026',
                 img: 'assets/banners/banner_7.jpg',
                 trimsCount: 2,
                 minPriceRu: 2932192,
@@ -1272,16 +1585,16 @@
                 trims: [
                     {
                         name: 'Comfort EV',
-                        power: '204 л.с.',
-                        accel: '7.5 сек',
-                        range: '616 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'EV (Электро)',
+                        power: '204 谢.褋.',
+                        accel: '7.5 褋械泻',
+                        range: '616 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 1755000,
                         invoiceCny: 130000,
                         fobUsd: 19800,
                         dutyRub: 457192,
-                        utilRub: 3400, // льготный
+                        utilRub: 3400,
                         freightRub: 280000,
                         brokerRub: 150000,
                         totalRub: 2932192,
@@ -1289,11 +1602,11 @@
                     },
                     {
                         name: 'Premium EV',
-                        power: '204 л.с.',
-                        accel: '7.5 сек',
-                        range: '616 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'EV (Электро)',
+                        power: '204 谢.褋.',
+                        accel: '7.5 褋械泻',
+                        range: '616 泻屑',
+                        drive: '袩械褉械写薪懈泄 (FWD)',
+                        engineType: 'EV (协谢械泻褌褉芯)',
                         invoiceRub: 1957500,
                         invoiceCny: 145000,
                         fobUsd: 22000,
@@ -1303,53 +1616,6 @@
                         brokerRub: 150000,
                         totalRub: 3250000,
                         cifUsd: 24200
-                    }
-                ]
-            },
-            {
-                id: 'byd-song-plus',
-                brand: 'BYD',
-                model: 'Song Plus DM-i',
-                fullName: 'BYD Song Plus DM-i 5.0',
-                year: '2024–2026',
-                img: 'assets/cars/voyah-free.jpg',
-                trimsCount: 2,
-                minPriceRu: 3749139,
-                minPriceFob: 23500,
-                trims: [
-                    {
-                        name: '75km Luxury',
-                        power: '218 л.с.',
-                        accel: '7.7 сек',
-                        range: '1,450 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'Гибрид DM-i',
-                        invoiceRub: 1833300,
-                        invoiceCny: 135800,
-                        fobUsd: 23500,
-                        dutyRub: 575839,
-                        utilRub: 790000,
-                        freightRub: 280000,
-                        brokerRub: 170000,
-                        totalRub: 3749139,
-                        cifUsd: 25700
-                    },
-                    {
-                        name: '112km Flagship',
-                        power: '218 л.с.',
-                        accel: '7.7 сек',
-                        range: '1,500 км',
-                        drive: 'Передний (FWD)',
-                        engineType: 'Гибрид DM-i',
-                        invoiceRub: 2049300,
-                        invoiceCny: 151800,
-                        fobUsd: 26800,
-                        dutyRub: 649941,
-                        utilRub: 790000,
-                        freightRub: 280000,
-                        brokerRub: 170000,
-                        totalRub: 4179241,
-                        cifUsd: 29000
                     }
                 ]
             }
@@ -1599,7 +1865,7 @@
             }).join('');
         }
 
-        // 6. CAR MODAL & PRICE BREAKDOWN ENGINE (EASY.CAR LOGIC)
+        // 6. CAR MODAL & PRICE BREAKDOWN ENGINE
         function openCarModal(carId) {
             const car = catalogDatabase.find(c => c.id === carId) || catalogDatabase[0];
             currentModalCar = car;
@@ -1608,6 +1874,36 @@
             document.getElementById('modal-brand-badge').innerText = car.brand;
             document.getElementById('modal-car-title').innerText = car.fullName;
             document.getElementById('modal-car-img').src = car.img;
+
+            // Handle official proposal poster link
+            const proposalBox = document.getElementById('modal-proposal-box');
+            const proposalLink = document.getElementById('modal-proposal-link');
+            const proposalTitle = document.getElementById('modal-proposal-title');
+            const proposalSubtitle = document.getElementById('modal-proposal-subtitle');
+            const proposalAction = document.getElementById('modal-proposal-action');
+            if (proposalBox && proposalLink) {
+                if (car.proposalPoster) {
+                    proposalBox.classList.remove('hidden');
+                    proposalLink.href = car.proposalPoster;
+                    if (proposalTitle) {
+                        proposalTitle.innerText = (currentLang === 'ru')
+                            ? `Коммерческое предложение Shanghai Motors: ${car.model}`
+                            : `Official Shanghai Motors Proposal: ${car.model}`;
+                    }
+                    if (proposalSubtitle) {
+                        proposalSubtitle.innerText = (currentLang === 'ru')
+                            ? 'Спецификация, заводские опции, цвета и прайс-лист'
+                            : 'Full options, exterior/interior palettes and pricing terms';
+                    }
+                    if (proposalAction) {
+                        proposalAction.innerHTML = (currentLang === 'ru')
+                            ? `<span>Открыть</span><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`
+                            : `<span>View</span><svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+                    }
+                } else {
+                    proposalBox.classList.add('hidden');
+                }
+            }
 
             // Render Trims Pills
             const trimsContainer = document.getElementById('modal-trims-container');
