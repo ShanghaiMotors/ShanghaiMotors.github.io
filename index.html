@@ -179,17 +179,19 @@
 
     <!-- SECTION 1: TOP HERO BANNERS (EXACT EASY.CAR POPULAR VEHICLES SLIDER) -->
     <section id="hero-banners" class="relative overflow-hidden border-b border-surface-border bg-[#0B0D12]">
-        <div id="banner-slider-container" class="relative min-h-[520px] md:min-h-[580px] flex items-center">
-            <!-- Slides injected via JavaScript -->
+        <div id="banner-slider-container" class="relative min-h-[560px] md:min-h-[620px] w-full flex items-center">
+            <div id="hero-banner-slides" class="absolute inset-0 w-full h-full">
+                <!-- Slides injected via JavaScript -->
+            </div>
         </div>
 
         <!-- Slider Controls: Prev/Next & Dots -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 relative z-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 relative z-30 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <button onclick="prevBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white">
+                <button onclick="prevBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Предыдущий слайд">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 </button>
-                <button onclick="nextBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white">
+                <button onclick="nextBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Следующий слайд">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </button>
             </div>
@@ -244,7 +246,7 @@
                     </span>
                 </div>
                 <div class="text-[11px] font-mono text-gray-500">
-                    <span data-lang="ru">Таможня и утильсбор рассчитываются отдельно | Услуги $1,500</span>
+                    <span data-lang="ru">Логистика и растаможка рассчитываются отдельно</span>
                     <span data-lang="en">FOB terms: Shanghai / Nansha / Khorgos</span>
                 </div>
             </div>
@@ -603,57 +605,65 @@
                     <div data-lang="ru" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
                         <div class="flex justify-between items-center pb-3 border-b border-surface-border">
                             <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Условия поставки</span>
-                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2 py-0.5 rounded border border-brand/20">FOB Хоргос / Суйфэньхэ / Шанхай</span>
+                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20">FOB Хоргос / Суйфэньхэ / Шанхай</span>
                         </div>
 
-                        <div class="space-y-3 text-xs">
+                        <div class="space-y-3.5 text-xs">
                             <div class="flex justify-between items-start text-gray-300">
                                 <div>
-                                    <span class="text-white font-medium block">Цена автомобиля в Китае (FOB):</span>
-                                    <span class="text-[11px] text-gray-500">Хоргос / Суйфэньхэ / Шанхай / Наньша</span>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="text-white font-medium text-sm block">Цена готового к отправке авто:</span>
+                                        <!-- Tooltip (i) -->
+                                        <div class="relative inline-block group/tip">
+                                            <button type="button" onclick="event.stopPropagation(); toggleDeliveryTooltip(this)" class="w-4 h-4 rounded-full bg-surface-elevated hover:bg-brand text-gray-300 hover:text-black flex items-center justify-center text-[10px] font-bold font-mono transition cursor-pointer border border-surface-border" title="Информация о сроках поставки">
+                                                i
+                                            </button>
+                                            <div class="tooltip-popup absolute left-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-2 w-72 p-3.5 bg-[#161B22] border border-surface-border rounded-xl shadow-2xl opacity-0 invisible group-hover/tip:opacity-100 group-hover/tip:visible transition-all duration-200 z-50 pointer-events-none text-left font-sans text-xs text-gray-200 backdrop-blur-md">
+                                                <div class="flex items-center gap-1.5 text-[11px] font-semibold text-brand mb-1.5 font-mono">
+                                                    <span>ℹ️</span>
+                                                    <span>Сроки поставки:</span>
+                                                </div>
+                                                <p class="leading-relaxed mb-1.5 text-gray-300">
+                                                    • Если автомобиль в желаемой комплектации есть на складе, срок поставки составит <strong class="text-white font-semibold">от 20 дней</strong>.
+                                                </p>
+                                                <p class="leading-relaxed text-gray-300">
+                                                    • Когда производим под заказ, доставка <strong class="text-white font-semibold">≈6-10 недель</strong>.
+                                                </p>
+                                                <div class="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-full w-2 h-2 bg-[#161B22] border-r border-b border-surface-border rotate-45 -mt-1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span id="modal-ru-fob-usd" class="text-xs text-gray-400 font-mono mt-0.5 block">$73,250 • FOB по курсу ЦБ</span>
                                 </div>
                                 <div class="text-right">
-                                    <span id="modal-ru-fob-usd" class="font-mono text-white font-bold block text-sm">$73,250</span>
-                                    <span id="modal-ru-fob-rub" class="font-mono text-gray-400 text-[11px]">≈ 6,184,598 ₽</span>
+                                    <span id="modal-ru-price-rub" class="font-mono text-brand font-extrabold text-2xl sm:text-3xl block">6,184,598 ₽</span>
                                 </div>
                             </div>
 
-                            <div class="flex justify-between items-start text-gray-300 pt-2 border-t border-surface-border/50">
-                                <div>
-                                    <span class="text-white font-medium block">Статья расходов (сопровождение сделки):</span>
-                                    <span class="text-[11px] text-gray-500">Подбор, экспортная лицензия, инспекция, документы</span>
-                                </div>
-                                <div class="text-right">
-                                    <span id="modal-ru-fee-usd" class="font-mono text-white font-bold block text-sm">$1,500</span>
-                                    <span id="modal-ru-fee-rub" class="font-mono text-gray-400 text-[11px]">≈ 126,645 ₽</span>
-                                </div>
+                            <div class="flex justify-between items-center text-gray-400 pt-2 border-t border-surface-border/50 text-[11px]">
+                                <span>Экспортное оформление и сертификаты:</span>
+                                <span class="text-white font-mono font-medium">Включено</span>
                             </div>
-
-                            <div class="pt-3 border-t border-surface-border">
-                                <span class="text-xs text-gray-400 uppercase font-mono block">Итого базовая стоимость (FOB + $1,500):</span>
-                                <div id="modal-ru-total-rub" class="text-2xl sm:text-3xl font-extrabold font-mono text-brand mt-1">
-                                    6,311,243 ₽
-                                </div>
-                                <div id="modal-ru-total-usd" class="text-xs text-gray-400 font-mono mt-1">
-                                    $74,750 (по курсу ЦБ РФ)
-                                </div>
+                            <div class="flex justify-between items-center text-gray-400 text-[11px]">
+                                <span>Полная инспекция и фотоотчет перед отправкой:</span>
+                                <span class="text-white font-mono font-medium">Включено</span>
                             </div>
                         </div>
 
-                        <!-- Customs & Util Notice -->
-                        <div class="p-3.5 bg-brand/5 border border-brand/20 rounded-xl space-y-1">
+                        <!-- Logistics & Customs Notice -->
+                        <div class="p-3.5 bg-surface-card border border-surface-border rounded-xl space-y-1">
                             <div class="flex items-center gap-1.5 text-brand text-xs font-bold font-mono">
-                                <span>ℹ️</span>
-                                <span>Таможня и утильсбор рассчитываются отдельно</span>
+                                <span>🚚</span>
+                                <span>Логистика и растаможка рассчитываются отдельно</span>
                             </div>
                             <p class="text-[11px] text-gray-400 leading-relaxed">
-                                Таможенная пошлина РФ, коммерческий утильсбор и доставка автовозом рассчитываются отдельно под параметры вашего заказа (тип двигателя, мощность, статус покупателя).
+                                Доставка в ваш город РФ, таможенная пошлина и утильсбор рассчитываются индивидуально под параметры вашего заказа.
                             </p>
                         </div>
 
                         <button onclick="orderVehicleTelegram()" class="w-full bg-brand hover:bg-brand-hover text-black font-extrabold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-4 shadow-lg shadow-brand/10 group">
                             <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                            <span id="modal-ru-btn-text">Консультация по заказу</span>
+                            <span id="modal-ru-btn-text">Консультация и расчет</span>
                         </button>
                     </div>
 
@@ -661,16 +671,37 @@
                     <div data-lang="en" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
                         <div class="flex justify-between items-center pb-3 border-b border-surface-border">
                             <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Export Pricing</span>
-                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2 py-0.5 rounded border border-brand/20">FOB (Shanghai / Nansha / Khorgos)</span>
+                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20">FOB (Shanghai / Nansha / Khorgos)</span>
                         </div>
 
-                        <div class="space-y-3 text-xs">
+                        <div class="space-y-3.5 text-xs">
                             <div class="flex justify-between items-center text-gray-300">
                                 <div>
-                                    <span class="text-white font-medium block">Price in China (FOB):</span>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="text-white font-medium text-sm block">Price in China (FOB):</span>
+                                        <!-- Tooltip (i) -->
+                                        <div class="relative inline-block group/tip">
+                                            <button type="button" onclick="event.stopPropagation(); toggleDeliveryTooltip(this)" class="w-4 h-4 rounded-full bg-surface-elevated hover:bg-brand text-gray-300 hover:text-black flex items-center justify-center text-[10px] font-bold font-mono transition cursor-pointer border border-surface-border" title="Delivery timeline information">
+                                                i
+                                            </button>
+                                            <div class="tooltip-popup absolute left-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-2 w-72 p-3.5 bg-[#161B22] border border-surface-border rounded-xl shadow-2xl opacity-0 invisible group-hover/tip:opacity-100 group-hover/tip:visible transition-all duration-200 z-50 pointer-events-none text-left font-sans text-xs text-gray-200 backdrop-blur-md">
+                                                <div class="flex items-center gap-1.5 text-[11px] font-semibold text-brand mb-1.5 font-mono">
+                                                    <span>ℹ️</span>
+                                                    <span>Delivery Timeline:</span>
+                                                </div>
+                                                <p class="leading-relaxed mb-1.5 text-gray-300">
+                                                    • If vehicle is in stock, dispatch timeframe starts from <strong class="text-white font-semibold">20 days</strong>.
+                                                </p>
+                                                <p class="leading-relaxed text-gray-300">
+                                                    • Build-to-order factory production delivery takes <strong class="text-white font-semibold">≈6-10 weeks</strong>.
+                                                </p>
+                                                <div class="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-full w-2 h-2 bg-[#161B22] border-r border-b border-surface-border rotate-45 -mt-1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <span class="text-[11px] text-gray-500">Port handover & export clearance included</span>
                                 </div>
-                                <span id="modal-en-fob-val" class="font-mono text-brand font-extrabold text-xl sm:text-2xl">$73,250</span>
+                                <span id="modal-en-fob-val" class="font-mono text-brand font-extrabold text-2xl sm:text-3xl">$73,250</span>
                             </div>
                             <div class="flex justify-between items-center text-gray-400 pt-2 border-t border-surface-border/50 text-[11px]">
                                 <span>Export Licensing & Full Inspection:</span>
@@ -698,8 +729,8 @@
 
     <!-- CORE SCRIPTS & DATABASE -->
     <script>
-        // 1. POPULAR HERO BANNERS DATABASE
-                const heroBanners = [
+                // 1. POPULAR HERO BANNERS DATABASE
+        const heroBanners = [
             {
                 id: 'zeekr-9x',
                 brand: 'Zeekr',
@@ -709,6 +740,7 @@
                 tagClass: 'bg-brand/10 text-brand border-brand/30',
                 descRu: 'Воплощение мощности, роскоши и передовых технологий (до 1 401 л.с.)',
                 descEn: 'The pinnacle of luxury power and intelligent technology (up to 1,401 hp)',
+                minPriceFob: 73250,
                 priceRu: 'FOB от $73,250',
                 priceEn: 'FOB from $73,250',
                 img: 'assets/banners/banner_1.jpg'
@@ -722,6 +754,7 @@
                 tagClass: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
                 descRu: 'Флагманский гибридный внедорожник с запасом хода до 1,416 км',
                 descEn: 'Flagship hybrid SUV with up to 1,416 km combined range',
+                minPriceFob: 62600,
                 priceRu: 'FOB от $62,600',
                 priceEn: 'FOB from $62,600',
                 img: 'assets/banners/banner_6.jpg'
@@ -729,12 +762,13 @@
             {
                 id: 'li-l9',
                 brand: 'Li Auto',
-                model: 'Li L9 LIVIS',
+                model: 'Li Auto L9 LIVIS',
                 tagRu: 'VIP Комфорт',
                 tagEn: 'Flagship REEV',
                 tagClass: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
                 descRu: 'Роскошный представительский 6-местный кроссовер с пневмоподвеской',
                 descEn: 'Executive 6-seat luxury SUV with ultimate interior comfort',
+                minPriceFob: 86500,
                 priceRu: 'FOB $86,500',
                 priceEn: 'FOB $86,500',
                 img: 'assets/cars/li-l9.png'
@@ -742,12 +776,13 @@
             {
                 id: 'li-l8',
                 brand: 'Li Auto',
-                model: 'Li L8 LIVIS',
+                model: 'Li Auto L8 LIVIS',
                 tagRu: 'Семейный премиум',
                 tagEn: 'Family Luxury',
                 tagClass: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
                 descRu: 'Премиальный гибридный кроссовер для комфортных семейных путешествий',
                 descEn: 'Premium family smart SUV with extended range powertrain',
+                minPriceFob: 75500,
                 priceRu: 'FOB $75,500',
                 priceEn: 'FOB $75,500',
                 img: 'assets/cars/li-l8.png'
@@ -761,6 +796,7 @@
                 tagClass: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
                 descRu: 'Интеллектуальный флагман EM-P мощностью до 884 л.с.',
                 descEn: 'Intelligent EM-P flagship SUV with up to 884 hp',
+                minPriceFob: 40500,
                 priceRu: 'FOB от $40,500',
                 priceEn: 'FOB from $40,500',
                 img: 'assets/cars/lynk-co-900.png'
@@ -774,6 +810,7 @@
                 tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
                 descRu: 'Брутальный внедорожник повышенной проходимости (6 и 7 мест)',
                 descEn: 'Rugged luxury all-terrain SUV (6 & 7 seat configurations)',
+                minPriceFob: 59100,
                 priceRu: 'FOB от $59,100',
                 priceEn: 'FOB from $59,100',
                 img: 'assets/cars/rox-adamas.png'
@@ -787,6 +824,7 @@
                 tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
                 descRu: 'Экспедиционный гибридный внедорожник с запасом хода 1,338 км',
                 descEn: 'Adventure hybrid SUV with 1,338 km range and smart 4WD',
+                minPriceFob: 45400,
                 priceRu: 'FOB от $45,400',
                 priceEn: 'FOB from $45,400',
                 img: 'assets/cars/rox-01.png'
@@ -1572,11 +1610,11 @@
 
         async function initApp() {
             initLanguage();
+            await fetchLiveExchangeRate();
             renderHeroBanners();
             startBannerAutoplay();
             updateRateDisplay();
             renderCatalog();
-            await fetchLiveExchangeRate();
         }
 
         async function fetchLiveExchangeRate() {
@@ -1587,6 +1625,7 @@
             if (cachedRate && cachedDate === today) {
                 currentUsdRate = parseFloat(cachedRate) || 84.43;
                 updateRateDisplay();
+                renderHeroBanners();
                 renderCatalog();
                 if (currentModalCar) renderModalTrim(currentModalTrimIndex);
                 return;
@@ -1602,6 +1641,7 @@
                         localStorage.setItem('shanghai_usd_rate', currentUsdRate.toString());
                         localStorage.setItem('shanghai_usd_date', today);
                         updateRateDisplay();
+                        renderHeroBanners();
                         renderCatalog();
                         if (currentModalCar) renderModalTrim(currentModalTrimIndex);
                         return;
@@ -1621,6 +1661,7 @@
                         localStorage.setItem('shanghai_usd_rate', currentUsdRate.toString());
                         localStorage.setItem('shanghai_usd_date', today);
                         updateRateDisplay();
+                        renderHeroBanners();
                         renderCatalog();
                         if (currentModalCar) renderModalTrim(currentModalTrimIndex);
                     }
@@ -1680,15 +1721,15 @@
             });
 
             // Update language toggle buttons
-            const ruBtn = document.getElementById('lang-btn-ru');
-            const enBtn = document.getElementById('lang-btn-en');
+            const ruBtn = document.getElementById('btn-lang-ru');
+            const enBtn = document.getElementById('btn-lang-en');
             if (ruBtn && enBtn) {
                 if (lang === 'ru') {
-                    ruBtn.className = 'px-2.5 py-1 text-xs font-mono font-bold rounded bg-brand text-black transition';
-                    enBtn.className = 'px-2.5 py-1 text-xs font-mono font-medium rounded text-gray-400 hover:text-white transition';
+                    ruBtn.className = 'px-3 py-1.5 rounded-full bg-brand text-black font-bold transition';
+                    enBtn.className = 'px-3 py-1.5 rounded-full text-gray-400 hover:text-white transition';
                 } else {
-                    enBtn.className = 'px-2.5 py-1 text-xs font-mono font-bold rounded bg-brand text-black transition';
-                    ruBtn.className = 'px-2.5 py-1 text-xs font-mono font-medium rounded text-gray-400 hover:text-white transition';
+                    enBtn.className = 'px-3 py-1.5 rounded-full bg-brand text-black font-bold transition';
+                    ruBtn.className = 'px-3 py-1.5 rounded-full text-gray-400 hover:text-white transition';
                 }
             }
 
@@ -1707,40 +1748,54 @@
             const dotsContainer = document.getElementById('banner-dots');
             if (!container) return;
 
-            container.innerHTML = heroBanners.map((b, idx) => `
-                <div class="banner-slide absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === activeSlideIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}" id="slide-${idx}">
-                    <img src="${b.img}" alt="${b.model}" class="w-full h-full object-cover object-center filter brightness-[0.78]">
-                    <div class="absolute inset-0 bg-gradient-to-t from-surface-base via-surface-base/40 to-transparent"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-surface-base via-surface-base/60 to-transparent"></div>
+            container.innerHTML = heroBanners.map((b, idx) => {
+                const minFobRub = Math.round(b.minPriceFob * currentUsdRate);
+                const priceFormatted = (currentLang === 'ru')
+                    ? `от ${minFobRub.toLocaleString()} ₽ <span class="text-xs font-mono font-normal text-gray-400">($${b.minPriceFob.toLocaleString()} FOB)</span>`
+                    : `FOB from $${b.minPriceFob.toLocaleString()}`;
 
-                    <div class="absolute inset-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-end pb-12 sm:pb-16 z-20">
-                        <div class="max-w-2xl space-y-3 sm:space-y-4">
-                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono font-semibold uppercase tracking-wider ${b.tagClass}">
-                                <span>●</span>
-                                <span>${currentLang === 'ru' ? b.tagRu : b.tagEn}</span>
-                            </div>
-                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-                                ${b.model}
-                            </h1>
-                            <p class="text-sm sm:text-base text-gray-300 leading-relaxed font-sans">
-                                ${currentLang === 'ru' ? b.descRu : b.descEn}
-                            </p>
-                            <div class="pt-2 flex flex-wrap items-center gap-4">
-                                <button onclick="openCarModal('${b.id}')" class="bg-brand hover:bg-brand-hover text-black font-extrabold px-6 py-3.5 rounded-lg text-xs uppercase tracking-wider transition transform hover:scale-105 shadow-xl shadow-brand/20">
-                                    ${currentLang === 'ru' ? 'Консультация и расчет' : 'Request City Quote'}
-                                </button>
-                                <div class="px-4 py-2.5 rounded-lg bg-surface-card/80 border border-surface-border text-white text-xs font-mono font-bold">
-                                    ${currentLang === 'ru' ? b.priceRu : b.priceEn}
+                return `
+                <div class="banner-slide absolute inset-0 transition-all duration-700 ease-in-out ${idx === activeSlideIndex ? 'opacity-100 z-10 scale-100 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none scale-95'}" id="slide-${idx}">
+                    <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 py-10 md:py-16 flex flex-col justify-center">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <!-- Left Info -->
+                            <div class="lg:col-span-6 space-y-4 z-20">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono font-semibold uppercase tracking-wider ${b.tagClass}">
+                                    <span>●</span>
+                                    <span>${currentLang === 'ru' ? b.tagRu : b.tagEn}</span>
                                 </div>
+                                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                                    ${b.model}
+                                </h1>
+                                <p class="text-sm sm:text-base text-gray-300 leading-relaxed font-sans max-w-xl">
+                                    ${currentLang === 'ru' ? b.descRu : b.descEn}
+                                </p>
+                                <div class="text-2xl sm:text-3xl font-extrabold font-mono text-brand flex items-baseline gap-2 pt-1">
+                                    ${priceFormatted}
+                                </div>
+                                <div class="pt-3 flex flex-wrap items-center gap-3">
+                                    <button onclick="openCarModal('${b.id}')" class="bg-brand hover:bg-brand-hover text-black font-extrabold px-6 py-3.5 rounded-lg text-xs uppercase tracking-wider transition transform hover:scale-105 shadow-xl shadow-brand/20">
+                                        ${currentLang === 'ru' ? 'Консультация и расчет' : 'Request City Quote'}
+                                    </button>
+                                    <button onclick="openCarModal('${b.id}')" class="px-5 py-3.5 rounded-lg bg-surface-card hover:bg-surface-elevated border border-surface-border text-white text-xs font-bold hover:border-brand transition">
+                                        ${currentLang === 'ru' ? 'Комплектации и цены' : 'View Configurations'}
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Right Visual -->
+                            <div class="lg:col-span-6 flex items-center justify-center relative min-h-[260px] sm:min-h-[340px] md:min-h-[420px]">
+                                <div class="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-brand/10 blur-3xl pointer-events-none"></div>
+                                <img src="${b.img}" alt="${b.model}" class="max-h-[260px] sm:max-h-[340px] md:max-h-[420px] w-full object-contain relative z-10 transition-transform duration-700 hover:scale-105 cursor-pointer filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]" onclick="openCarModal('${b.id}')">
                             </div>
                         </div>
                     </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
 
             if (dotsContainer) {
                 dotsContainer.innerHTML = heroBanners.map((_, idx) => `
-                    <button onclick="goToBanner(${idx})" class="w-2.5 h-2.5 rounded-full transition-all ${idx === activeSlideIndex ? 'w-8 bg-brand' : 'bg-surface-border hover:bg-gray-500'}"></button>
+                    <button onclick="goToBanner(${idx})" class="h-2 rounded-full transition-all duration-300 ${idx === activeSlideIndex ? 'w-8 bg-brand' : 'w-2 bg-surface-border hover:bg-gray-500'}" aria-label="Slide ${idx+1}"></button>
                 `).join('');
             }
         }
@@ -1826,19 +1881,19 @@
                             <div class="pt-2 border-t border-surface-border">
                                 <div class="flex justify-between items-baseline">
                                     <span class="text-xs text-gray-400 uppercase font-mono">
-                                        ${currentLang === 'ru' ? 'Цена в Китае (FOB):' : 'FOB Price (China):'}
+                                        ${currentLang === 'ru' ? 'Готов к отправке:' : 'FOB Price (China):'}
                                     </span>
                                     <span class="text-lg font-bold font-mono text-brand">
-                                        $${minFob.toLocaleString()}
+                                        ${currentLang === 'ru' ? `от ${minFobRub.toLocaleString()} ₽` : `$${minFob.toLocaleString()}`}
                                     </span>
                                 </div>
                                 ${currentLang === 'ru' ? `
                                     <div class="flex justify-between items-center text-[11px] text-gray-400 font-mono mt-0.5">
-                                        <span>≈ ${minFobRub.toLocaleString()} ₽</span>
-                                        <span class="text-gray-500 font-medium">+ $1,500 услуги</span>
+                                        <span>FOB от $${minFob.toLocaleString()}</span>
+                                        <span class="text-gray-500 font-medium">по курсу ЦБ</span>
                                     </div>
                                     <div class="text-[10px] text-gray-500 mt-1">
-                                        * Таможня и утильсбор рассчитываются отдельно
+                                        * Логистика и растаможка рассчитываются отдельно
                                     </div>
                                 ` : `
                                     <div class="text-[11px] text-gray-500 font-mono mt-0.5">
@@ -1851,7 +1906,7 @@
 
                     <div class="p-5 pt-0">
                         <button onclick="openCarModal('${car.id}')" class="w-full py-2.5 rounded-lg bg-surface-elevated group-hover:bg-brand group-hover:text-black border border-surface-border text-white text-xs font-bold transition">
-                            ${currentLang === 'ru' ? 'Консультация и комплектации' : 'View Trims & Request Price'}
+                            ${currentLang === 'ru' ? 'Консультация и расчет' : 'View Trims & Request Price'}
                         </button>
                     </div>
                 </div>
@@ -1915,27 +1970,15 @@
             // Mathematical calculation based on live USD rate
             const fobUsd = trim.fobUsd;
             const fobRub = Math.round(fobUsd * currentUsdRate);
-            const feeUsd = 1500;
-            const feeRub = Math.round(feeUsd * currentUsdRate);
-            const totalUsd = fobUsd + feeUsd;
-            const totalRub = fobRub + feeRub;
 
-            // RU Breakdown (FOB + $1500 services, customs calculated separately)
+            // RU Breakdown (FOB according to price list converted to Rubles)
+            const ruPriceRub = document.getElementById('modal-ru-price-rub');
             const ruFobUsd = document.getElementById('modal-ru-fob-usd');
-            const ruFobRub = document.getElementById('modal-ru-fob-rub');
-            const ruFeeUsd = document.getElementById('modal-ru-fee-usd');
-            const ruFeeRub = document.getElementById('modal-ru-fee-rub');
-            const ruTotalRub = document.getElementById('modal-ru-total-rub');
-            const ruTotalUsd = document.getElementById('modal-ru-total-usd');
             const ruBtnText = document.getElementById('modal-ru-btn-text');
 
-            if (ruFobUsd) ruFobUsd.innerText = `$${fobUsd.toLocaleString()}`;
-            if (ruFobRub) ruFobRub.innerText = `≈ ${fobRub.toLocaleString()} ₽`;
-            if (ruFeeUsd) ruFeeUsd.innerText = `$${feeUsd.toLocaleString()}`;
-            if (ruFeeRub) ruFeeRub.innerText = `≈ ${feeRub.toLocaleString()} ₽`;
-            if (ruTotalRub) ruTotalRub.innerText = `${totalRub.toLocaleString()} ₽`;
-            if (ruTotalUsd) ruTotalUsd.innerText = `$${totalUsd.toLocaleString()} (по курсу ЦБ 1 $ = ${currentUsdRate.toFixed(2)} ₽)`;
-            if (ruBtnText) ruBtnText.innerText = `Консультация по заказу (${trim.name})`;
+            if (ruPriceRub) ruPriceRub.innerText = `${fobRub.toLocaleString()} ₽`;
+            if (ruFobUsd) ruFobUsd.innerText = `$${fobUsd.toLocaleString()} • FOB по курсу ЦБ (1 $ = ${currentUsdRate.toFixed(2)} ₽)`;
+            if (ruBtnText) ruBtnText.innerText = `Консультация и расчет (${trim.name})`;
 
             // EN Breakdown (FOB Shanghai/Nansha/Khorgos)
             const enFobVal = document.getElementById('modal-en-fob-val');
@@ -1948,7 +1991,7 @@
             if (!currentModalCar) return;
             const trim = currentModalCar.trims[currentModalTrimIndex] || currentModalCar.trims[0];
             const fobRub = Math.round(trim.fobUsd * currentUsdRate);
-            const text = `Здравствуйте! Меня интересует ${currentModalCar.fullName} в комплектации "${trim.name}". Цена FOB в Китае: $${trim.fobUsd.toLocaleString()} (≈ ${fobRub.toLocaleString()} ₽) + услуги $1,500. Прошу проконсультировать по заказу и рассчитать таможню и доставку в РФ.`;
+            const text = `Здравствуйте! Меня интересует ${currentModalCar.fullName} в комплектации "${trim.name}". Цена готового к отправке авто в Китае: $${trim.fobUsd.toLocaleString()} (≈ ${fobRub.toLocaleString()} ₽). Прошу проконсультировать по заказу и рассчитать доставку и растаможку в РФ.`;
             const url = `https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
@@ -1960,6 +2003,23 @@
             const url = `https://api.whatsapp.com/send?phone=8617316540375&text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
+
+        function toggleDeliveryTooltip(btn) {
+            const tip = btn.nextElementSibling;
+            if (tip) {
+                tip.classList.toggle('opacity-100');
+                tip.classList.toggle('visible');
+                tip.classList.toggle('pointer-events-auto');
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.group\/tip')) {
+                document.querySelectorAll('.tooltip-popup').forEach(t => {
+                    t.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+                });
+            }
+        });
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
