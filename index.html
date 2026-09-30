@@ -171,8 +171,10 @@
             <a href="#hero-banners" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Популярные авто</a>
             <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Catalog & Pricing</a>
             <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Каталог и цены</a>
-            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand">Export Process</a>
-            <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand">Offices</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Export Process</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Как заказать</a>
+            <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Global Offices</a>
+            <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">О компании</a>
             <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand">FAQ</a>
         </div>
     </header>
@@ -188,10 +190,10 @@
         <!-- Slider Controls: Prev/Next & Dots -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 relative z-30 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <button onclick="prevBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Предыдущий слайд">
+                <button onclick="prevBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Previous Slide">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 </button>
-                <button onclick="nextBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Следующий слайд">
+                <button onclick="nextBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Next Slide">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </button>
             </div>
@@ -223,7 +225,7 @@
             </div>
             <!-- Brand Filter Tabs -->
             <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-4 no-scrollbar text-xs font-semibold">
-                <button onclick="filterBrand('all')" id="brand-btn-all" class="brand-tab px-4 py-2.5 rounded-lg bg-brand text-black font-bold whitespace-nowrap transition">Все марки (All)</button>
+                <button onclick="filterBrand('all')" id="brand-btn-all" class="brand-tab px-4 py-2.5 rounded-lg bg-brand text-black font-bold whitespace-nowrap transition"><span data-lang="en">All Brands</span><span data-lang="ru">Все марки</span></button>
                 <button onclick="filterBrand('Zeekr')" id="brand-btn-Zeekr" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Zeekr</button>
                 <button onclick="filterBrand('Li Auto')" id="brand-btn-Li Auto" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Li Auto</button>
                 <button onclick="filterBrand('ROX')" id="brand-btn-ROX" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">ROX</button>
@@ -236,18 +238,29 @@
                 <button onclick="filterBrand('Toyota')" id="brand-btn-Toyota" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Toyota</button>
             </div>
 
-            <!-- Dynamic Daily Exchange Rate Bar -->
-            <div class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-surface-card border border-surface-border mb-8">
+            <!-- Dynamic Daily Exchange Rate Bar (RU ONLY) -->
+            <div data-lang="ru" class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-surface-card border border-surface-border mb-8">
                 <div class="flex items-center gap-2.5">
                     <span class="w-2.5 h-2.5 rounded-full bg-brand animate-pulse"></span>
                     <span class="text-xs font-mono text-gray-300">
-                        <span data-lang="ru">Курс ЦБ РФ: <strong id="fx-rate-display" class="text-brand font-bold">1 $ = 84.43 ₽</strong> (обновляется ежедневно)</span>
-                        <span data-lang="en">Daily Central Bank FX Reference: <strong id="fx-rate-display-en" class="text-brand font-bold">1 USD = 84.43 RUB</strong></span>
+                        Курс ЦБ РФ: <strong id="fx-rate-display" class="text-brand font-bold">1 $ = 84.43 ₽</strong> (обновляется ежедневно)
                     </span>
                 </div>
                 <div class="text-[11px] font-mono text-gray-500">
-                    <span data-lang="ru">Логистика и растаможка рассчитываются отдельно</span>
-                    <span data-lang="en">FOB terms: Shanghai / Nansha / Khorgos</span>
+                    Логистика и растаможка рассчитываются отдельно
+                </div>
+            </div>
+
+            <!-- International Export Terms Bar (EN ONLY) -->
+            <div data-lang="en" class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-surface-card border border-surface-border mb-8">
+                <div class="flex items-center gap-2.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand animate-pulse"></span>
+                    <span class="text-xs font-mono text-gray-300">
+                        Direct Automotive Export Hub: <strong class="text-brand font-bold">Direct Manufacturer Allocation & Rapid Global Dispatch</strong>
+                    </span>
+                </div>
+                <div class="text-[11px] font-mono text-gray-400">
+                    FOB Dispatch Ports: Shanghai • Ningbo • Khorgos • Nansha
                 </div>
             </div>
 
@@ -351,8 +364,12 @@
                         <span class="text-xs font-mono font-bold text-brand uppercase">Headquarters</span>
                         <span class="text-xs text-gray-500 font-mono">China</span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Шанхай (Shanghai HQ)</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                    <h3 class="text-lg font-bold text-white mb-2" data-lang="en">Shanghai Headquarters</h3>
+                    <h3 class="text-lg font-bold text-white mb-2" data-lang="ru">Шанхай (Shanghai HQ)</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="en">
+                        Tier-1 direct manufacturer supply partnerships with Geely, Zeekr, Changan, BYD, and Xiaomi. Comprehensive pre-shipment diagnostic facilities in Shanghai and Ningbo deep-water ports.
+                    </p>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
                         Прямые дилерские соглашения с производителями Geely, Zeekr, Changan, BYD, Xiaomi. Собственные площадки для видеоинспекции в портах Шанхай и Нинбо.
                     </p>
                     <div class="text-xs text-gray-300 font-mono border-t border-surface-border pt-4">
@@ -365,8 +382,12 @@
                         <span class="text-xs font-mono font-bold text-brand uppercase">Middle East Hub</span>
                         <span class="text-xs text-gray-500 font-mono">UAE</span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Дубай (Dubai Office)</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                    <h3 class="text-lg font-bold text-white mb-2" data-lang="en">Dubai Regional Hub</h3>
+                    <h3 class="text-lg font-bold text-white mb-2" data-lang="ru">Дубай (Dubai Hub)</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="en">
+                        Strategic re-export and transit hub located in Jebel Ali Free Zone (JAFZA). Multi-currency transactions in USD and AED, serving Middle East, GCC, Central Asia, and Africa.
+                    </p>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
                         Транзитный хаб в свободной зоне Jebel Ali, расчеты в AED/USD, перенаправление партий авто на Ближний Восток, Кавказ и страны СНГ.
                     </p>
                     <div class="text-xs text-gray-300 font-mono border-t border-surface-border pt-4">
@@ -379,8 +400,12 @@
                         <span class="text-xs font-mono font-bold text-brand uppercase">Europe Desk</span>
                         <span class="text-xs text-gray-500 font-mono">Germany</span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Берлин (Berlin Office)</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                    <h3 class="text-lg font-bold text-white mb-2" data-lang="en">Berlin European Office</h3>
+                    <h3 class="text-lg font-bold text-white mb-2" data-lang="ru">Берлин (Berlin Office)</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="en">
+                        EU customs clearance coordination, maritime container and Ro-Ro handling through Bremerhaven and Rotterdam ports, dedicated B2B fleet supply agreements across Europe.
+                    </p>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
                         Координация европейской таможенной очистки, логистика портов Бремерхафен и Роттердам, B2B поставки в страны Европы.
                     </p>
                     <div class="text-xs text-gray-300 font-mono border-t border-surface-border pt-4">
@@ -446,7 +471,7 @@
                 <div class="space-y-4">
                     <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-9 w-auto object-contain">
                     <p class="text-xs text-gray-400 leading-relaxed max-w-sm" data-lang="en">
-                        Shanghai Motors Global Export Desk. Direct vehicle procurement, export licensing, and maritime logistics from China to global destinations.
+                        Shanghai Motors Direct Export Desk. Direct factory allocation, comprehensive pre-shipment inspections, and international container/Ro-Ro shipping from China worldwide.
                     </p>
                     <p class="text-xs text-gray-400 leading-relaxed max-w-sm" data-lang="ru">
                         Shanghai Motors. Прямой импорт и поставка автомобилей из Китая под ключ в Россию и страны СНГ без дилерских наценок.
@@ -454,8 +479,15 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">Навигация</h4>
-                    <ul class="space-y-2 text-xs text-gray-400">
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Navigation</h4>
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Навигация</h4>
+                    <ul class="space-y-2 text-xs text-gray-400" data-lang="en">
+                        <li><a href="#hero-banners" class="hover:text-brand transition">Top Models</a></li>
+                        <li><a href="#catalog" class="hover:text-brand transition">Vehicle Catalog</a></li>
+                        <li><a href="#process" class="hover:text-brand transition">Export Process</a></li>
+                        <li><a href="#offices" class="hover:text-brand transition">Global Offices</a></li>
+                    </ul>
+                    <ul class="space-y-2 text-xs text-gray-400" data-lang="ru">
                         <li><a href="#hero-banners" class="hover:text-brand transition">Популярные модели</a></li>
                         <li><a href="#catalog" class="hover:text-brand transition">Каталог авто</a></li>
                         <li><a href="#process" class="hover:text-brand transition">Регламент работы</a></li>
@@ -464,9 +496,10 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">Официальные контакты</h4>
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Official Channels</h4>
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Официальные контакты</h4>
                     
-                    <!-- EN SOCIALS -->
+                    <!-- EN SOCIALS (WhatsApp, Instagram Global, LinkedIn) -->
                     <div data-lang="en" class="space-y-2 text-xs text-gray-400">
                         <div>
                             <a href="https://api.whatsapp.com/send?phone=8617316540375" target="_blank" class="hover:text-brand transition flex items-center gap-2">
@@ -485,7 +518,7 @@
                         </div>
                     </div>
 
-                    <!-- RU SOCIALS -->
+                    <!-- RU SOCIALS (WhatsApp, Telegram, Instagram Official, MAX) -->
                     <div data-lang="ru" class="space-y-2 text-xs text-gray-400">
                         <div>
                             <a href="https://api.whatsapp.com/send?phone=8617316540375" target="_blank" class="hover:text-brand transition flex items-center gap-2">
@@ -511,8 +544,12 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">Экспорт и таможня</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-3">
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Export & Compliance</h4>
+                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Экспорт и таможня</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-3" data-lang="en">
+                        All global vehicle deliveries are backed by official commercial export contracts, verified factory inspection, and maritime insurance.
+                    </p>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-3" data-lang="ru">
                         Все поставки оформляются по прямому внешнеторговому контракту с полной юридической гарантией.
                     </p>
                     <div class="text-[11px] text-gray-500 font-mono">
@@ -581,20 +618,24 @@
                         </div>
                         <div class="grid grid-cols-2 gap-3 text-xs">
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase">Двигатель / Drive</span>
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="en">Powertrain</span>
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="ru">Двигатель</span>
                                 <span id="spec-drive" class="text-white font-bold font-mono">Dual-Motor AWD</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase">Мощность / Power</span>
-                                <span id="spec-power" class="text-white font-bold font-mono">789 л.с.</span>
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="en">Output Power</span>
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="ru">Мощность</span>
+                                <span id="spec-power" class="text-white font-bold font-mono">789 hp</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase">Разгон 0-100 / 0-100</span>
-                                <span id="spec-accel" class="text-brand font-bold font-mono">3.3 сек</span>
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="en">0-100 km/h</span>
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="ru">Разгон 0-100</span>
+                                <span id="spec-accel" class="text-brand font-bold font-mono">3.3 s</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase">Запас хода / Range</span>
-                                <span id="spec-range" class="text-white font-bold font-mono">705 км (CLTC)</span>
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="en">Cruising Range</span>
+                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="ru">Запас хода</span>
+                                <span id="spec-range" class="text-white font-bold font-mono">705 km (CLTC)</span>
                             </div>
                         </div>
                     </div>
@@ -1671,12 +1712,42 @@
             }
         }
 
+        // Specification and Trim Formatting Helpers for Language Parity
+        function formatDrive(drive, lang) {
+            if (lang === 'ru') return drive;
+            if (drive.includes('AWD')) return 'AWD';
+            if (drive.includes('RWD')) return 'RWD';
+            if (drive.includes('FWD')) return 'FWD';
+            return drive;
+        }
+
+        function formatPower(power, lang) {
+            if (lang === 'ru') return power;
+            return power.replace(/л\.с\./g, 'hp');
+        }
+
+        function formatAccel(accel, lang) {
+            if (lang === 'ru') return accel;
+            return accel.replace(/сек/g, 's');
+        }
+
+        function formatRange(range, lang) {
+            if (lang === 'ru') return range;
+            return range.replace(/км/g, 'km');
+        }
+
+        function formatTrimName(name, lang) {
+            if (lang === 'ru') return name;
+            return name
+                .replace(/3-х моторный/g, 'Tri-Motor')
+                .replace(/(\d+)\s*мест(а|о)?/g, '$1-Seater')
+                .replace(/\((\d+)\s*мест\)/g, '($1-Seat)');
+        }
+
         function updateRateDisplay() {
             const rateStr = currentUsdRate.toFixed(2);
             const elRu = document.getElementById('fx-rate-display');
-            const elEn = document.getElementById('fx-rate-display-en');
             if (elRu) elRu.innerText = `1 $ = ${rateStr} ₽`;
-            if (elEn) elEn.innerText = `1 USD = ${rateStr} RUB`;
         }
 
         function initLanguage() {
@@ -1711,6 +1782,24 @@
             currentLang = lang;
             localStorage.setItem('shanghai_motors_lang', lang);
             document.documentElement.lang = lang;
+
+            // Toggle CSS classes on root
+            document.documentElement.classList.remove('lang-en', 'lang-ru');
+            document.documentElement.classList.add('lang-' + lang);
+
+            if (lang === 'en') {
+                document.title = 'SHANGHAI MOTORS — Direct Automotive Export from China | Worldwide Delivery';
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.setAttribute('content', 'Direct manufacturer automotive export from China: Zeekr, Xiaomi, Avatr, Li Auto, Changan, BYD. Global FOB/CIF shipping with transparent export pricing and official documentation.');
+            } else {
+                document.title = 'SHANGHAI MOTORS — Заказ авто из Китая под ключ | Direct Automotive Export';
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.setAttribute('content', 'Прямой импорт и экспорт автомобилей из Китая: Zeekr, Xiaomi, Avatr, Li Auto, Changan, BYD без дилерских наценок с доставкой и прозрачным расчетом цены под ключ.');
+            }
+
+            // Toggle CSS classes on root
+            document.documentElement.classList.remove('lang-en', 'lang-ru');
+            document.documentElement.classList.add(`lang-${lang}`);
 
             document.querySelectorAll('[data-lang]').forEach(el => {
                 if (el.getAttribute('data-lang') === lang) {
@@ -1872,16 +1961,16 @@
                             </div>
 
                             <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-400 bg-surface-base p-2.5 rounded-lg border border-surface-border mb-4 font-mono">
-                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${firstTrim.drive}</div>
-                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${firstTrim.power}</div>
-                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${firstTrim.accel}</div>
-                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Запас хода:' : 'Range:'}</span> ${firstTrim.range}</div>
+                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${formatDrive(firstTrim.drive, currentLang)}</div>
+                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${formatPower(firstTrim.power, currentLang)}</div>
+                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${formatAccel(firstTrim.accel, currentLang)}</div>
+                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Запас хода:' : 'Range:'}</span> ${formatRange(firstTrim.range, currentLang)}</div>
                             </div>
 
                             <div class="pt-2 border-t border-surface-border">
                                 <div class="flex justify-between items-baseline">
                                     <span class="text-xs text-gray-400 uppercase font-mono">
-                                        ${currentLang === 'ru' ? 'Готов к отправке:' : 'FOB Price (China):'}
+                                        ${currentLang === 'ru' ? 'Готов к отправке:' : 'Price in China (FOB):'}
                                     </span>
                                     <span class="text-lg font-bold font-mono text-brand">
                                         ${currentLang === 'ru' ? `от ${minFobRub.toLocaleString()} ₽` : `$${minFob.toLocaleString()}`}
@@ -1924,11 +2013,11 @@
             document.getElementById('modal-car-title').innerText = car.fullName;
             document.getElementById('modal-car-img').src = car.img;
 
-            // Render Trims Pills
+            // Render Trims Pills with language formatting
             const trimsContainer = document.getElementById('modal-trims-container');
             trimsContainer.innerHTML = car.trims.map((trim, idx) => `
                 <button type="button" onclick="selectModalTrim(${idx})" id="trim-pill-${idx}" class="trim-pill px-3.5 py-2 rounded-lg text-xs font-mono font-medium transition ${idx === 0 ? 'bg-brand text-black font-bold' : 'bg-surface-elevated text-gray-300 hover:text-white border border-surface-border'}">
-                    ${trim.name}
+                    ${formatTrimName(trim.name, currentLang)}
                 </button>
             `).join('');
 
@@ -1961,11 +2050,11 @@
             if (!currentModalCar) return;
             const trim = currentModalCar.trims[idx] || currentModalCar.trims[0];
 
-            // Specs
-            document.getElementById('spec-drive').innerText = trim.drive;
-            document.getElementById('spec-power').innerText = trim.power;
-            document.getElementById('spec-accel').innerText = trim.accel;
-            document.getElementById('spec-range').innerText = trim.range;
+            // Specs with language formatting
+            document.getElementById('spec-drive').innerText = formatDrive(trim.drive, currentLang);
+            document.getElementById('spec-power').innerText = formatPower(trim.power, currentLang);
+            document.getElementById('spec-accel').innerText = formatAccel(trim.accel, currentLang);
+            document.getElementById('spec-range').innerText = formatRange(trim.range, currentLang);
 
             // Mathematical calculation based on live USD rate
             const fobUsd = trim.fobUsd;
@@ -1984,7 +2073,7 @@
             const enFobVal = document.getElementById('modal-en-fob-val');
             const enBtnText = document.getElementById('modal-en-btn-text');
             if (enFobVal) enFobVal.innerText = `$${fobUsd.toLocaleString()}`;
-            if (enBtnText) enBtnText.innerText = `Request price in your city (${trim.name})`;
+            if (enBtnText) enBtnText.innerText = `Request price in your city (${formatTrimName(trim.name, 'en')})`;
         }
 
         function orderVehicleTelegram() {
@@ -1999,7 +2088,7 @@
         function requestPriceInCity() {
             if (!currentModalCar) return;
             const trim = currentModalCar.trims[currentModalTrimIndex] || currentModalCar.trims[0];
-            const text = `Hello Shanghai Motors! I am interested in ordering ${currentModalCar.fullName} (${trim.name}), FOB (Shanghai/Nansha/Khorgos): $${trim.fobUsd.toLocaleString()}. Please calculate the final landed price to my city.`;
+            const text = `Hello Shanghai Motors! I am interested in ordering ${currentModalCar.fullName} (${formatTrimName(trim.name, 'en')}), FOB (Shanghai/Nansha/Khorgos): $${trim.fobUsd.toLocaleString()}. Please calculate the landed delivery price to my destination port/city.`;
             const url = `https://api.whatsapp.com/send?phone=8617316540375&text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
@@ -2014,7 +2103,7 @@
         }
 
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.group\/tip')) {
+            if (!e.target.closest('.group\\/tip')) {
                 document.querySelectorAll('.tooltip-popup').forEach(t => {
                     t.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
                 });
