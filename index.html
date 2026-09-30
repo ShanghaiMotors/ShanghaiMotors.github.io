@@ -219,18 +219,34 @@
                     </p>
                 </div>
             </div>
-
             <!-- Brand Filter Tabs -->
-            <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar text-xs font-semibold">
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-4 no-scrollbar text-xs font-semibold">
                 <button onclick="filterBrand('all')" id="brand-btn-all" class="brand-tab px-4 py-2.5 rounded-lg bg-brand text-black font-bold whitespace-nowrap transition">Все марки (All)</button>
                 <button onclick="filterBrand('Zeekr')" id="brand-btn-Zeekr" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Zeekr</button>
+                <button onclick="filterBrand('Li Auto')" id="brand-btn-Li Auto" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Li Auto</button>
+                <button onclick="filterBrand('ROX')" id="brand-btn-ROX" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">ROX</button>
+                <button onclick="filterBrand('Lynk & Co')" id="brand-btn-Lynk" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Lynk & Co</button>
                 <button onclick="filterBrand('Xiaomi')" id="brand-btn-Xiaomi" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Xiaomi</button>
                 <button onclick="filterBrand('Voyah')" id="brand-btn-Voyah" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Voyah</button>
-                <button onclick="filterBrand('XPeng')" id="brand-btn-XPeng" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">XPeng</button>
-                <button onclick="filterBrand('Lynk & Co')" id="brand-btn-Lynk" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Lynk & Co</button>
                 <button onclick="filterBrand('Avatr')" id="brand-btn-Avatr" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Avatr</button>
+                <button onclick="filterBrand('XPeng')" id="brand-btn-XPeng" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">XPeng</button>
                 <button onclick="filterBrand('Changan')" id="brand-btn-Changan" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Changan / NEVO</button>
                 <button onclick="filterBrand('Toyota')" id="brand-btn-Toyota" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Toyota</button>
+            </div>
+
+            <!-- Dynamic Daily Exchange Rate Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-surface-card border border-surface-border mb-8">
+                <div class="flex items-center gap-2.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand animate-pulse"></span>
+                    <span class="text-xs font-mono text-gray-300">
+                        <span data-lang="ru">Курс ЦБ РФ: <strong id="fx-rate-display" class="text-brand font-bold">1 $ = 84.43 ₽</strong> (обновляется ежедневно)</span>
+                        <span data-lang="en">Daily Central Bank FX Reference: <strong id="fx-rate-display-en" class="text-brand font-bold">1 USD = 84.43 RUB</strong></span>
+                    </span>
+                </div>
+                <div class="text-[11px] font-mono text-gray-500">
+                    <span data-lang="ru">Таможня и утильсбор рассчитываются отдельно | Услуги $1,500</span>
+                    <span data-lang="en">FOB terms: Shanghai / Nansha / Khorgos</span>
+                </div>
             </div>
 
             <!-- Catalog Cards Grid -->
@@ -581,88 +597,98 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Right: Detailed Price Breakdown & Order Action -->
                 <div class="lg:col-span-6 space-y-6">
                     <!-- RU Price Breakdown -->
                     <div data-lang="ru" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
                         <div class="flex justify-between items-center pb-3 border-b border-surface-border">
-                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Маршрут доставки</span>
-                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2 py-0.5 rounded border border-brand/20">Прямой (РФ)</span>
+                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Условия поставки</span>
+                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2 py-0.5 rounded border border-brand/20">FOB Хоргос / Суйфэньхэ / Шанхай</span>
                         </div>
 
-                        <div class="space-y-2.5 text-xs">
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Инвойс авто в Китае:</span>
-                                <span id="modal-calc-invoice" class="font-mono text-white font-medium">3,631,500 ₽</span>
+                        <div class="space-y-3 text-xs">
+                            <div class="flex justify-between items-start text-gray-300">
+                                <div>
+                                    <span class="text-white font-medium block">Цена автомобиля в Китае (FOB):</span>
+                                    <span class="text-[11px] text-gray-500">Хоргос / Суйфэньхэ / Шанхай / Наньша</span>
+                                </div>
+                                <div class="text-right">
+                                    <span id="modal-ru-fob-usd" class="font-mono text-white font-bold block text-sm">$73,250</span>
+                                    <span id="modal-ru-fob-rub" class="font-mono text-gray-400 text-[11px]">≈ 6,184,598 ₽</span>
+                                </div>
                             </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Таможенная пошлина РФ:</span>
-                                <span id="modal-calc-duty" class="font-mono text-white font-medium">1,139,894 ₽</span>
+
+                            <div class="flex justify-between items-start text-gray-300 pt-2 border-t border-surface-border/50">
+                                <div>
+                                    <span class="text-white font-medium block">Статья расходов (сопровождение сделки):</span>
+                                    <span class="text-[11px] text-gray-500">Подбор, экспортная лицензия, инспекция, документы</span>
+                                </div>
+                                <div class="text-right">
+                                    <span id="modal-ru-fee-usd" class="font-mono text-white font-bold block text-sm">$1,500</span>
+                                    <span id="modal-ru-fee-rub" class="font-mono text-gray-400 text-[11px]">≈ 126,645 ₽</span>
+                                </div>
                             </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Утилизационный сбор РФ:</span>
-                                <span id="modal-calc-util" class="font-mono text-white font-medium">1,560,000 ₽</span>
-                            </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Доставка и автовоз до Москвы:</span>
-                                <span id="modal-calc-freight" class="font-mono text-white font-medium">300,000 ₽</span>
-                            </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>СБКТС, ЭПТС и оформление брокера:</span>
-                                <span id="modal-calc-broker" class="font-mono text-white font-medium">200,000 ₽</span>
+
+                            <div class="pt-3 border-t border-surface-border">
+                                <span class="text-xs text-gray-400 uppercase font-mono block">Итого базовая стоимость (FOB + $1,500):</span>
+                                <div id="modal-ru-total-rub" class="text-2xl sm:text-3xl font-extrabold font-mono text-brand mt-1">
+                                    6,311,243 ₽
+                                </div>
+                                <div id="modal-ru-total-usd" class="text-xs text-gray-400 font-mono mt-1">
+                                    $74,750 (по курсу ЦБ РФ)
+                                </div>
                             </div>
                         </div>
 
-                        <div class="pt-4 border-t border-surface-border">
-                            <span class="text-xs text-gray-400 uppercase font-mono block">Итоговая стоимость под ключ:</span>
-                            <div id="modal-calc-grand-total" class="text-2xl sm:text-3xl font-extrabold font-mono text-brand mt-1">
-                                6,831,394 ₽
+                        <!-- Customs & Util Notice -->
+                        <div class="p-3.5 bg-brand/5 border border-brand/20 rounded-xl space-y-1">
+                            <div class="flex items-center gap-1.5 text-brand text-xs font-bold font-mono">
+                                <span>ℹ️</span>
+                                <span>Таможня и утильсбор рассчитываются отдельно</span>
                             </div>
-                            <div id="modal-calc-usd-total" class="text-xs text-gray-500 font-mono mt-1">
-                                ~ $75,070 по курсу ЦБ
-                            </div>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">
+                                Таможенная пошлина РФ, коммерческий утильсбор и доставка автовозом рассчитываются отдельно под параметры вашего заказа (тип двигателя, мощность, статус покупателя).
+                            </p>
                         </div>
 
-                        <button onclick="orderVehicleTelegram()" class="w-full bg-brand hover:bg-brand-hover text-black font-extrabold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-4 shadow-lg shadow-brand/10">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                            <span id="modal-order-btn-text">Заказать этот автомобиль</span>
+                        <button onclick="orderVehicleTelegram()" class="w-full bg-brand hover:bg-brand-hover text-black font-extrabold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-4 shadow-lg shadow-brand/10 group">
+                            <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                            <span id="modal-ru-btn-text">Консультация по заказу</span>
                         </button>
                     </div>
 
                     <!-- EN Price Breakdown -->
                     <div data-lang="en" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
                         <div class="flex justify-between items-center pb-3 border-b border-surface-border">
-                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Export Pricing Framework</span>
-                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2 py-0.5 rounded border border-brand/20">FOB Shanghai</span>
+                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Export Pricing</span>
+                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2 py-0.5 rounded border border-brand/20">FOB (Shanghai / Nansha / Khorgos)</span>
                         </div>
 
                         <div class="space-y-3 text-xs">
                             <div class="flex justify-between items-center text-gray-300">
-                                <span>Vehicle Price in China (FOB):</span>
-                                <span id="modal-en-fob" class="font-mono text-white font-bold text-sm">$37,400</span>
+                                <div>
+                                    <span class="text-white font-medium block">Price in China (FOB):</span>
+                                    <span class="text-[11px] text-gray-500">Port handover & export clearance included</span>
+                                </div>
+                                <span id="modal-en-fob-val" class="font-mono text-brand font-extrabold text-xl sm:text-2xl">$73,250</span>
                             </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Domestic China Sourcing Price:</span>
-                                <span id="modal-en-cny" class="font-mono text-gray-400">269,000 ¥</span>
+                            <div class="flex justify-between items-center text-gray-400 pt-2 border-t border-surface-border/50 text-[11px]">
+                                <span>Export Licensing & Full Inspection:</span>
+                                <span class="text-white font-mono font-medium">Included</span>
                             </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Estimated Ocean Freight:</span>
-                                <span class="font-mono text-gray-300">~$2,200 (Ro-Ro / Container)</span>
-                            </div>
-                            <div class="flex justify-between items-center text-brand font-bold pt-2 border-t border-surface-border">
-                                <span>Estimated CIF Total to Port:</span>
-                                <span id="modal-en-cif" class="font-mono text-base font-extrabold">~$39,600</span>
+                            <div class="flex justify-between items-center text-gray-400 text-[11px]">
+                                <span>Original Certificate of Origin & Paperwork:</span>
+                                <span class="text-white font-mono font-medium">Included</span>
                             </div>
                         </div>
 
                         <div class="p-3 bg-surface-card rounded-lg border border-surface-border text-[11px] text-gray-400 leading-relaxed">
-                            * Final landed cost depends on your country's customs tariff and import VAT. We provide full export declaration, Certificate of Origin, and maritime Bill of Lading.
+                            * FOB terms include direct factory procurement, export licensing, and port handover in Shanghai, Nansha, or Khorgos. Sea freight, destination customs clearance, and inland delivery are calculated specifically for your city and country.
                         </div>
 
-                        <button onclick="orderVehicleWhatsApp()" class="w-full bg-brand hover:bg-brand-hover text-black font-extrabold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-4 shadow-lg shadow-brand/10">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-12.416c-5.514 0-10 4.486-10 10 0 1.83.498 3.546 1.363 5.019l-1.394 5.093 5.234-1.373c1.42.793 3.051 1.261 4.797 1.261 5.514 0 10-4.486 10-10s-4.486-10-10-10z"/></svg>
-                            <span>Request CIF Port Quote via WhatsApp</span>
+                        <button onclick="requestPriceInCity()" class="w-full bg-brand hover:bg-brand-hover text-black font-extrabold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-4 shadow-lg shadow-brand/10 group">
+                            <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-12.416c-5.514 0-10 4.486-10 10 0 1.83.498 3.546 1.363 5.019l-1.394 5.093 5.234-1.373c1.42.793 3.051 1.261 4.797 1.261 5.514 0 10-4.486 10-10s-4.486-10-10-10z"/></svg>
+                            <span id="modal-en-btn-text">Request price in your city</span>
                         </button>
                     </div>
                 </div>
@@ -673,7 +699,7 @@
     <!-- CORE SCRIPTS & DATABASE -->
     <script>
         // 1. POPULAR HERO BANNERS DATABASE
-        const heroBanners = [
+                const heroBanners = [
             {
                 id: 'zeekr-9x',
                 brand: 'Zeekr',
@@ -681,270 +707,167 @@
                 tagRu: 'Хит продаж',
                 tagEn: 'Best Seller',
                 tagClass: 'bg-brand/10 text-brand border-brand/30',
-                descRu: 'Воплощение мощности, роскоши и передовых технологий',
-                descEn: 'The pinnacle of luxury power and intelligent technology',
-                priceRu: 'от 11 502 202 ₽',
-                priceEn: 'from $79,250 CIP',
+                descRu: 'Воплощение мощности, роскоши и передовых технологий (до 1 401 л.с.)',
+                descEn: 'The pinnacle of luxury power and intelligent technology (up to 1,401 hp)',
+                priceRu: 'FOB от $73,250',
+                priceEn: 'FOB from $73,250',
                 img: 'assets/banners/banner_1.jpg'
-            },
-            {
-                id: 'lynk-06',
-                brand: 'Lynk & Co',
-                model: 'Lynk & Co 06',
-                tagRu: 'Эксклюзив',
-                tagEn: 'Exclusive',
-                tagClass: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
-                descRu: 'Семейный кроссовер по льготному утильсбору',
-                descEn: 'Family crossover with compact dimensions and high efficiency',
-                priceRu: 'от 2 673 527 ₽',
-                priceEn: 'from $18,200 FOB',
-                img: 'assets/banners/banner_2.jpg'
-            },
-            {
-                id: 'nevo-a06',
-                brand: 'Changan',
-                model: 'NEVO A06',
-                tagRu: 'Хит продаж',
-                tagEn: 'Best Seller',
-                tagClass: 'bg-brand/10 text-brand border-brand/30',
-                descRu: 'Гибридный седан по льготному утильсбору',
-                descEn: 'Plug-in hybrid aerodynamic sedan with 1,000+ km range',
-                priceRu: 'от 2 627 114 ₽',
-                priceEn: 'from $16,800 FOB',
-                img: 'assets/banners/banner_3.jpg'
-            },
-            {
-                id: 'nevo-q05',
-                brand: 'Changan',
-                model: 'NEVO Q05',
-                tagRu: 'Хит продаж',
-                tagEn: 'Best Seller',
-                tagClass: 'bg-brand/10 text-brand border-brand/30',
-                descRu: 'Семейный электромобиль по льготному утильсбору',
-                descEn: 'Family electric smart compact SUV',
-                priceRu: 'от 2 268 400 ₽',
-                priceEn: 'from $15,100 FOB',
-                img: 'assets/banners/banner_4.jpg'
-            },
-            {
-                id: 'voyah-taishan',
-                brand: 'Voyah',
-                model: 'Voyah Taishan',
-                tagRu: 'Новинка',
-                tagEn: 'New Release',
-                tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
-                descRu: 'Продуманный комфорт без компромиссов',
-                descEn: 'Full-size flagship comfort without compromises',
-                priceRu: 'от 8 234 053 ₽',
-                priceEn: 'from $66,300 CIP',
-                img: 'assets/banners/banner_5.jpg'
             },
             {
                 id: 'zeekr-8x',
                 brand: 'Zeekr',
                 model: 'Zeekr 8X',
-                tagRu: 'Новинка',
-                tagEn: 'New Release',
-                tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
-                descRu: 'Эволюция драйва в безупречной форме',
-                descEn: 'Evolution of electric performance in impeccable style',
-                priceRu: 'от 9 750 000 ₽',
-                priceEn: 'from $67,100 CIP',
+                tagRu: 'Премиум SUV',
+                tagEn: 'Luxury SUV',
+                tagClass: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
+                descRu: 'Флагманский гибридный внедорожник с запасом хода до 1,416 км',
+                descEn: 'Flagship hybrid SUV with up to 1,416 km combined range',
+                priceRu: 'FOB от $62,600',
+                priceEn: 'FOB from $62,600',
                 img: 'assets/banners/banner_6.jpg'
             },
             {
-                id: 'toyota-bz3x',
-                brand: 'Toyota',
-                model: 'Toyota bZ3X',
-                tagRu: 'Хит продаж',
-                tagEn: 'Best Seller',
-                tagClass: 'bg-brand/10 text-brand border-brand/30',
-                descRu: 'Доступный электрический кроссовер',
-                descEn: 'Accessible modern electric crossover with Toyota reliability',
-                priceRu: 'от 2 932 192 ₽',
-                priceEn: 'from $19,800 FOB',
-                img: 'assets/banners/banner_7.jpg'
+                id: 'li-l9',
+                brand: 'Li Auto',
+                model: 'Li L9 LIVIS',
+                tagRu: 'VIP Комфорт',
+                tagEn: 'Flagship REEV',
+                tagClass: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
+                descRu: 'Роскошный представительский 6-местный кроссовер с пневмоподвеской',
+                descEn: 'Executive 6-seat luxury SUV with ultimate interior comfort',
+                priceRu: 'FOB $86,500',
+                priceEn: 'FOB $86,500',
+                img: 'assets/cars/li-l9.png'
+            },
+            {
+                id: 'li-l8',
+                brand: 'Li Auto',
+                model: 'Li L8 LIVIS',
+                tagRu: 'Семейный премиум',
+                tagEn: 'Family Luxury',
+                tagClass: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
+                descRu: 'Премиальный гибридный кроссовер для комфортных семейных путешествий',
+                descEn: 'Premium family smart SUV with extended range powertrain',
+                priceRu: 'FOB $75,500',
+                priceEn: 'FOB $75,500',
+                img: 'assets/cars/li-l8.png'
+            },
+            {
+                id: 'lynk-900',
+                brand: 'Lynk & Co',
+                model: '2026 Lynk & Co 900',
+                tagRu: 'Бизнес-класс',
+                tagEn: 'Business Flagship',
+                tagClass: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+                descRu: 'Интеллектуальный флагман EM-P мощностью до 884 л.с.',
+                descEn: 'Intelligent EM-P flagship SUV with up to 884 hp',
+                priceRu: 'FOB от $40,500',
+                priceEn: 'FOB from $40,500',
+                img: 'assets/cars/lynk-co-900.png'
+            },
+            {
+                id: 'rox-adamas',
+                brand: 'ROX',
+                model: 'ROX ADAMAS',
+                tagRu: 'Экспедиционный класс',
+                tagEn: 'Luxury Expedition',
+                tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+                descRu: 'Брутальный внедорожник повышенной проходимости (6 и 7 мест)',
+                descEn: 'Rugged luxury all-terrain SUV (6 & 7 seat configurations)',
+                priceRu: 'FOB от $59,100',
+                priceEn: 'FOB from $59,100',
+                img: 'assets/cars/rox-adamas.png'
+            },
+            {
+                id: 'rox-01',
+                brand: 'ROX',
+                model: 'ROX 01',
+                tagRu: 'Внедорожник',
+                tagEn: 'Adventure SUV',
+                tagClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+                descRu: 'Экспедиционный гибридный внедорожник с запасом хода 1,338 км',
+                descEn: 'Adventure hybrid SUV with 1,338 km range and smart 4WD',
+                priceRu: 'FOB от $45,400',
+                priceEn: 'FOB from $45,400',
+                img: 'assets/cars/rox-01.png'
             }
         ];
 
         // 2. VEHICLE CATALOG & PRICE CONFIGURATION DATABASE
         const catalogDatabase = [
         {
-                "id": "xiaomi-su7",
-                "brand": "Xiaomi",
-                "model": "SU7",
-                "fullName": "Xiaomi SU7 Fastback",
-                "year": "2024–2026",
-                "img": "assets/cars/su7_preview.png",
-                "trimsCount": 5,
-                "minPriceRu": 6631464,
-                "minPriceFob": 30000,
-                "trims": [
-                        {
-                                "name": "Base",
-                                "power": "299 л.с.",
-                                "accel": "5.3 сек",
-                                "range": "700 км (CLTC)",
-                                "drive": "Задний (RWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 2914650,
-                                "invoiceCny": 215900,
-                                "fobUsd": 30000,
-                                "dutyRub": 1139894,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 6631464,
-                                "cifUsd": 32200
-                        },
-                        {
-                                "name": "Pro",
-                                "power": "299 л.с.",
-                                "accel": "5.7 сек",
-                                "range": "830 км (CLTC)",
-                                "drive": "Задний (RWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 3319650,
-                                "invoiceCny": 245900,
-                                "fobUsd": 34200,
-                                "dutyRub": 1291745,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 7125732,
-                                "cifUsd": 36400
-                        },
-                        {
-                                "name": "Max",
-                                "power": "691 л.с.",
-                                "accel": "2.78 сек",
-                                "range": "800 км (CLTC)",
-                                "drive": "Полный (AWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 4048650,
-                                "invoiceCny": 299900,
-                                "fobUsd": 41700,
-                                "dutyRub": 2192128,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 10730970,
-                                "cifUsd": 43900
-                        },
-                        {
-                                "name": "Ultra",
-                                "power": "1,548 л.с.",
-                                "accel": "1.98 сек",
-                                "range": "630 км (CLTC)",
-                                "drive": "Полный (AWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 11001150,
-                                "invoiceCny": 814900,
-                                "fobUsd": 113000,
-                                "dutyRub": 4622761,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 16460004,
-                                "cifUsd": 115200
-                        },
-                        {
-                                "name": "Ultra Track Edition",
-                                "power": "1,548 л.с.",
-                                "accel": "1.98 сек",
-                                "range": "630 км (CLTC)",
-                                "drive": "Полный (AWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 12400000,
-                                "invoiceCny": 918000,
-                                "fobUsd": 132000,
-                                "dutyRub": 5136466,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 18383408,
-                                "cifUsd": 134500
-                        }
-                ]
-        },
-        {
                 "id": "zeekr-9x",
                 "brand": "Zeekr",
                 "model": "9X",
                 "fullName": "Zeekr 9X Flagship SUV",
+                "category": "Premium",
                 "year": "2025–2026",
                 "img": "assets/banners/banner_1.jpg",
-                "trimsCount": 4,
-                "minPriceRu": 11510336,
-                "minPriceFob": 79250,
+                "trimsCount": 7,
+                "minPriceFob": 73250,
                 "trims": [
                         {
-                                "name": "MAX",
+                                "name": "MAX (6 мест)",
+                                "fobUsd": 73250,
                                 "power": "898 л.с.",
                                 "accel": "3.9 сек",
                                 "range": "1,200 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 6519344,
-                                "invoiceCny": 335000,
-                                "fobUsd": 79250,
-                                "dutyRub": 2219702,
-                                "utilRub": 1560000,
-                                "freightRub": 320000,
-                                "brokerRub": 200000,
-                                "totalRub": 11510336,
-                                "cifUsd": 81450
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
-                                "name": "ULTRA",
+                                "name": "ULTRA (6 мест)",
+                                "fobUsd": 78300,
                                 "power": "898 л.с.",
                                 "accel": "3.9 сек",
                                 "range": "1,160 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 6948322,
-                                "invoiceCny": 366000,
-                                "fobUsd": 84300,
-                                "dutyRub": 2420000,
-                                "utilRub": 1560000,
-                                "freightRub": 320000,
-                                "brokerRub": 200000,
-                                "totalRub": 11939314,
-                                "cifUsd": 86500
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
-                                "name": "HYPER",
+                                "name": "HYPER (6 мест)",
+                                "fobUsd": 90300,
                                 "power": "1,401 л.с.",
                                 "accel": "3.1 сек",
                                 "range": "1,165 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 7966044,
-                                "invoiceCny": 430000,
-                                "fobUsd": 96300,
-                                "dutyRub": 2850000,
-                                "utilRub": 1560000,
-                                "freightRub": 320000,
-                                "brokerRub": 200000,
-                                "totalRub": 12955778,
-                                "cifUsd": 98500
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
-                                "name": "BLACK OBSIDIAN",
+                                "name": "BLACK OBSIDIAN (6 мест)",
+                                "fobUsd": 96100,
                                 "power": "1,401 л.с.",
                                 "accel": "3.1 сек",
                                 "range": "1,165 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 8457922,
-                                "invoiceCny": 460000,
-                                "fobUsd": 102100,
-                                "dutyRub": 3050000,
-                                "utilRub": 1560000,
-                                "freightRub": 320000,
-                                "brokerRub": 200000,
-                                "totalRub": 13447656,
-                                "cifUsd": 104300
+                                "engineType": "Гибрид (PHEV)"
+                        },
+                        {
+                                "name": "ULTRA (5 мест)",
+                                "fobUsd": 78300,
+                                "power": "898 л.с.",
+                                "accel": "3.9 сек",
+                                "range": "1,160 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (PHEV)"
+                        },
+                        {
+                                "name": "HYPER (5 мест)",
+                                "fobUsd": 90300,
+                                "power": "1,401 л.с.",
+                                "accel": "3.1 сек",
+                                "range": "1,165 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (PHEV)"
+                        },
+                        {
+                                "name": "BLACK OBSIDIAN (5 мест)",
+                                "fobUsd": 96100,
+                                "power": "1,401 л.с.",
+                                "accel": "3.1 сек",
+                                "range": "1,165 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (PHEV)"
                         }
                 ]
         },
@@ -953,79 +876,269 @@
                 "brand": "Zeekr",
                 "model": "8X",
                 "fullName": "Zeekr 8X Luxury SUV",
+                "category": "Premium",
                 "year": "2025–2026",
                 "img": "assets/banners/banner_6.jpg",
                 "trimsCount": 4,
-                "minPriceRu": 10546708,
-                "minPriceFob": 67100,
+                "minPriceFob": 62600,
                 "trims": [
                         {
-                                "name": "Max",
+                                "name": "MAX",
+                                "fobUsd": 62600,
                                 "power": "898 л.с.",
                                 "accel": "3.7 сек",
                                 "range": "1,362 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 5555516,
-                                "invoiceCny": 285000,
-                                "fobUsd": 67100,
-                                "dutyRub": 1950000,
-                                "utilRub": 1560000,
-                                "freightRub": 320000,
-                                "brokerRub": 200000,
-                                "totalRub": 10546708,
-                                "cifUsd": 69300
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
-                                "name": "Ultra",
+                                "name": "ULTRA",
+                                "fobUsd": 66500,
                                 "power": "898 л.с.",
                                 "accel": "3.7 сек",
                                 "range": "1,357 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 5887628,
-                                "invoiceCny": 307000,
-                                "fobUsd": 71100,
-                                "dutyRub": 2100000,
-                                "utilRub": 1560000,
-                                "freightRub": 320000,
-                                "brokerRub": 200000,
-                                "totalRub": 10877562,
-                                "cifUsd": 73300
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
-                                "name": "Ultra+",
+                                "name": "ULTRA+",
+                                "fobUsd": 73000,
                                 "power": "898 л.с.",
                                 "accel": "3.7 сек",
                                 "range": "1,416 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 6438632,
-                                "invoiceCny": 340000,
-                                "fobUsd": 77500,
-                                "dutyRub": 2320000,
-                                "utilRub": 1560000,
-                                "freightRub": 320000,
-                                "brokerRub": 200000,
-                                "totalRub": 11429824,
-                                "cifUsd": 79700
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
-                                "name": "Dawn",
+                                "name": "OBSIDIAN SHADOW",
+                                "fobUsd": 82900,
                                 "power": "1,401 л.с.",
                                 "accel": "3.0 сек",
                                 "range": "1,210 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 7276460,
-                                "invoiceCny": 392000,
-                                "fobUsd": 87500,
-                                "dutyRub": 2680000,
-                                "utilRub": 1560000,
-                                "freightRub": 320000,
-                                "brokerRub": 200000,
-                                "totalRub": 12267652,
-                                "cifUsd": 89700
+                                "engineType": "Гибрид (PHEV)"
+                        }
+                ]
+        },
+        {
+                "id": "li-l9",
+                "brand": "Li Auto",
+                "model": "L9",
+                "fullName": "Li Auto L9 LIVIS Flagship",
+                "category": "Premium",
+                "year": "2025–2026",
+                "img": "assets/cars/li-l9.png",
+                "trimsCount": 1,
+                "minPriceFob": 86500,
+                "trims": [
+                        {
+                                "name": "LIVIS",
+                                "fobUsd": 86500,
+                                "power": "449 л.с.",
+                                "accel": "5.3 сек",
+                                "range": "1,412 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (REEV)"
+                        }
+                ]
+        },
+        {
+                "id": "li-l8",
+                "brand": "Li Auto",
+                "model": "L8",
+                "fullName": "Li Auto L8 LIVIS Luxury",
+                "category": "Premium",
+                "year": "2025–2026",
+                "img": "assets/cars/li-l8.png",
+                "trimsCount": 1,
+                "minPriceFob": 75500,
+                "trims": [
+                        {
+                                "name": "LIVIS",
+                                "fobUsd": 75500,
+                                "power": "449 л.с.",
+                                "accel": "5.3 сек",
+                                "range": "1,415 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (REEV)"
+                        }
+                ]
+        },
+        {
+                "id": "rox-adamas",
+                "brand": "ROX",
+                "model": "ADAMAS",
+                "fullName": "ROX ADAMAS Luxury Off-Roader",
+                "category": "Premium",
+                "year": "2025–2026",
+                "img": "assets/cars/rox-adamas.png",
+                "trimsCount": 2,
+                "minPriceFob": 59100,
+                "trims": [
+                        {
+                                "name": "7-seat",
+                                "fobUsd": 59100,
+                                "power": "476 л.с.",
+                                "accel": "5.5 сек",
+                                "range": "1,338 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (REEV)"
+                        },
+                        {
+                                "name": "6-seat",
+                                "fobUsd": 61400,
+                                "power": "476 л.с.",
+                                "accel": "5.5 сек",
+                                "range": "1,338 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (REEV)"
+                        }
+                ]
+        },
+        {
+                "id": "lynk-900",
+                "brand": "Lynk & Co",
+                "model": "900",
+                "fullName": "2026 Lynk & Co 900 Flagship",
+                "category": "Business",
+                "year": "2026",
+                "img": "assets/cars/lynk-co-900.png",
+                "trimsCount": 5,
+                "minPriceFob": 40500,
+                "trims": [
+                        {
+                                "name": "1.5T ULTRA (5 мест)",
+                                "fobUsd": 40500,
+                                "power": "721 л.с.",
+                                "accel": "4.8 сек",
+                                "range": "1,355 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (PHEV)"
+                        },
+                        {
+                                "name": "2.0T ULTRA (5 мест)",
+                                "fobUsd": 42800,
+                                "power": "734 л.с.",
+                                "accel": "4.8 сек",
+                                "range": "1,350 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (PHEV)"
+                        },
+                        {
+                                "name": "1.5T ULTRA (6 мест)",
+                                "fobUsd": 41500,
+                                "power": "721 л.с.",
+                                "accel": "4.8 сек",
+                                "range": "1,355 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (PHEV)"
+                        },
+                        {
+                                "name": "2.0T ULTRA (6 мест)",
+                                "fobUsd": 45500,
+                                "power": "734 л.с.",
+                                "accel": "4.8 сек",
+                                "range": "1,350 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (PHEV)"
+                        },
+                        {
+                                "name": "2.0T EXPLORER 3-х моторный (6 мест)",
+                                "fobUsd": 52500,
+                                "power": "884 л.с.",
+                                "accel": "4.1 сек",
+                                "range": "1,350 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (PHEV)"
+                        }
+                ]
+        },
+        {
+                "id": "rox-01",
+                "brand": "ROX",
+                "model": "01",
+                "fullName": "ROX 01 Expedition SUV",
+                "category": "Business",
+                "year": "2024–2026",
+                "img": "assets/cars/rox-01.png",
+                "trimsCount": 2,
+                "minPriceFob": 45400,
+                "trims": [
+                        {
+                                "name": "7-seat",
+                                "fobUsd": 45400,
+                                "power": "476 л.с.",
+                                "accel": "5.5 сек",
+                                "range": "1,338 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (REEV)"
+                        },
+                        {
+                                "name": "6-seat",
+                                "fobUsd": 46700,
+                                "power": "476 л.с.",
+                                "accel": "5.5 сек",
+                                "range": "1,338 км",
+                                "drive": "Полный (AWD)",
+                                "engineType": "Гибрид (REEV)"
+                        }
+                ]
+        },
+        {
+                "id": "xiaomi-su7",
+                "brand": "Xiaomi",
+                "model": "SU7",
+                "fullName": "Xiaomi SU7 Fastback",
+                "category": "Performance",
+                "year": "2024–2026",
+                "img": "assets/cars/su7_preview.png",
+                "trimsCount": 5,
+                "minPriceFob": 30000,
+                "trims": [
+                        {
+                                "name": "Base",
+                                "fobUsd": 30000,
+                                "power": "299 л.с.",
+                                "accel": "5.3 сек",
+                                "range": "700 км (CLTC)",
+                                "drive": "Задний (RWD)",
+                                "engineType": "EV (Электро)"
+                        },
+                        {
+                                "name": "Pro",
+                                "fobUsd": 34200,
+                                "power": "299 л.с.",
+                                "accel": "5.7 сек",
+                                "range": "830 км (CLTC)",
+                                "drive": "Задний (RWD)",
+                                "engineType": "EV (Электро)"
+                        },
+                        {
+                                "name": "Max",
+                                "fobUsd": 41700,
+                                "power": "691 л.с.",
+                                "accel": "2.78 сек",
+                                "range": "800 км (CLTC)",
+                                "drive": "Полный (AWD)",
+                                "engineType": "EV (Электро)"
+                        },
+                        {
+                                "name": "Ultra",
+                                "fobUsd": 113000,
+                                "power": "1,548 л.с.",
+                                "accel": "1.98 сек",
+                                "range": "630 км (CLTC)",
+                                "drive": "Полный (AWD)",
+                                "engineType": "EV (Электро)"
+                        },
+                        {
+                                "name": "Ultra Track Edition",
+                                "fobUsd": 132000,
+                                "power": "1,548 л.с.",
+                                "accel": "1.98 сек",
+                                "range": "630 км (CLTC)",
+                                "drive": "Полный (AWD)",
+                                "engineType": "EV (Электро)"
                         }
                 ]
         },
@@ -1034,62 +1147,38 @@
                 "brand": "Zeekr",
                 "model": "7X",
                 "fullName": "Zeekr 7X Smart SUV",
+                "category": "Premium",
                 "year": "2024–2026",
                 "img": "assets/cars/zeekr-7x.png",
                 "trimsCount": 3,
-                "minPriceRu": 7875984,
                 "minPriceFob": 32000,
                 "trims": [
                         {
                                 "name": "Max 75 kWh",
+                                "fobUsd": 32000,
                                 "power": "503 л.с.",
                                 "accel": "5.4 сек",
                                 "range": "620 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 3230732,
-                                "invoiceCny": 229900,
-                                "fobUsd": 32000,
-                                "dutyRub": 1325387,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 7875984,
-                                "cifUsd": 34200
+                                "engineType": "EV (Электро)"
                         },
                         {
                                 "name": "Max 103 kWh",
+                                "fobUsd": 34800,
                                 "power": "503 л.с.",
                                 "accel": "5.1 сек",
                                 "range": "802 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 3659710,
-                                "invoiceCny": 249900,
-                                "fobUsd": 34800,
-                                "dutyRub": 1441149,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 8402583,
-                                "cifUsd": 37000
+                                "engineType": "EV (Электро)"
                         },
                         {
                                 "name": "Ultra 103 kWh",
+                                "fobUsd": 37500,
                                 "power": "796 л.с.",
                                 "accel": "3.0 сек",
                                 "range": "715 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 3879860,
-                                "invoiceCny": 269900,
-                                "fobUsd": 37500,
-                                "dutyRub": 1841864,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 10233809,
-                                "cifUsd": 39700
+                                "engineType": "EV (Электро)"
                         }
                 ]
         },
@@ -1098,62 +1187,38 @@
                 "brand": "Voyah",
                 "model": "Taishan",
                 "fullName": "Voyah Taishan Luxury SUV",
+                "category": "Premium",
                 "year": "2025–2026",
                 "img": "assets/banners/banner_5.jpg",
                 "trimsCount": 3,
-                "minPriceRu": 8240332,
                 "minPriceFob": 66300,
                 "trims": [
                         {
                                 "name": "Max",
+                                "fobUsd": 66300,
                                 "power": "517 л.с.",
                                 "accel": "5.2 сек",
                                 "range": "1,430 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 5286690,
-                                "invoiceCny": 292000,
-                                "fobUsd": 66300,
-                                "dutyRub": 1604053,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 8240332,
-                                "cifUsd": 68500
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
                                 "name": "Max+",
+                                "fobUsd": 70500,
                                 "power": "517 л.с.",
                                 "accel": "5.5 сек",
                                 "range": "1,430 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 5803728,
-                                "invoiceCny": 322000,
-                                "fobUsd": 70500,
-                                "dutyRub": 1780000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 8757370,
-                                "cifUsd": 72800
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
                                 "name": "Ultra",
+                                "fobUsd": 75800,
                                 "power": "517 л.с.",
                                 "accel": "5.5 сек",
                                 "range": "1,430 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 6493112,
-                                "invoiceCny": 360000,
-                                "fobUsd": 75800,
-                                "dutyRub": 1950000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 9446754,
-                                "cifUsd": 78000
+                                "engineType": "Гибрид (PHEV)"
                         }
                 ]
         },
@@ -1162,224 +1227,47 @@
                 "brand": "XPeng",
                 "model": "GX",
                 "fullName": "XPeng GX 6-Seat Flagship SUV",
+                "category": "Premium",
                 "year": "2025–2026",
                 "img": "assets/cars/xpeng-gx.png",
                 "trimsCount": 4,
-                "minPriceRu": 6950000,
                 "minPriceFob": 50300,
                 "trims": [
                         {
                                 "name": "GX EV 665 Max",
+                                "fobUsd": 50300,
                                 "power": "420 л.с.",
                                 "accel": "5.2 сек",
                                 "range": "665 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 3200000,
-                                "invoiceCny": 237000,
-                                "fobUsd": 50300,
-                                "dutyRub": 1350000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 6950000,
-                                "cifUsd": 52500
+                                "engineType": "EV (Электро)"
                         },
                         {
                                 "name": "GX REEV 1585 Max 4WD",
+                                "fobUsd": 51300,
                                 "power": "577 л.с.",
                                 "accel": "4.2 сек",
                                 "range": "1,585 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (REEV)",
-                                "invoiceRub": 3300000,
-                                "invoiceCny": 244000,
-                                "fobUsd": 51300,
-                                "dutyRub": 1380000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 7100000,
-                                "cifUsd": 53500
+                                "engineType": "Гибрид (REEV)"
                         },
                         {
                                 "name": "GX REEV 1585 Ultra 4WD",
+                                "fobUsd": 57300,
                                 "power": "577 л.с.",
                                 "accel": "4.2 сек",
                                 "range": "1,585 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (REEV)",
-                                "invoiceRub": 3750000,
-                                "invoiceCny": 277000,
-                                "fobUsd": 57300,
-                                "dutyRub": 1540000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 7900000,
-                                "cifUsd": 59500
+                                "engineType": "Гибрид (REEV)"
                         },
                         {
                                 "name": "GX EV 750 Ultra Flagship",
+                                "fobUsd": 61300,
                                 "power": "577 л.с.",
                                 "accel": "3.9 сек",
                                 "range": "750 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 4050000,
-                                "invoiceCny": 300000,
-                                "fobUsd": 61300,
-                                "dutyRub": 1670000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 8480000,
-                                "cifUsd": 63500
-                        }
-                ]
-        },
-        {
-                "id": "lynk-900",
-                "brand": "Lynk & Co",
-                "model": "900",
-                "fullName": "Lynk & Co 900 Flagship SUV",
-                "year": "2025–2026",
-                "img": "assets/cars/lynk-co-900.png",
-                "trimsCount": 4,
-                "minPriceRu": 7045692,
-                "minPriceFob": 51200,
-                "trims": [
-                        {
-                                "name": "1.5T Halo",
-                                "power": "721 л.с.",
-                                "accel": "4.8 сек",
-                                "range": "1,355 км",
-                                "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 3828050,
-                                "invoiceCny": 245000,
-                                "fobUsd": 51200,
-                                "dutyRub": 1420000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 7045692,
-                                "cifUsd": 53400
-                        },
-                        {
-                                "name": "1.5T Ultra",
-                                "power": "721 л.с.",
-                                "accel": "4.8 сек",
-                                "range": "1,355 км",
-                                "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 4133744,
-                                "invoiceCny": 265000,
-                                "fobUsd": 53500,
-                                "dutyRub": 1530000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 7351386,
-                                "cifUsd": 55700
-                        },
-                        {
-                                "name": "2.0T Ultra",
-                                "power": "734 л.с.",
-                                "accel": "4.8 сек",
-                                "range": "1,350 км",
-                                "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 4377796,
-                                "invoiceCny": 285000,
-                                "fobUsd": 59800,
-                                "dutyRub": 1680000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 8243438,
-                                "cifUsd": 62000
-                        },
-                        {
-                                "name": "2.0T Discovery",
-                                "power": "884 л.с.",
-                                "accel": "4.1 сек",
-                                "range": "1,350 км",
-                                "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 5072086,
-                                "invoiceCny": 330000,
-                                "fobUsd": 67500,
-                                "dutyRub": 1950000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 9303278,
-                                "cifUsd": 69800
-                        }
-                ]
-        },
-        {
-                "id": "lynk-06",
-                "brand": "Lynk & Co",
-                "model": "06",
-                "fullName": "Lynk & Co 06 Remix / EM-P",
-                "year": "2024–2026",
-                "img": "assets/banners/banner_2.jpg",
-                "trimsCount": 3,
-                "minPriceRu": 2677091,
-                "minPriceFob": 18200,
-                "trims": [
-                        {
-                                "name": "Max RU (1.5T)",
-                                "power": "181 л.с.",
-                                "accel": "8.2 сек",
-                                "range": "750 км",
-                                "drive": "Передний (FWD)",
-                                "engineType": "Бензин (ICE)",
-                                "invoiceRub": 1831829,
-                                "invoiceCny": 118000,
-                                "fobUsd": 18200,
-                                "dutyRub": 721862,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 2677091,
-                                "cifUsd": 20400
-                        },
-                        {
-                                "name": "Ultra RU (1.5T)",
-                                "power": "181 л.с.",
-                                "accel": "8.2 сек",
-                                "range": "750 км",
-                                "drive": "Передний (FWD)",
-                                "engineType": "Бензин (ICE)",
-                                "invoiceRub": 2010880,
-                                "invoiceCny": 129000,
-                                "fobUsd": 19800,
-                                "dutyRub": 803713,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 2937993,
-                                "cifUsd": 22000
-                        },
-                        {
-                                "name": "EM-P Hybrid",
-                                "power": "299 л.с.",
-                                "accel": "5.9 сек",
-                                "range": "1,280 км",
-                                "drive": "Передний (FWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 1950000,
-                                "invoiceCny": 136000,
-                                "fobUsd": 21500,
-                                "dutyRub": 520000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 3150000,
-                                "cifUsd": 23700
+                                "engineType": "EV (Электро)"
                         }
                 ]
         },
@@ -1388,79 +1276,47 @@
                 "brand": "Avatr",
                 "model": "07",
                 "fullName": "Avatr 07 Smart SUV",
+                "category": "Premium",
                 "year": "2025–2026",
                 "img": "assets/cars/avatr-07.png",
                 "trimsCount": 4,
-                "minPriceRu": 6490345,
                 "minPriceFob": 38500,
                 "trims": [
                         {
                                 "name": "Elite Hybrid RWD",
+                                "fobUsd": 38500,
                                 "power": "314 л.с.",
                                 "accel": "6.6 сек",
                                 "range": "1,200 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "Гибрид (REEV)",
-                                "invoiceRub": 2784142,
-                                "invoiceCny": 219900,
-                                "fobUsd": 38500,
-                                "dutyRub": 1255525,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 6490345,
-                                "cifUsd": 40700
+                                "engineType": "Гибрид (REEV)"
                         },
                         {
                                 "name": "Max+ Hybrid RWD",
+                                "fobUsd": 41000,
                                 "power": "314 л.с.",
                                 "accel": "6.6 сек",
                                 "range": "1,200 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "Гибрид (REEV)",
-                                "invoiceRub": 3035742,
-                                "invoiceCny": 239900,
-                                "fobUsd": 41000,
-                                "dutyRub": 1340000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 6843340,
-                                "cifUsd": 43200
+                                "engineType": "Гибрид (REEV)"
                         },
                         {
                                 "name": "Ultra Hybrid AWD",
+                                "fobUsd": 49500,
                                 "power": "492 л.с.",
                                 "accel": "4.9 сек",
                                 "range": "1,150 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "Гибрид (REEV)",
-                                "invoiceRub": 3664742,
-                                "invoiceCny": 289900,
-                                "fobUsd": 49500,
-                                "dutyRub": 1650000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 9150852,
-                                "cifUsd": 51700
+                                "engineType": "Гибрид (REEV)"
                         },
                         {
                                 "name": "Ultra EV AWD",
+                                "fobUsd": 47000,
                                 "power": "598 л.с.",
                                 "accel": "3.9 сек",
                                 "range": "610 км",
                                 "drive": "Полный (AWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 3538942,
-                                "invoiceCny": 279900,
-                                "fobUsd": 47000,
-                                "dutyRub": 1580000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 8456792,
-                                "cifUsd": 49200
+                                "engineType": "EV (Электро)"
                         }
                 ]
         },
@@ -1469,45 +1325,69 @@
                 "brand": "Avatr",
                 "model": "06",
                 "fullName": "Avatr 06 Fastback Sedan",
+                "category": "Premium",
                 "year": "2025–2026",
                 "img": "assets/cars/avatr-06.png",
                 "trimsCount": 2,
-                "minPriceRu": 6843340,
                 "minPriceFob": 41000,
                 "trims": [
                         {
                                 "name": "Max Hybrid RWD",
+                                "fobUsd": 41000,
                                 "power": "314 л.с.",
                                 "accel": "6.6 сек",
                                 "range": "1,190 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "Гибрид (REEV)",
-                                "invoiceRub": 3035742,
-                                "invoiceCny": 239900,
-                                "fobUsd": 41000,
-                                "dutyRub": 1340000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 6843340,
-                                "cifUsd": 43200
+                                "engineType": "Гибрид (REEV)"
                         },
                         {
                                 "name": "Max EV RWD",
+                                "fobUsd": 42500,
                                 "power": "343 л.с.",
                                 "accel": "6.1 сек",
                                 "range": "650 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 3161542,
-                                "invoiceCny": 249900,
-                                "fobUsd": 42500,
-                                "dutyRub": 1420000,
-                                "utilRub": 1560000,
-                                "freightRub": 300000,
-                                "brokerRub": 200000,
-                                "totalRub": 7024822,
-                                "cifUsd": 44700
+                                "engineType": "EV (Электро)"
+                        }
+                ]
+        },
+        {
+                "id": "lynk-06",
+                "brand": "Lynk & Co",
+                "model": "06",
+                "fullName": "Lynk & Co 06 Remix / EM-P",
+                "category": "Business",
+                "year": "2024–2026",
+                "img": "assets/banners/banner_2.jpg",
+                "trimsCount": 3,
+                "minPriceFob": 18200,
+                "trims": [
+                        {
+                                "name": "Max RU (1.5T)",
+                                "fobUsd": 18200,
+                                "power": "181 л.с.",
+                                "accel": "8.2 сек",
+                                "range": "750 км",
+                                "drive": "Передний (FWD)",
+                                "engineType": "Бензин (ICE)"
+                        },
+                        {
+                                "name": "Ultra RU (1.5T)",
+                                "fobUsd": 19800,
+                                "power": "181 л.с.",
+                                "accel": "8.2 сек",
+                                "range": "750 км",
+                                "drive": "Передний (FWD)",
+                                "engineType": "Бензин (ICE)"
+                        },
+                        {
+                                "name": "EM-P Hybrid",
+                                "fobUsd": 21500,
+                                "power": "299 л.с.",
+                                "accel": "5.9 сек",
+                                "range": "1,280 км",
+                                "drive": "Передний (FWD)",
+                                "engineType": "Гибрид (PHEV)"
                         }
                 ]
         },
@@ -1516,79 +1396,47 @@
                 "brand": "Changan",
                 "model": "NEVO Q07",
                 "fullName": "Changan NEVO Q07 Smart SUV",
+                "category": "Comfort",
                 "year": "2025–2026",
                 "img": "assets/cars/nevo-q07.png",
                 "trimsCount": 4,
-                "minPriceRu": 3790188,
                 "minPriceFob": 21000,
                 "trims": [
                         {
                                 "name": "Long Range 145 Glory",
+                                "fobUsd": 21000,
                                 "power": "322 л.с.",
                                 "accel": "7.1 сек",
                                 "range": "1,250 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 1701204,
-                                "invoiceCny": 135000,
-                                "fobUsd": 21000,
-                                "dutyRub": 480000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 3790188,
-                                "cifUsd": 23200
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
                                 "name": "Ultra Long Range 215 Premium",
+                                "fobUsd": 22500,
                                 "power": "322 л.с.",
                                 "accel": "7.1 сек",
                                 "range": "1,350 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 1795554,
-                                "invoiceCny": 142000,
-                                "fobUsd": 22500,
-                                "dutyRub": 510000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 3883280,
-                                "cifUsd": 24700
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
                                 "name": "Ultra Long Range 215 Supreme",
+                                "fobUsd": 24000,
                                 "power": "322 л.с.",
                                 "accel": "7.0 сек",
                                 "range": "1,350 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 1897452,
-                                "invoiceCny": 150000,
-                                "fobUsd": 24000,
-                                "dutyRub": 550000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 3985178,
-                                "cifUsd": 26200
+                                "engineType": "Гибрид (PHEV)"
                         },
                         {
                                 "name": "Ultra Long Range 215 Flagship",
+                                "fobUsd": 26500,
                                 "power": "374 л.с.",
                                 "accel": "6.8 сек",
                                 "range": "1,400 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "Гибрид (PHEV)",
-                                "invoiceRub": 1981738,
-                                "invoiceCny": 158000,
-                                "fobUsd": 26500,
-                                "dutyRub": 590000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 4279534,
-                                "cifUsd": 28700
+                                "engineType": "Гибрид (PHEV)"
                         }
                 ]
         },
@@ -1597,62 +1445,38 @@
                 "brand": "Changan",
                 "model": "NEVO Q05",
                 "fullName": "Changan NEVO Q05 Crossover",
+                "category": "Comfort",
                 "year": "2024–2026",
                 "img": "assets/banners/banner_4.jpg",
                 "trimsCount": 3,
-                "minPriceRu": 2271319,
                 "minPriceFob": 15100,
                 "trims": [
                         {
                                 "name": "506 Max",
+                                "fobUsd": 15100,
                                 "power": "163 л.с.",
                                 "accel": "7.3 сек",
                                 "range": "506 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 1629706,
-                                "invoiceCny": 99000,
-                                "fobUsd": 15100,
-                                "dutyRub": 358500,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 2271319,
-                                "cifUsd": 17300
+                                "engineType": "EV (Электро)"
                         },
                         {
                                 "name": "506 Max+",
+                                "fobUsd": 15900,
                                 "power": "163 л.с.",
                                 "accel": "7.3 сек",
                                 "range": "506 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 1691348,
-                                "invoiceCny": 105000,
-                                "fobUsd": 15900,
-                                "dutyRub": 385000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 2343100,
-                                "cifUsd": 18100
+                                "engineType": "EV (Электро)"
                         },
                         {
                                 "name": "506 Lidar Ultra+",
+                                "fobUsd": 17400,
                                 "power": "163 л.с.",
                                 "accel": "7.3 сек",
                                 "range": "506 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 1829728,
-                                "invoiceCny": 115000,
-                                "fobUsd": 17400,
-                                "dutyRub": 415000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 2547387,
-                                "cifUsd": 19600
+                                "engineType": "EV (Электро)"
                         }
                 ]
         },
@@ -1661,62 +1485,38 @@
                 "brand": "Changan",
                 "model": "NEVO A06",
                 "fullName": "Changan NEVO A06 Sedan",
+                "category": "Comfort",
                 "year": "2024–2026",
                 "img": "assets/banners/banner_3.jpg",
                 "trimsCount": 3,
-                "minPriceRu": 2630604,
                 "minPriceFob": 16800,
                 "trims": [
                         {
                                 "name": "240 Max REEV",
+                                "fobUsd": 16800,
                                 "power": "163 л.с.",
                                 "accel": "7.0 сек",
                                 "range": "2,120 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "Гибрид (REEV)",
-                                "invoiceRub": 1887596,
-                                "invoiceCny": 115000,
-                                "fobUsd": 16800,
-                                "dutyRub": 411214,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 2630604,
-                                "cifUsd": 19000
+                                "engineType": "Гибрид (REEV)"
                         },
                         {
                                 "name": "510 Max EV",
+                                "fobUsd": 17300,
                                 "power": "163 л.с.",
                                 "accel": "7.0 сек",
                                 "range": "510 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 1950496,
-                                "invoiceCny": 120000,
-                                "fobUsd": 17300,
-                                "dutyRub": 430000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 2693504,
-                                "cifUsd": 19500
+                                "engineType": "EV (Электро)"
                         },
                         {
                                 "name": "240 Ultra REEV",
+                                "fobUsd": 18500,
                                 "power": "163 л.с.",
                                 "accel": "7.0 сек",
                                 "range": "2,120 км",
                                 "drive": "Задний (RWD)",
-                                "engineType": "Гибрид (REEV)",
-                                "invoiceRub": 1997042,
-                                "invoiceCny": 125000,
-                                "fobUsd": 18500,
-                                "dutyRub": 461100,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 2790747,
-                                "cifUsd": 20700
+                                "engineType": "Гибрид (REEV)"
                         }
                 ]
         },
@@ -1725,80 +1525,117 @@
                 "brand": "Toyota",
                 "model": "bZ3X",
                 "fullName": "Toyota bZ3X Electric SUV",
+                "category": "Comfort",
                 "year": "2024–2026",
                 "img": "assets/banners/banner_7.jpg",
                 "trimsCount": 3,
-                "minPriceRu": 2936169,
                 "minPriceFob": 19800,
                 "trims": [
                         {
                                 "name": "520 Pro",
+                                "fobUsd": 19800,
                                 "power": "204 л.с.",
                                 "accel": "7.5 сек",
                                 "range": "520 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 2142970,
-                                "invoiceCny": 130000,
-                                "fobUsd": 19800,
-                                "dutyRub": 457192,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 2936169,
-                                "cifUsd": 22000
+                                "engineType": "EV (Электро)"
                         },
                         {
                                 "name": "520 Pro+",
+                                "fobUsd": 21200,
                                 "power": "204 л.с.",
                                 "accel": "7.5 сек",
                                 "range": "520 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 2262480,
-                                "invoiceCny": 142000,
-                                "fobUsd": 21200,
-                                "dutyRub": 495000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 3106376,
-                                "cifUsd": 23400
+                                "engineType": "EV (Электро)"
                         },
                         {
                                 "name": "520 Pro LiDAR",
+                                "fobUsd": 22800,
                                 "power": "204 л.с.",
                                 "accel": "7.5 сек",
                                 "range": "520 км",
                                 "drive": "Передний (FWD)",
-                                "engineType": "EV (Электро)",
-                                "invoiceRub": 2400860,
-                                "invoiceCny": 155000,
-                                "fobUsd": 22800,
-                                "dutyRub": 535000,
-                                "utilRub": 3400,
-                                "freightRub": 280000,
-                                "brokerRub": 150000,
-                                "totalRub": 3295453,
-                                "cifUsd": 25000
+                                "engineType": "EV (Электро)"
                         }
                 ]
         }
 ];
-
-        // 3. RUNTIME APP LOGIC
+        // 3. RUNTIME APP LOGIC & DYNAMIC FX ENGINE
         let currentLang = 'en';
         let currentBrandFilter = 'all';
         let activeSlideIndex = 0;
         let slideTimer = null;
         let currentModalCar = null;
         let currentModalTrimIndex = 0;
+        let currentUsdRate = 84.43; // Baseline rate, dynamically updated from Central Bank API
 
-        function initApp() {
+        async function initApp() {
             initLanguage();
             renderHeroBanners();
-            renderCatalog();
             startBannerAutoplay();
+            updateRateDisplay();
+            renderCatalog();
+            await fetchLiveExchangeRate();
+        }
+
+        async function fetchLiveExchangeRate() {
+            const cachedRate = localStorage.getItem('shanghai_usd_rate');
+            const cachedDate = localStorage.getItem('shanghai_usd_date');
+            const today = new Date().toISOString().slice(0, 10);
+
+            if (cachedRate && cachedDate === today) {
+                currentUsdRate = parseFloat(cachedRate) || 84.43;
+                updateRateDisplay();
+                renderCatalog();
+                if (currentModalCar) renderModalTrim(currentModalTrimIndex);
+                return;
+            }
+
+            try {
+                // Primary: Central Bank of Russia (CBR) Official Daily Rates
+                const resp = await fetch('https://www.cbr-xml-daily.ru/daily_json.js');
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (data?.Valute?.USD?.Value) {
+                        currentUsdRate = Math.round(data.Valute.USD.Value * 100) / 100;
+                        localStorage.setItem('shanghai_usd_rate', currentUsdRate.toString());
+                        localStorage.setItem('shanghai_usd_date', today);
+                        updateRateDisplay();
+                        renderCatalog();
+                        if (currentModalCar) renderModalTrim(currentModalTrimIndex);
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.warn('CBR exchange API notice:', e);
+            }
+
+            try {
+                // Secondary Fallback: Global Exchange Rates API
+                const resp2 = await fetch('https://open.er-api.com/v6/latest/USD');
+                if (resp2.ok) {
+                    const data2 = await resp2.json();
+                    if (data2?.rates?.RUB) {
+                        currentUsdRate = Math.round(data2.rates.RUB * 100) / 100;
+                        localStorage.setItem('shanghai_usd_rate', currentUsdRate.toString());
+                        localStorage.setItem('shanghai_usd_date', today);
+                        updateRateDisplay();
+                        renderCatalog();
+                        if (currentModalCar) renderModalTrim(currentModalTrimIndex);
+                    }
+                }
+            } catch (e2) {
+                console.warn('Fallback exchange API notice:', e2);
+            }
+        }
+
+        function updateRateDisplay() {
+            const rateStr = currentUsdRate.toFixed(2);
+            const elRu = document.getElementById('fx-rate-display');
+            const elEn = document.getElementById('fx-rate-display-en');
+            if (elRu) elRu.innerText = `1 $ = ${rateStr} ₽`;
+            if (elEn) elEn.innerText = `1 USD = ${rateStr} RUB`;
         }
 
         function initLanguage() {
@@ -1829,135 +1666,115 @@
                 .catch(() => {});
         }
 
-        function setLanguage(lang, userExplicit = true) {
+        function setLanguage(lang, reloadUi = true) {
             currentLang = lang;
-            if (userExplicit) {
-                localStorage.setItem('shanghai_motors_lang', lang);
-            }
-
-            document.documentElement.className = (lang === 'ru') ? 'lang-ru scroll-smooth' : 'lang-en scroll-smooth';
+            localStorage.setItem('shanghai_motors_lang', lang);
             document.documentElement.lang = lang;
 
-            const btnEn = document.getElementById('btn-lang-en');
-            const btnRu = document.getElementById('btn-lang-ru');
-            if (btnEn && btnRu) {
-                if (lang === 'en') {
-                    btnEn.className = 'px-3 py-1.5 rounded-full bg-brand text-black font-bold transition';
-                    btnRu.className = 'px-3 py-1.5 rounded-full text-gray-400 hover:text-white transition';
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.classList.remove('hidden');
                 } else {
-                    btnRu.className = 'px-3 py-1.5 rounded-full bg-brand text-black font-bold transition';
-                    btnEn.className = 'px-3 py-1.5 rounded-full text-gray-400 hover:text-white transition';
+                    el.classList.add('hidden');
+                }
+            });
+
+            // Update language toggle buttons
+            const ruBtn = document.getElementById('lang-btn-ru');
+            const enBtn = document.getElementById('lang-btn-en');
+            if (ruBtn && enBtn) {
+                if (lang === 'ru') {
+                    ruBtn.className = 'px-2.5 py-1 text-xs font-mono font-bold rounded bg-brand text-black transition';
+                    enBtn.className = 'px-2.5 py-1 text-xs font-mono font-medium rounded text-gray-400 hover:text-white transition';
+                } else {
+                    enBtn.className = 'px-2.5 py-1 text-xs font-mono font-bold rounded bg-brand text-black transition';
+                    ruBtn.className = 'px-2.5 py-1 text-xs font-mono font-medium rounded text-gray-400 hover:text-white transition';
                 }
             }
 
-            renderHeroBanners();
-            renderCatalog();
-            if (currentModalCar) {
-                renderModalTrim(currentModalTrimIndex);
+            if (reloadUi) {
+                renderHeroBanners();
+                renderCatalog();
+                if (currentModalCar) {
+                    renderModalTrim(currentModalTrimIndex);
+                }
             }
         }
 
-        // 4. HERO BANNER SLIDER (Exact layout of easy.car popular vehicles)
+        // 4. HERO BANNERS ENGINE
         function renderHeroBanners() {
-            const container = document.getElementById('banner-slider-container');
+            const container = document.getElementById('hero-banner-slides');
             const dotsContainer = document.getElementById('banner-dots');
             if (!container) return;
 
-            container.innerHTML = heroBanners.map((b, idx) => {
-                const isActive = (idx === activeSlideIndex);
-                const tag = (currentLang === 'ru') ? b.tagRu : b.tagEn;
-                const desc = (currentLang === 'ru') ? b.descRu : b.descEn;
-                const price = (currentLang === 'ru') ? b.priceRu : b.priceEn;
-                const btnLabel = (currentLang === 'ru') ? 'Рассчитать стоимость' : 'Get Export Quote';
+            container.innerHTML = heroBanners.map((b, idx) => `
+                <div class="banner-slide absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === activeSlideIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}" id="slide-${idx}">
+                    <img src="${b.img}" alt="${b.model}" class="w-full h-full object-cover object-center filter brightness-[0.78]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-surface-base via-surface-base/40 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-surface-base via-surface-base/60 to-transparent"></div>
 
-                return `
-                    <div class="hero-slide ${isActive ? 'active' : 'inactive'} w-full h-full py-12 md:py-20">
-                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                            <!-- Left Info -->
-                            <div class="lg:col-span-6 z-10">
-                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold border mb-4 ${b.tagClass}">
-                                    <span>${b.brand}</span>
-                                    <span>•</span>
-                                    <span>${tag}</span>
-                                </div>
-                                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none mb-3">
-                                    ${b.model}
-                                </h1>
-                                <p class="text-sm sm:text-base text-gray-400 mb-6 max-w-lg leading-relaxed">
-                                    ${desc}
-                                </p>
-                                <div class="flex items-baseline gap-3 mb-8">
-                                    <span class="text-xs font-mono uppercase tracking-wider text-gray-400">
-                                        ${currentLang === 'ru' ? 'Стоимость под ключ:' : 'Export Pricing:'}
-                                    </span>
-                                    <span class="text-2xl sm:text-4xl font-extrabold font-mono text-brand">
-                                        ${price}
-                                    </span>
-                                </div>
-                                <div class="flex flex-wrap gap-4">
-                                    <button onclick="openCarModal('${b.id}')" class="bg-brand hover:bg-brand-hover text-black font-extrabold text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition shadow-lg shadow-brand/10 flex items-center gap-2">
-                                        <span>${btnLabel}</span>
-                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                    </button>
-                                    <a href="#catalog" class="border border-surface-border bg-surface-card hover:bg-surface-elevated text-gray-300 hover:text-white font-medium text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition">
-                                        ${currentLang === 'ru' ? 'Смотреть весь каталог' : 'All Catalog Models'}
-                                    </a>
-                                </div>
+                    <div class="absolute inset-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-end pb-12 sm:pb-16 z-20">
+                        <div class="max-w-2xl space-y-3 sm:space-y-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono font-semibold uppercase tracking-wider ${b.tagClass}">
+                                <span>●</span>
+                                <span>${currentLang === 'ru' ? b.tagRu : b.tagEn}</span>
                             </div>
-                            <!-- Right Car Visual -->
-                            <div class="lg:col-span-6 relative flex items-center justify-center">
-                                <div class="w-full max-h-[380px] md:max-h-[440px] flex items-center justify-center relative">
-                                    <img src="${b.img}" alt="${b.model}" class="max-h-full max-w-full object-contain filter drop-shadow-[0_15px_35px_rgba(0,0,0,0.8)]">
+                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                                ${b.model}
+                            </h1>
+                            <p class="text-sm sm:text-base text-gray-300 leading-relaxed font-sans">
+                                ${currentLang === 'ru' ? b.descRu : b.descEn}
+                            </p>
+                            <div class="pt-2 flex flex-wrap items-center gap-4">
+                                <button onclick="openCarModal('${b.id}')" class="bg-brand hover:bg-brand-hover text-black font-extrabold px-6 py-3.5 rounded-lg text-xs uppercase tracking-wider transition transform hover:scale-105 shadow-xl shadow-brand/20">
+                                    ${currentLang === 'ru' ? 'Консультация и расчет' : 'Request City Quote'}
+                                </button>
+                                <div class="px-4 py-2.5 rounded-lg bg-surface-card/80 border border-surface-border text-white text-xs font-mono font-bold">
+                                    ${currentLang === 'ru' ? b.priceRu : b.priceEn}
                                 </div>
                             </div>
                         </div>
                     </div>
-                `;
-            }).join('');
+                </div>
+            `).join('');
 
             if (dotsContainer) {
                 dotsContainer.innerHTML = heroBanners.map((_, idx) => `
-                    <button onclick="setBannerSlide(${idx})" class="w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === activeSlideIndex ? 'w-8 bg-brand' : 'bg-surface-border hover:bg-gray-500'}"></button>
+                    <button onclick="goToBanner(${idx})" class="w-2.5 h-2.5 rounded-full transition-all ${idx === activeSlideIndex ? 'w-8 bg-brand' : 'bg-surface-border hover:bg-gray-500'}"></button>
                 `).join('');
             }
         }
 
-        function setBannerSlide(idx) {
-            activeSlideIndex = idx;
-            renderHeroBanners();
-            resetBannerAutoplay();
-        }
-
-        function nextBanner() {
-            activeSlideIndex = (activeSlideIndex + 1) % heroBanners.length;
-            renderHeroBanners();
-            resetBannerAutoplay();
+        function startBannerAutoplay() {
+            if (slideTimer) clearInterval(slideTimer);
+            slideTimer = setInterval(() => {
+                nextBanner();
+            }, 6500);
         }
 
         function prevBanner() {
-            activeSlideIndex = (activeSlideIndex - 1 + heroBanners.length) % heroBanners.length;
+            goToBanner((activeSlideIndex - 1 + heroBanners.length) % heroBanners.length);
+        }
+
+        function nextBanner() {
+            goToBanner((activeSlideIndex + 1) % heroBanners.length);
+        }
+
+        function goToBanner(idx) {
+            activeSlideIndex = idx;
             renderHeroBanners();
-            resetBannerAutoplay();
-        }
-
-        function startBannerAutoplay() {
-            slideTimer = setInterval(nextBanner, 6000);
-        }
-
-        function resetBannerAutoplay() {
-            if (slideTimer) clearInterval(slideTimer);
             startBannerAutoplay();
         }
 
-        // 5. CATALOG RENDERING
+        // 5. CATALOG FILTERING & RENDERING
         function filterBrand(brand) {
             currentBrandFilter = brand;
-            document.querySelectorAll('.brand-tab').forEach(b => {
-                b.className = 'brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition';
+            document.querySelectorAll('.brand-tab').forEach(tab => {
+                tab.className = 'brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition';
             });
-            const active = document.getElementById('brand-btn-' + (brand === 'Lynk & Co' ? 'Lynk' : brand));
-            if (active) {
-                active.className = 'brand-tab px-4 py-2.5 rounded-lg bg-brand text-black font-bold whitespace-nowrap transition';
+            const activeBtn = document.getElementById(`brand-btn-${brand}`);
+            if (activeBtn) {
+                activeBtn.className = 'brand-tab px-4 py-2.5 rounded-lg bg-brand text-black font-bold whitespace-nowrap transition';
             }
             renderCatalog();
         }
@@ -1966,66 +1783,78 @@
             const grid = document.getElementById('catalog-cars-grid');
             if (!grid) return;
 
-            const filtered = catalogDatabase.filter(car => {
-                if (currentBrandFilter === 'all') return true;
-                return car.brand === currentBrandFilter;
-            });
+            const filteredCars = (currentBrandFilter === 'all')
+                ? catalogDatabase
+                : catalogDatabase.filter(c => c.brand.toLowerCase() === currentBrandFilter.toLowerCase() || (currentBrandFilter === 'Changan' && c.brand === 'Changan'));
 
-            grid.innerHTML = filtered.map(car => {
+            grid.innerHTML = filteredCars.map(car => {
                 const firstTrim = car.trims[0];
-                const priceFormatted = (currentLang === 'ru') 
-                    ? `от ${car.minPriceRu.toLocaleString()} ₽`
-                    : `FOB from $${car.minPriceFob.toLocaleString()}`;
-
-                const trimLabel = (currentLang === 'ru') 
-                    ? `${car.trimsCount} комплектации` 
-                    : `${car.trimsCount} trims`;
+                const minFob = car.minPriceFob || firstTrim.fobUsd;
+                const minFobRub = Math.round(minFob * currentUsdRate);
+                const trimLabel = (currentLang === 'ru')
+                    ? `${car.trimsCount} комплектаций`
+                    : `${car.trimsCount} trim options`;
 
                 return `
-                    <div onclick="openCarModal('${car.id}')" class="group bg-surface-card border border-surface-border hover:border-brand/40 rounded-xl overflow-hidden cursor-pointer transition duration-300 flex flex-col justify-between">
-                        <div>
-                            <!-- Visual -->
-                            <div class="h-56 bg-surface-base p-4 flex items-center justify-center relative overflow-hidden">
-                                <img src="${car.img}" alt="${car.fullName}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500">
-                                <span class="absolute top-3 right-3 text-[11px] font-mono font-bold bg-black/80 px-2 py-0.5 rounded text-gray-300 border border-white/10">
-                                    ${car.year}
-                                </span>
-                                <span class="absolute top-3 left-3 text-[11px] font-mono font-bold text-brand bg-brand/10 border border-brand/20 px-2 py-0.5 rounded">
-                                    ${car.brand}
-                                </span>
+                <div class="group rounded-2xl bg-surface-card border border-surface-border hover:border-brand/40 transition duration-300 overflow-hidden flex flex-col justify-between">
+                    <div class="cursor-pointer" onclick="openCarModal('${car.id}')">
+                        <!-- Car Image Box -->
+                        <div class="h-52 sm:h-56 bg-surface-base p-4 flex items-center justify-center relative overflow-hidden">
+                            <img src="${car.img}" alt="${car.fullName}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500">
+                            <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-surface-card/90 border border-surface-border text-[11px] font-mono font-bold text-white">
+                                ${car.brand}
+                            </div>
+                            <div class="absolute top-3 right-3 px-2.5 py-1 rounded bg-brand/10 border border-brand/30 text-[11px] font-mono font-bold text-brand">
+                                ${car.year}
+                            </div>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-5">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h3 class="text-base font-bold text-white group-hover:text-brand transition">${car.fullName}</h3>
+                                <span class="text-[11px] text-gray-500 font-mono">${trimLabel}</span>
                             </div>
 
-                            <!-- Info -->
-                            <div class="p-5">
-                                <div class="flex justify-between items-baseline mb-2">
-                                    <h3 class="text-base font-bold text-white group-hover:text-brand transition">${car.fullName}</h3>
-                                    <span class="text-[11px] text-gray-500 font-mono">${trimLabel}</span>
-                                </div>
+                            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-400 bg-surface-base p-2.5 rounded-lg border border-surface-border mb-4 font-mono">
+                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${firstTrim.drive}</div>
+                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${firstTrim.power}</div>
+                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${firstTrim.accel}</div>
+                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Запас хода:' : 'Range:'}</span> ${firstTrim.range}</div>
+                            </div>
 
-                                <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-400 bg-surface-base p-2.5 rounded-lg border border-surface-border mb-4 font-mono">
-                                    <div><span class="text-gray-500">Привод:</span> ${firstTrim.drive}</div>
-                                    <div><span class="text-gray-500">Мощность:</span> ${firstTrim.power}</div>
-                                    <div><span class="text-gray-500">0-100:</span> ${firstTrim.accel}</div>
-                                    <div><span class="text-gray-500">Запас хода:</span> ${firstTrim.range}</div>
-                                </div>
-
-                                <div class="pt-2 border-t border-surface-border flex justify-between items-baseline">
+                            <div class="pt-2 border-t border-surface-border">
+                                <div class="flex justify-between items-baseline">
                                     <span class="text-xs text-gray-400 uppercase font-mono">
-                                        ${currentLang === 'ru' ? 'Стоимость под ключ:' : 'Export FOB Price:'}
+                                        ${currentLang === 'ru' ? 'Цена в Китае (FOB):' : 'FOB Price (China):'}
                                     </span>
                                     <span class="text-lg font-bold font-mono text-brand">
-                                        ${priceFormatted}
+                                        $${minFob.toLocaleString()}
                                     </span>
                                 </div>
+                                ${currentLang === 'ru' ? `
+                                    <div class="flex justify-between items-center text-[11px] text-gray-400 font-mono mt-0.5">
+                                        <span>≈ ${minFobRub.toLocaleString()} ₽</span>
+                                        <span class="text-gray-500 font-medium">+ $1,500 услуги</span>
+                                    </div>
+                                    <div class="text-[10px] text-gray-500 mt-1">
+                                        * Таможня и утильсбор рассчитываются отдельно
+                                    </div>
+                                ` : `
+                                    <div class="text-[11px] text-gray-500 font-mono mt-0.5">
+                                        FOB (Shanghai / Nansha / Khorgos)
+                                    </div>
+                                `}
                             </div>
                         </div>
-
-                        <div class="p-5 pt-0">
-                            <button class="w-full py-2.5 rounded-lg bg-surface-elevated group-hover:bg-brand group-hover:text-black border border-surface-border text-white text-xs font-bold transition">
-                                ${currentLang === 'ru' ? 'Смотреть комплектации и расчет' : 'View Trims & Calculation'}
-                            </button>
-                        </div>
                     </div>
+
+                    <div class="p-5 pt-0">
+                        <button onclick="openCarModal('${car.id}')" class="w-full py-2.5 rounded-lg bg-surface-elevated group-hover:bg-brand group-hover:text-black border border-surface-border text-white text-xs font-bold transition">
+                            ${currentLang === 'ru' ? 'Консультация и комплектации' : 'View Trims & Request Price'}
+                        </button>
+                    </div>
+                </div>
                 `;
             }).join('');
         }
@@ -2083,35 +1912,51 @@
             document.getElementById('spec-accel').innerText = trim.accel;
             document.getElementById('spec-range').innerText = trim.range;
 
-            // RU Breakdown (Easy.car itemized logic)
-            document.getElementById('modal-calc-invoice').innerText = `${trim.invoiceRub.toLocaleString()} ₽ (${trim.invoiceCny.toLocaleString()} ¥)`;
-            document.getElementById('modal-calc-duty').innerText = `${trim.dutyRub.toLocaleString()} ₽`;
-            document.getElementById('modal-calc-util').innerText = `${trim.utilRub.toLocaleString()} ₽`;
-            document.getElementById('modal-calc-freight').innerText = `${trim.freightRub.toLocaleString()} ₽`;
-            document.getElementById('modal-calc-broker').innerText = `${trim.brokerRub.toLocaleString()} ₽`;
-            document.getElementById('modal-calc-grand-total').innerText = `${trim.totalRub.toLocaleString()} ₽`;
-            const usdEst = Math.round(trim.totalRub / 91.0);
-            document.getElementById('modal-calc-usd-total').innerText = `~ $${usdEst.toLocaleString()} по курсу ЦБ`;
-            document.getElementById('modal-order-btn-text').innerText = `Заказать ${currentModalCar.fullName} (${trim.name})`;
+            // Mathematical calculation based on live USD rate
+            const fobUsd = trim.fobUsd;
+            const fobRub = Math.round(fobUsd * currentUsdRate);
+            const feeUsd = 1500;
+            const feeRub = Math.round(feeUsd * currentUsdRate);
+            const totalUsd = fobUsd + feeUsd;
+            const totalRub = fobRub + feeRub;
 
-            // EN Breakdown
-            document.getElementById('modal-en-fob').innerText = `$${trim.fobUsd.toLocaleString()}`;
-            document.getElementById('modal-en-cny').innerText = `${trim.invoiceCny.toLocaleString()} ¥`;
-            document.getElementById('modal-en-cif').innerText = `~$${trim.cifUsd.toLocaleString()}`;
+            // RU Breakdown (FOB + $1500 services, customs calculated separately)
+            const ruFobUsd = document.getElementById('modal-ru-fob-usd');
+            const ruFobRub = document.getElementById('modal-ru-fob-rub');
+            const ruFeeUsd = document.getElementById('modal-ru-fee-usd');
+            const ruFeeRub = document.getElementById('modal-ru-fee-rub');
+            const ruTotalRub = document.getElementById('modal-ru-total-rub');
+            const ruTotalUsd = document.getElementById('modal-ru-total-usd');
+            const ruBtnText = document.getElementById('modal-ru-btn-text');
+
+            if (ruFobUsd) ruFobUsd.innerText = `$${fobUsd.toLocaleString()}`;
+            if (ruFobRub) ruFobRub.innerText = `≈ ${fobRub.toLocaleString()} ₽`;
+            if (ruFeeUsd) ruFeeUsd.innerText = `$${feeUsd.toLocaleString()}`;
+            if (ruFeeRub) ruFeeRub.innerText = `≈ ${feeRub.toLocaleString()} ₽`;
+            if (ruTotalRub) ruTotalRub.innerText = `${totalRub.toLocaleString()} ₽`;
+            if (ruTotalUsd) ruTotalUsd.innerText = `$${totalUsd.toLocaleString()} (по курсу ЦБ 1 $ = ${currentUsdRate.toFixed(2)} ₽)`;
+            if (ruBtnText) ruBtnText.innerText = `Консультация по заказу (${trim.name})`;
+
+            // EN Breakdown (FOB Shanghai/Nansha/Khorgos)
+            const enFobVal = document.getElementById('modal-en-fob-val');
+            const enBtnText = document.getElementById('modal-en-btn-text');
+            if (enFobVal) enFobVal.innerText = `$${fobUsd.toLocaleString()}`;
+            if (enBtnText) enBtnText.innerText = `Request price in your city (${trim.name})`;
         }
 
         function orderVehicleTelegram() {
             if (!currentModalCar) return;
-            const trim = currentModalCar.trims[currentModalTrimIndex];
-            const text = `Здравствуйте! Меня интересует ${currentModalCar.fullName} в комплектации "${trim.name}". Стоимость под ключ: ${trim.totalRub.toLocaleString()} ₽ (инвойс ${trim.invoiceCny.toLocaleString()} ¥). Пожалуйста, свяжитесь со мной для оформления.`;
+            const trim = currentModalCar.trims[currentModalTrimIndex] || currentModalCar.trims[0];
+            const fobRub = Math.round(trim.fobUsd * currentUsdRate);
+            const text = `Здравствуйте! Меня интересует ${currentModalCar.fullName} в комплектации "${trim.name}". Цена FOB в Китае: $${trim.fobUsd.toLocaleString()} (≈ ${fobRub.toLocaleString()} ₽) + услуги $1,500. Прошу проконсультировать по заказу и рассчитать таможню и доставку в РФ.`;
             const url = `https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
 
-        function orderVehicleWhatsApp() {
+        function requestPriceInCity() {
             if (!currentModalCar) return;
-            const trim = currentModalCar.trims[currentModalTrimIndex];
-            const text = `Hello Shanghai Motors! I am interested in exporting ${currentModalCar.fullName} (${trim.name}). FOB Price: $${trim.fobUsd.toLocaleString()}. Please provide a CIF quotation to my port.`;
+            const trim = currentModalCar.trims[currentModalTrimIndex] || currentModalCar.trims[0];
+            const text = `Hello Shanghai Motors! I am interested in ordering ${currentModalCar.fullName} (${trim.name}), FOB (Shanghai/Nansha/Khorgos): $${trim.fobUsd.toLocaleString()}. Please calculate the final landed price to my city.`;
             const url = `https://api.whatsapp.com/send?phone=8617316540375&text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
@@ -2121,10 +1966,17 @@
             if (menu) menu.classList.toggle('hidden');
         }
 
-        // Initialize on DOM Ready
-        window.addEventListener('DOMContentLoaded', () => {
-            initApp();
+        // Close modal on Escape or backdrop click
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCarModal();
         });
+
+        document.getElementById('car-modal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'car-modal') closeCarModal();
+        });
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
 </html>
