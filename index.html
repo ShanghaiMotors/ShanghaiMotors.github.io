@@ -764,10 +764,52 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Detailed Specifications Section (Подробнее о модели) -->
+            <div class="mt-8 pt-6 border-t border-surface-border">
+                <button type="button" id="toggle-detailed-specs-btn" onclick="toggleDetailedSpecs()" class="w-full flex items-center justify-between p-4 sm:p-4.5 rounded-xl bg-surface-base hover:bg-surface-elevated border border-surface-border transition group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center text-brand font-bold text-base group-hover:scale-105 transition">
+                            ⚙️
+                        </div>
+                        <div class="text-left">
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm sm:text-base font-extrabold text-white group-hover:text-brand transition">
+                                    <span data-lang="ru">Подробнее о модели</span>
+                                    <span data-lang="en">Detailed Specifications</span>
+                                </span>
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-brand/10 text-brand border border-brand/20">
+                                    <span data-lang="ru">Полные характеристики</span>
+                                    <span data-lang="en">Full Technical Data</span>
+                                </span>
+                            </div>
+                            <span class="block text-[11px] text-gray-400 font-mono mt-0.5">
+                                <span data-lang="ru">Габариты, силовая установка, батарея, подвеска, автопилот и салон</span>
+                                <span data-lang="en">Dimensions, powertrain, battery, chassis, ADAS & luxury cockpit</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-mono font-medium text-gray-400 group-hover:text-white transition">
+                        <span id="detailed-specs-toggle-text-ru" data-lang="ru">Показать</span>
+                        <span id="detailed-specs-toggle-text-en" data-lang="en">Show specs</span>
+                        <svg id="detailed-specs-chevron" class="w-4 h-4 transform transition-transform duration-300 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <!-- Detailed Specs Content Container -->
+                <div id="modal-detailed-specs-container" class="hidden mt-6 space-y-6 transition-all duration-300">
+                    <div id="modal-detailed-specs-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                        <!-- Dynamic categories injected here -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- CORE SCRIPTS & DATABASE -->
+    <script src="assets/car_specs.js"></script>
     <script>
                 // 1. POPULAR HERO BANNERS DATABASE
         const heroBanners = [
@@ -1826,6 +1868,7 @@
                 renderCatalog();
                 if (currentModalCar) {
                     renderModalTrim(currentModalTrimIndex);
+                    renderDetailedSpecs(currentModalCar);
                 }
             }
         }
@@ -2018,6 +2061,7 @@
             `).join('');
 
             renderModalTrim(0);
+            renderDetailedSpecs(car);
 
             const modal = document.getElementById('car-modal');
             modal.classList.remove('hidden');
@@ -2030,6 +2074,17 @@
             modal.classList.add('hidden');
             modal.classList.remove('flex');
             document.body.style.overflow = 'auto';
+
+            // Reset detailed specs toggle state
+            isDetailedSpecsOpen = false;
+            const container = document.getElementById('modal-detailed-specs-container');
+            const chevron = document.getElementById('detailed-specs-chevron');
+            const textRu = document.getElementById('detailed-specs-toggle-text-ru');
+            const textEn = document.getElementById('detailed-specs-toggle-text-en');
+            if (container) container.classList.add('hidden');
+            if (chevron) chevron.style.transform = 'rotate(0deg)';
+            if (textRu) textRu.innerText = 'Показать';
+            if (textEn) textEn.innerText = 'Show specs';
         }
 
         function selectModalTrim(idx) {
@@ -2096,6 +2151,77 @@
                 tip.classList.toggle('visible');
                 tip.classList.toggle('pointer-events-auto');
             }
+        }
+
+        let isDetailedSpecsOpen = false;
+
+        function toggleDetailedSpecs() {
+            isDetailedSpecsOpen = !isDetailedSpecsOpen;
+            const container = document.getElementById('modal-detailed-specs-container');
+            const chevron = document.getElementById('detailed-specs-chevron');
+            const textRu = document.getElementById('detailed-specs-toggle-text-ru');
+            const textEn = document.getElementById('detailed-specs-toggle-text-en');
+
+            if (!container) return;
+
+            if (isDetailedSpecsOpen) {
+                container.classList.remove('hidden');
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+                if (textRu) textRu.innerText = 'Скрыть';
+                if (textEn) textEn.innerText = 'Hide specs';
+            } else {
+                container.classList.add('hidden');
+                if (chevron) chevron.style.transform = 'rotate(0deg)';
+                if (textRu) textRu.innerText = 'Показать';
+                if (textEn) textEn.innerText = 'Show specs';
+            }
+        }
+
+        function renderDetailedSpecs(car) {
+            const grid = document.getElementById('modal-detailed-specs-grid');
+            if (!grid || !car) return;
+
+            const specsData = window.carDetailedSpecs && window.carDetailedSpecs[car.id];
+            if (!specsData || !specsData.categories || specsData.categories.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-6 text-gray-500 font-mono text-xs">
+                        ${currentLang === 'ru' ? 'Характеристики загружаются...' : 'Specifications loading...'}
+                    </div>
+                `;
+                return;
+            }
+
+            const isRu = currentLang === 'ru';
+            const textRu = document.getElementById('detailed-specs-toggle-text-ru');
+            const textEn = document.getElementById('detailed-specs-toggle-text-en');
+            if (textRu) textRu.innerText = isDetailedSpecsOpen ? 'Скрыть' : 'Показать';
+            if (textEn) textEn.innerText = isDetailedSpecsOpen ? 'Hide specs' : 'Show specs';
+
+            grid.innerHTML = specsData.categories.map(cat => {
+                const catName = isRu ? cat.nameRu : cat.nameEn;
+                const itemsHtml = cat.items.map(item => {
+                    const label = isRu ? item.labelRu : item.labelEn;
+                    const val = isRu ? item.valRu : item.valEn;
+                    return `
+                        <div class="flex justify-between items-start text-xs py-1.5 border-b border-surface-border/40 last:border-b-0 gap-3">
+                            <span class="text-gray-400 font-medium leading-relaxed">${label}</span>
+                            <span class="text-right font-mono text-gray-100 font-semibold text-xs sm:text-[13px] leading-relaxed shrink-0 max-w-[60%]">${val}</span>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="bg-surface-elevated/70 border border-surface-border rounded-xl p-4 sm:p-5 flex flex-col h-full hover:border-brand/30 transition shadow-sm">
+                        <div class="flex items-center gap-2.5 pb-3 mb-3 border-b border-surface-border">
+                            <span class="text-lg leading-none">${cat.icon || '⚙️'}</span>
+                            <h4 class="text-xs sm:text-sm font-extrabold text-white tracking-wider uppercase font-mono">${catName}</h4>
+                        </div>
+                        <div class="space-y-1 flex-1">
+                            ${itemsHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         document.addEventListener('click', (e) => {
