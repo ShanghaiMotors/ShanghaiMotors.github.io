@@ -10,7 +10,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS (Local with CDN fallback) -->
     <script src="assets/tailwind.min.js"></script>
@@ -39,8 +39,8 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-                        mono: ['"Space Grotesk"', 'monospace']
+                        sans: ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['"Inter"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
                     }
                 }
             }
@@ -51,7 +51,7 @@
         body {
             background-color: #0B0D12;
             color: #E2E8F0;
-            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
             overflow-x: hidden;
         }
 
@@ -290,8 +290,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
-                    <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="en">Live Direct Sourcing</span>
-                    <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="ru">Прямой каталог авто</span>
+                    <span class="text-brand text-xs font-semibold uppercase tracking-wider" data-lang="en">Live Direct Sourcing</span>
+                    <span class="text-brand text-xs font-semibold uppercase tracking-wider" data-lang="ru">Прямой каталог авто</span>
                     <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                         <span data-lang="en">Automotive Catalog & Configurations</span>
                         <span data-lang="ru">Каталог автомобилей из Китая</span>
@@ -323,11 +323,11 @@
             <div data-lang="ru" class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-surface-card border border-surface-border mb-8">
                 <div class="flex items-center gap-2.5">
                     <span class="w-2.5 h-2.5 rounded-full bg-brand animate-pulse"></span>
-                    <span class="text-xs font-mono text-gray-300">
+                    <span class="text-xs text-gray-300 font-medium">
                         Курс ЦБ РФ: <strong id="fx-rate-display" class="text-brand font-bold">1 $ = 84.43 ₽</strong> (обновляется ежедневно)
                     </span>
                 </div>
-                <div class="text-[11px] font-mono text-gray-500">
+                <div class="text-[11px] text-gray-400 font-medium">
                     Логистика и растаможка рассчитываются отдельно
                 </div>
             </div>
@@ -336,11 +336,11 @@
             <div data-lang="en" class="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-surface-card border border-surface-border mb-8">
                 <div class="flex items-center gap-2.5">
                     <span class="w-2.5 h-2.5 rounded-full bg-brand animate-pulse"></span>
-                    <span class="text-xs font-mono text-gray-300">
+                    <span class="text-xs text-gray-300 font-medium">
                         Direct Automotive Export Hub: <strong class="text-brand font-bold">Direct Manufacturer Allocation & Rapid Global Dispatch</strong>
                     </span>
                 </div>
-                <div class="text-[11px] font-mono text-gray-400">
+                <div class="text-[11px] text-gray-400 font-medium">
                     FOB Dispatch Ports: Shanghai • Ningbo • Khorgos • Nansha
                 </div>
             </div>
@@ -356,8 +356,8 @@
     <section id="process" class="py-16 md:py-24 border-b border-surface-border bg-surface-card/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="en">Transparent Workflow</span>
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider" data-lang="ru">Регламент сделки</span>
+                <span class="text-brand text-xs font-semibold uppercase tracking-wider" data-lang="en">Transparent Workflow</span>
+                <span class="text-brand text-xs font-semibold uppercase tracking-wider" data-lang="ru">Регламент сделки</span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                     <span data-lang="en">How Vehicle Delivery Works</span>
                     <span data-lang="ru">Покупка и доставка автомобиля за 5 шагов</span>
@@ -366,7 +366,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-2xl font-bold mb-3">01</div>
+                    <div class="text-brand text-2xl font-extrabold mb-3">01</div>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="en">Selection & VIN Check</h3>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Подбор и проверка</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
@@ -378,7 +378,7 @@
                 </div>
 
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-2xl font-bold mb-3">02</div>
+                    <div class="text-brand text-2xl font-extrabold mb-3">02</div>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="en">Contract & Bank Wire</h3>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Официальный договор</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
@@ -390,7 +390,7 @@
                 </div>
 
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-2xl font-bold mb-3">03</div>
+                    <div class="text-brand text-2xl font-extrabold mb-3">03</div>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="en">Export & 100% Insurance</h3>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Экспорт и страховка</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
@@ -402,7 +402,7 @@
                 </div>
 
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-2xl font-bold mb-3">04</div>
+                    <div class="text-brand text-2xl font-extrabold mb-3">04</div>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="en">Customs & Shipping</h3>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Таможня, СБКТС и ЭПТС</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
@@ -414,7 +414,7 @@
                 </div>
 
                 <div class="p-6 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-brand font-mono text-2xl font-bold mb-3">05</div>
+                    <div class="text-brand text-2xl font-extrabold mb-3">05</div>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="en">Port Handover / Delivery</h3>
                     <h3 class="text-base font-bold text-white mb-2" data-lang="ru">Выдача в вашем городе</h3>
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="en">
@@ -438,7 +438,7 @@
                 <!-- Left Column: Value Prop & Trust -->
                 <div class="lg:col-span-5 space-y-6">
                     <div>
-                        <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">
+                        <span class="text-brand text-xs font-semibold uppercase tracking-wider">
                             <span data-lang="en">Direct Export Inquiry</span>
                             <span data-lang="ru">Индивидуальный расчет под ключ</span>
                         </span>
@@ -461,8 +461,8 @@
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                             </div>
                             <div>
-                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Прямой экспортный контракт</h4>
-                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Direct Export Contract</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider" data-lang="ru">Прямой экспортный контракт</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider" data-lang="en">Direct Export Contract</h4>
                                 <p class="text-xs text-gray-400" data-lang="ru">Официальная поставка от заводов без посреднических наценок.</p>
                                 <p class="text-xs text-gray-400" data-lang="en">Official manufacturer supply without broker markups.</p>
                             </div>
@@ -473,8 +473,8 @@
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                             </div>
                             <div>
-                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Полный пакет документов</h4>
-                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Full Export Documentation</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider" data-lang="ru">Полный пакет документов</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider" data-lang="en">Full Export Documentation</h4>
                                 <p class="text-xs text-gray-400" data-lang="ru">Экспортная декларация, инвойс, упаковочный лист, транзитная декларация, видеоотчет и т. д.</p>
                                 <p class="text-xs text-gray-400" data-lang="en">Export declaration, commercial invoice, packing list, transit declaration, pre-shipment inspection video, etc.</p>
                             </div>
@@ -485,8 +485,8 @@
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                             </div>
                             <div>
-                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Удобство</h4>
-                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Convenience</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider" data-lang="ru">Удобство</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider" data-lang="en">Convenience</h4>
                                 <p class="text-xs text-gray-400" data-lang="ru">Расчет поступит на ваш email или в выбранный мессенджер.</p>
                                 <p class="text-xs text-gray-400" data-lang="en">Your quotation will be delivered directly to your email or preferred messenger.</p>
                             </div>
@@ -618,7 +618,7 @@
     <section id="offices" class="py-16 md:py-24 border-b border-surface-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">Infrastructure</span>
+                <span class="text-brand text-xs font-semibold uppercase tracking-wider">Infrastructure</span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                     <span data-lang="en">Shanghai Motors Global Presence</span>
                     <span data-lang="ru">Международные офисы Shanghai Motors</span>
@@ -628,8 +628,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-surface-card border border-surface-border rounded-xl p-6">
                     <div class="flex justify-between items-center mb-3">
-                        <span class="text-xs font-mono font-bold text-brand uppercase">Headquarters</span>
-                        <span class="text-xs text-gray-500 font-mono">China</span>
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Headquarters</span>
+                        <span class="text-xs text-gray-500 font-medium">China</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2" data-lang="en">Shanghai Headquarters</h3>
                     <h3 class="text-lg font-bold text-white mb-2" data-lang="ru">Шанхай (Shanghai HQ)</h3>
@@ -639,7 +639,7 @@
                     <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
                         Прямые дилерские соглашения с производителями Geely, Zeekr, Changan, BYD, Xiaomi. Собственные площадки для видеоинспекции в портах Шанхай и Нинбо.
                     </p>
-                    <div class="text-xs text-gray-300 font-mono border-t border-surface-border pt-4 space-y-1">
+                    <div class="text-xs text-gray-300 font-medium border-t border-surface-border pt-4 space-y-1">
                         <div>WhatsApp: <a href="http://wa.me/8617316540375" target="_blank" class="hover:text-brand transition">+86 173 1654 0375</a></div>
                         <div>Email: <a href="mailto:info@shanghaimotors.net" class="hover:text-brand transition">info@shanghaimotors.net</a></div>
                     </div>
@@ -647,8 +647,8 @@
 
                 <div class="bg-surface-card border border-surface-border rounded-xl p-6">
                     <div class="flex justify-between items-center mb-3">
-                        <span class="text-xs font-mono font-bold text-brand uppercase">Middle East Hub</span>
-                        <span class="text-xs text-gray-500 font-mono">UAE</span>
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Middle East Hub</span>
+                        <span class="text-xs text-gray-500 font-medium">UAE</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2" data-lang="en">Dubai Regional Hub</h3>
                     <h3 class="text-lg font-bold text-white mb-2" data-lang="ru">Дубай (Dubai Hub)</h3>
@@ -658,7 +658,7 @@
                     <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
                         Транзитный хаб в свободной зоне Jebel Ali, расчеты в AED/USD, перенаправление партий авто на Ближний Восток, Кавказ и страны СНГ.
                     </p>
-                    <div class="text-xs text-gray-300 font-mono border-t border-surface-border pt-4 space-y-1">
+                    <div class="text-xs text-gray-300 font-medium border-t border-surface-border pt-4 space-y-1">
                         <div>Middle East Logistics Desk</div>
                         <div>Email: <a href="mailto:info@shanghaimotors.net" class="hover:text-brand transition">info@shanghaimotors.net</a></div>
                     </div>
@@ -666,8 +666,8 @@
 
                 <div class="bg-surface-card border border-surface-border rounded-xl p-6">
                     <div class="flex justify-between items-center mb-3">
-                        <span class="text-xs font-mono font-bold text-brand uppercase">Europe Desk</span>
-                        <span class="text-xs text-gray-500 font-mono">Germany</span>
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Europe Desk</span>
+                        <span class="text-xs text-gray-500 font-medium">Germany</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2" data-lang="en">Berlin European Office</h3>
                     <h3 class="text-lg font-bold text-white mb-2" data-lang="ru">Берлин (Berlin Office)</h3>
@@ -677,7 +677,7 @@
                     <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
                         Координация европейской таможенной очистки, логистика портов Бремерхафен и Роттердам, B2B поставки в страны Европы.
                     </p>
-                    <div class="text-xs text-gray-300 font-mono border-t border-surface-border pt-4 space-y-1">
+                    <div class="text-xs text-gray-300 font-medium border-t border-surface-border pt-4 space-y-1">
                         <div>European Export Desk</div>
                         <div>Email: <a href="mailto:info@shanghaimotors.net" class="hover:text-brand transition">info@shanghaimotors.net</a></div>
                     </div>
@@ -690,7 +690,7 @@
     <section id="faq" class="py-16 md:py-24 border-b border-surface-border bg-surface-card/30">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">FAQ</span>
+                <span class="text-brand text-xs font-semibold uppercase tracking-wider">FAQ</span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                     <span data-lang="en">Frequently Asked Questions</span>
                     <span data-lang="ru">Частые вопросы о заказе авто</span>
@@ -749,8 +749,8 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Navigation</h4>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Навигация</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Navigation</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Навигация</h4>
                     <ul class="space-y-2 text-xs text-gray-400" data-lang="en">
                         <li><a href="#hero-banners" class="hover:text-brand transition">Top Models</a></li>
                         <li><a href="#catalog" class="hover:text-brand transition">Vehicle Catalog</a></li>
@@ -766,8 +766,8 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Official Channels</h4>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Официальные контакты</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Official Channels</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Официальные контакты</h4>
                     
                     <!-- EN SOCIALS (WhatsApp, Instagram, LinkedIn, Email) -->
                     <div data-lang="en" class="space-y-2.5 text-xs text-gray-400">
@@ -833,15 +833,15 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Export & Compliance</h4>
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Экспорт и таможня</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Export & Compliance</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Экспорт и таможня</h4>
                     <p class="text-xs text-gray-400 leading-relaxed mb-3" data-lang="en">
                         All global vehicle deliveries are backed by official commercial export contracts, verified factory inspection, and maritime insurance.
                     </p>
                     <p class="text-xs text-gray-400 leading-relaxed mb-3" data-lang="ru">
                         Все поставки оформляются по прямому внешнеторговому контракту с полной юридической гарантией.
                     </p>
-                    <div class="text-[11px] text-gray-500 font-mono">
+                    <div class="text-[11px] text-gray-500 font-medium">
                         © 2026 Shanghai Motors. All rights reserved.
                     </div>
                 </div>
@@ -939,7 +939,7 @@
                         </span>
                         <div class="flex flex-col min-w-0">
                             <span class="text-sm font-bold text-white group-hover:text-[#EA4335] transition leading-tight">Email</span>
-                            <span class="text-xs text-gray-300 font-mono tracking-tight truncate select-all">info@shanghaimotors.net</span>
+                            <span class="text-xs text-gray-300 font-medium tracking-tight truncate select-all">info@shanghaimotors.net</span>
                         </div>
                     </a>
                     <button type="button" onclick="copyEmailAddress(this)" class="ml-2 px-2.5 py-1.5 rounded-lg bg-surface-card hover:bg-surface-hover border border-surface-border hover:border-gray-500 text-gray-300 hover:text-white text-xs font-medium flex items-center gap-1.5 transition flex-shrink-0 cursor-pointer" title="Copy email address">
@@ -970,7 +970,7 @@
             <!-- Modal Header -->
             <div class="mb-6 pr-10">
                 <div class="flex items-center gap-2">
-                    <span id="modal-brand-badge" class="text-xs font-mono font-bold text-brand uppercase tracking-wider">ZEEKR</span>
+                    <span id="modal-brand-badge" class="text-xs font-bold text-brand uppercase tracking-wider">ZEEKR</span>
                 </div>
                 <h2 id="modal-car-title" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Zeekr 001</h2>
             </div>
@@ -985,7 +985,7 @@
 
                     <!-- Trims Selector (Комплектации) -->
                     <div>
-                        <div class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400 mb-2">
+                        <div class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
                             <span data-lang="ru">Выберите комплектацию:</span>
                             <span data-lang="en">Select Trim / Configuration:</span>
                         </div>
@@ -996,30 +996,30 @@
 
                     <!-- Technical Specs Table for Active Trim -->
                     <div class="bg-surface-base border border-surface-border rounded-xl p-4">
-                        <div class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400 mb-3">
+                        <div class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
                             <span data-lang="ru">Технические характеристики</span>
                             <span data-lang="en">Technical Specifications</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3 text-xs">
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="en">Powertrain</span>
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="ru">Двигатель</span>
-                                <span id="spec-drive" class="text-white font-bold font-mono">Dual-Motor AWD</span>
+                                <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">Powertrain</span>
+                                <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Двигатель</span>
+                                <span id="spec-drive" class="text-white font-bold text-xs sm:text-sm">Dual-Motor AWD</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="en">Output Power</span>
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="ru">Мощность</span>
-                                <span id="spec-power" class="text-white font-bold font-mono">789 hp</span>
+                                <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">Output Power</span>
+                                <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Мощность</span>
+                                <span id="spec-power" class="text-white font-bold text-xs sm:text-sm">789 hp</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="en">0-100 km/h</span>
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="ru">Разгон 0-100</span>
-                                <span id="spec-accel" class="text-brand font-bold font-mono">3.3 s</span>
+                                <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">0-100 km/h</span>
+                                <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Разгон 0-100</span>
+                                <span id="spec-accel" class="text-brand font-bold text-xs sm:text-sm">3.3 s</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="en">Cruising Range</span>
-                                <span class="text-gray-500 block text-[10px] font-mono uppercase" data-lang="ru">Запас хода</span>
-                                <span id="spec-range" class="text-white font-bold font-mono">705 km (CLTC)</span>
+                                <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">Cruising Range</span>
+                                <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Запас хода</span>
+                                <span id="spec-range" class="text-white font-bold text-xs sm:text-sm">705 km (CLTC)</span>
                             </div>
                         </div>
                     </div>
@@ -1029,8 +1029,8 @@
                     <!-- RU Price Breakdown -->
                     <div data-lang="ru" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
                         <div class="flex justify-between items-center pb-3 border-b border-surface-border">
-                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Условия поставки</span>
-                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20">FOB Хоргос / Суйфэньхэ / Шанхай</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Условия поставки</span>
+                            <span class="text-xs text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20">FOB Хоргос / Суйфэньхэ / Шанхай</span>
                         </div>
 
                         <div class="space-y-3.5 text-xs">
@@ -1040,11 +1040,11 @@
                                         <span class="text-white font-medium text-sm block">Цена готового к отправке авто:</span>
                                         <!-- Tooltip (i) -->
                                         <div class="relative inline-block group/tip">
-                                            <button type="button" onclick="event.stopPropagation(); toggleDeliveryTooltip(this)" class="w-4 h-4 rounded-full bg-surface-elevated hover:bg-brand text-gray-300 hover:text-black flex items-center justify-center text-[10px] font-bold font-mono transition cursor-pointer border border-surface-border" title="Информация о сроках поставки">
+                                            <button type="button" onclick="event.stopPropagation(); toggleDeliveryTooltip(this)" class="w-4 h-4 rounded-full bg-surface-elevated hover:bg-brand text-gray-300 hover:text-black flex items-center justify-center text-[10px] font-bold transition cursor-pointer border border-surface-border" title="Информация о сроках поставки">
                                                 i
                                             </button>
                                             <div class="tooltip-popup absolute left-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-2 w-72 p-3.5 bg-[#161B22] border border-surface-border rounded-xl shadow-2xl opacity-0 invisible group-hover/tip:opacity-100 group-hover/tip:visible transition-all duration-200 z-50 pointer-events-none text-left font-sans text-xs text-gray-200 backdrop-blur-md">
-                                                <div class="flex items-center gap-1.5 text-[11px] font-semibold text-brand mb-1.5 font-mono">
+                                                <div class="flex items-center gap-1.5 text-[11px] font-bold text-brand mb-1.5">
                                                     <span>ℹ️</span>
                                                     <span>Сроки поставки:</span>
                                                 </div>
@@ -1058,26 +1058,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span id="modal-ru-fob-usd" class="text-xs text-gray-400 font-mono mt-0.5 block">$73,250 • FOB по курсу ЦБ</span>
+                                    <span id="modal-ru-fob-usd" class="text-xs text-gray-400 mt-0.5 block font-medium">$73,250 • FOB по курсу ЦБ</span>
                                 </div>
                                 <div class="text-right">
-                                    <span id="modal-ru-price-rub" class="font-mono text-brand font-extrabold text-2xl sm:text-3xl block">6,184,598 ₽</span>
+                                    <span id="modal-ru-price-rub" class="text-brand font-extrabold text-2xl sm:text-3xl block tracking-tight">6,184,598 ₽</span>
                                 </div>
                             </div>
 
                             <div class="flex justify-between items-center text-gray-400 pt-2 border-t border-surface-border/50 text-[11px]">
                                 <span>Экспортное оформление и сертификаты:</span>
-                                <span class="text-white font-mono font-medium">Включено</span>
+                                <span class="text-white font-medium">Включено</span>
                             </div>
                             <div class="flex justify-between items-center text-gray-400 text-[11px]">
                                 <span>Полная инспекция и фотоотчет перед отправкой:</span>
-                                <span class="text-white font-mono font-medium">Включено</span>
+                                <span class="text-white font-medium">Включено</span>
                             </div>
                         </div>
 
                         <!-- Logistics & Customs Notice -->
                         <div class="p-3.5 bg-surface-card border border-surface-border rounded-xl space-y-1">
-                            <div class="flex items-center gap-1.5 text-brand text-xs font-bold font-mono">
+                            <div class="flex items-center gap-1.5 text-brand text-xs font-bold">
                                 <span>🚚</span>
                                 <span>Логистика и растаможка рассчитываются отдельно</span>
                             </div>
@@ -1099,8 +1099,8 @@
                     <!-- EN Price Breakdown -->
                     <div data-lang="en" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
                         <div class="flex justify-between items-center pb-3 border-b border-surface-border">
-                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400">Export Pricing</span>
-                            <span class="text-xs font-mono text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20">FOB (Shanghai / Nansha / Khorgos)</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Export Pricing</span>
+                            <span class="text-xs text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20">FOB (Shanghai / Nansha / Khorgos)</span>
                         </div>
 
                         <div class="space-y-3.5 text-xs">
@@ -1110,11 +1110,11 @@
                                         <span class="text-white font-medium text-sm block">Price in China (FOB):</span>
                                         <!-- Tooltip (i) -->
                                         <div class="relative inline-block group/tip">
-                                            <button type="button" onclick="event.stopPropagation(); toggleDeliveryTooltip(this)" class="w-4 h-4 rounded-full bg-surface-elevated hover:bg-brand text-gray-300 hover:text-black flex items-center justify-center text-[10px] font-bold font-mono transition cursor-pointer border border-surface-border" title="Delivery timeline information">
+                                            <button type="button" onclick="event.stopPropagation(); toggleDeliveryTooltip(this)" class="w-4 h-4 rounded-full bg-surface-elevated hover:bg-brand text-gray-300 hover:text-black flex items-center justify-center text-[10px] font-bold transition cursor-pointer border border-surface-border" title="Delivery timeline information">
                                                 i
                                             </button>
                                             <div class="tooltip-popup absolute left-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-2 w-72 p-3.5 bg-[#161B22] border border-surface-border rounded-xl shadow-2xl opacity-0 invisible group-hover/tip:opacity-100 group-hover/tip:visible transition-all duration-200 z-50 pointer-events-none text-left font-sans text-xs text-gray-200 backdrop-blur-md">
-                                                <div class="flex items-center gap-1.5 text-[11px] font-semibold text-brand mb-1.5 font-mono">
+                                                <div class="flex items-center gap-1.5 text-[11px] font-bold text-brand mb-1.5">
                                                     <span>ℹ️</span>
                                                     <span>Delivery Timeline:</span>
                                                 </div>
@@ -1130,15 +1130,15 @@
                                     </div>
                                     <span class="text-[11px] text-gray-500">Port handover & export clearance included</span>
                                 </div>
-                                <span id="modal-en-fob-val" class="font-mono text-brand font-extrabold text-2xl sm:text-3xl">$73,250</span>
+                                <span id="modal-en-fob-val" class="text-brand font-extrabold text-2xl sm:text-3xl tracking-tight">$73,250</span>
                             </div>
                             <div class="flex justify-between items-center text-gray-400 pt-2 border-t border-surface-border/50 text-[11px]">
                                 <span>Export Licensing & Full Inspection:</span>
-                                <span class="text-white font-mono font-medium">Included</span>
+                                <span class="text-white font-medium">Included</span>
                             </div>
                             <div class="flex justify-between items-center text-gray-400 text-[11px]">
                                 <span>Original Certificate of Origin & Paperwork:</span>
-                                <span class="text-white font-mono font-medium">Included</span>
+                                <span class="text-white font-medium">Included</span>
                             </div>
                         </div>
 
@@ -1171,18 +1171,18 @@
                                     <span data-lang="ru">Подробнее о модели</span>
                                     <span data-lang="en">Detailed Specifications</span>
                                 </span>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-brand/10 text-brand border border-brand/20">
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-brand/10 text-brand border border-brand/20">
                                     <span data-lang="ru">Полные характеристики</span>
                                     <span data-lang="en">Full Technical Data</span>
                                 </span>
                             </div>
-                            <span class="block text-[11px] text-gray-400 font-mono mt-0.5">
+                            <span class="block text-[11px] text-gray-400 mt-0.5">
                                 <span data-lang="ru">Габариты, силовая установка, батарея, подвеска, автопилот и салон</span>
                                 <span data-lang="en">Dimensions, powertrain, battery, chassis, ADAS & luxury cockpit</span>
                             </span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 text-xs font-mono font-medium text-gray-400 group-hover:text-white transition">
+                    <div class="flex items-center gap-2 text-xs font-semibold text-gray-400 group-hover:text-white transition">
                         <span id="detailed-specs-toggle-text-ru" data-lang="ru">Показать</span>
                         <span id="detailed-specs-toggle-text-en" data-lang="en">Show specs</span>
                         <svg id="detailed-specs-chevron" class="w-4 h-4 transform transition-transform duration-300 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2294,7 +2294,7 @@
             container.innerHTML = heroBanners.map((b, idx) => {
                 const minFobRub = Math.round(b.minPriceFob * currentUsdRate);
                 const priceFormatted = (currentLang === 'ru')
-                    ? `от ${minFobRub.toLocaleString()} ₽ <span class="text-xs font-mono font-normal text-gray-400">($${b.minPriceFob.toLocaleString()} FOB)</span>`
+                    ? `от ${minFobRub.toLocaleString()} ₽ <span class="text-xs font-normal text-gray-400">($${b.minPriceFob.toLocaleString()} FOB)</span>`
                     : `FOB from $${b.minPriceFob.toLocaleString()}`;
 
                 return `
@@ -2303,7 +2303,7 @@
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                             <!-- Left Info -->
                             <div class="lg:col-span-6 space-y-4 z-20">
-                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono font-semibold uppercase tracking-wider ${b.tagClass}">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold uppercase tracking-wider ${b.tagClass}">
                                     <span>●</span>
                                     <span>${currentLang === 'ru' ? b.tagRu : b.tagEn}</span>
                                 </div>
@@ -2313,7 +2313,7 @@
                                 <p class="text-sm sm:text-base text-gray-300 leading-relaxed font-sans max-w-xl">
                                     ${currentLang === 'ru' ? b.descRu : b.descEn}
                                 </p>
-                                <div class="text-2xl sm:text-3xl font-extrabold font-mono text-brand flex items-baseline gap-2 pt-1">
+                                <div class="text-2xl sm:text-3xl font-extrabold text-brand flex items-baseline gap-2 pt-1 tracking-tight">
                                     ${priceFormatted}
                                 </div>
                                 <div class="pt-3 flex flex-wrap items-center gap-3">
@@ -2399,7 +2399,7 @@
                         <!-- Car Image Box -->
                         <div class="h-52 sm:h-56 bg-surface-base p-4 flex items-center justify-center relative overflow-hidden">
                             <img src="${car.img}" alt="${car.fullName}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500">
-                            <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-surface-card/90 border border-surface-border text-[11px] font-mono font-bold text-white">
+                            <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-surface-card/90 border border-surface-border text-[11px] font-bold text-white tracking-wider">
                                 ${car.brand}
                             </div>
                         </div>
@@ -2408,10 +2408,10 @@
                         <div class="p-5">
                             <div class="flex justify-between items-baseline mb-2">
                                 <h3 class="text-base font-bold text-white group-hover:text-brand transition">${car.fullName}</h3>
-                                <span class="text-[11px] text-gray-500 font-mono">${trimLabel}</span>
+                                <span class="text-[11px] text-gray-400 font-medium">${trimLabel}</span>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-400 bg-surface-base p-2.5 rounded-lg border border-surface-border mb-4 font-mono">
+                            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300 bg-surface-base p-2.5 rounded-lg border border-surface-border mb-4 font-medium">
                                 <div><span class="text-gray-500">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${formatDrive(firstTrim.drive, currentLang)}</div>
                                 <div><span class="text-gray-500">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${formatPower(firstTrim.power, currentLang)}</div>
                                 <div><span class="text-gray-500">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${formatAccel(firstTrim.accel, currentLang)}</div>
@@ -2420,15 +2420,15 @@
 
                             <div class="pt-2 border-t border-surface-border">
                                 <div class="flex justify-between items-baseline">
-                                    <span class="text-xs text-gray-400 uppercase font-mono">
+                                    <span class="text-xs text-gray-400 uppercase font-medium">
                                         ${currentLang === 'ru' ? 'Готов к отправке:' : 'Price in China (FOB):'}
                                     </span>
-                                    <span class="text-lg font-bold font-mono text-brand">
+                                    <span class="text-lg font-extrabold text-brand tracking-tight">
                                         ${currentLang === 'ru' ? `от ${minFobRub.toLocaleString()} ₽` : `$${minFob.toLocaleString()}`}
                                     </span>
                                 </div>
                                 ${currentLang === 'ru' ? `
-                                    <div class="flex justify-between items-center text-[11px] text-gray-400 font-mono mt-0.5">
+                                    <div class="flex justify-between items-center text-[11px] text-gray-400 font-medium mt-0.5">
                                         <span>FOB от $${minFob.toLocaleString()}</span>
                                         <span class="text-gray-500 font-medium">по курсу ЦБ</span>
                                     </div>
@@ -2436,7 +2436,7 @@
                                         * Логистика и растаможка рассчитываются отдельно
                                     </div>
                                 ` : `
-                                    <div class="text-[11px] text-gray-500 font-mono mt-0.5">
+                                    <div class="text-[11px] text-gray-400 font-medium mt-0.5">
                                         FOB (Shanghai / Nansha / Khorgos)
                                     </div>
                                 `}
@@ -2467,7 +2467,7 @@
             // Render Trims Pills with language formatting
             const trimsContainer = document.getElementById('modal-trims-container');
             trimsContainer.innerHTML = car.trims.map((trim, idx) => `
-                <button type="button" onclick="selectModalTrim(${idx})" id="trim-pill-${idx}" class="trim-pill px-3.5 py-2 rounded-lg text-xs font-mono font-medium transition ${idx === 0 ? 'bg-brand text-black font-bold' : 'bg-surface-elevated text-gray-300 hover:text-white border border-surface-border'}">
+                <button type="button" onclick="selectModalTrim(${idx})" id="trim-pill-${idx}" class="trim-pill px-3.5 py-2 rounded-lg text-xs font-medium transition ${idx === 0 ? 'bg-brand text-black font-bold' : 'bg-surface-elevated text-gray-300 hover:text-white border border-surface-border'}">
                     ${formatTrimName(trim.name, currentLang)}
                 </button>
             `).join('');
@@ -2503,8 +2503,8 @@
             currentModalTrimIndex = idx;
             document.querySelectorAll('.trim-pill').forEach((p, i) => {
                 p.className = (i === idx)
-                    ? 'trim-pill px-3.5 py-2 rounded-lg text-xs font-mono font-bold bg-brand text-black transition'
-                    : 'trim-pill px-3.5 py-2 rounded-lg text-xs font-mono font-medium bg-surface-elevated text-gray-300 hover:text-white border border-surface-border transition';
+                    ? 'trim-pill px-3.5 py-2 rounded-lg text-xs font-bold bg-brand text-black transition'
+                    : 'trim-pill px-3.5 py-2 rounded-lg text-xs font-medium bg-surface-elevated text-gray-300 hover:text-white border border-surface-border transition';
             });
             renderModalTrim(idx);
         }
@@ -2596,7 +2596,7 @@
             const specsData = window.carDetailedSpecs && window.carDetailedSpecs[car.id];
             if (!specsData || !specsData.categories || specsData.categories.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full text-center py-6 text-gray-500 font-mono text-xs">
+                    <div class="col-span-full text-center py-6 text-gray-400 font-medium text-xs">
                         ${currentLang === 'ru' ? 'Характеристики загружаются...' : 'Specifications loading...'}
                     </div>
                 `;
@@ -2617,7 +2617,7 @@
                     return `
                         <div class="flex justify-between items-start text-xs py-1.5 border-b border-surface-border/40 last:border-b-0 gap-3">
                             <span class="text-gray-400 font-medium leading-relaxed">${label}</span>
-                            <span class="text-right font-mono text-gray-100 font-semibold text-xs sm:text-[13px] leading-relaxed shrink-0 max-w-[60%]">${val}</span>
+                            <span class="text-right text-gray-100 font-semibold text-xs sm:text-[13px] leading-relaxed shrink-0 max-w-[60%]">${val}</span>
                         </div>
                     `;
                 }).join('');
@@ -2626,7 +2626,7 @@
                     <div class="bg-surface-elevated/70 border border-surface-border rounded-xl p-4 sm:p-5 flex flex-col h-full hover:border-brand/30 transition shadow-sm">
                         <div class="flex items-center gap-2.5 pb-3 mb-3 border-b border-surface-border">
                             <span class="text-lg leading-none">${cat.icon || '⚙️'}</span>
-                            <h4 class="text-xs sm:text-sm font-extrabold text-white tracking-wider uppercase font-mono">${catName}</h4>
+                            <h4 class="text-xs sm:text-sm font-bold text-white tracking-wider uppercase">${catName}</h4>
                         </div>
                         <div class="space-y-1 flex-1">
                             ${itemsHtml}
