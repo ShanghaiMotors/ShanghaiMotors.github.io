@@ -262,19 +262,19 @@
 
     <!-- SECTION 1: TOP HERO BANNERS (EXACT EASY.CAR POPULAR VEHICLES SLIDER) -->
     <section id="hero-banners" class="relative overflow-hidden border-b border-surface-border bg-[#0B0D12]">
-        <div id="banner-slider-container" class="relative min-h-[560px] md:min-h-[620px] w-full flex items-center">
+        <div id="banner-slider-container" class="relative min-h-[440px] md:min-h-[470px] w-full flex items-center">
             <div id="hero-banner-slides" class="absolute inset-0 w-full h-full">
                 <!-- Slides injected via JavaScript -->
             </div>
         </div>
 
         <!-- Slider Controls: Prev/Next & Dots -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 relative z-30 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-5 pt-0 relative z-30 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <button onclick="prevBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Previous Slide">
+                <button onclick="prevBanner()" class="w-9 h-9 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Previous Slide">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 </button>
-                <button onclick="nextBanner()" class="w-10 h-10 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Next Slide">
+                <button onclick="nextBanner()" class="w-9 h-9 rounded-full border border-surface-border bg-surface-card/80 hover:bg-surface-elevated hover:border-brand transition flex items-center justify-center text-white" aria-label="Next Slide">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </button>
             </div>
@@ -286,7 +286,7 @@
     </section>
 
     <!-- SECTION 2: VEHICLE CATALOG WITH INTERACTIVE MODAL & CALCULATION -->
-    <section id="catalog" class="py-16 md:py-24 border-b border-surface-border">
+    <section id="catalog" class="pt-8 md:pt-12 pb-16 md:pb-24 border-b border-surface-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
@@ -1009,8 +1009,8 @@
                             <div class="p-6">
                                 <div class="flex items-center gap-2 mb-2">
                                     <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-                                    <span class="text-[11px] font-bold uppercase tracking-wider text-blue-400" data-lang="ru">Выставочная площадка • Личный визит</span>
-                                    <span class="text-[11px] font-bold uppercase tracking-wider text-blue-400" data-lang="en">Showroom Staging • In-Person Visits</span>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider text-blue-400" data-lang="ru">Выставочная площадка • Диагностика</span>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider text-blue-400" data-lang="en">Showroom Staging • Inspection</span>
                                 </div>
                                 <h4 class="text-lg sm:text-xl font-bold text-white mb-2" data-lang="ru">Шоурум и площадка осмотра в Шанхае</h4>
                                 <h4 class="text-lg sm:text-xl font-bold text-white mb-2" data-lang="en">Shanghai Showroom & Inventory Staging</h4>
@@ -1018,22 +1018,25 @@
                                     Shanghai Automotive District, Shanghai, China
                                 </p>
                                 <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="ru">
-                                    Собственная площадка в Шанхае для предрейсовой диагностики и осмотра. Личный визит и тест-драйв автомобилей в наличии — по предварительной записи.
+                                    Собственная площадка в Шанхае для приема, комплексной предрейсовой диагностики и технической инспекции автомобилей перед отправкой.
                                 </p>
                                 <p class="text-xs text-gray-400 leading-relaxed mb-4" data-lang="en">
-                                    Dedicated staging facility for pre-export diagnostics and inspection. In-person visits and test-drives by advance appointment.
+                                    Dedicated staging facility in Shanghai for pre-export vehicle reception, multi-point diagnostics, and technical inspection.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- CTA Button for Showroom In-Person Visit -->
-                        <div class="p-6 pt-0">
-                            <button onclick="bookShowroomVisit()" class="w-full py-3 px-4 rounded-xl bg-surface-elevated hover:bg-brand hover:text-black border border-surface-border text-white text-xs font-bold transition flex items-center justify-center gap-2 group/btn cursor-pointer">
-                                <svg class="w-4 h-4 text-brand group-hover/btn:text-black transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                <span data-lang="ru">Записаться на визит в шоурум</span>
-                                <span data-lang="en">Book In-Person Showroom Visit</span>
-                                <span>→</span>
-                            </button>
+                        <!-- Facility Quality Badge -->
+                        <div class="p-6 pt-0 border-t border-surface-border/40 mt-auto">
+                            <div class="pt-4 flex items-center justify-between text-xs text-gray-400 font-medium">
+                                <span class="flex items-center gap-1.5 text-gray-300">
+                                    <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <span data-lang="ru">Предрейсовый контроль качества</span>
+                                    <span data-lang="en">Pre-Export Quality Staging</span>
+                                </span>
+                                <span class="text-[11px] text-gray-400" data-lang="ru">Шанхай, КНР</span>
+                                <span class="text-[11px] text-gray-400" data-lang="en">Shanghai, PRC</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2915,10 +2918,10 @@
 
                 return `
                 <div class="banner-slide absolute inset-0 transition-all duration-700 ease-in-out ${idx === activeSlideIndex ? 'opacity-100 z-10 scale-100 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none scale-95'}" id="slide-${idx}">
-                    <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 py-10 md:py-16 flex flex-col justify-center">
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col justify-center">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-center">
                             <!-- Left Info -->
-                            <div class="lg:col-span-6 space-y-4 z-20">
+                            <div class="lg:col-span-6 space-y-3 md:space-y-3.5 z-20">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold uppercase tracking-wider ${b.tagClass}">
                                     <span>●</span>
                                     <span>${currentLang === 'ru' ? b.tagRu : b.tagEn}</span>
@@ -2929,22 +2932,22 @@
                                 <p class="text-sm sm:text-base text-gray-300 leading-relaxed font-sans max-w-xl">
                                     ${currentLang === 'ru' ? b.descRu : b.descEn}
                                 </p>
-                                <div class="text-2xl sm:text-3xl font-extrabold text-brand flex items-baseline gap-2 pt-1 tracking-tight">
+                                <div class="text-2xl sm:text-3xl font-extrabold text-brand flex items-baseline gap-2 pt-0.5 tracking-tight">
                                     ${priceFormatted}
                                 </div>
-                                <div class="pt-3 flex flex-wrap items-center gap-3">
-                                    <button onclick="openCarModal('${b.id}')" class="bg-brand hover:bg-brand-hover text-black font-extrabold px-6 py-3.5 rounded-lg text-xs uppercase tracking-wider transition transform hover:scale-105 shadow-xl shadow-brand/20">
+                                <div class="pt-2 flex flex-wrap items-center gap-3">
+                                    <button onclick="openCarModal('${b.id}')" class="bg-brand hover:bg-brand-hover text-black font-extrabold px-6 py-3 rounded-lg text-xs uppercase tracking-wider transition transform hover:scale-105 shadow-xl shadow-brand/20">
                                         ${currentLang === 'ru' ? 'Консультация и расчет' : 'Request City Quote'}
                                     </button>
-                                    <button onclick="openCarModal('${b.id}')" class="px-5 py-3.5 rounded-lg bg-surface-card hover:bg-surface-elevated border border-surface-border text-white text-xs font-bold hover:border-brand transition">
+                                    <button onclick="openCarModal('${b.id}')" class="px-5 py-3 rounded-lg bg-surface-card hover:bg-surface-elevated border border-surface-border text-white text-xs font-bold hover:border-brand transition">
                                         ${currentLang === 'ru' ? 'Комплектации и цены' : 'View Configurations'}
                                     </button>
                                 </div>
                             </div>
                             <!-- Right Visual -->
-                            <div class="lg:col-span-6 flex items-center justify-center relative min-h-[260px] sm:min-h-[340px] md:min-h-[420px]">
+                            <div class="lg:col-span-6 flex items-center justify-center relative min-h-[220px] sm:min-h-[280px] md:min-h-[340px]">
                                 <div class="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-brand/10 blur-3xl pointer-events-none"></div>
-                                <img src="${b.img}" alt="${b.model}" class="max-h-[260px] sm:max-h-[340px] md:max-h-[420px] w-full object-contain relative z-10 transition-transform duration-700 hover:scale-105 cursor-pointer filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]" onclick="openCarModal('${b.id}')">
+                                <img src="${b.img}" alt="${b.model}" class="max-h-[220px] sm:max-h-[280px] md:max-h-[340px] w-full object-contain relative z-10 transition-transform duration-700 hover:scale-105 cursor-pointer filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]" onclick="openCarModal('${b.id}')">
                             </div>
                         </div>
                     </div>
