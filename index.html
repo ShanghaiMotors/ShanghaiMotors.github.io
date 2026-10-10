@@ -137,6 +137,9 @@
                 <a href="#process" class="hover:text-brand transition" data-lang="en">Export Process</a>
                 <a href="#process" class="hover:text-brand transition" data-lang="ru">Как заказать</a>
 
+                <a href="#quote" class="hover:text-brand transition" data-lang="en">Request Quote</a>
+                <a href="#quote" class="hover:text-brand transition" data-lang="ru">Заявка на расчет</a>
+
                 <a href="#offices" class="hover:text-brand transition" data-lang="en">Offices</a>
                 <a href="#offices" class="hover:text-brand transition" data-lang="ru">О компании</a>
 
@@ -206,6 +209,8 @@
             <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Каталог и цены</a>
             <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Export Process</a>
             <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Как заказать</a>
+            <a href="#quote" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Request Quote</a>
+            <a href="#quote" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">Заявка на расчет</a>
             <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="en">Global Offices</a>
             <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">О компании</a>
             <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand">FAQ</a>
@@ -418,6 +423,188 @@
                     <p class="text-xs text-gray-400 leading-relaxed" data-lang="ru">
                         Доставка крытым автовозом в Москву, СПб или ваш город. Автомобиль готов к постановке на учет в ГИБДД в день получения.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: REQUEST QUOTE / LEAD FORM (RFQ) -->
+    <section id="quote" class="py-16 md:py-24 border-b border-surface-border bg-gradient-to-b from-surface-card/40 to-transparent relative overflow-hidden">
+        <!-- Background subtle glow -->
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                <!-- Left Column: Value Prop & Trust -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-brand font-mono text-xs font-semibold uppercase tracking-wider">
+                            <span data-lang="en">Direct Export Inquiry</span>
+                            <span data-lang="ru">Индивидуальный расчет под ключ</span>
+                        </span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1 leading-tight">
+                            <span data-lang="en">Request an Official Export Quotation</span>
+                            <span data-lang="ru">Запросите расчет стоимости автомобиля</span>
+                        </h2>
+                        <p class="text-gray-400 text-sm mt-3 leading-relaxed" data-lang="ru">
+                            Укажите интересующую модель и город доставки. Мы проверим наличие на складах и заводах Китая, зафиксируем курс и пришлем детальную смету со всеми расходами.
+                        </p>
+                        <p class="text-gray-400 text-sm mt-3 leading-relaxed" data-lang="en">
+                            Specify your vehicle of interest and destination port. Our export team will prepare an itemized FOB or CIF quotation with production lead times and export clearance.
+                        </p>
+                    </div>
+
+                    <!-- Trust Points -->
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-lg bg-brand/15 text-brand flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Прямой экспортный контракт</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Direct Export Contract</h4>
+                                <p class="text-xs text-gray-400" data-lang="ru">Официальная поставка от заводов без посреднических наценок.</p>
+                                <p class="text-xs text-gray-400" data-lang="en">Direct manufacturer allocations with transparent FOB/CIF pricing.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-lg bg-brand/15 text-brand flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Полный пакет документов</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Full Export Compliance</h4>
+                                <p class="text-xs text-gray-400" data-lang="ru">Экспортная декларация, ОТТС/СБКТС, коносамент и фотоотчет проверки.</p>
+                                <p class="text-xs text-gray-400" data-lang="en">Customs declarations, Bill of Lading, Certificate of Conformity, pre-shipment VIN report.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-lg bg-brand/15 text-brand flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Быстрый ответ в течение 15 минут</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Prompt Response within 15 Minutes</h4>
+                                <p class="text-xs text-gray-400" data-lang="ru">Смета поступит на ваш email или в выбранный мессенджер.</p>
+                                <p class="text-xs text-gray-400" data-lang="en">Quotation sent directly to your email or preferred messenger.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Lead Form Card -->
+                <div class="lg:col-span-7">
+                    <div class="bg-surface-card border border-surface-border rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+                        <form id="lead-form" onsubmit="handleLeadSubmit(event)" class="space-y-4">
+                            <!-- Hidden inputs for FormSubmit -->
+                            <input type="hidden" name="_subject" id="form-subject" value="Новая заявка с сайта Shanghai Motors">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Vehicle of interest -->
+                                <div>
+                                    <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
+                                        <span data-lang="ru">Модель автомобиля *</span>
+                                        <span data-lang="en">Vehicle of Interest *</span>
+                                    </label>
+                                    <input type="text" name="vehicle" id="lead-vehicle" required placeholder="Zeekr 001, Li L9, Xiaomi SU7..." class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
+                                </div>
+
+                                <!-- Destination city / port -->
+                                <div>
+                                    <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
+                                        <span data-lang="ru">Город / Порт доставки</span>
+                                        <span data-lang="en">Destination Port / City</span>
+                                    </label>
+                                    <input type="text" name="destination" id="lead-destination" placeholder="Москва, Алматы, Dubai, Bishkek..." class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Name -->
+                                <div>
+                                    <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
+                                        <span data-lang="ru">Ваше имя *</span>
+                                        <span data-lang="en">Your Name *</span>
+                                    </label>
+                                    <input type="text" name="name" id="lead-name" required placeholder="Александр / John" class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
+                                </div>
+
+                                <!-- Email -->
+                                <div>
+                                    <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
+                                        <span data-lang="ru">Email (для сметы) *</span>
+                                        <span data-lang="en">Email (for Quotation) *</span>
+                                    </label>
+                                    <input type="email" name="email" id="lead-email" required placeholder="client@example.com" class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
+                                </div>
+                            </div>
+
+                            <!-- Phone / WhatsApp / Telegram -->
+                            <div>
+                                <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
+                                    <span data-lang="ru">Телефон / WhatsApp / Telegram (для оперативной связи)</span>
+                                    <span data-lang="en">Phone / WhatsApp / Telegram (optional)</span>
+                                </label>
+                                <input type="text" name="phone_messenger" id="lead-phone" placeholder="+7 (999) 000-00-00 или @username" class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
+                            </div>
+
+                            <!-- Additional notes -->
+                            <div>
+                                <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
+                                    <span data-lang="ru">Пожелания / Комплектация (необязательно)</span>
+                                    <span data-lang="en">Specific Requirements / Trim (optional)</span>
+                                </label>
+                                <textarea name="notes" id="lead-notes" rows="2" placeholder="Цвет кузова, салон, особые опции..." class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition resize-none"></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="pt-2">
+                                <button type="submit" id="lead-submit-btn" class="w-full py-3.5 px-6 rounded-xl bg-brand hover:bg-brand-hover text-black font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition shadow-lg shadow-brand/15 cursor-pointer">
+                                    <span data-lang="ru" id="btn-submit-text-ru">Получить расчет стоимости</span>
+                                    <span data-lang="en" id="btn-submit-text-en">Request Official Quotation</span>
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
+
+                            <p class="text-[11px] text-gray-500 text-center mt-2" data-lang="ru">
+                                Нажимая кнопку, вы даете согласие на обработку персональных данных. Конфиденциальность гарантируется.
+                            </p>
+                            <p class="text-[11px] text-gray-500 text-center mt-2" data-lang="en">
+                                By submitting, you agree to our privacy terms. Your information is kept strictly confidential.
+                            </p>
+                        </form>
+
+                        <!-- Success State Container (hidden by default) -->
+                        <div id="lead-success-msg" class="hidden text-center py-8 px-4 space-y-4">
+                            <div class="w-16 h-16 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] flex items-center justify-center mx-auto text-2xl font-bold">
+                                ✓
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-extrabold text-white">
+                                <span data-lang="ru">Заявка успешно принята!</span>
+                                <span data-lang="en">Inquiry Received Successfully!</span>
+                            </h3>
+                            <p class="text-gray-300 text-sm max-w-md mx-auto" data-lang="ru">
+                                Спасибо! Наш отдел экспорта уже готовит детальный расчет для <strong id="success-car-name" class="text-white"></strong>. Мы свяжемся с вами по указанным контактам в течение 15 минут.
+                            </p>
+                            <p class="text-gray-300 text-sm max-w-md mx-auto" data-lang="en">
+                                Thank you! Our export desk is preparing an itemized quotation for <strong id="success-car-name-en" class="text-white"></strong>. We will get back to you shortly.
+                            </p>
+                            <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
+                                <a id="success-tg-link" href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg bg-[#24A1DE] hover:bg-[#2090c7] text-white text-xs font-bold flex items-center gap-2 transition" data-lang="ru">
+                                    <span>Дублировать вопрос в Telegram</span>
+                                    <span>→</span>
+                                </a>
+                                <button type="button" onclick="resetLeadForm()" class="px-4 py-2.5 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-surface-border text-gray-300 hover:text-white text-xs font-medium transition cursor-pointer">
+                                    <span data-lang="ru">Отправить еще одну заявку</span>
+                                    <span data-lang="en">Submit Another Inquiry</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -757,6 +944,14 @@
                         <span class="copy-label" data-lang="en">Copy</span>
                     </button>
                 </div>
+
+                <!-- Secondary Link to Lead Form -->
+                <div class="pt-3 mt-1 text-center border-t border-surface-border/50">
+                    <button type="button" onclick="closeConsultationModal(); scrollToLeadForm();" class="text-xs text-gray-400 hover:text-brand transition inline-flex items-center gap-1.5 cursor-pointer font-medium">
+                        <span data-lang="ru">Или заполните форму детального расчета →</span>
+                        <span data-lang="en">Or submit an itemized RFQ form →</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -888,8 +1083,12 @@
                         </div>
 
                         <button onclick="orderVehicleTelegram()" class="w-full bg-brand hover:bg-brand-hover text-black font-extrabold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-4 shadow-lg shadow-brand/10 group">
-                            <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                            <span id="modal-ru-btn-text">Консультация и расчет</span>
+                            <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
+                            <span id="modal-ru-btn-text">Консультация в Telegram</span>
+                        </button>
+                        <button type="button" onclick="openQuoteForCurrentCar()" class="w-full mt-2.5 py-3 px-4 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-surface-border text-gray-300 hover:text-white font-semibold text-xs transition flex items-center justify-center gap-2 cursor-pointer">
+                            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <span>Оставить заявку на расчет (Email / RFQ)</span>
                         </button>
                     </div>
 
@@ -944,8 +1143,12 @@
                         </div>
 
                         <button onclick="requestPriceInCity()" class="w-full bg-brand hover:bg-brand-hover text-black font-extrabold text-sm py-3.5 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-4 shadow-lg shadow-brand/10 group">
-                            <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-12.416c-5.514 0-10 4.486-10 10 0 1.83.498 3.546 1.363 5.019l-1.394 5.093 5.234-1.373c1.42.793 3.051 1.261 4.797 1.261 5.514 0 10-4.486 10-10s-4.486-10-10-10z"/></svg>
-                            <span id="modal-en-btn-text">Request price in your city</span>
+                            <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            <span id="modal-en-btn-text">WhatsApp Direct Message</span>
+                        </button>
+                        <button type="button" onclick="openQuoteForCurrentCar()" class="w-full mt-2.5 py-3 px-4 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-surface-border text-gray-300 hover:text-white font-semibold text-xs transition flex items-center justify-center gap-2 cursor-pointer">
+                            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <span>Request Email Quotation (RFQ)</span>
                         </button>
                     </div>
                 </div>
@@ -2437,6 +2640,111 @@
             if (modal) {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
+            }
+        }
+
+        // Lead Form Submission Handler (FormSubmit to info@shanghaimotors.net)
+        async function handleLeadSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('lead-form');
+            const submitBtn = document.getElementById('lead-submit-btn');
+            const vehicle = document.getElementById('lead-vehicle').value.trim();
+            const destination = document.getElementById('lead-destination').value.trim();
+            const name = document.getElementById('lead-name').value.trim();
+            const email = document.getElementById('lead-email').value.trim();
+            const phone = document.getElementById('lead-phone').value.trim();
+            const notes = document.getElementById('lead-notes').value.trim();
+
+            const isRu = currentLang === 'ru';
+            const subjectEl = document.getElementById('form-subject');
+            if (subjectEl) {
+                subjectEl.value = `${isRu ? 'Новая заявка на' : 'New RFQ:'} ${vehicle || 'Авто'} (${name})`;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+            const origContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = `
+                <svg class="animate-spin h-4 w-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                <span>${isRu ? 'Отправка заявки...' : 'Sending inquiry...'}</span>
+            `;
+
+            const payload = {
+                vehicle: vehicle,
+                destination: destination || (isRu ? 'Не указан' : 'Not specified'),
+                name: name,
+                email: email,
+                phone_messenger: phone || (isRu ? 'Не указан' : 'Not specified'),
+                notes: notes || '-',
+                _subject: `${isRu ? 'Заявка на авто' : 'Auto RFQ'}: ${vehicle} (${name})`,
+                _template: 'table',
+                _captcha: 'false'
+            };
+
+            try {
+                await fetch('https://formsubmit.co/ajax/info@shanghaimotors.net', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.warn('Form submission fallback:', err);
+            }
+
+            const successCarRu = document.getElementById('success-car-name');
+            const successCarEn = document.getElementById('success-car-name-en');
+            if (successCarRu) successCarRu.innerText = vehicle || 'выбранный автомобиль';
+            if (successCarEn) successCarEn.innerText = vehicle || 'the selected vehicle';
+
+            const tgLink = document.getElementById('success-tg-link');
+            if (tgLink) {
+                const tgText = `Здравствуйте! Отправил заявку с сайта на ${vehicle}. Имя: ${name}, Email: ${email}, Город: ${destination || 'РФ'}.`;
+                tgLink.href = `https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(tgText)}`;
+            }
+
+            form.classList.add('hidden');
+            const successMsg = document.getElementById('lead-success-msg');
+            if (successMsg) successMsg.classList.remove('hidden');
+
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+            submitBtn.innerHTML = origContent;
+        }
+
+        function resetLeadForm() {
+            const form = document.getElementById('lead-form');
+            if (form) {
+                form.reset();
+                form.classList.remove('hidden');
+            }
+            const successMsg = document.getElementById('lead-success-msg');
+            if (successMsg) successMsg.classList.add('hidden');
+        }
+
+        function openQuoteForCurrentCar() {
+            closeCarModal();
+            const vehicleInput = document.getElementById('lead-vehicle');
+            if (currentModalCar && vehicleInput) {
+                const trim = currentModalCar.trims[currentModalTrimIndex] || currentModalCar.trims[0];
+                vehicleInput.value = `${currentModalCar.fullName} (${trim.name})`;
+            }
+            scrollToLeadForm();
+        }
+
+        function scrollToLeadForm() {
+            const quoteSection = document.getElementById('quote');
+            if (quoteSection) {
+                quoteSection.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    const nameInput = document.getElementById('lead-name');
+                    if (nameInput) nameInput.focus();
+                }, 600);
             }
         }
 
