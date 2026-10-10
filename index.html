@@ -447,10 +447,10 @@
                             <span data-lang="ru">Запросите расчет стоимости автомобиля</span>
                         </h2>
                         <p class="text-gray-400 text-sm mt-3 leading-relaxed" data-lang="ru">
-                            Укажите интересующую модель и город доставки. Мы проверим наличие на складах и заводах Китая, зафиксируем курс и пришлем детальную смету со всеми расходами.
+                            Укажите интересующую модель и город доставки. Мы проверим наличие на складах и заводах Китая, зафиксируем курс и пришлем детальный расчет.
                         </p>
                         <p class="text-gray-400 text-sm mt-3 leading-relaxed" data-lang="en">
-                            Specify your vehicle of interest and destination port. Our export team will prepare an itemized FOB or CIF quotation with production lead times and export clearance.
+                            Specify your vehicle of interest and destination port. We will verify factory allocations, lock in the exchange rate, and provide an itemized FOB or CIF quotation.
                         </p>
                     </div>
 
@@ -464,7 +464,7 @@
                                 <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Прямой экспортный контракт</h4>
                                 <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Direct Export Contract</h4>
                                 <p class="text-xs text-gray-400" data-lang="ru">Официальная поставка от заводов без посреднических наценок.</p>
-                                <p class="text-xs text-gray-400" data-lang="en">Direct manufacturer allocations with transparent FOB/CIF pricing.</p>
+                                <p class="text-xs text-gray-400" data-lang="en">Official manufacturer supply without broker markups.</p>
                             </div>
                         </div>
 
@@ -474,9 +474,9 @@
                             </div>
                             <div>
                                 <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Полный пакет документов</h4>
-                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Full Export Compliance</h4>
-                                <p class="text-xs text-gray-400" data-lang="ru">Экспортная декларация, ОТТС/СБКТС, коносамент и фотоотчет проверки.</p>
-                                <p class="text-xs text-gray-400" data-lang="en">Customs declarations, Bill of Lading, Certificate of Conformity, pre-shipment VIN report.</p>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Full Export Documentation</h4>
+                                <p class="text-xs text-gray-400" data-lang="ru">Экспортная декларация, инвойс, упаковочный лист, транзитная декларация, видеоотчет и т. д.</p>
+                                <p class="text-xs text-gray-400" data-lang="en">Export declaration, commercial invoice, packing list, transit declaration, pre-shipment inspection video, etc.</p>
                             </div>
                         </div>
 
@@ -485,10 +485,10 @@
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                             </div>
                             <div>
-                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Быстрый ответ в течение 15 минут</h4>
-                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Prompt Response within 15 Minutes</h4>
-                                <p class="text-xs text-gray-400" data-lang="ru">Смета поступит на ваш email или в выбранный мессенджер.</p>
-                                <p class="text-xs text-gray-400" data-lang="en">Quotation sent directly to your email or preferred messenger.</p>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="ru">Удобство</h4>
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono" data-lang="en">Convenience</h4>
+                                <p class="text-xs text-gray-400" data-lang="ru">Расчет поступит на ваш email или в выбранный мессенджер.</p>
+                                <p class="text-xs text-gray-400" data-lang="en">Your quotation will be delivered directly to your email or preferred messenger.</p>
                             </div>
                         </div>
                     </div>
@@ -506,38 +506,38 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <!-- Vehicle of interest -->
                                 <div>
-                                    <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
-                                        <span data-lang="ru">Модель автомобиля *</span>
-                                        <span data-lang="en">Vehicle of Interest *</span>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">
+                                        <span data-lang="ru">Модель автомобиля (обязательно)</span>
+                                        <span data-lang="en">Vehicle Model (Required)</span>
                                     </label>
                                     <input type="text" name="vehicle" id="lead-vehicle" required placeholder="Zeekr 001, Li L9, Xiaomi SU7..." class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
                                 </div>
 
                                 <!-- Destination city / port -->
                                 <div>
-                                    <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
-                                        <span data-lang="ru">Город / Порт доставки</span>
-                                        <span data-lang="en">Destination Port / City</span>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">
+                                        <span data-lang="ru">Город / Порт доставки (необязательно)</span>
+                                        <span data-lang="en">Destination Port / City (Optional)</span>
                                     </label>
-                                    <input type="text" name="destination" id="lead-destination" placeholder="Москва, Алматы, Dubai, Bishkek..." class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
+                                    <input type="text" name="destination" id="lead-destination" placeholder="Москва, Алматы, Дубай, Бишкек..." class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <!-- Name -->
                                 <div>
-                                    <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
-                                        <span data-lang="ru">Ваше имя *</span>
-                                        <span data-lang="en">Your Name *</span>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">
+                                        <span data-lang="ru">Ваше имя (обязательно)</span>
+                                        <span data-lang="en">Your Name (Required)</span>
                                     </label>
-                                    <input type="text" name="name" id="lead-name" required placeholder="Александр / John" class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
+                                    <input type="text" name="name" id="lead-name" required placeholder="Александр" class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
                                 </div>
 
                                 <!-- Email -->
                                 <div>
-                                    <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
-                                        <span data-lang="ru">Email (для сметы) *</span>
-                                        <span data-lang="en">Email (for Quotation) *</span>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">
+                                        <span data-lang="ru">Email (обязательно)</span>
+                                        <span data-lang="en">Email (Required)</span>
                                     </label>
                                     <input type="email" name="email" id="lead-email" required placeholder="client@example.com" class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
                                 </div>
@@ -545,18 +545,18 @@
 
                             <!-- Phone / WhatsApp / Telegram -->
                             <div>
-                                <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
-                                    <span data-lang="ru">Телефон / WhatsApp / Telegram (для оперативной связи)</span>
-                                    <span data-lang="en">Phone / WhatsApp / Telegram (optional)</span>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1.5">
+                                    <span data-lang="ru">Телефон / WhatsApp / Telegram (необязательно)</span>
+                                    <span data-lang="en">Phone / WhatsApp (Optional)</span>
                                 </label>
                                 <input type="text" name="phone_messenger" id="lead-phone" placeholder="+7 (999) 000-00-00 или @username" class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition">
                             </div>
 
                             <!-- Additional notes -->
                             <div>
-                                <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-gray-300 mb-1.5">
+                                <label class="block text-xs font-semibold text-gray-300 mb-1.5">
                                     <span data-lang="ru">Пожелания / Комплектация (необязательно)</span>
-                                    <span data-lang="en">Specific Requirements / Trim (optional)</span>
+                                    <span data-lang="en">Specific Requirements / Trim (Optional)</span>
                                 </label>
                                 <textarea name="notes" id="lead-notes" rows="2" placeholder="Цвет кузова, салон, особые опции..." class="w-full bg-surface-elevated/70 border border-surface-border focus:border-brand focus:ring-1 focus:ring-brand rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition resize-none"></textarea>
                             </div>
@@ -588,7 +588,7 @@
                                 <span data-lang="en">Inquiry Received Successfully!</span>
                             </h3>
                             <p class="text-gray-300 text-sm max-w-md mx-auto" data-lang="ru">
-                                Спасибо! Наш отдел экспорта уже готовит детальный расчет для <strong id="success-car-name" class="text-white"></strong>. Мы свяжемся с вами по указанным контактам в течение 15 минут.
+                                Спасибо! Наш отдел экспорта уже готовит детальный расчет для <strong id="success-car-name" class="text-white"></strong>. Мы свяжемся с вами по указанным контактам в кратчайшие сроки.
                             </p>
                             <p class="text-gray-300 text-sm max-w-md mx-auto" data-lang="en">
                                 Thank you! Our export desk is preparing an itemized quotation for <strong id="success-car-name-en" class="text-white"></strong>. We will get back to you shortly.
@@ -596,6 +596,10 @@
                             <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
                                 <a id="success-tg-link" href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg bg-[#24A1DE] hover:bg-[#2090c7] text-white text-xs font-bold flex items-center gap-2 transition" data-lang="ru">
                                     <span>Дублировать вопрос в Telegram</span>
+                                    <span>→</span>
+                                </a>
+                                <a id="success-wa-link" href="https://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#20b859] text-white text-xs font-bold flex items-center gap-2 transition" data-lang="en">
+                                    <span>Duplicate inquiry via WhatsApp</span>
                                     <span>→</span>
                                 </a>
                                 <button type="button" onclick="resetLeadForm()" class="px-4 py-2.5 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-surface-border text-gray-300 hover:text-white text-xs font-medium transition cursor-pointer">
@@ -2252,6 +2256,25 @@
                 }
             }
 
+            // Update Lead Form placeholders based on language
+            const destInput = document.getElementById('lead-destination');
+            const nameInput = document.getElementById('lead-name');
+            const phoneInput = document.getElementById('lead-phone');
+            const notesInput = document.getElementById('lead-notes');
+            if (destInput && nameInput && phoneInput && notesInput) {
+                if (lang === 'en') {
+                    destInput.placeholder = 'Dubai (Jebel Ali), Rotterdam, Lagos, Riyadh...';
+                    nameInput.placeholder = 'David Miller';
+                    phoneInput.placeholder = '+971 50 123 4567 or +44 7123 456789';
+                    notesInput.placeholder = 'Exterior color, interior options, trim level...';
+                } else {
+                    destInput.placeholder = 'Москва, Алматы, Дубай, Бишкек...';
+                    nameInput.placeholder = 'Александр';
+                    phoneInput.placeholder = '+7 (999) 000-00-00 или @username';
+                    notesInput.placeholder = 'Цвет кузова, салон, особые опции...';
+                }
+            }
+
             if (reloadUi) {
                 renderHeroBanners();
                 renderCatalog();
@@ -2706,6 +2729,12 @@
             if (tgLink) {
                 const tgText = `Здравствуйте! Отправил заявку с сайта на ${vehicle}. Имя: ${name}, Email: ${email}, Город: ${destination || 'РФ'}.`;
                 tgLink.href = `https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(tgText)}`;
+            }
+
+            const waLink = document.getElementById('success-wa-link');
+            if (waLink) {
+                const waText = `Hello! I have submitted an export RFQ for ${vehicle}. Name: ${name}, Email: ${email}, Destination: ${destination || 'Global Port'}.`;
+                waLink.href = `https://wa.me/8617316540375?text=${encodeURIComponent(waText)}`;
             }
 
             form.classList.add('hidden');
