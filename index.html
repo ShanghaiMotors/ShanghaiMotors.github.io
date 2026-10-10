@@ -94,11 +94,34 @@
     </script>
 
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
         body {
             background-color: #0B0D12;
             color: #E2E8F0;
             font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
-            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            overscroll-behavior-x: contain;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
 
         ::-webkit-scrollbar {
@@ -141,10 +164,10 @@
 <body class="bg-surface-base text-gray-200 antialiased selection:bg-brand selection:text-black">
 
     <!-- MAIN NAVBAR -->
-    <header class="sticky top-0 z-40 bg-[#0B0D12]/90 backdrop-blur-md border-b border-surface-border">
+    <header class="sticky top-0 z-40 bg-[#0B0D12]/90 backdrop-blur-md border-b border-surface-border w-full max-w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 flex-shrink-0 mr-5 lg:mr-8 xl:mr-10">
-                <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-10 w-auto object-contain">
+            <a href="#" class="flex items-center gap-3 flex-shrink-0 mr-3 sm:mr-5 lg:mr-8 xl:mr-10">
+                <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-8 sm:h-10 w-auto object-contain">
             </a>
 
             <nav class="hidden lg:flex items-center gap-4 xl:gap-7 text-xs xl:text-sm font-medium text-gray-300 whitespace-nowrap">
@@ -166,9 +189,9 @@
                 <a href="#faq" class="hover:text-brand transition">FAQ</a>
             </nav>
 
-            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0 ml-4 lg:ml-6 xl:ml-8">
-                <!-- RU Header Socials (Telegram, WhatsApp, Instagram, MAX) -->
-                <div data-lang="ru" class="flex items-center gap-1.5 sm:gap-2 pl-3 lg:pl-5 border-l border-surface-border/70">
+            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-shrink-0 ml-2 sm:ml-4 lg:ml-6 xl:ml-8">
+                <!-- RU Header Socials (Telegram, WhatsApp, Instagram, MAX) - hidden on mobile, shown on tablet/desktop -->
+                <div data-lang="ru" class="hidden sm:flex items-center gap-1.5 sm:gap-2 pl-3 lg:pl-5 border-l border-surface-border/70">
                     <a href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Telegram" class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#24A1DE] hover:bg-[#2090c7] text-white transition flex items-center justify-center shadow-sm shadow-[#24A1DE]/25 hover:scale-105">
                         <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
                     </a>
@@ -183,8 +206,8 @@
                     </a>
                 </div>
 
-                <!-- EN Header Socials (WhatsApp, Instagram, LinkedIn) -->
-                <div data-lang="en" class="flex items-center gap-1.5 sm:gap-2 pl-3 lg:pl-5 border-l border-surface-border/70">
+                <!-- EN Header Socials (WhatsApp, Instagram, LinkedIn) - hidden on mobile, shown on tablet/desktop -->
+                <div data-lang="en" class="hidden sm:flex items-center gap-1.5 sm:gap-2 pl-3 lg:pl-5 border-l border-surface-border/70">
                     <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp" class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-white transition flex items-center justify-center shadow-sm shadow-[#25D366]/25 hover:scale-105">
                         <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     </a>
@@ -198,8 +221,8 @@
 
                 <!-- RU/EN Switcher -->
                 <div class="bg-surface-card border border-surface-border p-1 rounded-full flex items-center text-xs font-semibold">
-                    <button onclick="setLanguage('en')" id="btn-lang-en" class="px-3 py-1.5 rounded-full transition text-gray-400 hover:text-white">EN</button>
-                    <button onclick="setLanguage('ru')" id="btn-lang-ru" class="px-3 py-1.5 rounded-full transition text-gray-400 hover:text-white">RU</button>
+                    <button onclick="setLanguage('en')" id="btn-lang-en" class="px-2.5 sm:px-3 py-1.5 rounded-full transition text-gray-400 hover:text-white">EN</button>
+                    <button onclick="setLanguage('ru')" id="btn-lang-ru" class="px-2.5 sm:px-3 py-1.5 rounded-full transition text-gray-400 hover:text-white">RU</button>
                 </div>
 
                 <!-- CTA Button -->
@@ -281,9 +304,9 @@
     </header>
 
     <!-- SECTION 1: TOP HERO BANNERS (EXACT EASY.CAR POPULAR VEHICLES SLIDER) -->
-    <section id="hero-banners" class="relative overflow-hidden border-b border-surface-border bg-[#0B0D12]">
-        <div id="banner-slider-container" class="relative min-h-[440px] md:min-h-[470px] w-full flex items-center">
-            <div id="hero-banner-slides" class="absolute inset-0 w-full h-full">
+    <section id="hero-banners" class="relative overflow-hidden border-b border-surface-border bg-[#0B0D12] w-full max-w-full">
+        <div id="banner-slider-container" class="relative min-h-[440px] md:min-h-[470px] w-full max-w-full overflow-hidden flex items-center">
+            <div id="hero-banner-slides" class="absolute inset-0 w-full h-full overflow-hidden">
                 <!-- Slides injected via JavaScript -->
             </div>
         </div>
@@ -325,7 +348,7 @@
                 </div>
             </div>
             <!-- Brand Filter Tabs -->
-            <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-4 no-scrollbar text-xs font-semibold">
+            <div class="w-full max-w-full min-w-0 flex items-center gap-2 overflow-x-auto pb-4 mb-4 no-scrollbar text-xs font-semibold overscroll-x-contain">
                 <button onclick="filterBrand('all')" id="brand-btn-all" class="brand-tab px-4 py-2.5 rounded-lg bg-brand text-black font-bold whitespace-nowrap transition"><span data-lang="en">All Brands</span><span data-lang="ru">Все марки</span></button>
                 <button onclick="filterBrand('Zeekr')" id="brand-btn-Zeekr" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Zeekr</button>
                 <button onclick="filterBrand('Li Auto')" id="brand-btn-Li Auto" class="brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition">Li Auto</button>
@@ -2965,11 +2988,11 @@
                     : `FOB from $${b.minPriceFob.toLocaleString()}`;
 
                 return `
-                <div class="banner-slide absolute inset-0 transition-all duration-700 ease-in-out ${idx === activeSlideIndex ? 'opacity-100 z-10 scale-100 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none scale-95'}" id="slide-${idx}">
+                <div class="banner-slide absolute inset-0 transition-all duration-700 ease-in-out ${idx === activeSlideIndex ? 'opacity-100 z-10 scale-100 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none scale-95'} w-full max-w-full overflow-hidden" id="slide-${idx}">
                     <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col justify-center">
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-center">
                             <!-- Left Info -->
-                            <div class="lg:col-span-6 space-y-3 md:space-y-3.5 z-20">
+                            <div class="lg:col-span-6 space-y-3 md:space-y-3.5 z-20 min-w-0">
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold uppercase tracking-wider ${b.tagClass}">
                                     <span>●</span>
                                     <span>${currentLang === 'ru' ? b.tagRu : b.tagEn}</span>
@@ -2993,7 +3016,7 @@
                                 </div>
                             </div>
                             <!-- Right Visual -->
-                            <div class="lg:col-span-6 flex items-center justify-center relative min-h-[220px] sm:min-h-[280px] md:min-h-[340px]">
+                            <div class="lg:col-span-6 flex items-center justify-center relative min-h-[220px] sm:min-h-[280px] md:min-h-[340px] w-full max-w-full overflow-hidden">
                                 <div class="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-brand/10 blur-3xl pointer-events-none"></div>
                                 <img src="${b.img}" alt="${b.model}" class="max-h-[220px] sm:max-h-[280px] md:max-h-[340px] w-full object-contain relative z-10 transition-transform duration-700 hover:scale-105 cursor-pointer filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]" onclick="openCarModal('${b.id}')">
                             </div>
