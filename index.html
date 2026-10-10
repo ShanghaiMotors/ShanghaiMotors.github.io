@@ -115,6 +115,25 @@
             -webkit-text-size-adjust: 100%;
         }
 
+        body.modal-open {
+            overflow: hidden !important;
+            overflow-x: hidden !important;
+            touch-action: pan-y !important;
+        }
+
+        #car-modal, #consultation-modal, #license-modal {
+            overflow-x: hidden !important;
+            touch-action: pan-y;
+            overscroll-behavior: contain;
+            max-width: 100vw !important;
+        }
+
+        #car-modal > div, #consultation-modal > div, #license-modal > div {
+            overflow-x: hidden !important;
+            max-width: 100% !important;
+            overscroll-behavior: contain;
+        }
+
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -1435,8 +1454,8 @@
     </div>
 
     <!-- QUICK CONSULTATION / CONTACT MODAL -->
-    <div id="consultation-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-md relative my-auto p-6 sm:p-7 shadow-2xl">
+    <div id="consultation-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
+        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-md relative my-auto p-6 sm:p-7 shadow-2xl overflow-x-hidden">
             <button onclick="closeConsultationModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-surface-elevated hover:bg-surface-hover border border-surface-border text-gray-300 hover:text-white flex items-center justify-center text-lg z-10 transition">
                 &times;
             </button>
@@ -1531,8 +1550,8 @@
     </div>
 
     <!-- OFFICIAL EXPORT LICENSE / KYC VERIFICATION MODAL -->
-    <div id="license-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-lg relative my-auto p-6 sm:p-8 shadow-2xl">
+    <div id="license-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
+        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-lg relative my-auto p-6 sm:p-8 shadow-2xl overflow-x-hidden">
             <button onclick="closeLicenseModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-surface-elevated hover:bg-surface-hover border border-surface-border text-gray-300 hover:text-white flex items-center justify-center text-lg z-10 transition">
                 &times;
             </button>
@@ -1643,8 +1662,8 @@
     </div>
 
     <!-- INTERACTIVE CAR DETAILS & PRICE BREAKDOWN MODAL (EASY.CAR CONFIGURATOR CLONE) -->
-    <div id="car-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
-        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-4xl max-h-[92vh] overflow-y-auto relative my-auto p-5 sm:p-8">
+    <div id="car-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
+        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-4xl max-h-[92vh] overflow-y-auto overflow-x-hidden relative my-auto p-4 sm:p-8 overscroll-contain">
             <button onclick="closeCarModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-surface-elevated hover:bg-surface-hover border border-surface-border text-gray-300 hover:text-white flex items-center justify-center text-lg z-10 transition">
                 &times;
             </button>
@@ -1686,22 +1705,22 @@
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
                                 <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">Powertrain</span>
                                 <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Двигатель</span>
-                                <span id="spec-drive" class="text-white font-bold text-xs sm:text-sm">Dual-Motor AWD</span>
+                                <span id="spec-drive" class="text-white font-bold text-xs sm:text-sm break-words">Dual-Motor AWD</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
                                 <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">Output Power</span>
                                 <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Мощность</span>
-                                <span id="spec-power" class="text-white font-bold text-xs sm:text-sm">789 hp</span>
+                                <span id="spec-power" class="text-white font-bold text-xs sm:text-sm break-words">789 hp</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
                                 <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">0-100 km/h</span>
                                 <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Разгон 0-100</span>
-                                <span id="spec-accel" class="text-brand font-bold text-xs sm:text-sm">3.3 s</span>
+                                <span id="spec-accel" class="text-brand font-bold text-xs sm:text-sm break-words">3.3 s</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
                                 <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">Cruising Range</span>
                                 <span class="text-gray-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Запас хода</span>
-                                <span id="spec-range" class="text-white font-bold text-xs sm:text-sm">705 km (CLTC)</span>
+                                <span id="spec-range" class="text-white font-bold text-xs sm:text-sm break-words">705 km (CLTC)</span>
                             </div>
                         </div>
                     </div>
@@ -1709,14 +1728,14 @@
                 <!-- Right: Detailed Price Breakdown & Order Action -->
                 <div class="lg:col-span-6 space-y-6">
                     <!-- RU Price Breakdown -->
-                    <div data-lang="ru" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
-                        <div class="flex justify-between items-center pb-3 border-b border-surface-border">
+                    <div data-lang="ru" class="bg-surface-base border border-surface-border rounded-xl p-4 sm:p-6 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1.5 pb-3 border-b border-surface-border">
                             <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Условия поставки</span>
-                            <span class="text-xs text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20">FOB Хоргос / Суйфэньхэ / Шанхай</span>
+                            <span class="text-xs text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20 w-fit">FOB Хоргос / Суйфэньхэ / Шанхай</span>
                         </div>
 
                         <div class="space-y-3.5 text-xs">
-                            <div class="flex justify-between items-start text-gray-300">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-4 text-gray-300">
                                 <div>
                                     <div class="flex items-center gap-1.5">
                                         <span class="text-white font-medium text-sm block">Цена готового к отправке авто:</span>
@@ -1725,7 +1744,7 @@
                                             <button type="button" onclick="event.stopPropagation(); toggleDeliveryTooltip(this)" class="w-4 h-4 rounded-full bg-surface-elevated hover:bg-brand text-gray-300 hover:text-black flex items-center justify-center text-[10px] font-bold transition cursor-pointer border border-surface-border" title="Информация о сроках поставки">
                                                 i
                                             </button>
-                                            <div class="tooltip-popup absolute left-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-2 w-72 p-3.5 bg-[#161B22] border border-surface-border rounded-xl shadow-2xl opacity-0 invisible group-hover/tip:opacity-100 group-hover/tip:visible transition-all duration-200 z-50 pointer-events-none text-left font-sans text-xs text-gray-200 backdrop-blur-md">
+                                            <div class="tooltip-popup hidden absolute right-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-2 w-64 max-w-[calc(100vw-64px)] p-3.5 bg-[#161B22] border border-surface-border rounded-xl shadow-2xl transition-all duration-200 z-50 text-left font-sans text-xs text-gray-200 backdrop-blur-md pointer-events-none">
                                                 <div class="flex items-center gap-1.5 text-[11px] font-bold text-brand mb-1.5">
                                                     <span>ℹ️</span>
                                                     <span>Сроки поставки:</span>
@@ -1736,13 +1755,13 @@
                                                 <p class="leading-relaxed text-gray-300">
                                                     • Когда производим под заказ, доставка <strong class="text-white font-semibold">≈6-10 недель</strong>.
                                                 </p>
-                                                <div class="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-full w-2 h-2 bg-[#161B22] border-r border-b border-surface-border rotate-45 -mt-1"></div>
+                                                <div class="absolute right-2 sm:left-1/2 sm:-translate-x-1/2 top-full w-2 h-2 bg-[#161B22] border-r border-b border-surface-border rotate-45 -mt-1"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <span id="modal-ru-fob-usd" class="text-xs text-gray-400 mt-0.5 block font-medium">$73,250 • FOB по курсу ЦБ</span>
                                 </div>
-                                <div class="text-right">
+                                <div class="text-left sm:text-right mt-1 sm:mt-0">
                                     <span id="modal-ru-price-rub" class="text-brand font-extrabold text-2xl sm:text-3xl block tracking-tight">6,184,598 ₽</span>
                                 </div>
                             </div>
@@ -1779,14 +1798,14 @@
                     </div>
 
                     <!-- EN Price Breakdown -->
-                    <div data-lang="en" class="bg-surface-base border border-surface-border rounded-xl p-6 space-y-4">
-                        <div class="flex justify-between items-center pb-3 border-b border-surface-border">
+                    <div data-lang="en" class="bg-surface-base border border-surface-border rounded-xl p-4 sm:p-6 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1.5 pb-3 border-b border-surface-border">
                             <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Export Pricing</span>
-                            <span class="text-xs text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20">FOB (Shanghai / Nansha / Khorgos)</span>
+                            <span class="text-xs text-brand font-bold bg-brand/10 px-2.5 py-1 rounded border border-brand/20 w-fit">FOB (Shanghai / Nansha / Khorgos)</span>
                         </div>
 
                         <div class="space-y-3.5 text-xs">
-                            <div class="flex justify-between items-center text-gray-300">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-4 text-gray-300">
                                 <div>
                                     <div class="flex items-center gap-1.5">
                                         <span class="text-white font-medium text-sm block">Price in China (FOB):</span>
@@ -1795,7 +1814,7 @@
                                             <button type="button" onclick="event.stopPropagation(); toggleDeliveryTooltip(this)" class="w-4 h-4 rounded-full bg-surface-elevated hover:bg-brand text-gray-300 hover:text-black flex items-center justify-center text-[10px] font-bold transition cursor-pointer border border-surface-border" title="Delivery timeline information">
                                                 i
                                             </button>
-                                            <div class="tooltip-popup absolute left-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-2 w-72 p-3.5 bg-[#161B22] border border-surface-border rounded-xl shadow-2xl opacity-0 invisible group-hover/tip:opacity-100 group-hover/tip:visible transition-all duration-200 z-50 pointer-events-none text-left font-sans text-xs text-gray-200 backdrop-blur-md">
+                                            <div class="tooltip-popup hidden absolute right-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-2 w-64 max-w-[calc(100vw-64px)] p-3.5 bg-[#161B22] border border-surface-border rounded-xl shadow-2xl transition-all duration-200 z-50 text-left font-sans text-xs text-gray-200 backdrop-blur-md pointer-events-none">
                                                 <div class="flex items-center gap-1.5 text-[11px] font-bold text-brand mb-1.5">
                                                     <span>ℹ️</span>
                                                     <span>Delivery Timeline:</span>
@@ -1806,13 +1825,15 @@
                                                 <p class="leading-relaxed text-gray-300">
                                                     • Build-to-order factory production delivery takes <strong class="text-white font-semibold">≈6-10 weeks</strong>.
                                                 </p>
-                                                <div class="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-full w-2 h-2 bg-[#161B22] border-r border-b border-surface-border rotate-45 -mt-1"></div>
+                                                <div class="absolute right-2 sm:left-1/2 sm:-translate-x-1/2 top-full w-2 h-2 bg-[#161B22] border-r border-b border-surface-border rotate-45 -mt-1"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <span class="text-[11px] text-gray-500">Port handover & export clearance included</span>
                                 </div>
-                                <span id="modal-en-fob-val" class="text-brand font-extrabold text-2xl sm:text-3xl tracking-tight">$73,250</span>
+                                <div class="text-left sm:text-right mt-1 sm:mt-0">
+                                    <span id="modal-en-fob-val" class="text-brand font-extrabold text-2xl sm:text-3xl tracking-tight">$73,250</span>
+                                </div>
                             </div>
                             <div class="flex justify-between items-center text-gray-400 pt-2 border-t border-surface-border/50 text-[11px]">
                                 <span>Export Licensing & Full Inspection:</span>
@@ -3231,14 +3252,15 @@
             const modal = document.getElementById('car-modal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-open');
         }
 
         function closeCarModal() {
             const modal = document.getElementById('car-modal');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
-            document.body.style.overflow = 'auto';
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
 
             // Reset detailed specs toggle state
             isDetailedSpecsOpen = false;
@@ -3312,8 +3334,7 @@
         function toggleDeliveryTooltip(btn) {
             const tip = btn.nextElementSibling;
             if (tip) {
-                tip.classList.toggle('opacity-100');
-                tip.classList.toggle('visible');
+                tip.classList.toggle('hidden');
                 tip.classList.toggle('pointer-events-auto');
             }
         }
@@ -3369,8 +3390,8 @@
                     const val = isRu ? item.valRu : item.valEn;
                     return `
                         <div class="flex justify-between items-start text-xs py-1.5 border-b border-surface-border/40 last:border-b-0 gap-3">
-                            <span class="text-gray-400 font-medium leading-relaxed">${label}</span>
-                            <span class="text-right text-gray-100 font-semibold text-xs sm:text-[13px] leading-relaxed shrink-0 max-w-[60%]">${val}</span>
+                            <span class="text-gray-400 font-medium leading-relaxed break-words min-w-0">${label}</span>
+                            <span class="text-right text-gray-100 font-semibold text-xs sm:text-[13px] leading-relaxed shrink-0 max-w-[60%] break-words">${val}</span>
                         </div>
                     `;
                 }).join('');
@@ -3392,7 +3413,8 @@
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.group\\/tip')) {
                 document.querySelectorAll('.tooltip-popup').forEach(t => {
-                    t.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+                    t.classList.add('hidden');
+                    t.classList.remove('pointer-events-auto');
                 });
             }
         });
@@ -3408,6 +3430,7 @@
             if (modal) {
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+                document.body.classList.add('modal-open');
             }
         }
 
@@ -3416,6 +3439,8 @@
             if (modal) {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
+                document.body.classList.remove('modal-open');
+                document.body.style.overflow = '';
             }
         }
 
@@ -3596,6 +3621,7 @@
                 }
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+                document.body.classList.add('modal-open');
             }
         }
 
@@ -3604,6 +3630,8 @@
             if (modal) {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
+                document.body.classList.remove('modal-open');
+                document.body.style.overflow = '';
             }
         }
 
