@@ -323,6 +323,20 @@
             <div id="catalog-cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Injected via JavaScript -->
             </div>
+
+            <!-- Catalog Expand / Collapse Control -->
+            <div id="catalog-expand-wrap" class="hidden mt-10 flex flex-col items-center justify-center text-center">
+                <div id="catalog-count-badge" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-card border border-surface-border text-xs text-gray-400 font-medium mb-3">
+                    <span id="catalog-count-dot" class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                    <span id="catalog-count-text"></span>
+                </div>
+                <button type="button" id="catalog-expand-btn" onclick="toggleCatalogExpand()" class="group inline-flex items-center gap-2.5 px-7 py-3 rounded-xl bg-surface-card hover:bg-surface-elevated border border-surface-border hover:border-brand/60 text-white font-semibold text-xs sm:text-sm transition-all duration-300 shadow-lg shadow-black/40 hover:shadow-brand/5 active:scale-95">
+                    <span id="catalog-expand-text"></span>
+                    <svg id="catalog-expand-icon" class="w-4 h-4 text-brand transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -2663,6 +2677,7 @@
         // 3. RUNTIME APP LOGIC & DYNAMIC FX ENGINE
         let currentLang = 'en';
         let currentBrandFilter = 'all';
+        let isCatalogExpanded = false;
         let activeSlideIndex = 0;
         let slideTimer = null;
         let currentModalCar = null;
@@ -2958,8 +2973,11 @@
         }
 
         // 5. CATALOG FILTERING & RENDERING
+        const CATALOG_INITIAL_LIMIT = 9;
+
         function filterBrand(brand) {
             currentBrandFilter = brand;
+            isCatalogExpanded = false;
             document.querySelectorAll('.brand-tab').forEach(tab => {
                 tab.className = 'brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-gray-300 hover:text-white whitespace-nowrap transition';
             });
@@ -2970,6 +2988,17 @@
             renderCatalog();
         }
 
+        function toggleCatalogExpand() {
+            isCatalogExpanded = !isCatalogExpanded;
+            renderCatalog();
+            if (!isCatalogExpanded) {
+                const catalogEl = document.getElementById('catalog');
+                if (catalogEl) {
+                    catalogEl.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+
         function renderCatalog() {
             const grid = document.getElementById('catalog-cars-grid');
             if (!grid) return;
@@ -2978,7 +3007,12 @@
                 ? catalogDatabase
                 : catalogDatabase.filter(c => c.brand.toLowerCase() === currentBrandFilter.toLowerCase() || (currentBrandFilter === 'Changan' && c.brand === 'Changan'));
 
-            grid.innerHTML = filteredCars.map(car => {
+            const shouldPaginate = filteredCars.length > CATALOG_INITIAL_LIMIT;
+            const displayedCars = (shouldPaginate && !isCatalogExpanded)
+                ? filteredCars.slice(0, CATALOG_INITIAL_LIMIT)
+                : filteredCars;
+
+            grid.innerHTML = displayedCars.map(car => {
                 const firstTrim = car.trims[0];
                 const minFob = car.minPriceFob || firstTrim.fobUsd;
                 const minFobRub = Math.round(minFob * currentUsdRate);
@@ -3045,6 +3079,50 @@
                 </div>
                 `;
             }).join('');
+
+            // Update Expand/Collapse Controls
+            const expandContainer = document.getElementById('catalog-expand-wrap');
+            if (expandContainer) {
+                if (shouldPaginate) {
+                    expandContainer.classList.remove('hidden');
+                    const countText = document.getElementById('catalog-count-text');
+                    const expandText = document.getElementById('catalog-expand-text');
+                    const expandIcon = document.getElementById('catalog-expand-icon');
+
+                    if (isCatalogExpanded) {
+                        if (countText) {
+                            countText.textContent = (currentLang === 'ru')
+                                ? `Показаны все ${filteredCars.length} моделей`
+                                : `Showing all ${filteredCars.length} models`;
+                        }
+                        if (expandText) {
+                            expandText.textContent = (currentLang === 'ru')
+                                ? 'Свернуть каталог'
+                                : 'Show fewer models';
+                        }
+                        if (expandIcon) {
+                            expandIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />';
+                        }
+                    } else {
+                        const remaining = filteredCars.length - CATALOG_INITIAL_LIMIT;
+                        if (countText) {
+                            countText.textContent = (currentLang === 'ru')
+                                ? `Показано ${CATALOG_INITIAL_LIMIT} из ${filteredCars.length} моделей`
+                                : `Showing ${CATALOG_INITIAL_LIMIT} of ${filteredCars.length} models`;
+                        }
+                        if (expandText) {
+                            expandText.textContent = (currentLang === 'ru')
+                                ? `Показать все модели (еще ${remaining} авто)`
+                                : `Show all ${filteredCars.length} models`;
+                        }
+                        if (expandIcon) {
+                            expandIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />';
+                        }
+                    }
+                } else {
+                    expandContainer.classList.add('hidden');
+                }
+            }
         }
 
         // 6. CAR MODAL & PRICE BREAKDOWN ENGINE
