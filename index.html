@@ -99,13 +99,20 @@
         }
 
         html, body {
-            overflow-x: hidden !important;
+            overflow-x: clip;
             max-width: 100% !important;
             width: 100% !important;
             position: relative;
             margin: 0;
             padding: 0;
             -webkit-overflow-scrolling: touch;
+        }
+
+        header.sticky {
+            position: -webkit-sticky !important;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 50 !important;
         }
 
         body {
@@ -773,74 +780,7 @@
                 </p>
             </div>
 
-            <!-- EXPORT TRACK RECORD / SCALE METRICS -->
-            <div id="scale-metrics" class="bg-surface-card/60 border border-surface-border rounded-2xl p-6 sm:p-8 backdrop-blur-sm shadow-xl">
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 divide-surface-border/40 sm:divide-x-0 lg:divide-x lg:divide-surface-border/50">
-                    <!-- Metric 1: 5,500+ Vehicles -->
-                    <div class="flex flex-col items-center sm:items-start text-center sm:text-left pt-4 sm:pt-0 lg:px-6 first:pl-0">
-                        <div class="flex items-center gap-2 mb-1.5">
-                            <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400" data-lang="ru">Объем экспорта</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400" data-lang="en">Export Track Record</span>
-                        </div>
-                        <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-                            5,500<span class="text-brand">+</span>
-                        </div>
-                        <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1" data-lang="ru">Экспортировано авто</div>
-                        <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1" data-lang="en">Vehicles Exported Globally</div>
-                        <p class="text-[11px] text-gray-400 mt-1 max-w-xs" data-lang="ru">Поставки в Европу, СНГ, ОАЭ и Южную Америку с марта 2022 года</p>
-                        <p class="text-[11px] text-gray-400 mt-1 max-w-xs" data-lang="en">Delivered across Europe, CIS, GCC/UAE, and South America since 2022</p>
-                    </div>
 
-                    <!-- Metric 2: $60M+ Deal Volume -->
-                    <div class="flex flex-col items-center sm:items-start text-center sm:text-left pt-4 sm:pt-0 lg:px-6">
-                        <div class="flex items-center gap-2 mb-1.5">
-                            <span class="w-2 h-2 rounded-full bg-brand"></span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400" data-lang="ru">Совокупный оборот</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400" data-lang="en">Gross Deal Volume</span>
-                        </div>
-                        <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-                            ~$60M<span class="text-brand">+</span>
-                        </div>
-                        <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1" data-lang="ru">Объем поставок (2021–2025)</div>
-                        <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1" data-lang="en">Gross Turnover (2021–2025)</div>
-                        <p class="text-[11px] text-gray-400 mt-1 max-w-xs" data-lang="ru">Прямые валютные расчеты в USD, AED, EUR и CNY без скрытых комиссий</p>
-                        <p class="text-[11px] text-gray-400 mt-1 max-w-xs" data-lang="en">Direct multi-currency settlements in USD, AED, EUR, and CNY</p>
-                    </div>
-
-                    <!-- Metric 3: 50+ B2B / 800+ Private Clients -->
-                    <div class="flex flex-col items-center sm:items-start text-center sm:text-left pt-4 sm:pt-0 lg:px-6">
-                        <div class="flex items-center gap-2 mb-1.5">
-                            <span class="w-2 h-2 rounded-full bg-brand"></span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400" data-lang="ru">Клиентская сеть</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400" data-lang="en">Client Network</span>
-                        </div>
-                        <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-                            50<span class="text-brand">+</span> <span class="text-lg sm:text-xl font-normal text-gray-400">/ 800+</span>
-                        </div>
-                        <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1" data-lang="ru">Дилеры B2B и частные клиенты</div>
-                        <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1" data-lang="en">B2B Dealers & Private Clients</div>
-                        <p class="text-[11px] text-gray-400 mt-1 max-w-xs" data-lang="ru">50+ дилерских сетей и более 800 прямых поставок клиентам</p>
-                        <p class="text-[11px] text-gray-400 mt-1 max-w-xs" data-lang="en">50+ dealership partners and 800+ direct turnkey deliveries</p>
-                    </div>
-
-                    <!-- Metric 4: 25-40 Days Lead Time & From 1 Unit -->
-                    <div class="flex flex-col items-center sm:items-start text-center sm:text-left pt-4 sm:pt-0 lg:px-6">
-                        <div class="flex items-center gap-2 mb-1.5">
-                            <span class="w-2 h-2 rounded-full bg-brand"></span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400" data-lang="ru">Сроки и партии</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400" data-lang="en">Lead Time & Volume</span>
-                        </div>
-                        <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-                            30–45 <span class="text-base sm:text-xl font-bold text-brand uppercase" data-lang="ru">дней</span><span class="text-base sm:text-xl font-bold text-brand uppercase" data-lang="en">days</span>
-                        </div>
-                        <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1" data-lang="ru">Средний срок • от 1 авто</div>
-                        <div class="text-xs sm:text-sm font-semibold text-gray-200 mt-1" data-lang="en">Average Lead Time • From 1 Unit</div>
-                        <p class="text-[11px] text-gray-400 mt-1 max-w-xs" data-lang="ru">От единичных заказов до регулярных поставок автовозами и контейнерами</p>
-                        <p class="text-[11px] text-gray-400 mt-1 max-w-xs" data-lang="en">From single units to full car-carrier convoys and maritime containers</p>
-                    </div>
-                </div>
-            </div>
 
             <!-- SUB-SECTION 1: 6 GLOBAL OFFICES GRID -->
             <div>
