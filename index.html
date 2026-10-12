@@ -413,25 +413,27 @@
 
     <!-- SECTION 1: TOP HERO BANNERS (EXACT EASY.CAR POPULAR VEHICLES SLIDER) -->
     <section id="hero-banners" class="relative overflow-hidden border-b border-surface-border bg-gradient-to-b from-white to-slate-100/80 w-full max-w-full">
-        <div id="banner-slider-container" class="relative min-h-[460px] md:min-h-[470px] w-full max-w-full overflow-hidden flex items-center">
+        <div id="banner-slider-container" class="relative min-h-[440px] md:min-h-[350px] lg:min-h-[360px] w-full max-w-full overflow-hidden flex items-center">
             <div id="hero-banner-slides" class="absolute inset-0 w-full h-full overflow-hidden">
                 <!-- Slides injected via JavaScript -->
             </div>
-        </div>
 
-        <!-- Slider Controls: Prev/Next & Dots -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-5 pt-0 relative z-30 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <button onclick="prevBanner()" class="w-9 h-9 rounded-full border border-surface-border bg-white hover:bg-slate-100 hover:border-slate-400 transition flex items-center justify-center text-slate-800 shadow-sm" aria-label="Previous Slide">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                </button>
-                <button onclick="nextBanner()" class="w-9 h-9 rounded-full border border-surface-border bg-white hover:bg-slate-100 hover:border-slate-400 transition flex items-center justify-center text-slate-800 shadow-sm" aria-label="Next Slide">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                </button>
-            </div>
-            <!-- Indicator Dots -->
-            <div id="banner-dots" class="flex items-center gap-2">
-                <!-- Dots injected via JS -->
+            <!-- Slider Controls: Prev/Next & Dots (Integrated overlay) -->
+            <div class="absolute bottom-3 sm:bottom-4 inset-x-0 z-30 pointer-events-none">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5 pointer-events-auto">
+                        <button onclick="prevBanner()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-surface-border bg-white/95 hover:bg-slate-100 hover:border-slate-400 transition flex items-center justify-center text-slate-800 shadow-sm backdrop-blur-sm" aria-label="Previous Slide">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        <button onclick="nextBanner()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-surface-border bg-white/95 hover:bg-slate-100 hover:border-slate-400 transition flex items-center justify-center text-slate-800 shadow-sm backdrop-blur-sm" aria-label="Next Slide">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                    <!-- Indicator Dots -->
+                    <div id="banner-dots" class="flex items-center gap-1.5 sm:gap-2 pointer-events-auto">
+                        <!-- Dots injected via JS -->
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -3169,22 +3171,22 @@
 
                 return `
                 <div class="banner-slide absolute inset-0 transition-all duration-700 ease-in-out ${idx === activeSlideIndex ? 'opacity-100 z-10 scale-100 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none scale-95'} w-full max-w-full overflow-hidden" id="slide-${idx}">
-                    <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 pt-3 sm:pt-6 pb-2 sm:pb-6 flex flex-col justify-center">
+                    <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-12 sm:pb-6 flex flex-col justify-center">
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-6 md:gap-8 items-center">
                             <!-- Left Info -->
-                            <div class="lg:col-span-6 space-y-1.5 sm:space-y-3 md:space-y-3.5 z-20 min-w-0">
+                            <div class="lg:col-span-6 space-y-1.5 sm:space-y-2.5 md:space-y-3 z-20 min-w-0">
                                 <div class="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-gray-400">
                                     <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
                                     <span data-lang="en">Direct Factory Export &nbsp;&middot;&nbsp; Shanghai Motors</span>
                                     <span data-lang="ru">Прямой экспорт &nbsp;&middot;&nbsp; Shanghai Motors</span>
                                 </div>
-                                <h1 class="text-2xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                                <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
                                     ${b.model}
                                 </h1>
-                                <p class="text-xs sm:text-base text-slate-600 leading-snug font-sans max-w-xl">
+                                <p class="text-xs sm:text-sm md:text-base text-slate-600 leading-snug font-sans max-w-xl">
                                     ${currentLang === 'ru' ? b.descRu : b.descEn}
                                 </p>
-                                <div class="text-xl sm:text-3xl font-extrabold text-slate-900 flex items-baseline gap-2 pt-0.5 tracking-tight font-mono">
+                                <div class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 flex items-baseline gap-2 pt-0.5 tracking-tight font-mono">
                                     ${priceFormatted}
                                 </div>
                                 <div class="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
@@ -3197,12 +3199,12 @@
                                 </div>
                             </div>
                             <!-- Right Visual: Studio Pavilion Staging -->
-                            <div class="lg:col-span-6 flex flex-col items-center justify-center relative min-h-[220px] sm:min-h-[280px] md:min-h-[340px] w-full max-w-full overflow-hidden select-none">
+                            <div class="lg:col-span-6 flex flex-col items-center justify-center relative min-h-[190px] sm:min-h-[230px] md:min-h-[270px] w-full max-w-full overflow-hidden select-none">
                                 <!-- Ambient Overhead Studio Spotlight Cone -->
                                 <div class="absolute -top-16 inset-x-8 h-72 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(255,255,255,0.9),transparent_80%)] pointer-events-none"></div>
 
                                 <!-- Car Image Render -->
-                                <img src="${b.img}" alt="${b.model}" class="max-h-[205px] sm:max-h-[265px] md:max-h-[320px] w-full object-contain relative z-10 transition-transform duration-700 hover:scale-[1.03] cursor-pointer filter drop-shadow-[0_16px_24px_rgba(0,0,0,0.15)]" onclick="openCarModal('${b.id}')">
+                                <img src="${b.img}" alt="${b.model}" class="max-h-[185px] sm:max-h-[230px] md:max-h-[270px] w-full object-contain relative z-10 transition-transform duration-700 hover:scale-[1.03] cursor-pointer filter drop-shadow-[0_16px_24px_rgba(0,0,0,0.15)]" onclick="openCarModal('${b.id}')">
 
                                 <!-- Studio Ground Staging & Tire Contact Shadow -->
                                 <div class="relative w-full max-w-md -mt-3 sm:-mt-4 z-0 flex flex-col items-center pointer-events-none">
