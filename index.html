@@ -284,6 +284,16 @@
             <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand" data-lang="ru">О нас</a>
             <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-brand">FAQ</a>
 
+            <!-- Mobile RU/EN Language Toggle -->
+            <div class="py-2.5 flex items-center justify-between border-t border-b border-surface-border">
+                <span class="text-xs text-gray-400 font-semibold" data-lang="ru">Язык сайта / Language:</span>
+                <span class="text-xs text-gray-400 font-semibold" data-lang="en">Language / Язык:</span>
+                <div class="bg-surface-elevated border border-surface-border p-1 rounded-full flex items-center text-xs font-semibold">
+                    <button onclick="setLanguage('en')" id="btn-lang-en-mobile" class="px-3 py-1 rounded-full transition text-gray-400 hover:text-white text-xs">EN</button>
+                    <button onclick="setLanguage('ru')" id="btn-lang-ru-mobile" class="px-3 py-1 rounded-full transition text-gray-400 hover:text-white text-xs">RU</button>
+                </div>
+            </div>
+
             <!-- Mobile CTA Button -->
             <div data-lang="ru" class="pt-1">
                 <button onclick="toggleMobileMenu(); openConsultationModal();" class="w-full py-2.5 rounded-lg bg-brand hover:bg-brand-hover text-black font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition shadow-lg shadow-brand/10">
@@ -2963,17 +2973,15 @@
                 }
             });
 
-            // Update language toggle buttons
-            const ruBtn = document.getElementById('btn-lang-ru');
-            const enBtn = document.getElementById('btn-lang-en');
-            if (ruBtn && enBtn) {
-                if (lang === 'ru') {
-                    ruBtn.className = 'px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-brand text-black font-bold text-[11px] sm:text-xs transition';
-                    enBtn.className = 'px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-gray-400 hover:text-white text-[11px] sm:text-xs transition';
-                } else {
-                    enBtn.className = 'px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-brand text-black font-bold text-[11px] sm:text-xs transition';
-                    ruBtn.className = 'px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-gray-400 hover:text-white text-[11px] sm:text-xs transition';
-                }
+            // Update language toggle buttons (Desktop & Mobile)
+            const ruBtns = [document.getElementById('btn-lang-ru'), document.getElementById('btn-lang-ru-mobile')].filter(Boolean);
+            const enBtns = [document.getElementById('btn-lang-en'), document.getElementById('btn-lang-en-mobile')].filter(Boolean);
+            if (lang === 'ru') {
+                ruBtns.forEach(b => b.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-brand text-black font-bold text-[11px] sm:text-xs transition shadow-sm');
+                enBtns.forEach(b => b.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-gray-400 hover:text-white text-[11px] sm:text-xs transition');
+            } else {
+                enBtns.forEach(b => b.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-brand text-black font-bold text-[11px] sm:text-xs transition shadow-sm');
+                ruBtns.forEach(b => b.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-gray-400 hover:text-white text-[11px] sm:text-xs transition');
             }
 
             // Update Lead Form placeholders based on language
