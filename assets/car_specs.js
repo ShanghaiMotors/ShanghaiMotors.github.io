@@ -1,4 +1,4 @@
-// Shanghai Motors Comprehensive Car Specifications Database
+﻿// Shanghai Motors Comprehensive Car Specifications Database
 // Generated for bilingual support (RU / EN)
 
 window.carDetailedSpecs = {
@@ -7,7 +7,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -50,7 +49,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -93,7 +91,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -130,7 +127,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -167,7 +163,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -204,7 +199,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор мультимедиа",
@@ -245,7 +239,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -288,7 +281,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -331,7 +323,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -368,7 +359,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -405,7 +395,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -442,7 +431,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор мультимедиа",
@@ -483,7 +471,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -526,7 +513,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -563,7 +549,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -594,7 +579,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -625,7 +609,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -656,7 +639,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор",
@@ -691,7 +673,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -734,7 +715,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -777,7 +757,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -814,7 +793,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -845,7 +823,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -876,7 +853,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор мультимедиа",
@@ -917,7 +893,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -960,7 +935,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -1003,7 +977,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -1040,7 +1013,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -1071,7 +1043,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -1102,7 +1073,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор",
@@ -1137,7 +1107,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -1180,7 +1149,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -1223,7 +1191,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Тяговая батарея",
@@ -1254,7 +1221,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Подвеска",
@@ -1279,7 +1245,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа",
@@ -1304,7 +1269,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор",
@@ -1339,7 +1303,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -1382,7 +1345,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -1425,7 +1387,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Тяговая батарея",
@@ -1462,7 +1423,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Подвеска",
@@ -1487,7 +1447,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа",
@@ -1512,7 +1471,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор",
@@ -1547,7 +1505,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -1590,7 +1547,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -1633,7 +1589,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Тяговая батарея",
@@ -1670,7 +1625,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Подвеска",
@@ -1695,7 +1649,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа",
@@ -1720,7 +1673,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор",
@@ -1755,7 +1707,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -1798,7 +1749,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -1841,7 +1791,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -1872,7 +1821,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -1909,7 +1857,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -1940,7 +1887,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Операционная система",
@@ -1981,7 +1927,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -2024,7 +1969,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -2067,7 +2011,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -2104,7 +2047,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -2135,7 +2077,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -2166,7 +2107,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Кокпит и мультимедиа",
@@ -2207,7 +2147,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -2250,7 +2189,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -2293,7 +2231,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -2324,7 +2261,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -2355,7 +2291,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -2386,7 +2321,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор",
@@ -2427,7 +2361,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -2470,7 +2403,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -2507,7 +2439,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -2538,7 +2469,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -2575,7 +2505,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -2606,7 +2535,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Кокпит и мультимедиа",
@@ -2647,7 +2575,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -2690,7 +2617,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -2727,7 +2653,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -2758,7 +2683,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -2789,7 +2713,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -2820,7 +2743,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Кокпит",
@@ -2861,7 +2783,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -2904,7 +2825,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -2947,7 +2867,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -2990,7 +2909,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -3021,7 +2939,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа ассистентов",
@@ -3052,7 +2969,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор мультимедиа",
@@ -3093,7 +3009,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -3136,7 +3051,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -3179,7 +3093,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -3222,7 +3135,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -3253,7 +3165,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Уровень ассистентов",
@@ -3284,7 +3195,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Мультимедиа система",
@@ -3325,7 +3235,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -3368,7 +3277,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -3411,7 +3319,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -3448,7 +3355,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -3479,7 +3385,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Ассистенты вождения",
@@ -3510,7 +3415,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор мультимедиа",
@@ -3551,7 +3455,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -3594,7 +3497,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -3637,7 +3539,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -3674,7 +3575,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -3705,7 +3605,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Ассистенты безопасности",
@@ -3736,7 +3635,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Информационная система",
@@ -3777,7 +3675,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Габариты и кузов",
         "nameEn": "Dimensions & Body",
-        "icon": "📏",
         "items": [
           {
             "labelRu": "Габариты (Д × Ш × В)",
@@ -3820,7 +3717,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Двигатель и динамика",
         "nameEn": "Powertrain & Performance",
-        "icon": "⚡",
         "items": [
           {
             "labelRu": "Тип силовой установки",
@@ -3863,7 +3759,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Батарея и запас хода",
         "nameEn": "Battery & Range",
-        "icon": "🔋",
         "items": [
           {
             "labelRu": "Емкость тяговой батареи",
@@ -3894,7 +3789,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Шасси и подвеска",
         "nameEn": "Chassis & Suspension",
-        "icon": "🏎️",
         "items": [
           {
             "labelRu": "Передняя подвеска",
@@ -3925,7 +3819,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Автопилот и безопасность",
         "nameEn": "ADAS & Safety",
-        "icon": "🛡️",
         "items": [
           {
             "labelRu": "Платформа автопилота",
@@ -3956,7 +3849,6 @@ window.carDetailedSpecs = {
       {
         "nameRu": "Салон и комфорт",
         "nameEn": "Interior & Smart Cockpit",
-        "icon": "✨",
         "items": [
           {
             "labelRu": "Процессор мультимедиа",
