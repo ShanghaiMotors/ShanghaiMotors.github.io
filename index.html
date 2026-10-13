@@ -99,6 +99,11 @@
             box-sizing: border-box;
         }
 
+        html {
+            font-size: 16.5px;
+            -webkit-text-size-adjust: 100%;
+        }
+
         html, body {
             overflow-x: clip;
             max-width: 100% !important;
@@ -220,7 +225,7 @@
                 <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-7 sm:h-8 md:h-10 w-auto object-contain">
             </a>
 
-            <nav class="hidden lg:flex items-center gap-3 lg:gap-3.5 xl:gap-5 2xl:gap-6 text-xs xl:text-sm font-semibold text-slate-600 whitespace-nowrap mr-2 lg:mr-4 xl:mr-6">
+            <nav class="hidden lg:flex items-center gap-3.5 lg:gap-4 xl:gap-6 2xl:gap-7 text-sm font-semibold text-slate-700 whitespace-nowrap mr-2 lg:mr-4 xl:mr-6">
                 <a href="#hero-banners" class="hover:text-slate-950 transition" data-lang="en">Top Models</a>
                 <a href="#hero-banners" class="hover:text-slate-950 transition" data-lang="ru">Популярные авто</a>
 
@@ -814,7 +819,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <!-- Vehicle of interest -->
                                 <div>
-                                    <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                                    <label class="block text-sm font-bold text-slate-700 mb-1.5">
                                         <span data-lang="ru">Модель автомобиля (обязательно)</span>
                                         <span data-lang="en">Vehicle Model (Required)</span>
                                     </label>
@@ -823,7 +828,7 @@
 
                                 <!-- Destination city / port -->
                                 <div>
-                                    <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                                    <label class="block text-sm font-bold text-slate-700 mb-1.5">
                                         <span data-lang="ru">Город / Порт доставки (необязательно)</span>
                                         <span data-lang="en">Destination Port / City (Optional)</span>
                                     </label>
@@ -834,7 +839,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <!-- Name -->
                                 <div>
-                                    <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                                    <label class="block text-sm font-bold text-slate-700 mb-1.5">
                                         <span data-lang="ru">Ваше имя (обязательно)</span>
                                         <span data-lang="en">Your Name (Required)</span>
                                     </label>
@@ -843,7 +848,7 @@
 
                                 <!-- Email -->
                                 <div>
-                                    <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                                    <label class="block text-sm font-bold text-slate-700 mb-1.5">
                                         <span data-lang="ru">Email (обязательно)</span>
                                         <span data-lang="en">Email (Required)</span>
                                     </label>
@@ -853,7 +858,7 @@
 
                             <!-- Phone / WhatsApp / Telegram -->
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                                <label class="block text-sm font-bold text-slate-700 mb-1.5">
                                     <span data-lang="ru">Телефон / WhatsApp / Telegram (необязательно)</span>
                                     <span data-lang="en">Phone / WhatsApp (Optional)</span>
                                 </label>
@@ -862,7 +867,7 @@
 
                             <!-- Additional notes -->
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1.5">
+                                <label class="block text-sm font-bold text-slate-700 mb-1.5">
                                     <span data-lang="ru">Пожелания / Комплектация (необязательно)</span>
                                     <span data-lang="en">Specific Requirements / Trim (Optional)</span>
                                 </label>
@@ -871,24 +876,24 @@
 
                             <!-- Submit Button -->
                             <div class="pt-2">
-                                <button type="submit" id="lead-submit-btn" class="w-full py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition shadow-md cursor-pointer">
+                                <button type="submit" id="lead-submit-btn" class="w-full py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition shadow-md cursor-pointer">
                                     <span data-lang="ru" id="btn-submit-text-ru">Получить расчет стоимости</span>
                                     <span data-lang="en" id="btn-submit-text-en">Request Official Quotation</span>
                                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                                 </button>
                             </div>
 
-                            <p class="text-[11px] text-slate-400 text-center mt-2" data-lang="ru">
+                            <p class="text-xs text-slate-400 text-center mt-2" data-lang="ru">
                                 Нажимая кнопку, вы даете согласие на обработку персональных данных. Конфиденциальность гарантируется.
                             </p>
-                            <p class="text-[11px] text-slate-400 text-center mt-2" data-lang="en">
+                            <p class="text-xs text-slate-400 text-center mt-2" data-lang="en">
                                 By submitting, you agree to our privacy terms. Your information is kept strictly confidential.
                             </p>
 
                             <!-- Direct Fast Messenger Alternative -->
                             <div class="pt-3 border-t border-surface-border/50 text-center">
-                                <div class="text-[11px] text-slate-500 mb-2 font-medium" data-lang="ru">Или свяжитесь с отделом экспорта напрямую в мессенджере:</div>
-                                <div class="text-[11px] text-slate-500 mb-2 font-medium" data-lang="en">Or connect with our export team directly via WhatsApp:</div>
+                                <div class="text-xs text-slate-500 mb-2 font-medium" data-lang="ru">Или свяжитесь с отделом экспорта напрямую в мессенджере:</div>
+                                <div class="text-xs text-slate-500 mb-2 font-medium" data-lang="en">Or connect with our export team directly via WhatsApp:</div>
                                 <!-- RU messengers: WhatsApp + Telegram -->
                                 <div data-lang="ru" class="flex items-center justify-center gap-2">
                                     <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 text-[#25D366] text-xs font-semibold transition">
@@ -1487,12 +1492,12 @@
                         <img src="assets/Team/serik.jpg" alt="Serik" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Serik</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">GENERAL MANAGER, SHANGHAI</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Serik</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">GENERAL MANAGER, SHANGHAI</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Серик</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">ГЕНЕРАЛЬНЫЙ ДИРЕКТОР, ШАНХАЙ</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Серик</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">ГЕНЕРАЛЬНЫЙ ДИРЕКТОР, ШАНХАЙ</p>
                     </div>
                 </div>
 
@@ -1502,12 +1507,12 @@
                         <img src="assets/Team/andy.jpg" alt="Andy 刘希坤" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Andy 刘希坤</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">DIRECTOR OF OPERATIONS, SHANGHAI</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Andy 刘希坤</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">DIRECTOR OF OPERATIONS, SHANGHAI</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Энди 刘希坤</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">ОПЕРАЦИОННЫЙ ДИРЕКТОР, ШАНХАЙ</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Энди 刘希坤</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">ОПЕРАЦИОННЫЙ ДИРЕКТОР, ШАНХАЙ</p>
                     </div>
                 </div>
 
@@ -1517,12 +1522,12 @@
                         <img src="assets/Team/peter.jpg" alt="Peter" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Peter</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">HEAD OF SALES, SHANGHAI</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Peter</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">HEAD OF SALES, SHANGHAI</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Питер</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">РУКОВОДИТЕЛЬ ОТДЕЛА ПРОДАЖ, ШАНХАЙ</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Питер</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">РУКОВОДИТЕЛЬ ОТДЕЛА ПРОДАЖ, ШАНХАЙ</p>
                     </div>
                 </div>
 
@@ -1532,12 +1537,12 @@
                         <img src="assets/Team/judy.jpg" alt="Judy 朱丽丽" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Judy 朱丽丽</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">FINANCE, ACCOUNTING, SHANGHAI</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Judy 朱丽丽</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">FINANCE, ACCOUNTING, SHANGHAI</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Джуди 朱丽丽</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">ФИНАНСЫ И БУХГАЛТЕРИЯ, ШАНХАЙ</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Джуди 朱丽丽</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">ФИНАНСЫ И БУХГАЛТЕРИЯ, ШАНХАЙ</p>
                     </div>
                 </div>
 
@@ -1547,12 +1552,12 @@
                         <img src="assets/Team/vladislav.png" alt="Vladislav" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Vladislav</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">BUSINESS DEVELOPMENT, SHANGHAI</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Vladislav</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">BUSINESS DEVELOPMENT, SHANGHAI</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Владислав</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">РАЗВИТИЕ БИЗНЕСА, ШАНХАЙ</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Владислав</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">РАЗВИТИЕ БИЗНЕСА, ШАНХАЙ</p>
                     </div>
                 </div>
 
@@ -1562,12 +1567,12 @@
                         <img src="assets/Team/ali.jpg" alt="Ali" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Ali</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">MEDIA MANAGER, SHANGHAI</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Ali</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">MEDIA MANAGER, SHANGHAI</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Али</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">МЕДИА-МЕНЕДЖЕР, ШАНХАЙ</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Али</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">МЕДИА-МЕНЕДЖЕР, ШАНХАЙ</p>
                     </div>
                 </div>
 
@@ -1577,12 +1582,12 @@
                         <img src="assets/Team/chess.webp" alt="Chess 李" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Chess 李</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">LOGISTICS, SHANGHAI</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Chess 李</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">LOGISTICS, SHANGHAI</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Чесс 李</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">ЛОГИСТИКА, ШАНХАЙ</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Чесс 李</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">ЛОГИСТИКА, ШАНХАЙ</p>
                     </div>
                 </div>
 
@@ -1592,12 +1597,12 @@
                         <img src="assets/Team/zhanat.png" alt="Zhanat" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Zhanat</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">PARTNER, DUBAI</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Zhanat</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">PARTNER, DUBAI</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Жанат</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">ПАРТНЕР, ДУБАЙ</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Жанат</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">ПАРТНЕР, ДУБАЙ</p>
                     </div>
                 </div>
 
@@ -1607,12 +1612,12 @@
                         <img src="assets/Team/andrey.jpeg" alt="Andrey" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Andrey</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">HEAD OF SALES, KAZAKHSTAN</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Andrey</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">HEAD OF SALES, KAZAKHSTAN</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Андрей</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">РУКОВОДИТЕЛЬ ОТДЕЛА ПРОДАЖ, КАЗАХСТАН</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Андрей</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">РУКОВОДИТЕЛЬ ОТДЕЛА ПРОДАЖ, КАЗАХСТАН</p>
                     </div>
                 </div>
 
@@ -1622,12 +1627,12 @@
                         <img src="assets/Team/temirkhan.jpg" alt="Temirkhan" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div data-lang="en" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Temirkhan</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">MANAGER, KAZAKHSTAN</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Temirkhan</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">MANAGER, KAZAKHSTAN</p>
                     </div>
                     <div data-lang="ru" class="flex flex-col items-center">
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-snug">Темирхан</h4>
-                        <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-500 mt-1">МЕНЕДЖЕР, КАЗАХСТАН</p>
+                        <h4 class="text-base sm:text-[17px] font-bold text-slate-900 tracking-tight leading-snug">Темирхан</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">МЕНЕДЖЕР, КАЗАХСТАН</p>
                     </div>
                 </div>
             </div>
@@ -1647,34 +1652,34 @@
 
             <div class="space-y-4 text-left">
                 <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">How is the price calculated and are there hidden fees?</h3>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Как формируется стоимость и могут ли быть скрытые доплаты?</h3>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="en">
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="en">How is the price calculated and are there hidden fees?</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="ru">Как формируется стоимость и могут ли быть скрытые доплаты?</h3>
+                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="en">
                         Pricing is 100% transparent: vehicle purchase cost in China + ocean freight + export licensing. No hidden dealer markups.
                     </p>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="ru">
+                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="ru">
                         В смете четко зафиксированы: инвойс авто в Китае, доставка автовозом, таможенная пошлина, утильсбор и лаборатория. Цена прописывается в договоре и не меняется в процессе доставки.
                     </p>
                 </div>
 
                 <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Are vehicles insured during transport?</h3>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Застрахован ли автомобиль в пути?</h3>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="en">
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="en">Are vehicles insured during transport?</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="ru">Застрахован ли автомобиль в пути?</h3>
+                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="en">
                         Yes, 100% full-value Institute Cargo Clauses (A) insurance covers the entire transport journey from port departure to destination delivery.
                     </p>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="ru">
+                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="ru">
                         Да, каждый автомобиль застрахован на полную стоимость от момента погрузки на автовоз в Китае до момента передачи клиенту в его городе.
                     </p>
                 </div>
 
                 <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">What is the delivery timeline?</h3>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Сколько времени занимает доставка?</h3>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="en">
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="en">What is the delivery timeline?</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="ru">Сколько времени занимает доставка?</h3>
+                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="en">
                         On average, the entire process from direct factory procurement in China to export dispatch and final delivery takes 30 to 45 days.
                     </p>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="ru">
+                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="ru">
                         В среднем весь процесс — от выкупа авто в Китае до выдачи с полным пакетом документов (СБКТС и ЭПТС) — занимает от 30 до 45 дней.
                     </p>
                 </div>
@@ -3539,7 +3544,7 @@
                             </div>
 
                             <!-- Brand Badge -->
-                            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md border border-slate-200 text-[11px] font-bold text-slate-800 tracking-wider z-20 shadow-sm">
+                            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md border border-slate-200 text-xs font-bold text-slate-800 tracking-wider z-20 shadow-sm">
                                 ${car.brand}
                             </div>
                         </div>
@@ -3547,15 +3552,15 @@
                         <!-- Info -->
                         <div class="p-5">
                             <div class="flex justify-between items-baseline mb-2">
-                                <h3 class="text-base font-bold text-slate-900 group-hover:text-slate-700 transition">${car.fullName}</h3>
-                                <span class="text-[11px] text-slate-500 font-medium">${trimLabel}</span>
+                                <h3 class="text-base sm:text-[17px] font-bold text-slate-900 group-hover:text-slate-700 transition">${car.fullName}</h3>
+                                <span class="text-xs text-slate-500 font-medium">${trimLabel}</span>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-4 font-medium">
-                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${formatDrive(firstTrim.drive, currentLang)}</div>
-                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${formatPower(firstTrim.power, currentLang)}</div>
-                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${formatAccel(firstTrim.accel, currentLang)}</div>
-                                <div><span class="text-gray-500">${currentLang === 'ru' ? 'Запас хода:' : 'Range:'}</span> ${formatRange(firstTrim.range, currentLang)}</div>
+                            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-4 font-semibold">
+                                <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${formatDrive(firstTrim.drive, currentLang)}</div>
+                                <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${formatPower(firstTrim.power, currentLang)}</div>
+                                <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${formatAccel(firstTrim.accel, currentLang)}</div>
+                                <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Запас хода:' : 'Range:'}</span> ${formatRange(firstTrim.range, currentLang)}</div>
                             </div>
 
                             <div class="pt-2 border-t border-surface-border">
@@ -3563,20 +3568,20 @@
                                     <span class="text-xs text-slate-500 uppercase font-medium">
                                         ${currentLang === 'ru' ? 'Готов к отправке:' : 'Price in China (FOB):'}
                                     </span>
-                                    <span class="text-lg font-extrabold text-slate-900 tracking-tight font-mono">
+                                    <span class="text-xl font-extrabold text-slate-900 tracking-tight font-mono">
                                         ${currentLang === 'ru' ? `от ${minFobRub.toLocaleString()} ₽` : `$${minFob.toLocaleString()}`}
                                     </span>
                                 </div>
                                 ${currentLang === 'ru' ? `
-                                    <div class="flex justify-between items-center text-[11px] text-slate-500 font-medium mt-0.5">
+                                    <div class="flex justify-between items-center text-xs text-slate-500 font-medium mt-0.5">
                                         <span>FOB от $${minFob.toLocaleString()}</span>
-                                        <span class="text-gray-500 font-medium">по курсу ЦБ</span>
+                                        <span class="text-slate-500 font-medium">по курсу ЦБ</span>
                                     </div>
-                                    <div class="text-[10px] text-gray-500 mt-1">
+                                    <div class="text-[11px] text-slate-500 mt-1">
                                         * Логистика и растаможка рассчитываются отдельно
                                     </div>
                                 ` : `
-                                    <div class="text-[11px] text-slate-500 font-medium mt-0.5">
+                                    <div class="text-xs text-slate-500 font-medium mt-0.5">
                                         FOB (Shanghai / Nansha / Khorgos)
                                     </div>
                                 `}
