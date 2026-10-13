@@ -1811,96 +1811,98 @@
 
     <!-- QUICK CONSULTATION / CONTACT MODAL -->
     <div id="consultation-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
-        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-md relative my-auto p-6 sm:p-7 shadow-2xl overflow-x-hidden">
-            <button onclick="closeConsultationModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-600 hover:text-slate-900 flex items-center justify-center text-lg z-10 transition">
+        <div class="bg-white border border-slate-200 rounded-2xl w-full max-w-md relative my-auto p-6 sm:p-7 shadow-2xl overflow-x-hidden">
+            <button onclick="closeConsultationModal()" aria-label="Close" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-600 hover:text-slate-900 flex items-center justify-center text-lg z-10 transition cursor-pointer">
                 &times;
             </button>
 
             <!-- Modal Header -->
-            <div class="mb-5 pr-8">
-                <h3 class="text-xl font-extrabold text-slate-900" data-lang="ru">Консультация</h3>
-                <h3 class="text-xl font-extrabold text-slate-900" data-lang="en">Contact Us</h3>
-                <p class="text-xs text-slate-500 mt-1" data-lang="ru">Выберите удобный способ связи:</p>
-                <p class="text-xs text-slate-500 mt-1" data-lang="en">Select your preferred channel:</p>
+            <div class="mb-4 pr-6">
+                <h3 class="text-xl font-extrabold text-slate-900 tracking-tight" data-lang="ru">Запрос расчета стоимости</h3>
+                <h3 class="text-xl font-extrabold text-slate-900 tracking-tight" data-lang="en">Get an Export Quotation</h3>
+                <p class="text-xs text-slate-500 mt-1" data-lang="ru">Свяжитесь напрямую или оставьте быстрый запрос:</p>
+                <p class="text-xs text-slate-500 mt-1" data-lang="en">Connect directly or submit a quick RFQ:</p>
             </div>
 
-            <!-- Contact Options List -->
-            <div class="space-y-2.5">
-                <!-- WhatsApp Option -->
-                <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-3.5 rounded-xl bg-slate-50 hover:bg-[#25D366]/10 border border-slate-200 hover:border-[#25D366]/50 transition">
-                    <div class="flex items-center gap-3.5">
-                        <span class="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center flex-shrink-0 shadow-sm shadow-[#25D366]/30">
-                            <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                        </span>
-                        <span class="text-sm font-bold text-slate-800 group-hover:text-[#25D366] transition">WhatsApp</span>
-                    </div>
-                    <svg class="w-4 h-4 text-gray-500 group-hover:text-white group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <!-- Instant Messengers (2-col grid) -->
+            <div class="grid grid-cols-2 gap-2.5 mb-4">
+                <!-- WhatsApp (Both EN & RU) -->
+                <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 p-3 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 text-[#128C7E] font-bold text-xs sm:text-sm transition shadow-sm">
+                    <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <span>WhatsApp</span>
                 </a>
 
-                <!-- Telegram Option (RU) -->
+                <!-- Telegram (RU) -->
                 <div data-lang="ru">
-                    <a href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-3.5 rounded-xl bg-slate-50 hover:bg-[#24A1DE]/10 border border-slate-200 hover:border-[#24A1DE]/50 transition">
-                        <div class="flex items-center gap-3.5">
-                            <span class="w-10 h-10 rounded-xl bg-[#24A1DE] text-white flex items-center justify-center flex-shrink-0 shadow-sm shadow-[#24A1DE]/30">
-                                <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
-                            </span>
-                            <span class="text-sm font-bold text-slate-800 group-hover:text-[#24A1DE] transition">Telegram</span>
-                        </div>
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-white group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <a href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 p-3 rounded-xl bg-[#24A1DE]/10 hover:bg-[#24A1DE]/20 border border-[#24A1DE]/30 text-[#0088cc] font-bold text-xs sm:text-sm transition shadow-sm">
+                        <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
+                        <span>Telegram</span>
                     </a>
                 </div>
 
-                <!-- MAX Option (RU) -->
-                <div data-lang="ru">
-                    <a href="https://max.ru/u/f9LHodD0cOI3yKIPgCsWDWLtqyLO4_SMjksF41VgLAlzqfgXwkmHr1zUgVc?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAacewzwVedjle3w4OOladYZAtkGvng-e-rpGRo94VKbs84nxHVc1i4osd1L7Uw_aem_xP8D_w-sTn7gHcyQrRV7BA" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-3.5 rounded-xl bg-slate-50 hover:bg-[#7c42fa]/10 border border-slate-200 hover:border-[#7c42fa]/50 transition">
-                        <div class="flex items-center gap-3.5">
-                            <span class="w-10 h-10 rounded-xl bg-[#7c42fa] text-white flex items-center justify-center flex-shrink-0 shadow-sm shadow-[#7c42fa]/30">
-                                <svg class="w-5 h-5 fill-white" viewBox="0 0 100 100"><path d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg>
-                            </span>
-                            <span class="text-sm font-bold text-slate-800 group-hover:text-[#7c42fa] transition">MAX</span>
-                        </div>
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-white group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-
-                <!-- LinkedIn Option (EN) -->
+                <!-- Email (EN) -->
                 <div data-lang="en">
-                    <a href="https://www.linkedin.com/company/shanghai-motors/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-3.5 rounded-xl bg-surface-elevated hover:bg-[#0A66C2]/10 border border-surface-border hover:border-[#0A66C2]/50 transition">
-                        <div class="flex items-center gap-3.5">
-                            <span class="w-10 h-10 rounded-xl bg-[#0A66C2] text-white flex items-center justify-center flex-shrink-0 shadow-sm shadow-[#0A66C2]/30">
-                                <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                            </span>
-                            <span class="text-sm font-bold text-white group-hover:text-[#0A66C2] transition">LinkedIn</span>
-                        </div>
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-white group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <a href="mailto:info@shanghaimotors.net" class="flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 font-bold text-xs sm:text-sm transition shadow-sm">
+                        <svg class="w-4 h-4 fill-current text-red-500 flex-shrink-0" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <span>Email</span>
                     </a>
                 </div>
+            </div>
 
-                <!-- Email Option with Address and One-Click Copy -->
-                <div class="group flex items-center justify-between p-3.5 rounded-xl bg-surface-elevated hover:bg-[#EA4335]/10 border border-surface-border hover:border-[#EA4335]/50 transition">
-                    <a href="mailto:info@shanghaimotors.net" class="flex items-center gap-3.5 flex-1 min-w-0" title="info@shanghaimotors.net">
-                        <span class="w-10 h-10 rounded-xl bg-[#EA4335] text-white flex items-center justify-center flex-shrink-0 shadow-sm shadow-[#EA4335]/30">
-                            <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                        </span>
-                        <div class="flex flex-col min-w-0">
-                            <span class="text-sm font-bold text-slate-800 group-hover:text-[#EA4335] transition leading-tight">Email</span>
-                            <span class="text-xs text-slate-700 font-medium tracking-tight truncate select-all">info@shanghaimotors.net</span>
-                        </div>
-                    </a>
-                    <button type="button" onclick="copyEmailAddress(this)" class="ml-2 px-2.5 py-1.5 rounded-lg bg-surface-card hover:bg-surface-hover border border-surface-border hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-medium flex items-center gap-1.5 transition flex-shrink-0 cursor-pointer" title="Copy email address">
-                        <svg class="w-3.5 h-3.5 text-slate-400 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                        <span class="copy-label" data-lang="ru">Скопировать</span>
-                        <span class="copy-label" data-lang="en">Copy</span>
-                    </button>
-                </div>
+            <!-- Divider -->
+            <div class="relative flex items-center justify-center mb-4">
+                <div class="border-t border-slate-200 w-full"></div>
+                <span class="absolute bg-white px-2.5 text-[11px] font-semibold tracking-wider text-slate-400 uppercase" data-lang="ru">или онлайн-запрос</span>
+                <span class="absolute bg-white px-2.5 text-[11px] font-semibold tracking-wider text-slate-400 uppercase" data-lang="en">or quick request</span>
+            </div>
 
-                <!-- Secondary Link to Lead Form -->
-                <div class="pt-3 mt-1 text-center border-t border-surface-border/50">
-                    <button type="button" onclick="closeConsultationModal(); scrollToLeadForm();" class="text-xs text-slate-500 hover:text-slate-900 transition inline-flex items-center gap-1.5 cursor-pointer font-medium">
-                        <span data-lang="ru">Или заполните форму детального расчета →</span>
-                        <span data-lang="en">Or submit an itemized RFQ form →</span>
-                    </button>
+            <!-- Quick Form -->
+            <form id="modal-quote-form" onsubmit="handleModalQuoteSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">
+                        <span data-lang="ru">Модель автомобиля *</span>
+                        <span data-lang="en">Vehicle Model *</span>
+                    </label>
+                    <input type="text" id="modal-quote-vehicle" required placeholder="напр. Li Auto L9, Zeekr 001" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] outline-none transition text-slate-900">
                 </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">
+                        <span data-lang="ru">Город / Порт доставки</span>
+                        <span data-lang="en">Destination City / Port</span>
+                    </label>
+                    <input type="text" id="modal-quote-destination" placeholder="напр. Москва, Алматы, Дубай" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] outline-none transition text-slate-900">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">
+                        <span data-lang="ru">Контакт (WhatsApp / Телефон / Email) *</span>
+                        <span data-lang="en">Contact (WhatsApp / Phone / Email) *</span>
+                    </label>
+                    <input type="text" id="modal-quote-contact" required placeholder="+7... / @username / email" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] outline-none transition text-slate-900">
+                </div>
+                <button type="submit" id="modal-quote-submit-btn" class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm tracking-wide transition shadow-md flex items-center justify-center gap-2 cursor-pointer mt-1">
+                    <span data-lang="ru">Рассчитать стоимость</span>
+                    <span data-lang="en">Request Quotation</span>
+                    <svg class="w-4 h-4 text-[#C5A880]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+                <p class="text-[11px] text-center text-slate-400">
+                    <span data-lang="ru">Ответим в течение 15 минут в рабочее время</span>
+                    <span data-lang="en">Response within 15 minutes during business hours</span>
+                </p>
+            </form>
+
+            <!-- Success State -->
+            <div id="modal-quote-success" class="hidden text-center py-6">
+                <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-1" data-lang="ru">Заявка принята!</h4>
+                <h4 class="text-lg font-bold text-slate-900 mb-1" data-lang="en">Inquiry Received!</h4>
+                <p class="text-xs text-slate-600 mb-4" data-lang="ru">Мы подготовим расчет стоимости экспорта и свяжемся с вами.</p>
+                <p class="text-xs text-slate-600 mb-4" data-lang="en">Our export manager will contact you shortly with the quotation.</p>
+                <button onclick="closeConsultationModal()" class="px-5 py-2 rounded-xl bg-slate-900 hover:bg-black text-white text-xs font-bold transition">
+                    <span data-lang="ru">Закрыть</span>
+                    <span data-lang="en">Close</span>
+                </button>
             </div>
         </div>
     </div>
@@ -3321,6 +3323,22 @@
                 }
             }
 
+            // Update Consultation/Quote Modal placeholders based on language
+            const mqVehicle = document.getElementById('modal-quote-vehicle');
+            const mqDest = document.getElementById('modal-quote-destination');
+            const mqContact = document.getElementById('modal-quote-contact');
+            if (mqVehicle && mqDest && mqContact) {
+                if (lang === 'en') {
+                    mqVehicle.placeholder = 'e.g. Li Auto L9, Zeekr 001, Xiaomi SU7';
+                    mqDest.placeholder = 'e.g. Dubai, Rotterdam, Bishkek, Riyadh';
+                    mqContact.placeholder = '+1 ... / WhatsApp / email@example.com';
+                } else {
+                    mqVehicle.placeholder = 'напр. Li Auto L9, Zeekr 001, Xiaomi SU7';
+                    mqDest.placeholder = 'напр. Москва, Алматы, Дубай, Минск';
+                    mqContact.placeholder = '+7 (___) ___-__-__ или email';
+                }
+            }
+
             const formSub = document.getElementById('form-subject');
             if (formSub) {
                 formSub.value = (lang === 'en')
@@ -3790,12 +3808,23 @@
         }
 
         // Consultation Modal Functions
-        function openConsultationModal() {
+        function openConsultationModal(prefVehicle = '') {
             const modal = document.getElementById('consultation-modal');
             if (modal) {
+                const form = document.getElementById('modal-quote-form');
+                const success = document.getElementById('modal-quote-success');
+                if (form) {
+                    form.classList.remove('hidden');
+                    if (prefVehicle) {
+                        const vehicleInput = document.getElementById('modal-quote-vehicle');
+                        if (vehicleInput) vehicleInput.value = prefVehicle;
+                    }
+                }
+                if (success) success.classList.add('hidden');
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
                 document.body.classList.add('modal-open');
+                document.body.style.overflow = 'hidden';
             }
         }
 
@@ -3806,6 +3835,66 @@
                 modal.classList.remove('flex');
                 document.body.classList.remove('modal-open');
                 document.body.style.overflow = '';
+            }
+        }
+
+        async function handleModalQuoteSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('modal-quote-form');
+            const success = document.getElementById('modal-quote-success');
+            const submitBtn = document.getElementById('modal-quote-submit-btn');
+            const vehicle = (document.getElementById('modal-quote-vehicle')?.value || '').trim();
+            const destination = (document.getElementById('modal-quote-destination')?.value || '').trim();
+            const contact = (document.getElementById('modal-quote-contact')?.value || '').trim();
+
+            const isRu = currentLang === 'ru';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+                submitBtn.innerHTML = `
+                    <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                    </svg>
+                    <span>${isRu ? 'Отправка...' : 'Submitting...'}</span>
+                `;
+            }
+
+            const payload = {
+                vehicle: vehicle,
+                destination: destination || (isRu ? 'Не указан' : 'Not specified'),
+                contact: contact,
+                source: 'Quick Quote Modal',
+                _subject: `${isRu ? 'Заявка на авто' : 'Auto RFQ'}: ${vehicle} (${contact})`,
+                _template: 'table',
+                _captcha: 'false'
+            };
+
+            try {
+                await fetch('https://formsubmit.co/ajax/info@shanghaimotors.net', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.warn('Modal RFQ submit fallback:', err);
+            } finally {
+                if (form) {
+                    form.classList.add('hidden');
+                    form.reset();
+                }
+                if (success) success.classList.remove('hidden');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    submitBtn.innerHTML = `
+                        <span>${isRu ? 'Рассчитать стоимость' : 'Request Quotation'}</span>
+                        <svg class="w-4 h-4 text-[#C5A880]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    `;
+                }
             }
         }
 
