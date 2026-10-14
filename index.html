@@ -53,10 +53,10 @@
     }
     </script>
 
-    <!-- Fonts: Outfit (Display Headlines), Manrope (Body & Balanced Cyrillic), JetBrains Mono (Technical Numerals) -->
+    <!-- Fonts: Manrope (Body, Headlines & Cyrillic), JetBrains Mono (Technical Numerals) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS (Local with CDN fallback) -->
     <script src="assets/tailwind.min.js"></script>
@@ -431,7 +431,7 @@
                     <div class="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5" data-lang="ru">Дилеры B2B и клиенты</div>
                 </div>
                 <div class="flex flex-col justify-center p-3.5 sm:p-4 rounded-xl bg-surface-card border border-surface-border">
-                    <div class="text-xl sm:text-2xl font-bold font-mono text-slate-900 tracking-tight">30–45 <span class="text-slate-500 text-sm font-normal" data-lang="en">days</span><span class="text-slate-500 text-sm font-normal" data-lang="ru">дней</span></div>
+                    <div class="text-xl sm:text-2xl font-bold font-mono text-slate-900 tracking-tight">30–45 <span class="text-slate-500 text-sm font-normal font-sans" data-lang="en">days</span><span class="text-slate-500 text-sm font-normal font-sans" data-lang="ru">дней</span></div>
                     <div class="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5" data-lang="en">Average Lead Time</div>
                     <div class="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5" data-lang="ru">Средний срок доставки</div>
                 </div>
@@ -2102,23 +2102,23 @@
                         </div>
                         <div class="grid grid-cols-2 gap-3 text-xs">
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-slate-400 block text-[10px] font-mono font-semibold uppercase tracking-wider" data-lang="en">Powertrain</span>
-                                <span class="text-slate-400 block text-[10px] font-mono font-semibold uppercase tracking-wider" data-lang="ru">Двигатель</span>
+                                <span class="text-slate-400 block text-[10px] font-sans font-semibold uppercase tracking-wider" data-lang="en">Powertrain</span>
+                                <span class="text-slate-400 block text-[10px] font-sans font-semibold uppercase tracking-wider" data-lang="ru">Двигатель</span>
                                 <span id="spec-drive" class="text-slate-900 font-bold text-xs sm:text-sm break-words">Dual-Motor AWD</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-slate-400 block text-[10px] font-mono font-semibold uppercase tracking-wider" data-lang="en">Output Power</span>
-                                <span class="text-slate-400 block text-[10px] font-mono font-semibold uppercase tracking-wider" data-lang="ru">Мощность</span>
+                                <span class="text-slate-400 block text-[10px] font-sans font-semibold uppercase tracking-wider" data-lang="en">Output Power</span>
+                                <span class="text-slate-400 block text-[10px] font-sans font-semibold uppercase tracking-wider" data-lang="ru">Мощность</span>
                                 <span id="spec-power" class="text-slate-900 font-bold text-xs sm:text-sm break-words">789 hp</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-slate-400 block text-[10px] font-mono font-semibold uppercase tracking-wider" data-lang="en">0-100 km/h</span>
-                                <span class="text-slate-400 block text-[10px] font-mono font-semibold uppercase tracking-wider" data-lang="ru">Разгон 0-100</span>
-                                <span id="spec-accel" class="text-slate-900 font-bold text-xs sm:text-sm break-words font-mono">3.3 s</span>
+                                <span class="text-slate-400 block text-[10px] font-sans font-semibold uppercase tracking-wider" data-lang="en">0-100 km/h</span>
+                                <span class="text-slate-400 block text-[10px] font-sans font-semibold uppercase tracking-wider" data-lang="ru">Разгон 0-100</span>
+                                <span id="spec-accel" class="text-slate-900 font-bold text-xs sm:text-sm break-words font-sans">3.3 s</span>
                             </div>
                             <div class="p-2.5 bg-surface-card rounded-lg border border-surface-border">
-                                <span class="text-slate-400 block text-[10px] font-mono font-semibold uppercase tracking-wider" data-lang="en">Cruising Range</span>
-                                <span class="text-slate-400 block text-[10px] font-mono font-semibold uppercase tracking-wider" data-lang="ru">Запас хода</span>
+                                <span class="text-slate-400 block text-[10px] font-sans font-semibold uppercase tracking-wider" data-lang="en">Cruising Range</span>
+                                <span class="text-slate-400 block text-[10px] font-sans font-semibold uppercase tracking-wider" data-lang="ru">Запас хода</span>
                                 <span id="spec-range" class="text-slate-900 font-bold text-xs sm:text-sm break-words">705 km (CLTC)</span>
                             </div>
                         </div>
@@ -2129,8 +2129,8 @@
                     <!-- RU Price Breakdown -->
                     <div data-lang="ru" class="bg-surface-base border border-surface-border rounded-xl p-4 sm:p-6 space-y-4">
                         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1.5 pb-3 border-b border-surface-border">
-                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">Условия поставки</span>
-                            <span class="text-xs text-slate-700 font-bold bg-slate-100 px-2.5 py-1 rounded border border-slate-200 w-fit font-mono">FOB Хоргос / Суйфэньхэ / Шанхай</span>
+                            <span class="text-xs font-sans font-bold uppercase tracking-wider text-slate-500">Условия поставки</span>
+                            <span class="text-xs text-slate-700 font-bold bg-slate-100 px-2.5 py-1 rounded border border-slate-200 w-fit font-sans">FOB Хоргос / Суйфэньхэ / Шанхай</span>
                         </div>
 
                         <div class="space-y-3.5 text-xs">
@@ -2161,7 +2161,7 @@
                                     <span id="modal-ru-fob-usd" class="text-xs text-slate-500 mt-0.5 block font-medium">$73,250 • FOB по курсу ЦБ</span>
                                 </div>
                                 <div class="text-left sm:text-right mt-1 sm:mt-0">
-                                    <span id="modal-ru-price-rub" class="text-slate-950 font-extrabold text-2xl sm:text-3xl block tracking-tight font-mono">6,184,598 ₽</span>
+                                    <span id="modal-ru-price-rub" class="text-slate-950 font-extrabold text-2xl sm:text-3xl block tracking-tight font-sans">6,184,598 ₽</span>
                                 </div>
                             </div>
 
@@ -2199,8 +2199,8 @@
                     <!-- EN Price Breakdown -->
                     <div data-lang="en" class="bg-surface-base border border-surface-border rounded-xl p-4 sm:p-6 space-y-4">
                         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1.5 pb-3 border-b border-surface-border">
-                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">Export Pricing</span>
-                            <span class="text-xs text-slate-700 font-bold bg-slate-100 px-2.5 py-1 rounded border border-slate-200 w-fit font-mono">FOB (Shanghai / Nansha / Khorgos)</span>
+                            <span class="text-xs font-sans font-bold uppercase tracking-wider text-slate-500">Export Pricing</span>
+                            <span class="text-xs text-slate-700 font-bold bg-slate-100 px-2.5 py-1 rounded border border-slate-200 w-fit font-sans">FOB (Shanghai / Nansha / Khorgos)</span>
                         </div>
 
                         <div class="space-y-3.5 text-xs">
@@ -2231,7 +2231,7 @@
                                     <span class="text-[11px] text-gray-500">Port handover & export clearance included</span>
                                 </div>
                                 <div class="text-left sm:text-right mt-1 sm:mt-0">
-                                    <span id="modal-en-fob-val" class="text-slate-950 font-extrabold text-2xl sm:text-3xl tracking-tight font-mono">$73,250</span>
+                                    <span id="modal-en-fob-val" class="text-slate-950 font-extrabold text-2xl sm:text-3xl tracking-tight font-sans">$73,250</span>
                                 </div>
                             </div>
                             <div class="flex justify-between items-center text-gray-400 pt-2 border-t border-surface-border/50 text-[11px]">
@@ -3397,7 +3397,7 @@
             container.innerHTML = heroBanners.map((b, idx) => {
                 const minFobRub = Math.round(b.minPriceFob * currentUsdRate);
                 const priceFormatted = (currentLang === 'ru')
-                    ? `от ${minFobRub.toLocaleString()} ₽ <span class="text-xs font-normal text-gray-400">($${b.minPriceFob.toLocaleString()} FOB)</span>`
+                    ? `от ${minFobRub.toLocaleString()} ₽ <span class="text-xs sm:text-sm font-semibold text-slate-500 font-sans">($${b.minPriceFob.toLocaleString()} FOB)</span>`
                     : `FOB from $${b.minPriceFob.toLocaleString()}`;
 
                 return `
@@ -3417,7 +3417,7 @@
                                 <p class="text-xs sm:text-sm md:text-base text-slate-600 leading-snug font-sans max-w-xl">
                                     ${currentLang === 'ru' ? b.descRu : b.descEn}
                                 </p>
-                                <div class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 flex items-baseline gap-2 pt-0.5 tracking-tight font-mono">
+                                <div class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 flex items-baseline gap-2 pt-0.5 tracking-tight font-sans">
                                     ${priceFormatted}
                                 </div>
                                 <div class="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
@@ -3568,7 +3568,7 @@
                                     <span class="text-xs text-slate-500 uppercase font-medium">
                                         ${currentLang === 'ru' ? 'Готов к отправке:' : 'Price in China (FOB):'}
                                     </span>
-                                    <span class="text-xl font-extrabold text-slate-900 tracking-tight font-mono">
+                                    <span class="text-xl font-extrabold text-slate-900 tracking-tight font-sans">
                                         ${currentLang === 'ru' ? `от ${minFobRub.toLocaleString()} ₽` : `$${minFob.toLocaleString()}`}
                                     </span>
                                 </div>
