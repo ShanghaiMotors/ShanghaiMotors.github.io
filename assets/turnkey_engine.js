@@ -896,8 +896,8 @@ const carOptionsDatabase = {
         "colors": [
             {
                 "id": "black",
-                "nameRu": "Черный обсидиан",
-                "nameEn": "Black Obsidian",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "hex": "#0F172A",
                 "priceUsd": 0,
                 "img": "https://lk.easy.car/index.php?module=export/file&id=402&path=5-484&file=1775565273_preview.png",
@@ -905,8 +905,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "white",
-                "nameRu": "Белый перламутр",
-                "nameEn": "Polar White",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#FFFFFF",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -918,8 +918,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "red",
-                "nameRu": "Янтарный красный",
-                "nameEn": "Amber Red",
+                "nameRu": "Красный",
+                "nameEn": "Red",
                 "hex": "#722F37",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -931,8 +931,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "lunar",
-                "nameRu": "Лунный серый",
-                "nameEn": "Lunar Sea Gray",
+                "nameRu": "Лунный",
+                "nameEn": "Lunar",
                 "hex": "#808080",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -944,8 +944,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "basalt",
-                "nameRu": "Базальтовый серый",
-                "nameEn": "Basalt Gray",
+                "nameRu": "Базальт",
+                "nameEn": "Basalt",
                 "hex": "#D3D3D3",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -957,8 +957,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "blue",
-                "nameRu": "Небесный синий",
-                "nameEn": "Sky Blue",
+                "nameRu": "Синий",
+                "nameEn": "Blue",
                 "hex": "#87CEEB",
                 "priceUsd": 0,
                 "pricePerTrim": {
@@ -977,8 +977,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "matte-star",
-                "nameRu": "Матовый звездный серый",
-                "nameEn": "Matte Star Gray",
+                "nameRu": "Матовый серый",
+                "nameEn": "Matte Gray",
                 "hex": "#555555",
                 "priceUsd": 1321,
                 "availableTrims": [
@@ -990,8 +990,8 @@ const carOptionsDatabase = {
         "interiors": [
             {
                 "id": "int-black",
-                "nameRu": "Черная кожа Nappa",
-                "nameEn": "Solid Black Nappa",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "priceUsd": 0,
                 "availableTrims": [
                     "MAX",
@@ -1003,8 +1003,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "int-brown",
-                "nameRu": "Коричнево-черный салон",
-                "nameEn": "Brown & Black Dual-Tone",
+                "nameRu": "Коричнево-черный",
+                "nameEn": "Brown & Black",
                 "priceUsd": 0,
                 "availableTrims": [
                     "MAX",
@@ -1016,8 +1016,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "int-white",
-                "nameRu": "Бело-черный салон",
-                "nameEn": "White & Black Luxury",
+                "nameRu": "Бело-черный",
+                "nameEn": "White & Black",
                 "priceUsd": 0,
                 "availableTrims": [
                     "MAX",
@@ -1029,8 +1029,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "int-red",
-                "nameRu": "Красный спортивный салон",
-                "nameEn": "Shadow Red Sport",
+                "nameRu": "Красный",
+                "nameEn": "Red",
                 "priceUsd": 0,
                 "availableTrims": [
                     "MAX",
@@ -1042,8 +1042,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "int-obsidian-orange",
-                "nameRu": "Черный салон с оранжевыми элементами (Obsidian)",
-                "nameEn": "Black with Orange Accents (Obsidian Exclusive)",
+                "nameRu": "Черно-оранжевый",
+                "nameEn": "Black & Orange",
                 "priceUsd": 0,
                 "availableTrims": [
                     "OBSIDIAN SHADOW"
@@ -1232,8 +1232,8 @@ const carOptionsDatabase = {
         "colors": [
             {
                 "id": "black",
-                "nameRu": "Черный обсидиан",
-                "nameEn": "Black Obsidian",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "hex": "#0F172A",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -1247,8 +1247,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "white",
-                "nameRu": "Белый перламутр",
-                "nameEn": "Polar White",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#FFFFFF",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -1260,8 +1260,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "silver",
-                "nameRu": "Серебристый ледник",
-                "nameEn": "Glacier Silver",
+                "nameRu": "Серебристый",
+                "nameEn": "Silver",
                 "hex": "#DCDCDC",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -1273,8 +1273,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "grey",
-                "nameRu": "Серый космос",
-                "nameEn": "Cosmic Grey",
+                "nameRu": "Серый",
+                "nameEn": "Grey",
                 "hex": "#808080",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -1286,8 +1286,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "purple",
-                "nameRu": "Темно-фиолетовый",
-                "nameEn": "Night Purple",
+                "nameRu": "Фиолетовый",
+                "nameEn": "Purple",
                 "hex": "#581C87",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -1299,8 +1299,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "brown",
-                "nameRu": "Коричневый сафари",
-                "nameEn": "Wilderness Brown",
+                "nameRu": "Коричневый",
+                "nameEn": "Brown",
                 "hex": "#78350F",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -1314,8 +1314,8 @@ const carOptionsDatabase = {
         "interiors": [
             {
                 "id": "int-white",
-                "nameRu": "Белая кожа Nappa",
-                "nameEn": "Polar White Nappa",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "priceUsd": 0,
                 "availableTrims": [
                     "MAX",
@@ -1327,8 +1327,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "int-blue",
-                "nameRu": "Синяя кожа Nappa",
-                "nameEn": "Moonlight Blue Nappa",
+                "nameRu": "Синий",
+                "nameEn": "Blue",
                 "priceUsd": 0,
                 "availableTrims": [
                     "MAX",
@@ -1340,8 +1340,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "int-brown",
-                "nameRu": "Янтарно-коричневая кожа Nappa",
-                "nameEn": "Amber Brown Nappa",
+                "nameRu": "Коричневый",
+                "nameEn": "Brown",
                 "priceUsd": 0,
                 "availableTrims": [
                     "MAX",
@@ -1353,8 +1353,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "int-burgundy",
-                "nameRu": "Бордовая кожа Nappa",
-                "nameEn": "Burgundy Red Nappa",
+                "nameRu": "Бордовый",
+                "nameEn": "Burgundy",
                 "priceUsd": 0,
                 "availableTrims": [
                     "MAX",
@@ -1366,8 +1366,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "int-9x-obsidian",
-                "nameRu": "Темно-синий салон с оранжевыми элементами (Obsidian)",
-                "nameEn": "Dark Blue with Orange Accents (Obsidian Exclusive)",
+                "nameRu": "Сине-оранжевый",
+                "nameEn": "Blue & Orange",
                 "priceUsd": 0,
                 "availableTrims": [
                     "BLACK OBSIDIAN"
@@ -1491,36 +1491,36 @@ const carOptionsDatabase = {
         "colors": [
             {
                 "id": "white",
-                "nameRu": "Белый перламутр",
-                "nameEn": "Dawn White",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#F8FAFC",
                 "priceUsd": 0
             },
             {
                 "id": "grey",
-                "nameRu": "Серый графит",
-                "nameEn": "Cloud Grey",
+                "nameRu": "Серый",
+                "nameEn": "Grey",
                 "hex": "#64748B",
                 "priceUsd": 0
             },
             {
                 "id": "silver",
-                "nameRu": "Серебристый металлик",
-                "nameEn": "Sunlight Silver",
+                "nameRu": "Серебристый",
+                "nameEn": "Silver",
                 "hex": "#CBD5E1",
                 "priceUsd": 0
             },
             {
                 "id": "black",
-                "nameRu": "Черный обсидиан",
-                "nameEn": "Midnight Black",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "hex": "#0F172A",
                 "priceUsd": 0
             },
             {
                 "id": "blue",
-                "nameRu": "Утренний синий металлик",
-                "nameEn": "Morning Blue",
+                "nameRu": "Синий",
+                "nameEn": "Blue",
                 "hex": "#1E3A8A",
                 "priceUsd": 0,
                 "availableSeats": [
@@ -1529,8 +1529,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "gold",
-                "nameRu": "Золотистый металлик",
-                "nameEn": "Solar Gold",
+                "nameRu": "Золотистый",
+                "nameEn": "Gold",
                 "hex": "#D97706",
                 "priceUsd": 0,
                 "availableSeats": [
@@ -1541,29 +1541,29 @@ const carOptionsDatabase = {
         "interiors": [
             {
                 "id": "int-blue",
-                "nameRu": "Синий салон",
-                "nameEn": "Starry Blue",
+                "nameRu": "Синий",
+                "nameEn": "Blue",
                 "priceUsd": 0,
                 "hex": "#252D3B:#1A1A1A"
             },
             {
                 "id": "int-white",
-                "nameRu": "Бежево-белый салон",
-                "nameEn": "Sunlight White",
+                "nameRu": "Бежево-белый",
+                "nameEn": "Beige & White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
             {
                 "id": "int-orange",
-                "nameRu": "Оранжевый спортивный салон",
-                "nameEn": "Sunset Orange",
+                "nameRu": "Оранжевый",
+                "nameEn": "Orange",
                 "priceUsd": 0,
                 "hex": "#1A1A1A:#FF7700"
             },
             {
                 "id": "int-brown",
-                "nameRu": "Коричневый бархат",
-                "nameEn": "Cloud Velvet Brown",
+                "nameRu": "Коричневый",
+                "nameEn": "Brown",
                 "priceUsd": 0,
                 "availableSeats": [
                     5
@@ -1668,36 +1668,36 @@ const carOptionsDatabase = {
         "colors": [
             {
                 "id": "beige",
-                "nameRu": "Песочный бежевый",
-                "nameEn": "Dune Beige",
+                "nameRu": "Бежевый",
+                "nameEn": "Beige",
                 "hex": "#E2D9C8",
                 "priceUsd": 0
             },
             {
                 "id": "white",
-                "nameRu": "Белый металлик",
-                "nameEn": "Silver Salt White",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#F8FAFC",
                 "priceUsd": 0
             },
             {
                 "id": "grey",
-                "nameRu": "Полярный серый",
-                "nameEn": "Polar Grey",
+                "nameRu": "Серый",
+                "nameEn": "Grey",
                 "hex": "#64748B",
                 "priceUsd": 0
             },
             {
                 "id": "pink",
-                "nameRu": "Розовый перламутр",
-                "nameEn": "Sakura Pink",
+                "nameRu": "Розовый",
+                "nameEn": "Pink",
                 "hex": "#F472B6",
                 "priceUsd": 176
             },
             {
                 "id": "purple",
-                "nameRu": "Сумеречный фиолетовый",
-                "nameEn": "Aurora Purple",
+                "nameRu": "Фиолетовый",
+                "nameEn": "Purple",
                 "hex": "#7C3AED",
                 "priceUsd": 0,
                 "availableTrims": [
@@ -1706,8 +1706,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "green",
-                "nameRu": "Изумрудно-зеленый перламутр",
-                "nameEn": "Forest Amber Green",
+                "nameRu": "Зеленый",
+                "nameEn": "Green",
                 "hex": "#065F46",
                 "priceUsd": 220,
                 "availableTrims": [
@@ -1718,22 +1718,22 @@ const carOptionsDatabase = {
         "interiors": [
             {
                 "id": "int-black-green",
-                "nameRu": "Черно-зеленый салон",
-                "nameEn": "Black & Forest Green Interior",
+                "nameRu": "Черно-зеленый",
+                "nameEn": "Black & Green",
                 "priceUsd": 0,
                 "hex": "#1A1A1A"
             },
             {
                 "id": "int-pink-white",
-                "nameRu": "Розово-белый салон",
-                "nameEn": "Pink & White Interior",
+                "nameRu": "Розово-белый",
+                "nameEn": "Pink & White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
             {
                 "id": "int-purple-white",
-                "nameRu": "Фиолетово-белый салон",
-                "nameEn": "Purple & White Interior",
+                "nameRu": "Фиолетово-белый",
+                "nameEn": "Purple & White",
                 "priceUsd": 0,
                 "availableTrims": [
                     "ULTRA"
@@ -1742,8 +1742,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "int-grey-green",
-                "nameRu": "Серо-зеленый салон",
-                "nameEn": "Grey & Green Interior",
+                "nameRu": "Серо-зеленый",
+                "nameEn": "Grey & Green",
                 "priceUsd": 0,
                 "availableTrims": [
                     "ULTRA"
@@ -1820,8 +1820,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-359",
-                "nameRu": "Темно-серый",
-                "nameEn": "Dark Grey",
+                "nameRu": "Серый",
+                "nameEn": "Grey",
                 "hex": "#6F7277",
                 "priceUsd": 0
             },
@@ -1834,22 +1834,22 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-361",
-                "nameRu": "Изумрудно-зеленый",
-                "nameEn": "Emerald Green Metallic",
+                "nameRu": "Зеленый",
+                "nameEn": "Green",
                 "hex": "#2E5A4F",
                 "priceUsd": 1485
             },
             {
                 "id": "ec-c-362",
                 "nameRu": "Фиолетовый",
-                "nameEn": "Deep Purple Metallic",
+                "nameEn": "Purple",
                 "hex": "#6A2C90",
                 "priceUsd": 1485
             },
             {
                 "id": "ec-c-363",
-                "nameRu": "Холодный серый",
-                "nameEn": "Cold Grey Metallic",
+                "nameRu": "Серый",
+                "nameEn": "Grey",
                 "hex": "#A9AAAE",
                 "priceUsd": 1485
             }
@@ -1858,7 +1858,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-172",
                 "nameRu": "Белый",
-                "nameEn": "Pearl White",
+                "nameEn": "White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
@@ -1949,8 +1949,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-338",
-                "nameRu": "Темно-серый",
-                "nameEn": "Dark Grey",
+                "nameRu": "Серый",
+                "nameEn": "Grey",
                 "hex": "#6E7176",
                 "priceUsd": 0
             },
@@ -1963,15 +1963,15 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-340",
-                "nameRu": "Изумрудно-зеленый",
-                "nameEn": "Emerald Green Metallic",
+                "nameRu": "Зеленый",
+                "nameEn": "Green",
                 "hex": "#2E5A4A",
                 "priceUsd": 1485
             },
             {
                 "id": "ec-c-341",
-                "nameRu": "Небесно-голубой",
-                "nameEn": "Sky Blue Metallic",
+                "nameRu": "Синий",
+                "nameEn": "Blue",
                 "hex": "#8EC3E8",
                 "priceUsd": 1485
             },
@@ -1987,7 +1987,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-168",
                 "nameRu": "Белый",
-                "nameEn": "Pearl White",
+                "nameEn": "White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
@@ -2037,22 +2037,22 @@ const carOptionsDatabase = {
         "colors": [
             {
                 "id": "c-white",
-                "nameRu": "Белый металлик",
-                "nameEn": "Pearl White",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#F8FAFC",
                 "priceUsd": 0
             },
             {
                 "id": "c-black",
-                "nameRu": "Черный обсидиан",
-                "nameEn": "Obsidian Black",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "hex": "#0F172A",
                 "priceUsd": 0
             },
             {
                 "id": "c-grey",
-                "nameRu": "Серый графит",
-                "nameEn": "Titanium Grey",
+                "nameRu": "Серый",
+                "nameEn": "Grey",
                 "hex": "#64748B",
                 "priceUsd": 0
             }
@@ -2060,15 +2060,15 @@ const carOptionsDatabase = {
         "interiors": [
             {
                 "id": "i-black",
-                "nameRu": "Черный кожаный салон",
-                "nameEn": "Black Leather",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "priceUsd": 0,
                 "hex": "#1A1A1A"
             },
             {
                 "id": "i-brown",
-                "nameRu": "Коньячный салон Nappa",
-                "nameEn": "Amber Brown Nappa",
+                "nameRu": "Коричневый",
+                "nameEn": "Brown",
                 "priceUsd": 0,
                 "hex": "#C09062:#2A2A2A"
             }
@@ -2090,22 +2090,22 @@ const carOptionsDatabase = {
         "colors": [
             {
                 "id": "c-white",
-                "nameRu": "Белый металлик",
-                "nameEn": "Pearl White",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#F8FAFC",
                 "priceUsd": 0
             },
             {
                 "id": "c-black",
-                "nameRu": "Черный обсидиан",
-                "nameEn": "Obsidian Black",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "hex": "#0F172A",
                 "priceUsd": 0
             },
             {
                 "id": "c-grey",
-                "nameRu": "Серый графит",
-                "nameEn": "Titanium Grey",
+                "nameRu": "Серый",
+                "nameEn": "Grey",
                 "hex": "#64748B",
                 "priceUsd": 0
             }
@@ -2113,15 +2113,15 @@ const carOptionsDatabase = {
         "interiors": [
             {
                 "id": "i-black",
-                "nameRu": "Черный кожаный салон",
-                "nameEn": "Black Leather",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "priceUsd": 0,
                 "hex": "#1A1A1A"
             },
             {
                 "id": "i-brown",
-                "nameRu": "Коньячный салон Nappa",
-                "nameEn": "Amber Brown Nappa",
+                "nameRu": "Коричневый",
+                "nameEn": "Brown",
                 "priceUsd": 0,
                 "hex": "#C09062:#2A2A2A"
             }
@@ -2161,15 +2161,15 @@ const carOptionsDatabase = {
         "colors": [
             {
                 "id": "ec-c-462",
-                "nameRu": "Голубой",
-                "nameEn": "Baby Blue Metallic",
+                "nameRu": "Синий",
+                "nameEn": "Blue",
                 "hex": "#53B4F9",
                 "priceUsd": 0
             },
             {
                 "id": "ec-c-464",
                 "nameRu": "Красный",
-                "nameEn": "Crimson Red Metallic",
+                "nameEn": "Red",
                 "hex": "#CE0601",
                 "priceUsd": 0
             },
@@ -2182,15 +2182,15 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-463",
-                "nameRu": "Розовое золото",
-                "nameEn": "Rose Gold Metallic",
+                "nameRu": "Розовый",
+                "nameEn": "Pink",
                 "hex": "#F9DBE0",
                 "priceUsd": 1040
             },
             {
                 "id": "ec-c-465",
                 "nameRu": "Фиолетовый",
-                "nameEn": "Deep Purple Metallic",
+                "nameEn": "Purple",
                 "hex": "#806F8C",
                 "priceUsd": 1040
             },
@@ -2203,8 +2203,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-467",
-                "nameRu": "Темно-зеленый",
-                "nameEn": "Forest Dark Green",
+                "nameRu": "Зеленый",
+                "nameEn": "Green",
                 "hex": "#1C4E52",
                 "priceUsd": 1040
             }
@@ -2212,22 +2212,22 @@ const carOptionsDatabase = {
         "interiors": [
             {
                 "id": "ec-i-225",
-                "nameRu": "Темно-фиолетовый",
-                "nameEn": "Deep Purple Leather",
+                "nameRu": "Фиолетовый",
+                "nameEn": "Purple",
                 "priceUsd": 0,
                 "hex": "#1A1A1A"
             },
             {
                 "id": "ec-i-226",
-                "nameRu": "Светло-бежевый",
-                "nameEn": "Light Beige Nappa",
+                "nameRu": "Бежевый",
+                "nameEn": "Beige",
                 "priceUsd": 0,
                 "hex": "#D2B48C:#1A1A1A"
             },
             {
                 "id": "ec-i-227",
                 "nameRu": "Красный",
-                "nameEn": "Crimson Red Metallic",
+                "nameEn": "Red",
                 "priceUsd": 0,
                 "hex": "#C02026:#1A1A1A"
             },
@@ -2337,22 +2337,22 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-292",
-                "nameRu": "Синий (с серебристой крышей)",
-                "nameEn": "Blue with Silver Roof",
+                "nameRu": "Синий",
+                "nameEn": "Blue",
                 "hex": "#0000FF",
                 "priceUsd": 0
             },
             {
                 "id": "ec-c-293",
-                "nameRu": "Серебристо-белый",
-                "nameEn": "Silver White Pearl",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#DCDCDC",
                 "priceUsd": 0
             },
             {
                 "id": "ec-c-294",
                 "nameRu": "Фиолетовый",
-                "nameEn": "Deep Purple Metallic",
+                "nameEn": "Purple",
                 "hex": "#800080",
                 "priceUsd": 0
             },
@@ -2365,8 +2365,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-296",
-                "nameRu": "Черный (удаление хрома)",
-                "nameEn": "Obsidian Black (Chrome Delete)",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "hex": "#000000",
                 "priceUsd": 297
             }
@@ -2375,28 +2375,28 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-160",
                 "nameRu": "Бело-серый",
-                "nameEn": "White & Grey Dual-Tone",
+                "nameEn": "White & Grey",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
             {
                 "id": "ec-i-161",
-                "nameRu": "Фиолетово-черный",
-                "nameEn": "Purple & Black Dual-Tone",
+                "nameRu": "Черно-фиолетовый",
+                "nameEn": "Black & Purple",
                 "priceUsd": 0,
                 "hex": "#1A1A1A"
             },
             {
                 "id": "ec-i-162",
-                "nameRu": "Оранжево-черный",
-                "nameEn": "Orange & Black Sport",
+                "nameRu": "Оранжевый",
+                "nameEn": "Orange",
                 "priceUsd": 0,
                 "hex": "#1A1A1A:#FF7700"
             },
             {
                 "id": "ec-i-163",
                 "nameRu": "Серо-черный",
-                "nameEn": "Grey & Black Dual-Tone",
+                "nameEn": "Grey & Black",
                 "priceUsd": 0,
                 "hex": "#1A1A1A"
             }
@@ -2474,7 +2474,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-c-384",
                 "nameRu": "Золотистый",
-                "nameEn": "Champagne Gold Metallic",
+                "nameEn": "Gold",
                 "hex": "#D6D2C9",
                 "priceUsd": 0
             },
@@ -2488,21 +2488,21 @@ const carOptionsDatabase = {
             {
                 "id": "ec-c-386",
                 "nameRu": "Фиолетовый",
-                "nameEn": "Deep Purple Metallic",
+                "nameEn": "Purple",
                 "hex": "#3E2A42",
                 "priceUsd": 0
             },
             {
                 "id": "ec-c-387",
-                "nameRu": "Черный (с золотистой крышей)",
-                "nameEn": "Black with Gold Roof",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "hex": "#0C0C11",
                 "priceUsd": 1485
             },
             {
                 "id": "ec-c-388",
-                "nameRu": "Фиолетовый (с золотистой крышей)",
-                "nameEn": "Purple with Gold Roof",
+                "nameRu": "Фиолетовый",
+                "nameEn": "Purple",
                 "hex": "#3E2A42",
                 "priceUsd": 1485
             }
@@ -2511,7 +2511,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-180",
                 "nameRu": "Красный",
-                "nameEn": "Crimson Red Metallic",
+                "nameEn": "Red",
                 "priceUsd": 0,
                 "hex": "#C02026:#1A1A1A"
             },
@@ -2525,7 +2525,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-182",
                 "nameRu": "Белый",
-                "nameEn": "Pearl White",
+                "nameEn": "White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             }
@@ -2602,15 +2602,15 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-306",
-                "nameRu": "Небесно-голубой",
-                "nameEn": "Sky Blue Metallic",
+                "nameRu": "Синий",
+                "nameEn": "Blue",
                 "hex": "#86B3D6",
                 "priceUsd": 891
             },
             {
                 "id": "ec-c-308",
                 "nameRu": "Фиолетовый",
-                "nameEn": "Deep Purple Metallic",
+                "nameEn": "Purple",
                 "hex": "#6C2B8F",
                 "priceUsd": 891
             }
@@ -2619,21 +2619,21 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-25",
                 "nameRu": "Черно-фиолетовый",
-                "nameEn": "Black & Purple Dual-Tone",
+                "nameEn": "Black & Purple",
                 "priceUsd": 0,
                 "hex": "#1A1A1A"
             },
             {
                 "id": "ec-i-26",
-                "nameRu": "Бело-бежевый",
-                "nameEn": "White & Beige Dual-Tone",
+                "nameRu": "Бежево-белый",
+                "nameEn": "Beige & White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
             {
                 "id": "ec-i-143",
                 "nameRu": "Бежевый",
-                "nameEn": "Warm Beige Leather",
+                "nameEn": "Beige",
                 "priceUsd": 594,
                 "hex": "#D2B48C:#1A1A1A"
             }
@@ -2688,8 +2688,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-392",
-                "nameRu": "Белый (с черной крышей)",
-                "nameEn": "White with Black Roof",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#E5E5E5",
                 "priceUsd": 371
             }
@@ -2698,21 +2698,21 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-87",
                 "nameRu": "Бело-фиолетовый",
-                "nameEn": "White & Purple Dual-Tone",
+                "nameEn": "White & Purple",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
             {
                 "id": "ec-i-88",
-                "nameRu": "Темно-фиолетовый",
-                "nameEn": "Deep Purple Leather",
+                "nameRu": "Фиолетовый",
+                "nameEn": "Purple",
                 "priceUsd": 0,
                 "hex": "#1A1A1A"
             },
             {
                 "id": "ec-i-89",
-                "nameRu": "Красный (кожа NAPPA)",
-                "nameEn": "Burgundy Red Nappa Leather",
+                "nameRu": "Красный",
+                "nameEn": "Red",
                 "priceUsd": 1485,
                 "hex": "#C02026:#1A1A1A"
             }
@@ -2761,7 +2761,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-c-668",
                 "nameRu": "Розовый",
-                "nameEn": "Pastel Pink Metallic",
+                "nameEn": "Pink",
                 "hex": "#C4B0B0",
                 "priceUsd": 0
             },
@@ -2791,7 +2791,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-291",
                 "nameRu": "Белый",
-                "nameEn": "Pearl White",
+                "nameEn": "White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
@@ -2828,7 +2828,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-c-668",
                 "nameRu": "Розовый",
-                "nameEn": "Pastel Pink Metallic",
+                "nameEn": "Pink",
                 "hex": "#C4B0B0",
                 "priceUsd": 0
             },
@@ -2858,7 +2858,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-291",
                 "nameRu": "Белый",
-                "nameEn": "Pearl White",
+                "nameEn": "White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
@@ -2918,7 +2918,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-c-618",
                 "nameRu": "Фиолетовый",
-                "nameEn": "Deep Purple Metallic",
+                "nameEn": "Purple",
                 "hex": "#3F3749",
                 "priceUsd": 149
             }
@@ -2927,7 +2927,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-273",
                 "nameRu": "Фиолетово-белый",
-                "nameEn": "Purple & White Dual-Tone",
+                "nameEn": "Purple & White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
@@ -2940,8 +2940,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-i-275",
-                "nameRu": "Бело-бежевый",
-                "nameEn": "White & Beige Dual-Tone",
+                "nameRu": "Бежево-белый",
+                "nameEn": "Beige & White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             }
@@ -2981,8 +2981,8 @@ const carOptionsDatabase = {
         "colors": [
             {
                 "id": "ec-c-673",
-                "nameRu": "Молочно-белый",
-                "nameEn": "Cream White Metallic",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#F1F1F1",
                 "priceUsd": 0
             },
@@ -3017,7 +3017,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-c-674",
                 "nameRu": "Золотистый",
-                "nameEn": "Champagne Gold Metallic",
+                "nameEn": "Gold",
                 "hex": "#C3C1AD",
                 "priceUsd": 297
             }
@@ -3033,7 +3033,7 @@ const carOptionsDatabase = {
             {
                 "id": "ec-i-294",
                 "nameRu": "Белый",
-                "nameEn": "Pearl White",
+                "nameEn": "White",
                 "priceUsd": 0,
                 "hex": "#FFFFFF:#1A1A1A"
             },
@@ -3078,29 +3078,29 @@ const carOptionsDatabase = {
         "colors": [
             {
                 "id": "gx-white",
-                "nameRu": "Белый перламутр",
-                "nameEn": "Pearl White",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "hex": "#F8FAFC",
                 "priceUsd": 0
             },
             {
                 "id": "gx-black",
-                "nameRu": "Черный графит",
-                "nameEn": "Graphite Black",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "hex": "#0F172A",
                 "priceUsd": 0
             },
             {
                 "id": "gx-silver",
-                "nameRu": "Серебристый металлик",
-                "nameEn": "Silver Metallic",
+                "nameRu": "Серебристый",
+                "nameEn": "Silver",
                 "hex": "#CBD5E1",
                 "priceUsd": 0
             },
             {
                 "id": "gx-green",
-                "nameRu": "Изумрудный матовый (Matte Emerald)",
-                "nameEn": "Matte Emerald Green",
+                "nameRu": "Зеленый",
+                "nameEn": "Green",
                 "hex": "#064E3B",
                 "priceUsd": 1400
             }
@@ -3108,22 +3108,22 @@ const carOptionsDatabase = {
         "interiors": [
             {
                 "id": "gx-int-black",
-                "nameRu": "Черная Nappa & Alcantara",
-                "nameEn": "Black Nappa & Alcantara",
+                "nameRu": "Черный",
+                "nameEn": "Black",
                 "priceUsd": 0,
                 "hex": "#1A1A1A"
             },
             {
                 "id": "gx-int-brown",
-                "nameRu": "Коньячная кожа Nappa",
-                "nameEn": "Cognac Brown Nappa",
+                "nameRu": "Коричневый",
+                "nameEn": "Brown",
                 "priceUsd": 0,
                 "hex": "#C09062:#2A2A2A"
             },
             {
                 "id": "gx-int-white",
-                "nameRu": "Белый представительский салон",
-                "nameEn": "Executive White Leather",
+                "nameRu": "Белый",
+                "nameEn": "White",
                 "priceUsd": 600,
                 "hex": "#FFFFFF:#1A1A1A"
             }

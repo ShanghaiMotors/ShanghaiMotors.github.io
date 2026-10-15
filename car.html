@@ -299,8 +299,8 @@
                             <span data-lang="ru">Колесные диски</span>
                             <span data-lang="en">Wheels & Rims</span>
                         </h2>
-                        <div class="flex-grow h-px bg-slate-200"></div>
-                        <div id="wheels-header-selection" class="text-xs font-bold text-slate-700 whitespace-nowrap"></div>
+                        <div class="flex-grow h-px bg-slate-200 min-w-[12px]"></div>
+                        <div id="wheels-header-selection" class="text-xs font-bold text-slate-700 text-right flex-shrink-0"></div>
                     </div>
                     <div id="wheels-list-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <!-- Populated dynamically with picture cards -->
@@ -315,8 +315,8 @@
                             <span data-lang="ru">Цвет кузова</span>
                             <span data-lang="en">Exterior Color</span>
                         </h2>
-                        <div class="flex-grow h-px bg-slate-200"></div>
-                        <div id="color-header-selection" class="text-xs font-bold text-slate-700 whitespace-nowrap"></div>
+                        <div class="flex-grow h-px bg-slate-200 min-w-[12px]"></div>
+                        <div id="color-header-selection" class="text-xs font-bold text-slate-700 text-right flex-shrink-0"></div>
                     </div>
                     <div id="colors-palette-container" class="flex flex-wrap items-center gap-4 py-1">
                         <!-- Populated dynamically with circular swatches -->
@@ -331,8 +331,8 @@
                             <span data-lang="ru">Отделка салона</span>
                             <span data-lang="en">Interior Trim</span>
                         </h2>
-                        <div class="flex-grow h-px bg-slate-200"></div>
-                        <div id="interior-header-selection" class="text-xs font-bold text-slate-700 whitespace-nowrap"></div>
+                        <div class="flex-grow h-px bg-slate-200 min-w-[12px]"></div>
+                        <div id="interior-header-selection" class="text-xs font-bold text-slate-700 text-right flex-shrink-0"></div>
                     </div>
                     <div id="interiors-list-container" class="flex flex-wrap items-center gap-4 py-1">
                         <!-- Populated dynamically with split circular swatches -->
@@ -347,8 +347,8 @@
                             <span data-lang="ru">Добавьте опции</span>
                             <span data-lang="en">Options & Packages</span>
                         </h2>
-                        <div class="flex-grow h-px bg-slate-200"></div>
-                        <div id="options-header-selection" class="text-xs font-bold text-slate-700 whitespace-nowrap"></div>
+                        <div class="flex-grow h-px bg-slate-200 min-w-[12px]"></div>
+                        <div id="options-header-selection" class="text-xs font-bold text-slate-700 text-right flex-shrink-0"></div>
                     </div>
                     <div id="additional-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                         <!-- Populated dynamically -->
@@ -1030,11 +1030,11 @@
                 }
 
                 return `
-                <div class="flex flex-col items-center gap-1.5">
+                <div class="flex flex-col items-center gap-1.5 w-16 sm:w-20 text-center">
                     <button type="button" onclick="selectColor('${c.id}')" title="${currentLang === 'ru' ? c.nameRu : c.nameEn}" class="w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
                         ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
                     </button>
-                    <span class="text-[10px] font-semibold text-slate-700 max-w-[72px] text-center leading-tight truncate">${currentLang === 'ru' ? c.nameRu : c.nameEn}</span>
+                    <span class="text-[11px] font-semibold text-slate-800 leading-tight">${currentLang === 'ru' ? c.nameRu : c.nameEn}</span>
                     ${isPaid ? `<span class="text-[9px] font-bold text-amber-800 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">${priceTag}</span>` : ''}
                 </div>
                 `;
@@ -1069,11 +1069,11 @@
                 }
 
                 return `
-                <div class="flex flex-col items-center gap-1.5">
+                <div class="flex flex-col items-center gap-1.5 w-16 sm:w-20 text-center">
                     <button type="button" onclick="selectInterior('${intItem.id}')" title="${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}" class="w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
                         ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
                     </button>
-                    <span class="text-[10px] font-semibold text-slate-700 max-w-[80px] text-center leading-tight truncate">${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}</span>
+                    <span class="text-[11px] font-semibold text-slate-800 leading-tight">${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}</span>
                     ${isPaid ? `<span class="text-[9px] font-bold text-amber-800 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">+${rubPrice.toLocaleString()} ₽</span>` : ''}
                 </div>
                 `;
