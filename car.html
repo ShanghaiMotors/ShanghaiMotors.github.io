@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конфигуратор и расчет «Под ключ» — SHANGHAI MOTORS</title>
+    <meta name="description" content="Официальный расчет стоимости автомобиля из Китая под ключ в Москве: таможня, утильсбор 2026, комплектации, диски и доставка от Shanghai Motors.">
+    <link rel="icon" type="image/png" href="assets/logo-trans.png">
+
+    <!-- Fonts: Manrope & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (Local with CDN fallback) -->
+    <script src="assets/tailwind.min.js"></script>
+    <script>
+        if (!window.tailwind) {
+            document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0F172A',
+                            hover: '#1E293B',
+                            muted: '#0F172A0D',
+                            border: '#E2E8F0'
+                        },
+                        surface: {
+                            base: '#F8FAFC',
+                            card: '#FFFFFF',
+                            elevated: '#F1F5F9',
+                            border: '#E2E8F0',
+                            hover: '#E2E8F0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Manrope"', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 16px; }
+        body {
+            background-color: #F8FAFC;
+            color: #1E293B;
+            font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+        }
+        .lang-ru [data-lang="en"],
+        .lang-en [data-lang="ru"] {
+            display: none !important;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+    </style>
+</head>
+<body class="bg-surface-base text-slate-800 antialiased selection:bg-slate-900 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- TOP ANNOUNCEMENT BAR & NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-surface-border shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <!-- Left: Logo & Back Link -->
+            <div class="flex items-center gap-4 sm:gap-6">
+                <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+                    <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-8 sm:h-9 w-auto object-contain">
+                </a>
+                <a href="index.html#catalog" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-950 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    <span data-lang="ru">В каталог</span>
+                    <span data-lang="en">Catalog</span>
+                </a>
+            </div>
+
+            <!-- Quick Model Switcher Dropdown (Desktop) -->
+            <div class="hidden md:flex items-center gap-2">
+                <span class="text-xs text-slate-500 font-semibold" data-lang="ru">Модель:</span>
+                <span class="text-xs text-slate-500 font-semibold" data-lang="en">Model:</span>
+                <select id="quick-model-select" onchange="onModelSelectChange(this.value)" class="text-xs font-bold bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-900 cursor-pointer focus:outline-none focus:ring-1 focus:ring-slate-900">
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+
+            <!-- Right Controls: Rate Badge, Socials & Language Switcher -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <div class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-medium text-slate-600">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span id="nav-usd-rate">1$ = 84.43 ₽</span>
+                </div>
+
+                <div class="bg-slate-100 border border-slate-200 p-0.5 rounded-full flex items-center text-xs font-semibold">
+                    <button onclick="setLanguage('en')" id="btn-lang-en" class="px-2.5 py-1 rounded-full text-slate-500 hover:text-slate-900 text-xs transition">EN</button>
+                    <button onclick="setLanguage('ru')" id="btn-lang-ru" class="px-2.5 py-1 rounded-full bg-slate-900 text-white font-bold text-xs transition shadow-sm">RU</button>
+                </div>
+
+                <a href="https://t.me/vlad_shanghaimotors" target="_blank" class="w-8 h-8 rounded-lg bg-[#24A1DE] text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
+                    <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
+                </a>
+                <a href="http://wa.me/8617316540375" target="_blank" class="w-8 h-8 rounded-lg bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
+                    <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- BREADCRUMBS -->
+    <div class="border-b border-surface-border bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-slate-500 flex items-center gap-2 overflow-x-auto whitespace-nowrap">
+            <a href="index.html" class="hover:text-slate-900 transition">Shanghai Motors</a>
+            <span>/</span>
+            <a href="index.html#catalog" class="hover:text-slate-900 transition" data-lang="ru">Каталог</a>
+            <a href="index.html#catalog" class="hover:text-slate-900 transition" data-lang="en">Catalog</a>
+            <span>/</span>
+            <span id="breadcrumb-brand" class="font-semibold text-slate-700">Zeekr</span>
+            <span>/</span>
+            <span id="breadcrumb-car" class="font-bold text-slate-900">Zeekr 8X</span>
+        </div>
+    </div>
+
+    <!-- MAIN TWO-COLUMN CONFIGURATOR -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 flex-grow w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            <!-- LEFT COLUMN: CAR SHOWCASE, TRIMS, OPTIONS, TECHNICAL SPECS (65%) -->
+            <div class="lg:col-span-7 space-y-8">
+                
+                <!-- Vehicle Title Block (Mobile / Desktop Intro) -->
+                <div>
+                    <div class="flex items-center gap-2.5">
+                        <span id="car-brand-badge" class="px-2.5 py-0.5 rounded bg-slate-900 text-white text-[11px] font-bold uppercase tracking-wider">Zeekr</span>
+                        <span id="car-year-badge" class="text-xs text-slate-500 font-medium">2025–2026</span>
+                    </div>
+                    <h1 id="car-full-name" class="text-3xl sm:text-4xl font-extrabold text-slate-950 mt-1.5 tracking-tight">Zeekr 8X</h1>
+                    <p id="car-engine-type" class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Подключаемый гибрид (PHEV) • Официальный импорт из Китая</p>
+                </div>
+
+                <!-- Studio Showcase Card with EasyCar Gallery & View Switcher -->
+                <div class="rounded-3xl bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 border border-surface-border p-4 sm:p-6 flex flex-col items-center justify-between relative overflow-hidden shadow-sm min-h-[340px] sm:min-h-[420px]">
+                    <!-- Ambient Radial Lighting -->
+                    <div class="absolute -top-12 inset-x-12 h-44 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(255,255,255,0.9),transparent_70%)] pointer-events-none"></div>
+
+                    <!-- Top View Switcher Pills: Кузов (Exterior) / Салон (Interior) / Диски (Wheels) -->
+                    <div class="w-full flex items-center justify-between relative z-20 mb-2">
+                        <div class="inline-flex p-1 bg-white/85 backdrop-blur-md rounded-xl border border-slate-200/80 shadow-xs text-xs font-bold">
+                            <button type="button" id="gallery-tab-exterior" onclick="switchGalleryView('exterior')" class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 19H5a2 2 0 01-2-2V7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2zM9 9h6m-6 4h6"/></svg>
+                                <span data-lang="ru">Кузов</span>
+                                <span data-lang="en">Exterior</span>
+                            </button>
+                            <button type="button" id="gallery-tab-interior" onclick="switchGalleryView('interior')" class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer text-slate-600 hover:text-slate-950 hover:bg-slate-100">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                <span data-lang="ru">Салон</span>
+                                <span data-lang="en">Interior</span>
+                            </button>
+                            <button type="button" id="gallery-tab-wheels" onclick="switchGalleryView('wheels')" class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer text-slate-600 hover:text-slate-950 hover:bg-slate-100">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke-width="2"/></svg>
+                                <span data-lang="ru">Диски</span>
+                                <span data-lang="en">Wheels</span>
+                            </button>
+                        </div>
+                        <!-- Active View Label Badge -->
+                        <span id="gallery-view-caption" class="text-[11px] font-semibold text-slate-600 bg-white/80 backdrop-blur-xs px-2.5 py-1 rounded-lg border border-slate-200/60 shadow-xs hidden sm:inline-block">
+                            Черный обсидиан
+                        </span>
+                    </div>
+
+                    <!-- Main Showcase Center Display -->
+                    <div class="flex-grow flex items-center justify-center w-full py-2 relative z-10 min-h-[220px] sm:min-h-[270px]">
+                        <img id="car-hero-img" src="assets/banners/banner_6.jpg" alt="Vehicle Preview" class="max-h-[220px] sm:max-h-[280px] w-auto max-w-[95%] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)] transition-all duration-300">
+                    </div>
+
+                    <!-- Pedestal Shadow for Exterior View -->
+                    <div id="gallery-pedestal-shadow" class="w-full max-w-[85%] -mt-2 mb-3 z-0 flex flex-col items-center pointer-events-none transition-opacity duration-300">
+                        <div class="w-full h-4 bg-slate-700/30 blur-[5px] rounded-[100%]"></div>
+                        <div class="w-4/5 h-6 -mt-2 bg-slate-400/20 blur-sm"></div>
+                    </div>
+
+                    <!-- Bottom Thumbnail Strip: Clickable mini previews -->
+                    <div class="w-full pt-2 border-t border-slate-200/70 relative z-20 flex items-center justify-center gap-3">
+                        <button type="button" onclick="switchGalleryView('exterior')" id="thumb-exterior" class="relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-slate-900 shadow-xs">
+                            <img id="thumb-img-exterior" src="assets/banners/banner_6.jpg" class="w-14 h-9 sm:w-16 sm:h-10 object-contain rounded-lg">
+                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-900 text-white rounded shadow-xs" data-lang="ru">Кузов</span>
+                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-900 text-white rounded shadow-xs" data-lang="en">Body</span>
+                        </button>
+                        <button type="button" onclick="switchGalleryView('interior')" id="thumb-interior" class="relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-transparent hover:border-slate-300">
+                            <img id="thumb-img-interior" src="assets/banners/banner_6.jpg" class="w-14 h-9 sm:w-16 sm:h-10 object-cover rounded-lg">
+                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-600 text-white rounded shadow-xs" data-lang="ru">Салон</span>
+                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-600 text-white rounded shadow-xs" data-lang="en">Cabin</span>
+                        </button>
+                        <button type="button" onclick="switchGalleryView('wheels')" id="thumb-wheels" class="relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-transparent hover:border-slate-300">
+                            <img id="thumb-img-wheels" src="assets/banners/banner_6.jpg" class="w-14 h-9 sm:w-16 sm:h-10 object-contain rounded-lg">
+                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-600 text-white rounded shadow-xs" data-lang="ru">Диски</span>
+                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-600 text-white rounded shadow-xs" data-lang="en">Wheels</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Key Metrics Bar with Detailed Specs Accordion Toggle (EasyCar Style) -->
+                <div class="space-y-3">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="p-3.5 bg-white rounded-xl border border-surface-border shadow-xs">
+                            <span class="text-slate-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Разгон 0-100</span>
+                            <span class="text-slate-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">0-100 km/h</span>
+                            <span id="metric-accel" class="text-slate-900 font-bold text-base sm:text-lg">3.7 с</span>
+                        </div>
+                        <div class="p-3.5 bg-white rounded-xl border border-surface-border shadow-xs">
+                            <span class="text-slate-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Мощность</span>
+                            <span class="text-slate-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">Power</span>
+                            <span id="metric-power" class="text-slate-900 font-bold text-base sm:text-lg">898 л.с.</span>
+                        </div>
+                        <div class="p-3.5 bg-white rounded-xl border border-surface-border shadow-xs">
+                            <span class="text-slate-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Запас хода</span>
+                            <span class="text-slate-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">Range CLTC</span>
+                            <span id="metric-range" class="text-slate-900 font-bold text-base sm:text-lg">1,362 км</span>
+                        </div>
+                        <div class="p-3.5 bg-white rounded-xl border border-surface-border shadow-xs">
+                            <span class="text-slate-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="ru">Привод</span>
+                            <span class="text-slate-400 block text-[10px] font-semibold uppercase tracking-wider" data-lang="en">Drivetrain</span>
+                            <span id="metric-drive" class="text-slate-900 font-bold text-base sm:text-lg">AWD</span>
+                        </div>
+                    </div>
+
+                    <!-- "Подробнее об этой модели" Toggle Button (EasyCar Style) -->
+                    <div>
+                        <button type="button" id="btn-toggle-specs" onclick="toggleDetailedSpecs()" class="w-full inline-flex items-center justify-between px-4 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 hover:text-slate-950 font-bold text-xs transition shadow-xs cursor-pointer group">
+                            <div class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-slate-500 group-hover:text-slate-900 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span id="specs-toggle-text-ru" data-lang="ru">Подробнее об этой модели</span>
+                                <span id="specs-toggle-text-en" data-lang="en">Detailed Model Specifications</span>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-slate-500 group-hover:text-slate-900 transition">
+                                <span id="specs-toggle-status" class="text-[11px] font-semibold">Развернуть</span>
+                                <svg id="specs-toggle-chevron" class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Collapsible Detailed Technical Specifications Container -->
+                    <div id="specs-collapsible-wrapper" class="hidden transition-all duration-300 ease-in-out pt-2 space-y-3">
+                        <div id="specs-accordion-container" class="space-y-3">
+                            <!-- Injected from carDetailedSpecs -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEATING LAYOUT TOGGLE (For models with multiple seating configs like Zeekr 9X & Lynk 900) -->
+                <div id="seating-layout-section" class="pt-2 pb-1 hidden">
+                    <div class="flex justify-between items-baseline mb-2">
+                        <span class="text-xs font-bold text-slate-700" data-lang="ru">Посадочные места:</span>
+                        <span class="text-xs font-bold text-slate-700" data-lang="en">Seating Layout:</span>
+                        <span id="seating-active-badge" class="text-[11px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200"></span>
+                    </div>
+                    <div id="seating-toggle-group" class="grid grid-cols-2 gap-2">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- SECTION 1: TRIM CONFIGURATIONS -->
+                <div class="space-y-3 pt-4 border-t border-surface-border">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900 whitespace-nowrap flex items-center gap-2">
+                            <span>1.</span>
+                            <span data-lang="ru">Комплектация автомобиля</span>
+                            <span data-lang="en">Select Trim</span>
+                        </h2>
+                        <div class="flex-grow h-px bg-slate-200"></div>
+                        <span id="trims-count-badge" class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 whitespace-nowrap">4 варианта</span>
+                    </div>
+                    <div id="trims-list-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- SECTION 2: WHEEL & RIM OPTIONS (EasyCar Style) -->
+                <div class="space-y-3 pt-4 border-t border-surface-border">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900 whitespace-nowrap flex items-center gap-2">
+                            <span>2.</span>
+                            <span data-lang="ru">Колесные диски</span>
+                            <span data-lang="en">Wheels & Rims</span>
+                        </h2>
+                        <div class="flex-grow h-px bg-slate-200"></div>
+                        <div id="wheels-header-selection" class="text-xs font-bold text-slate-700 whitespace-nowrap"></div>
+                    </div>
+                    <div id="wheels-list-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Populated dynamically with picture cards -->
+                    </div>
+                </div>
+
+                <!-- SECTION 3: EXTERIOR COLORS (EasyCar Swatches) -->
+                <div class="space-y-3 pt-4 border-t border-surface-border">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900 whitespace-nowrap flex items-center gap-2">
+                            <span>3.</span>
+                            <span data-lang="ru">Цвет кузова</span>
+                            <span data-lang="en">Exterior Color</span>
+                        </h2>
+                        <div class="flex-grow h-px bg-slate-200"></div>
+                        <div id="color-header-selection" class="text-xs font-bold text-slate-700 whitespace-nowrap"></div>
+                    </div>
+                    <div id="colors-palette-container" class="flex flex-wrap items-center gap-4 py-1">
+                        <!-- Populated dynamically with circular swatches -->
+                    </div>
+                </div>
+
+                <!-- SECTION 4: INTERIOR FINISHES (EasyCar Split Swatches) -->
+                <div class="space-y-3 pt-4 border-t border-surface-border">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900 whitespace-nowrap flex items-center gap-2">
+                            <span>4.</span>
+                            <span data-lang="ru">Отделка салона</span>
+                            <span data-lang="en">Interior Trim</span>
+                        </h2>
+                        <div class="flex-grow h-px bg-slate-200"></div>
+                        <div id="interior-header-selection" class="text-xs font-bold text-slate-700 whitespace-nowrap"></div>
+                    </div>
+                    <div id="interiors-list-container" class="flex flex-wrap items-center gap-4 py-1">
+                        <!-- Populated dynamically with split circular swatches -->
+                    </div>
+                </div>
+
+                <!-- SECTION 5: ADDITIONAL FACTORY OPTIONS / PACKAGES (EasyCar Style) -->
+                <div id="additional-options-section" class="space-y-3 pt-4 border-t border-surface-border hidden">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900 whitespace-nowrap flex items-center gap-2">
+                            <span>5.</span>
+                            <span data-lang="ru">Добавьте опции</span>
+                            <span data-lang="en">Options & Packages</span>
+                        </h2>
+                        <div class="flex-grow h-px bg-slate-200"></div>
+                        <div id="options-header-selection" class="text-xs font-bold text-slate-700 whitespace-nowrap"></div>
+                    </div>
+                    <div id="additional-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: STICKY PRICE COUNTER, ROUTE SELECTION & ORDER CTAS (35%) -->
+            <div class="lg:col-span-5 lg:sticky lg:top-24 space-y-4">
+                
+                <!-- Main Configuration Calculation Card -->
+                <div class="bg-white border border-surface-border rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                    <div class="flex justify-between items-center pb-3 border-b border-surface-border">
+                        <span id="card-header-title-ru" class="font-bold text-slate-900 text-xs uppercase tracking-wide" data-lang="ru">Расчет «Под ключ» в РФ</span>
+                        <span id="card-header-title-en" class="font-bold text-slate-900 text-xs uppercase tracking-wide" data-lang="en">Export Quotation (FOB)</span>
+                        <span id="card-header-badge" class="text-[11px] font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">
+                            СВХ Москва
+                        </span>
+                    </div>
+
+                    <!-- Route Selector (Hidden in English mode) -->
+                    <div id="route-selector-box" class="space-y-1.5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-600 font-semibold text-[11px]" data-lang="ru">Маршрут оформления:</span>
+                            <span class="text-slate-600 font-semibold text-[11px]" data-lang="en">Customs Route:</span>
+                            <span id="route-savings-tag" class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                                Экономия ≈ 1 393 163 ₽
+                            </span>
+                        </div>
+
+                        <div id="route-toggle-group" class="grid grid-cols-2 gap-2">
+                            <button type="button" id="btn-route-kg" onclick="setCarRoute('transit_kg')" class="py-2.5 px-3 rounded-xl text-xs font-bold border transition text-center cursor-pointer bg-slate-900 text-white border-slate-900 shadow-sm">
+                                🇰🇬 Через Кыргызстан
+                            </button>
+                            <button type="button" id="btn-route-ru" onclick="setCarRoute('direct_ru')" class="py-2.5 px-3 rounded-xl text-xs font-bold border transition text-center cursor-pointer bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border-slate-200">
+                                🇷🇺 Напрямую в РФ
+                            </button>
+                        </div>
+
+                        <div id="route-locked-notice" class="hidden py-2.5 px-3 rounded-xl bg-slate-50 border border-slate-200 text-xs flex items-center justify-between">
+                            <span id="route-locked-desc" class="text-slate-600 font-medium">Прямой ввоз в РФ</span>
+                            <span id="route-locked-badge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 flex-shrink-0">Прямой ввоз</span>
+                        </div>
+                    </div>
+
+                    <!-- Total Price Card -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-surface-border">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs text-slate-500 font-semibold block" data-lang="ru">Итого под ключ:</span>
+                                <span class="text-xs text-slate-500 font-semibold block" data-lang="en">Total Export Price:</span>
+                                <span id="summary-fob-usd" class="text-[11px] text-slate-500 font-medium block mt-0.5">$62,600 FOB • по курсу ЦБ</span>
+                            </div>
+                            <div class="text-right">
+                                <span id="summary-price-rub" class="text-2xl sm:text-3xl font-extrabold text-slate-950 block tracking-tight font-sans leading-none">0 ₽</span>
+                                <span id="summary-price-subtitle" class="text-[10px] text-slate-500 font-medium block mt-1">транзит через Кыргызстан</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Itemized Breakdown -->
+                    <div id="summary-breakdown" class="border border-surface-border rounded-xl p-3.5 bg-slate-50/70 text-xs space-y-2">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <!-- Primary Order Action Buttons -->
+                    <div class="space-y-2 pt-1">
+                        <button onclick="orderCarViaTelegram()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm py-3.5 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-md cursor-pointer group">
+                            <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
+                            <span id="summary-order-btn-text">Заказать под ключ в Telegram</span>
+                        </button>
+                        <button onclick="openCarLeadModal()" class="w-full py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 hover:text-slate-950 font-semibold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <span data-lang="ru">Оставить заявку на расчет</span>
+                            <span data-lang="en">Request Custom Quote</span>
+                        </button>
+                    </div>
+
+                    <!-- Trust & Guarantees -->
+                    <div class="pt-2 border-t border-surface-border text-[11px] text-slate-500 space-y-1.5">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span data-lang="ru">Прямой внешнеторговый контракт с фиксацией цены</span>
+                            <span data-lang="en">Direct international sales contract with locked pricing</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span data-lang="ru">100% страхование груза на всём маршруте перевозки</span>
+                            <span data-lang="en">100% full transit cargo insurance included</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span data-lang="ru">Выдача автомобиля на СВХ Москва с действующим ЭПТС</span>
+                            <span data-lang="en">Port of origin delivery (Shanghai / Nansha / Khorgos) with full export documents</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- LEAD / QUOTE MODAL -->
+    <div id="lead-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl border border-surface-border p-6 max-w-md w-full shadow-2xl relative">
+            <button onclick="closeCarLeadModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 text-xl font-bold">&times;</button>
+            <h3 class="text-xl font-bold text-slate-900 mb-1" data-lang="ru">Заявка на расчет авто</h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-1" data-lang="en">Request Car Calculation</h3>
+            <p id="lead-modal-car-desc" class="text-xs text-slate-500 mb-4">Zeekr 8X MAX</p>
+
+            <form onsubmit="submitCarLead(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1" data-lang="ru">Ваше имя:</label>
+                    <label class="block font-semibold text-slate-700 mb-1" data-lang="en">Your Name:</label>
+                    <input type="text" id="lead-input-name" required placeholder="Александр" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-slate-900">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1" data-lang="ru">Телефон / Telegram / WhatsApp:</label>
+                    <label class="block font-semibold text-slate-700 mb-1" data-lang="en">Phone / WhatsApp / Telegram:</label>
+                    <input type="text" id="lead-input-contact" required placeholder="+7 (999) 000-00-00" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-slate-900">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1" data-lang="ru">Город доставки:</label>
+                    <label class="block font-semibold text-slate-700 mb-1" data-lang="en">Destination City:</label>
+                    <input type="text" id="lead-input-city" placeholder="Москва, Санкт-Петербург, Минск..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-slate-900">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1" data-lang="ru">Пожелания по комплектации:</label>
+                    <label class="block font-semibold text-slate-700 mb-1" data-lang="en">Configuration notes:</label>
+                    <textarea id="lead-input-notes" rows="2" placeholder="Цвет, колеса, доп. опции..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-slate-900"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-lg transition mt-2">
+                    <span data-lang="ru">Отправить заявку</span>
+                    <span data-lang="en">Submit Request</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-surface-border mt-12 py-8 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-6 w-auto object-contain">
+                <span>© 2026 Shanghai Motors. All rights reserved.</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+                <a href="index.html#catalog" class="hover:text-slate-900 transition" data-lang="ru">Каталог</a>
+                <a href="index.html#catalog" class="hover:text-slate-900 transition" data-lang="en">Catalog</a>
+                <a href="index.html#process" class="hover:text-slate-900 transition" data-lang="ru">Процесс доставки</a>
+                <a href="index.html#process" class="hover:text-slate-900 transition" data-lang="en">Shipping Process</a>
+                <a href="https://t.me/vlad_shanghaimotors" target="_blank" class="text-blue-600 font-semibold hover:underline">Telegram @vlad_shanghaimotors</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SHARED DATA & SPECS SCRIPTS -->
+    <script src="assets/car_specs.js"></script>
+    <script src="assets/turnkey_engine.js"></script>
+    
+    <!-- PAGE CONTROLLER SCRIPT -->
+    <script>
+        let currentLang = 'ru';
+        let currentCar = null;
+        let activeSeatingLayout = null;
+        let activeTrimIndex = 0;
+        let activeWheelId = null;
+        let activeColorId = null;
+        let activeInteriorId = null;
+        let activeAdditionalOptions = new Set();
+        let activeRouteMode = null;
+        let liveUsdRate = 84.43;
+        let currentGalleryView = 'exterior';
+        let isSpecsExpanded = false;
+
+        function toggleDetailedSpecs() {
+            isSpecsExpanded = !isSpecsExpanded;
+            const wrapper = document.getElementById('specs-collapsible-wrapper');
+            const chevron = document.getElementById('specs-toggle-chevron');
+            const statusText = document.getElementById('specs-toggle-status');
+
+            if (wrapper) {
+                if (isSpecsExpanded) {
+                    wrapper.classList.remove('hidden');
+                    if (chevron) chevron.style.transform = 'rotate(180deg)';
+                    if (statusText) statusText.innerText = (currentLang === 'ru') ? 'Свернуть' : 'Collapse';
+                } else {
+                    wrapper.classList.add('hidden');
+                    if (chevron) chevron.style.transform = 'rotate(0deg)';
+                    if (statusText) statusText.innerText = (currentLang === 'ru') ? 'Развернуть' : 'Expand';
+                }
+            }
+        }
+
+        function switchGalleryView(view) {
+            currentGalleryView = view;
+            updateGalleryDisplay();
+        }
+
+        function updateGalleryDisplay() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const selectedColor = opts.colors.find(c => c.id === activeColorId) || opts.colors[0];
+            const selectedInt = opts.interiors.find(i => i.id === activeInteriorId) || opts.interiors[0];
+            const selectedWheel = opts.wheels.find(w => w.id === activeWheelId) || opts.wheels[0];
+
+            const isObsidian = trim.name.toUpperCase().includes('OBSIDIAN') || trim.name.toUpperCase().includes('DAWN');
+            const extImg = (isObsidian && selectedColor?.imgObsidian) ? selectedColor.imgObsidian : (selectedColor?.img || currentCar.img);
+            const intImg = selectedInt?.img || currentCar.img;
+            const wheelImg = selectedWheel?.img || selectedWheel?.icon || currentCar.img;
+
+            const thumbExt = document.getElementById('thumb-img-exterior');
+            const thumbInt = document.getElementById('thumb-img-interior');
+            const thumbWhl = document.getElementById('thumb-img-wheels');
+            if (thumbExt) thumbExt.src = extImg;
+            if (thumbInt) thumbInt.src = intImg;
+            if (thumbWhl) thumbWhl.src = wheelImg;
+
+            const btnExt = document.getElementById('gallery-tab-exterior');
+            const btnInt = document.getElementById('gallery-tab-interior');
+            const btnWhl = document.getElementById('gallery-tab-wheels');
+            const cardThumbExt = document.getElementById('thumb-exterior');
+            const cardThumbInt = document.getElementById('thumb-interior');
+            const cardThumbWhl = document.getElementById('thumb-wheels');
+            const captionEl = document.getElementById('gallery-view-caption');
+            const heroImg = document.getElementById('car-hero-img');
+            const shadowEl = document.getElementById('gallery-pedestal-shadow');
+
+            [btnExt, btnInt, btnWhl].forEach(b => {
+                if (b) b.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer text-slate-600 hover:text-slate-950 hover:bg-slate-100';
+            });
+            [cardThumbExt, cardThumbInt, cardThumbWhl].forEach(t => {
+                if (t) t.className = 'relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-transparent hover:border-slate-300';
+            });
+
+            if (currentGalleryView === 'exterior') {
+                if (btnExt) btnExt.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs';
+                if (cardThumbExt) cardThumbExt.className = 'relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-slate-900 shadow-xs';
+                if (heroImg) {
+                    heroImg.src = extImg;
+                    heroImg.className = 'max-h-[220px] sm:max-h-[280px] w-auto max-w-[95%] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)] transition-all duration-300';
+                }
+                if (shadowEl) shadowEl.style.opacity = '1';
+                if (captionEl) {
+                    captionEl.innerText = (currentLang === 'ru') ? (selectedColor?.nameRu || 'Кузов') : (selectedColor?.nameEn || 'Exterior');
+                }
+            } else if (currentGalleryView === 'interior') {
+                if (btnInt) btnInt.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs';
+                if (cardThumbInt) cardThumbInt.className = 'relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-slate-900 shadow-xs';
+                if (heroImg) {
+                    heroImg.src = intImg;
+                    heroImg.className = 'max-h-[220px] sm:max-h-[280px] w-auto max-w-[95%] object-cover rounded-2xl shadow-md transition-all duration-300';
+                }
+                if (shadowEl) shadowEl.style.opacity = '0';
+                if (captionEl) {
+                    captionEl.innerText = (currentLang === 'ru') ? (selectedInt?.nameRu || 'Салон') : (selectedInt?.nameEn || 'Interior');
+                }
+            } else if (currentGalleryView === 'wheels') {
+                if (btnWhl) btnWhl.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs';
+                if (cardThumbWhl) cardThumbWhl.className = 'relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-slate-900 shadow-xs';
+                if (heroImg) {
+                    heroImg.src = wheelImg;
+                    heroImg.className = 'max-h-[220px] sm:max-h-[280px] w-auto max-w-[95%] object-contain rounded-xl shadow-xs transition-all duration-300';
+                }
+                if (shadowEl) shadowEl.style.opacity = '0';
+                if (captionEl) {
+                    captionEl.innerText = (currentLang === 'ru') ? (selectedWheel?.nameRu || 'Диски') : (selectedWheel?.nameEn || 'Wheels');
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initLanguage();
+            initPageFromUrl();
+            fetchExchangeRate();
+        });
+
+        function initLanguage() {
+            const params = new URLSearchParams(window.location.search);
+            const urlLang = params.get('lang');
+            const savedLang = urlLang || localStorage.getItem('shanghai_motors_lang') || 'ru';
+            setLanguage(savedLang, false);
+        }
+
+        function setLanguage(lang, refresh = true) {
+            currentLang = lang;
+            localStorage.setItem('shanghai_motors_lang', lang);
+            document.documentElement.lang = lang;
+            document.documentElement.classList.remove('lang-en', 'lang-ru');
+            document.documentElement.classList.add('lang-' + lang);
+
+            const btnEn = document.getElementById('btn-lang-en');
+            const btnRu = document.getElementById('btn-lang-ru');
+            if (btnEn && btnRu) {
+                if (lang === 'ru') {
+                    btnRu.className = 'px-2.5 py-1 rounded-full bg-slate-900 text-white font-bold text-xs transition shadow-sm';
+                    btnEn.className = 'px-2.5 py-1 rounded-full text-slate-500 hover:text-slate-900 text-xs transition';
+                } else {
+                    btnEn.className = 'px-2.5 py-1 rounded-full bg-slate-900 text-white font-bold text-xs transition shadow-sm';
+                    btnRu.className = 'px-2.5 py-1 rounded-full text-slate-500 hover:text-slate-900 text-xs transition';
+                }
+            }
+
+            // Update rate badge
+            const rateBadge = document.getElementById('nav-usd-rate');
+            if (rateBadge) {
+                rateBadge.innerText = (lang === 'ru') ? `1$ = ${liveUsdRate.toFixed(2)} ₽` : `$1 = ${liveUsdRate.toFixed(2)} RUB`;
+            }
+
+            // Update modal placeholders
+            const nameInput = document.getElementById('lead-input-name');
+            const contactInput = document.getElementById('lead-input-contact');
+            const cityInput = document.getElementById('lead-input-city');
+            const notesInput = document.getElementById('lead-input-notes');
+            if (nameInput) nameInput.placeholder = (lang === 'ru') ? 'Александр' : 'John Smith';
+            if (contactInput) contactInput.placeholder = (lang === 'ru') ? '+7 (999) 000-00-00' : '+1 (555) 000-0000 / @username';
+            if (cityInput) cityInput.placeholder = (lang === 'ru') ? 'Москва, Санкт-Петербург, Минск...' : 'Dubai, Riyadh, Almaty, Tashkent...';
+            if (notesInput) notesInput.placeholder = (lang === 'ru') ? 'Цвет, колеса, доп. опции...' : 'Color, wheels, preferred options...';
+
+            if (refresh && currentCar) {
+                renderAll();
+            }
+        }
+
+        async function fetchExchangeRate() {
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 2000);
+                const resp = await fetch('https://www.cbr-xml-daily.ru/daily_json.js', { signal: controller.signal });
+                clearTimeout(timeoutId);
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (data?.Valute?.USD?.Value) {
+                        liveUsdRate = parseFloat(data.Valute.USD.Value);
+                        const rateBadge = document.getElementById('nav-usd-rate');
+                        if (rateBadge) {
+                            rateBadge.innerText = (currentLang === 'ru') ? `1$ = ${liveUsdRate.toFixed(2)} ₽` : `$1 = ${liveUsdRate.toFixed(2)} RUB`;
+                        }
+                        if (currentCar) recalculateSummary();
+                    }
+                }
+            } catch (e) {
+                console.log('Using baseline exchange rate:', liveUsdRate);
+            }
+        }
+
+        function initPageFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const carId = params.get('id') || 'zeekr-8x';
+            activeTrimIndex = parseInt(params.get('trim') || '0', 10);
+            activeRouteMode = params.get('route') || null;
+
+            // Populate quick model select dropdown
+            const select = document.getElementById('quick-model-select');
+            if (select && window.catalogDatabase) {
+                select.innerHTML = window.catalogDatabase.map(c => `
+                    <option value="${c.id}" ${c.id === carId ? 'selected' : ''}>${c.fullName}</option>
+                `).join('');
+            }
+
+            loadCar(carId);
+        }
+
+        function onModelSelectChange(newCarId) {
+            const url = new URL(window.location);
+            url.searchParams.set('id', newCarId);
+            url.searchParams.set('trim', '0');
+            window.location.href = url.toString();
+        }
+
+        function getVisibleTrims() {
+            if (!currentCar) return [];
+            if (activeSeatingLayout && currentCar.availableSeating && currentCar.availableSeating.length > 0) {
+                const filtered = currentCar.trims.filter(t => t.seats === activeSeatingLayout);
+                if (filtered.length > 0) return filtered;
+            }
+            return currentCar.trims;
+        }
+
+        function loadCar(carId) {
+            if (!window.catalogDatabase || window.catalogDatabase.length === 0) return;
+            currentCar = window.catalogDatabase.find(c => c.id === carId) || window.catalogDatabase[0];
+
+            if (currentCar.availableSeating && currentCar.availableSeating.length > 0) {
+                activeSeatingLayout = currentCar.availableSeating[0];
+            } else {
+                activeSeatingLayout = null;
+            }
+
+            activeTrimIndex = 0;
+            syncOptionsForActiveTrim();
+            renderAll();
+        }
+
+        function setSeatingLayout(seats) {
+            if (activeSeatingLayout === seats) return;
+            activeSeatingLayout = seats;
+            activeTrimIndex = 0;
+            syncOptionsForActiveTrim();
+            renderAll();
+        }
+
+        function syncOptionsForActiveTrim() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+
+            if (!opts.wheels.some(w => w.id === activeWheelId)) {
+                activeWheelId = opts.wheels[0] ? opts.wheels[0].id : null;
+            }
+            if (!opts.colors.some(c => c.id === activeColorId)) {
+                activeColorId = opts.colors[0] ? opts.colors[0].id : null;
+            }
+            if (!opts.interiors.some(i => i.id === activeInteriorId)) {
+                activeInteriorId = opts.interiors[0] ? opts.interiors[0].id : null;
+            }
+
+            // Prune unallowed additional options
+            const validOptionIds = new Set(opts.additionalOptions.map(o => o.id));
+            for (const optId of Array.from(activeAdditionalOptions)) {
+                if (!validOptionIds.has(optId)) {
+                    activeAdditionalOptions.delete(optId);
+                }
+            }
+        }
+
+        function selectTrim(idx) {
+            activeTrimIndex = idx;
+            syncOptionsForActiveTrim();
+            renderAll();
+        }
+
+        function selectWheel(wheelId) {
+            activeWheelId = wheelId;
+            currentGalleryView = 'wheels';
+            renderAll();
+        }
+
+        function selectColor(colorId) {
+            activeColorId = colorId;
+            currentGalleryView = 'exterior';
+            renderAll();
+        }
+
+        function selectInterior(intId) {
+            activeInteriorId = intId;
+            currentGalleryView = 'interior';
+            renderAll();
+        }
+
+        function setCarRoute(mode) {
+            activeRouteMode = mode;
+            recalculateSummary();
+        }
+
+        function toggleAdditionalOption(optId) {
+            if (activeAdditionalOptions.has(optId)) {
+                activeAdditionalOptions.delete(optId);
+            } else {
+                activeAdditionalOptions.add(optId);
+            }
+            renderAdditionalOptions();
+            recalculateSummary();
+        }
+
+        function renderAdditionalOptions() {
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const sec = document.getElementById('additional-options-section');
+            const container = document.getElementById('additional-options-container');
+            const headerSel = document.getElementById('options-header-selection');
+            if (!sec || !container) return;
+
+            if (!opts.additionalOptions || opts.additionalOptions.length === 0) {
+                sec.classList.add('hidden');
+                return;
+            }
+
+            sec.classList.remove('hidden');
+
+            let totalChosenUsd = 0;
+            opts.additionalOptions.forEach(opt => {
+                if (activeAdditionalOptions.has(opt.id)) {
+                    totalChosenUsd += (opt.priceUsd || 0);
+                }
+            });
+
+            if (headerSel) {
+                const totalRub = Math.round(totalChosenUsd * liveUsdRate);
+                if (currentLang === 'ru') {
+                    headerSel.innerHTML = (totalChosenUsd > 0)
+                        ? `<span class="text-slate-900">${activeAdditionalOptions.size} выбрано</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${totalRub.toLocaleString()} ₽ ($${totalChosenUsd.toLocaleString()})</span>`
+                        : `<span class="text-slate-500 font-normal">0 выбрано</span>`;
+                } else {
+                    headerSel.innerHTML = (totalChosenUsd > 0)
+                        ? `<span class="text-slate-900">${activeAdditionalOptions.size} selected</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${totalChosenUsd.toLocaleString()}</span>`
+                        : `<span class="text-slate-500 font-normal">0 selected</span>`;
+                }
+            }
+
+            container.innerHTML = opts.additionalOptions.map(opt => {
+                const isSelected = activeAdditionalOptions.has(opt.id);
+                const rubPrice = Math.round(opt.priceUsd * liveUsdRate);
+                let priceLabel = '';
+                if (currentLang === 'ru') {
+                    priceLabel = opt.priceUsd === 0 ? 'Включено' : `+ ${rubPrice.toLocaleString()} ₽ ($${opt.priceUsd.toLocaleString()})`;
+                } else {
+                    priceLabel = opt.priceUsd === 0 ? 'Included ($0)' : `+ $${opt.priceUsd.toLocaleString()}`;
+                }
+
+                return `
+                <div onclick="toggleAdditionalOption('${opt.id}')" class="p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-xs' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
+                    <div class="flex items-center gap-3">
+                        <div class="w-5 h-5 rounded-md border flex items-center justify-center transition-colors flex-shrink-0 ${isSelected ? 'bg-white border-white text-slate-900' : 'border-slate-300 bg-slate-50'}">
+                            ${isSelected ? '<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>' : ''}
+                        </div>
+                        <div>
+                            <div class="font-bold text-xs sm:text-[13px] leading-tight">${currentLang === 'ru' ? opt.nameRu : opt.nameEn}</div>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0 ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${priceLabel}</span>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function renderAll() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+
+            // Update Header & Breadcrumbs
+            const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
+            document.title = (currentLang === 'ru')
+                ? `${currentCar.fullName} (${trimDisplay}) — Расчет под ключ | SHANGHAI MOTORS`
+                : `${currentCar.fullName} (${trimDisplay}) — Export FOB Configurator | SHANGHAI MOTORS`;
+            document.getElementById('breadcrumb-brand').innerText = currentCar.brand;
+            document.getElementById('breadcrumb-car').innerText = currentCar.fullName;
+
+            document.getElementById('car-brand-badge').innerText = currentCar.brand;
+            document.getElementById('car-year-badge').innerText = currentCar.year;
+            document.getElementById('car-full-name').innerText = currentCar.fullName;
+            document.getElementById('car-engine-type').innerText = `${formatEngineType(trim.engineType, currentLang)} • ${currentCar.category}`;
+
+            // Key Metrics
+            document.getElementById('metric-accel').innerText = formatAccel(trim.accel, currentLang);
+            document.getElementById('metric-power').innerText = formatPower(trim.power, currentLang);
+            document.getElementById('metric-range').innerText = formatRange(trim.range, currentLang);
+            document.getElementById('metric-drive').innerText = formatDrive(trim.drive, currentLang);
+
+            // Seating Layout Selector (if applicable)
+            const seatingSection = document.getElementById('seating-layout-section');
+            const seatingGroup = document.getElementById('seating-toggle-group');
+            const seatingBadge = document.getElementById('seating-active-badge');
+            if (currentCar.availableSeating && currentCar.availableSeating.length > 1) {
+                seatingSection.classList.remove('hidden');
+                if (seatingBadge) {
+                    seatingBadge.innerText = (activeSeatingLayout === 6)
+                        ? (currentLang === 'ru' ? '6 мест (2+2+2)' : '6 Seats (2+2+2)')
+                        : (currentLang === 'ru' ? '5 мест (2+3)' : '5 Seats (2+3)');
+                }
+                seatingGroup.innerHTML = currentCar.availableSeating.map(s => {
+                    const isSel = (s === activeSeatingLayout);
+                    const label = (s === 6)
+                        ? (currentLang === 'ru' ? '6 мест (2+2+2)' : '6 Seats (2+2+2)')
+                        : (currentLang === 'ru' ? '5 мест (2+3)' : '5 Seats (2+3)');
+                    return `
+                        <button type="button" onclick="setSeatingLayout(${s})" class="py-2.5 px-3 rounded-xl text-xs font-bold border transition text-center cursor-pointer ${isSel ? 'bg-slate-900 text-white border-slate-900 shadow-sm' : 'bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border-slate-200'}">
+                            ${label}
+                        </button>
+                    `;
+                }).join('');
+            } else {
+                seatingSection.classList.add('hidden');
+            }
+
+            // Render Trims
+            document.getElementById('trims-count-badge').innerText = `${visibleTrims.length} ${currentLang === 'ru' ? 'комплектаций' : 'trims'}`;
+            const trimsContainer = document.getElementById('trims-list-container');
+            trimsContainer.innerHTML = visibleTrims.map((t, idx) => {
+                const isSelected = (idx === activeTrimIndex);
+                const diffUsd = t.fobUsd - visibleTrims[0].fobUsd;
+                const diffRub = Math.round(diffUsd * liveUsdRate);
+                let diffText = (currentLang === 'ru') ? 'Базовая' : 'Standard';
+                if (diffUsd > 0) {
+                    diffText = (currentLang === 'ru') ? `+ ${diffRub.toLocaleString()} ₽` : `+ $${diffUsd.toLocaleString()}`;
+                }
+
+                const trimTitle = (currentLang === 'ru')
+                    ? (t.cleanNameRu || t.name)
+                    : (t.cleanNameEn || formatTrimName(t.name, 'en'));
+
+                return `
+                <div onclick="selectTrim(${idx})" class="p-4 rounded-2xl border transition-all cursor-pointer ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
+                    <div class="flex justify-between items-start">
+                        <span class="font-extrabold text-sm sm:text-base">${trimTitle}</span>
+                        <span class="text-[11px] font-bold px-2 py-0.5 rounded ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${diffText}</span>
+                    </div>
+                    <div class="mt-2 text-xs space-y-1 ${isSelected ? 'text-slate-300' : 'text-slate-500'}">
+                        <div>${formatPower(t.power, currentLang)} • ${formatDrive(t.drive, currentLang)}</div>
+                        <div>${currentLang === 'ru' ? 'Запас хода:' : 'Range:'} ${formatRange(t.range, currentLang)} • ${formatAccel(t.accel, currentLang)}</div>
+                        <div class="font-semibold pt-1 ${isSelected ? 'text-white' : 'text-slate-900'}">$${t.fobUsd.toLocaleString()} FOB</div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // Render Wheels (EasyCar Picture Cards)
+            const wheelsContainer = document.getElementById('wheels-list-container');
+            wheelsContainer.innerHTML = opts.wheels.map(w => {
+                const isSelected = (w.id === activeWheelId);
+                const rubPrice = Math.round(w.priceUsd * liveUsdRate);
+                let priceTag = '';
+                if (currentLang === 'ru') {
+                    priceTag = w.priceUsd === 0 ? 'Включено' : `+ ${rubPrice.toLocaleString()} ₽ ($${w.priceUsd.toLocaleString()})`;
+                } else {
+                    priceTag = w.priceUsd === 0 ? 'Included ($0)' : `+ $${w.priceUsd.toLocaleString()}`;
+                }
+                const descText = (currentLang === 'ru') ? (w.descRu || '') : (w.descEn || '');
+                const wheelImgSrc = w.icon || w.img || currentCar.img;
+
+                return `
+                <div onclick="selectWheel('${w.id}')" class="p-3 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md' : 'border-surface-border bg-white hover:border-slate-400 text-slate-800'}">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center p-1 overflow-hidden flex-shrink-0 border ${isSelected ? 'border-white/20' : 'border-slate-200/80'}">
+                            <img src="${wheelImgSrc}" alt="${w.nameEn}" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <div class="font-bold text-xs leading-tight">${currentLang === 'ru' ? w.nameRu : w.nameEn}</div>
+                            <p class="text-[10px] mt-0.5 leading-snug ${isSelected ? 'text-slate-300' : 'text-slate-500'}">${descText}</p>
+                        </div>
+                    </div>
+                    <div class="pt-1.5 border-t ${isSelected ? 'border-white/10' : 'border-slate-100'} flex justify-between items-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${priceTag}</span>
+                        ${isSelected ? '<span class="text-[10px] font-semibold text-white/80">Выбрано</span>' : ''}
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            const selectedWheel = opts.wheels.find(w => w.id === activeWheelId) || opts.wheels[0];
+            const wheelsHeaderEl = document.getElementById('wheels-header-selection');
+            if (wheelsHeaderEl && selectedWheel) {
+                const wRub = Math.round(selectedWheel.priceUsd * liveUsdRate);
+                if (currentLang === 'ru') {
+                    wheelsHeaderEl.innerHTML = selectedWheel.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedWheel.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${wRub.toLocaleString()} ₽</span>`
+                        : `<span class="text-slate-900">${selectedWheel.nameRu}</span> <span class="text-slate-400 font-normal ml-1">Включено</span>`;
+                } else {
+                    wheelsHeaderEl.innerHTML = selectedWheel.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedWheel.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedWheel.priceUsd.toLocaleString()}</span>`
+                        : `<span class="text-slate-900">${selectedWheel.nameEn}</span> <span class="text-slate-400 font-normal ml-1">Included</span>`;
+                }
+            }
+
+            // Render Exterior Colors (EasyCar Swatches)
+            const colorsContainer = document.getElementById('colors-palette-container');
+            colorsContainer.innerHTML = opts.colors.map(c => {
+                const isSelected = (c.id === activeColorId);
+                const isPaid = (c.priceUsd > 0);
+                const rubPrice = Math.round((c.priceUsd || 0) * liveUsdRate);
+                let priceTag = '';
+                if (isPaid) {
+                    priceTag = (currentLang === 'ru') 
+                        ? `+${c.priceUsd.toLocaleString()} $`
+                        : `+$${c.priceUsd.toLocaleString()}`;
+                }
+
+                let bgStyle = `background: ${c.hex};`;
+                if (c.hex && c.hex.includes(':')) {
+                    const parts = c.hex.split(':');
+                    bgStyle = `background: linear-gradient(135deg, ${parts[0]} 0%, ${parts[0]} 50%, ${parts[1]} 50%, ${parts[1]} 100%);`;
+                }
+
+                return `
+                <div class="flex flex-col items-center gap-1.5">
+                    <button type="button" onclick="selectColor('${c.id}')" title="${currentLang === 'ru' ? c.nameRu : c.nameEn}" class="w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
+                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
+                    </button>
+                    <span class="text-[10px] font-semibold text-slate-700 max-w-[72px] text-center leading-tight truncate">${currentLang === 'ru' ? c.nameRu : c.nameEn}</span>
+                    ${isPaid ? `<span class="text-[9px] font-bold text-amber-800 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">${priceTag}</span>` : ''}
+                </div>
+                `;
+            }).join('');
+
+            const selectedColor = opts.colors.find(c => c.id === activeColorId) || opts.colors[0];
+            const colorHeaderEl = document.getElementById('color-header-selection');
+            if (colorHeaderEl && selectedColor) {
+                const rubPrice = Math.round(selectedColor.priceUsd * liveUsdRate);
+                if (currentLang === 'ru') {
+                    colorHeaderEl.innerHTML = selectedColor.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedColor.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${rubPrice.toLocaleString()} ₽ ($${selectedColor.priceUsd.toLocaleString()})</span>`
+                        : `<span class="text-slate-900">${selectedColor.nameRu}</span> <span class="text-slate-400 font-normal ml-1">Включено</span>`;
+                } else {
+                    colorHeaderEl.innerHTML = selectedColor.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedColor.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedColor.priceUsd.toLocaleString()}</span>`
+                        : `<span class="text-slate-900">${selectedColor.nameEn}</span> <span class="text-slate-400 font-normal ml-1">Included</span>`;
+                }
+            }
+
+            // Render Interiors (EasyCar Split Swatches)
+            const interiorsContainer = document.getElementById('interiors-list-container');
+            interiorsContainer.innerHTML = opts.interiors.map(intItem => {
+                const isSelected = (intItem.id === activeInteriorId);
+                const isPaid = (intItem.priceUsd > 0);
+                const rubPrice = Math.round((intItem.priceUsd || 0) * liveUsdRate);
+
+                let bgStyle = `background: ${intItem.hex || '#1A1A1A'};`;
+                if (intItem.hex && intItem.hex.includes(':')) {
+                    const parts = intItem.hex.split(':');
+                    bgStyle = `background: linear-gradient(135deg, ${parts[0]} 0%, ${parts[0]} 50%, ${parts[1]} 50%, ${parts[1]} 100%);`;
+                }
+
+                return `
+                <div class="flex flex-col items-center gap-1.5">
+                    <button type="button" onclick="selectInterior('${intItem.id}')" title="${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}" class="w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
+                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
+                    </button>
+                    <span class="text-[10px] font-semibold text-slate-700 max-w-[80px] text-center leading-tight truncate">${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}</span>
+                    ${isPaid ? `<span class="text-[9px] font-bold text-amber-800 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">+${rubPrice.toLocaleString()} ₽</span>` : ''}
+                </div>
+                `;
+            }).join('');
+
+            const selectedInt = opts.interiors.find(i => i.id === activeInteriorId) || opts.interiors[0];
+            const interiorHeaderEl = document.getElementById('interior-header-selection');
+            if (interiorHeaderEl && selectedInt) {
+                if (currentLang === 'ru') {
+                    interiorHeaderEl.innerHTML = `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-slate-400 font-normal ml-1">Включено</span>`;
+                } else {
+                    interiorHeaderEl.innerHTML = `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-slate-400 font-normal ml-1">Included</span>`;
+                }
+            }
+
+            // Render Section 5: Additional Options & Packages
+            renderAdditionalOptions();
+
+            // Render Technical Specs Accordion
+            renderDetailedSpecsSection();
+
+            // Refresh Gallery Images & Previews
+            updateGalleryDisplay();
+
+            // Calculate Turnkey Pricing
+            recalculateSummary();
+        }
+
+        function recalculateSummary() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+
+            const selectedWheel = opts.wheels.find(w => w.id === activeWheelId) || opts.wheels[0] || { priceUsd: 0 };
+            const selectedColor = opts.colors.find(c => c.id === activeColorId) || opts.colors[0] || { priceUsd: 0 };
+            const selectedInt = opts.interiors.find(i => i.id === activeInteriorId) || opts.interiors[0] || { priceUsd: 0 };
+
+            let totalOptionsUsd = (selectedWheel.priceUsd || 0) + (selectedColor.priceUsd || 0) + (selectedInt.priceUsd || 0);
+            if (opts.additionalOptions) {
+                opts.additionalOptions.forEach(opt => {
+                    if (activeAdditionalOptions.has(opt.id)) {
+                        totalOptionsUsd += (opt.priceUsd || 0);
+                    }
+                });
+            }
+
+            // Execute Calculation Engine
+            const pricing = calculateTurnkeyPricing(trim, activeRouteMode, liveUsdRate, totalOptionsUsd);
+            activeRouteMode = pricing.route;
+
+            // UI Elements
+            const priceRubEl = document.getElementById('summary-price-rub');
+            const fobUsdEl = document.getElementById('summary-fob-usd');
+            const subtitleEl = document.getElementById('summary-price-subtitle');
+
+            const routeSelectorBox = document.getElementById('route-selector-box');
+            const routeToggleGroup = document.getElementById('route-toggle-group');
+            const routeLockedNotice = document.getElementById('route-locked-notice');
+            const routeLockedBadge = document.getElementById('route-locked-badge');
+            const routeLockedDesc = document.getElementById('route-locked-desc');
+            const routeSavingsTag = document.getElementById('route-savings-tag');
+
+            const btnKg = document.getElementById('btn-route-kg');
+            const btnRu = document.getElementById('btn-route-ru');
+
+            const summaryBreakdown = document.getElementById('summary-breakdown');
+            const orderBtnText = document.getElementById('summary-order-btn-text');
+            const cardHeaderBadge = document.getElementById('card-header-badge');
+
+            const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
+
+            if (currentLang === 'en') {
+                // ==========================================
+                // ENGLISH MODE: 100% USD, NO CUSTOMS CLEARANCE
+                // ==========================================
+                if (routeSelectorBox) routeSelectorBox.classList.add('hidden');
+                if (cardHeaderBadge) cardHeaderBadge.innerText = 'FOB / FCA China';
+
+                if (priceRubEl) priceRubEl.innerText = `$${pricing.fobUsd.toLocaleString()}`;
+                if (fobUsdEl) fobUsdEl.innerText = 'Shanghai / Nansha / Khorgos FCA Port';
+                if (subtitleEl) subtitleEl.innerText = 'Direct Factory Export Price (FOB)';
+
+                if (summaryBreakdown) {
+                    summaryBreakdown.innerHTML = `
+                        <div class="flex justify-between items-center text-slate-700">
+                            <span>1. Base Vehicle (FOB / FCA):</span>
+                            <span class="font-bold text-slate-900">$${trim.fobUsd.toLocaleString()}</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-700 pt-1.5 border-t border-surface-border/40">
+                            <span>2. Selected Factory Options:</span>
+                            <span class="font-bold text-slate-900">${totalOptionsUsd > 0 ? '+ $' + totalOptionsUsd.toLocaleString() : 'Included ($0)'}</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-700 pt-1.5 border-t border-surface-border/40">
+                            <span>3. Export License & China Customs:</span>
+                            <span class="font-bold text-emerald-700">Included ($0)</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-700 pt-1.5 border-t border-surface-border/40">
+                            <span>4. Port Terminal Loading (FCA):</span>
+                            <span class="font-bold text-emerald-700">Included ($0)</span>
+                        </div>
+                    `;
+                }
+
+                if (orderBtnText) {
+                    orderBtnText.innerText = `Order FOB via Telegram (${trimDisplay}) • $${pricing.fobUsd.toLocaleString()}`;
+                }
+            } else {
+                // ==========================================
+                // RUSSIAN MODE: FULL 2026 TURNKEY CALCULATION
+                // ==========================================
+                if (routeSelectorBox) routeSelectorBox.classList.remove('hidden');
+                if (cardHeaderBadge) cardHeaderBadge.innerText = 'СВХ Москва';
+
+                if (pricing.canUseKg) {
+                    if (routeToggleGroup) routeToggleGroup.classList.remove('hidden');
+                    if (routeLockedNotice) routeLockedNotice.classList.add('hidden');
+
+                    if (pricing.route === 'transit_kg') {
+                        if (btnKg) btnKg.className = 'py-2.5 px-3 rounded-xl text-xs font-bold border transition text-center cursor-pointer bg-slate-900 text-white border-slate-900 shadow-sm';
+                        if (btnRu) btnRu.className = 'py-2.5 px-3 rounded-xl text-xs font-bold border transition text-center cursor-pointer bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border-slate-200';
+                        if (routeSavingsTag) {
+                            routeSavingsTag.classList.remove('hidden');
+                            routeSavingsTag.innerText = `Экономия ≈ ${pricing.savingsVsDirect.toLocaleString()} ₽`;
+                        }
+                        if (subtitleEl) subtitleEl.innerText = 'транзит через Кыргызстан';
+                    } else {
+                        if (btnKg) btnKg.className = 'py-2.5 px-3 rounded-xl text-xs font-bold border transition text-center cursor-pointer bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border-slate-200';
+                        if (btnRu) btnRu.className = 'py-2.5 px-3 rounded-xl text-xs font-bold border transition text-center cursor-pointer bg-slate-900 text-white border-slate-900 shadow-sm';
+                        if (routeSavingsTag) routeSavingsTag.classList.add('hidden');
+                        if (subtitleEl) subtitleEl.innerText = 'прямой ввоз в РФ';
+                    }
+                } else {
+                    if (routeToggleGroup) routeToggleGroup.classList.add('hidden');
+                    if (routeLockedNotice) routeLockedNotice.classList.remove('hidden');
+                    if (routeSavingsTag) routeSavingsTag.classList.add('hidden');
+
+                    if (pricing.powerHp < 160) {
+                        if (routeLockedBadge) {
+                            routeLockedBadge.innerText = 'Льготный утиль 3 400 ₽';
+                            routeLockedBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 flex-shrink-0';
+                        }
+                        if (routeLockedDesc) routeLockedDesc.innerText = 'Прямой ввоз в РФ';
+                        if (subtitleEl) subtitleEl.innerText = 'прямой ввоз в РФ';
+                    } else {
+                        if (routeLockedBadge) {
+                            routeLockedBadge.innerText = 'Прямой ввоз';
+                            routeLockedBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 flex-shrink-0 border border-slate-200';
+                        }
+                        if (routeLockedDesc) routeLockedDesc.innerText = 'Прямой ввоз в РФ';
+                        if (subtitleEl) subtitleEl.innerText = 'прямой ввоз в РФ';
+                    }
+                }
+
+                if (priceRubEl) priceRubEl.innerText = `${pricing.fullPrice.toLocaleString()} ₽`;
+                if (fobUsdEl) fobUsdEl.innerText = `FOB от $${pricing.fobUsd.toLocaleString()} (${pricing.fobRub.toLocaleString()} ₽) • по курсу ЦБ`;
+
+                if (summaryBreakdown) {
+                    summaryBreakdown.innerHTML = `
+                        <div class="flex justify-between items-center text-slate-700">
+                            <span>1. Автомобиль в Китае (FOB + опции):</span>
+                            <span class="font-bold text-slate-900">${pricing.fobRub.toLocaleString()} ₽ <span class="text-slate-500 font-normal">($${pricing.fobUsd.toLocaleString()})</span></span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-700 pt-1.5 border-t border-surface-border/40">
+                            <span>${pricing.route === 'transit_kg' ? '2. Доставка до Москвы + таможня ЕАЭС:' : '2. Доставка в РФ + пошлина ФТС:'}</span>
+                            <span class="font-bold text-slate-900">+ ${pricing.customsSum.toLocaleString()} ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-700 pt-1.5 border-t border-surface-border/40">
+                            <div class="flex items-center gap-1.5">
+                                <span>3. Утилизационный сбор РФ:</span>
+                                <span class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-100 text-amber-800">2026 г.</span>
+                            </div>
+                            <span class="font-bold text-slate-900">+ ${pricing.utilFee.toLocaleString()} ₽</span>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-700 pt-1.5 border-t border-surface-border/40">
+                            <span>4. Комплекс в РФ (СБКТС, лаборатория, ЭПТС):</span>
+                            <span class="font-bold text-slate-900">+ 120 000 ₽</span>
+                        </div>
+                    `;
+                }
+
+                if (orderBtnText) {
+                    orderBtnText.innerText = `Заказать под ключ (${trimDisplay}) • ${pricing.fullPrice.toLocaleString()} ₽`;
+                }
+            }
+        }
+
+        function renderDetailedSpecsSection() {
+            const container = document.getElementById('specs-accordion-container');
+            if (!container || !currentCar) return;
+
+            const specsData = window.carDetailedSpecs && window.carDetailedSpecs[currentCar.id];
+            if (!specsData || !specsData.categories || specsData.categories.length === 0) {
+                container.innerHTML = `
+                    <div class="p-6 bg-white rounded-xl border border-surface-border text-center text-xs text-slate-400">
+                        ${currentLang === 'ru' ? 'Характеристики загружаются...' : 'Specs loading...'}
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = specsData.categories.map((cat, i) => `
+                <div class="bg-white rounded-2xl border border-surface-border p-4 sm:p-5 shadow-sm space-y-3">
+                    <h3 class="font-bold text-sm text-slate-900 border-b border-surface-border pb-2">
+                        ${currentLang === 'ru' ? cat.nameRu : cat.nameEn}
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        ${cat.items.map(item => `
+                            <div class="flex justify-between items-baseline py-1 border-b border-slate-100">
+                                <span class="text-slate-500 font-medium">${currentLang === 'ru' ? item.labelRu : item.labelEn}:</span>
+                                <span class="font-bold text-slate-900 text-right ml-2">${currentLang === 'ru' ? item.valRu : item.valEn}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function orderCarViaTelegram() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const selectedWheel = opts.wheels.find(w => w.id === activeWheelId) || opts.wheels[0] || {};
+            const selectedColor = opts.colors.find(c => c.id === activeColorId) || opts.colors[0] || {};
+            const selectedInt = opts.interiors.find(i => i.id === activeInteriorId) || opts.interiors[0] || {};
+
+            let totalOptionsUsd = (selectedWheel.priceUsd || 0) + (selectedColor.priceUsd || 0) + (selectedInt.priceUsd || 0);
+            const chosenExtras = [];
+            if (opts.additionalOptions) {
+                opts.additionalOptions.forEach(opt => {
+                    if (activeAdditionalOptions.has(opt.id)) {
+                        totalOptionsUsd += (opt.priceUsd || 0);
+                        chosenExtras.push(opt);
+                    }
+                });
+            }
+
+            const pricing = calculateTurnkeyPricing(trim, activeRouteMode, liveUsdRate, totalOptionsUsd);
+            const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
+
+            let msg = '';
+            if (currentLang === 'en') {
+                const optLines = [];
+                if (selectedWheel.priceUsd > 0) optLines.push(`• Wheels: ${selectedWheel.nameEn} (+$${selectedWheel.priceUsd.toLocaleString()})`);
+                if (selectedColor.priceUsd > 0) optLines.push(`• Exterior: ${selectedColor.nameEn} (+$${selectedColor.priceUsd.toLocaleString()})`);
+                if (selectedInt.priceUsd > 0) optLines.push(`• Interior: ${selectedInt.nameEn} (+$${selectedInt.priceUsd.toLocaleString()})`);
+                chosenExtras.forEach(e => optLines.push(`• Option: ${e.nameEn} (+$${e.priceUsd.toLocaleString()})`));
+
+                msg = `Hello Shanghai Motors! I would like to order:
+🚗 Vehicle: ${currentCar.fullName}
+📌 Trim: ${trimDisplay}${activeSeatingLayout ? ' (' + activeSeatingLayout + ' Seats)' : ''}
+🎯 Terms: FOB / FCA China Export
+💰 Total FOB Price: $${pricing.fobUsd.toLocaleString()}
+
+Configuration Details:
+• Wheels: ${selectedWheel.nameEn || 'Standard'}
+• Exterior: ${selectedColor.nameEn || 'Standard'}
+• Interior: ${selectedInt.nameEn || 'Standard'}
+${optLines.length ? 'Selected Paid Options:\n' + optLines.join('\n') : '• Options: Factory Standard'}
+
+Please provide shipping quotation and export delivery timeline.`;
+            } else {
+                const routeTitle = pricing.route === 'transit_kg' ? 'Транзитный через Кыргызстан' : 'Прямой ввоз в РФ';
+                const extraList = chosenExtras.map(e => `• ${e.nameRu}: +$${e.priceUsd.toLocaleString()}`).join('\n');
+
+                msg = `Здравствуйте! Меня интересует автомобиль:
+🚗 ${currentCar.fullName}
+• Комплектация: ${trimDisplay}${activeSeatingLayout ? ' (' + activeSeatingLayout + ' мест)' : ''}
+• Диски: ${selectedWheel.nameRu || 'Базовые'}
+• Цвет кузова: ${selectedColor.nameRu || 'Базовый'}${selectedColor.priceUsd > 0 ? ` (+${Math.round(selectedColor.priceUsd * liveUsdRate).toLocaleString()} ₽ / $${selectedColor.priceUsd.toLocaleString()})` : ''}
+• Салон: ${selectedInt.nameRu || 'Базовый'}
+${chosenExtras.length ? 'Доп. опции:\n' + extraList + '\n' : ''}
+Маршрут: ${routeTitle}
+Итоговая стоимость «Под ключ» в Москве: ${pricing.fullPrice.toLocaleString()} ₽ (FOB: $${pricing.fobUsd.toLocaleString()})
+• Автомобиль (FOB): ${pricing.fobRub.toLocaleString()} ₽
+• Доставка и таможня: +${pricing.customsSum.toLocaleString()} ₽
+• Утилизационный сбор РФ: +${pricing.utilFee.toLocaleString()} ₽
+• Комплекс услуг и ЭПТС: +${pricing.servicesRub.toLocaleString()} ₽
+
+Прошу направить договор и забронировать комплектацию.`;
+            }
+
+            const url = `https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+
+        function openCarLeadModal() {
+            const modal = document.getElementById('lead-modal');
+            if (!modal || !currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
+            document.getElementById('lead-modal-car-desc').innerText = `${currentCar.fullName} (${trimDisplay})`;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeCarLeadModal() {
+            const modal = document.getElementById('lead-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function submitCarLead(e) {
+            e.preventDefault();
+            const name = document.getElementById('lead-input-name').value;
+            const contact = document.getElementById('lead-input-contact').value;
+            const city = document.getElementById('lead-input-city').value;
+            const notes = document.getElementById('lead-input-notes').value;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
+
+            let text = '';
+            if (currentLang === 'en') {
+                text = `Shanghai Motors Website Lead:
+Client: ${name}
+Contact: ${contact}
+Destination Port/City: ${city}
+Vehicle: ${currentCar.fullName} (${trimDisplay})
+Notes: ${notes}`;
+            } else {
+                text = `Заявка с сайта:
+Клиент: ${name}
+Контакт: ${contact}
+Город: ${city}
+Автомобиль: ${currentCar.fullName} (${trimDisplay})
+Пожелания: ${notes}`;
+            }
+
+            window.open(`https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(text)}`, '_blank');
+            closeCarLeadModal();
+        }
+
+    </script>
+</body>
+</html>
