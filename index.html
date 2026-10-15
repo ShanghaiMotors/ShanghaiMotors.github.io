@@ -2522,6 +2522,12 @@
         }
 
         function initLanguage() {
+            const urlLang = new URLSearchParams(window.location.search).get('lang');
+            if (urlLang === 'ru' || urlLang === 'en') {
+                setLanguage(urlLang, false);
+                return;
+            }
+
             const stored = localStorage.getItem('shanghai_motors_lang');
             if (stored === 'ru' || stored === 'en') {
                 setLanguage(stored, false);
@@ -2571,14 +2577,6 @@
             // Toggle CSS classes on root
             document.documentElement.classList.remove('lang-en', 'lang-ru');
             document.documentElement.classList.add(`lang-${lang}`);
-
-            document.querySelectorAll('[data-lang]').forEach(el => {
-                if (el.getAttribute('data-lang') === lang) {
-                    el.classList.remove('hidden');
-                } else {
-                    el.classList.add('hidden');
-                }
-            });
 
             // Update language toggle buttons (Desktop & Mobile)
             const ruBtns = [document.getElementById('btn-lang-ru'), document.getElementById('btn-lang-ru-mobile')].filter(Boolean);
