@@ -842,6 +842,15 @@
         }
 
         function toggleAdditionalOption(optId) {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const targetOpt = opts.additionalOptions ? opts.additionalOptions.find(o => o.id === optId) : null;
+            if (targetOpt && targetOpt.priceUsd === 0) {
+                // Standard factory equipment on this trim - permanently included
+                return;
+            }
             if (activeAdditionalOptions.has(optId)) {
                 activeAdditionalOptions.delete(optId);
             } else {
@@ -888,13 +897,14 @@
             }
 
             container.innerHTML = opts.additionalOptions.map(opt => {
-                const isSelected = activeAdditionalOptions.has(opt.id);
+                const isStandardInTrim = (opt.priceUsd === 0);
+                const isSelected = isStandardInTrim || activeAdditionalOptions.has(opt.id);
                 const rubPrice = Math.round(opt.priceUsd * liveUsdRate);
                 let priceLabel = '';
                 if (currentLang === 'ru') {
-                    priceLabel = opt.priceUsd === 0 ? 'Включено' : `+ ${rubPrice.toLocaleString()} ₽ ($${opt.priceUsd.toLocaleString()})`;
+                    priceLabel = isStandardInTrim ? 'В комплектации' : `+ ${rubPrice.toLocaleString()} ₽ ($${opt.priceUsd.toLocaleString()})`;
                 } else {
-                    priceLabel = opt.priceUsd === 0 ? 'Included ($0)' : `+ $${opt.priceUsd.toLocaleString()}`;
+                    priceLabel = isStandardInTrim ? 'Standard on trim' : `+ $${opt.priceUsd.toLocaleString()}`;
                 }
 
                 return `
@@ -1002,9 +1012,9 @@
                 const rubPrice = Math.round(w.priceUsd * liveUsdRate);
                 let priceTag = '';
                 if (currentLang === 'ru') {
-                    priceTag = w.priceUsd === 0 ? 'Включено' : `+ ${rubPrice.toLocaleString()} ₽ ($${w.priceUsd.toLocaleString()})`;
+                    priceTag = w.priceUsd === 0 ? 'Стандарт (0 ₽)' : `+ ${rubPrice.toLocaleString()} ₽ ($${w.priceUsd.toLocaleString()})`;
                 } else {
-                    priceTag = w.priceUsd === 0 ? 'Included ($0)' : `+ $${w.priceUsd.toLocaleString()}`;
+                    priceTag = w.priceUsd === 0 ? 'Standard ($0)' : `+ $${w.priceUsd.toLocaleString()}`;
                 }
                 const descText = (currentLang === 'ru') ? (w.descRu || '') : (w.descEn || '');
                 const wheelImgSrc = w.icon || w.img || currentCar.img;
@@ -1035,11 +1045,11 @@
                 if (currentLang === 'ru') {
                     wheelsHeaderEl.innerHTML = selectedWheel.priceUsd > 0
                         ? `<span class="text-slate-900">${selectedWheel.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${wRub.toLocaleString()} ₽</span>`
-                        : `<span class="text-slate-900">${selectedWheel.nameRu}</span> <span class="text-slate-400 font-normal ml-1">Включено</span>`;
+                        : `<span class="text-slate-900">${selectedWheel.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
                 } else {
                     wheelsHeaderEl.innerHTML = selectedWheel.priceUsd > 0
                         ? `<span class="text-slate-900">${selectedWheel.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedWheel.priceUsd.toLocaleString()}</span>`
-                        : `<span class="text-slate-900">${selectedWheel.nameEn}</span> <span class="text-slate-400 font-normal ml-1">Included</span>`;
+                        : `<span class="text-slate-900">${selectedWheel.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
                 }
             }
 
@@ -1080,11 +1090,11 @@
                 if (currentLang === 'ru') {
                     colorHeaderEl.innerHTML = selectedColor.priceUsd > 0
                         ? `<span class="text-slate-900">${selectedColor.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${rubPrice.toLocaleString()} ₽ ($${selectedColor.priceUsd.toLocaleString()})</span>`
-                        : `<span class="text-slate-900">${selectedColor.nameRu}</span> <span class="text-slate-400 font-normal ml-1">Включено</span>`;
+                        : `<span class="text-slate-900">${selectedColor.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
                 } else {
                     colorHeaderEl.innerHTML = selectedColor.priceUsd > 0
                         ? `<span class="text-slate-900">${selectedColor.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedColor.priceUsd.toLocaleString()}</span>`
-                        : `<span class="text-slate-900">${selectedColor.nameEn}</span> <span class="text-slate-400 font-normal ml-1">Included</span>`;
+                        : `<span class="text-slate-900">${selectedColor.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
                 }
             }
 
@@ -1116,9 +1126,9 @@
             const interiorHeaderEl = document.getElementById('interior-header-selection');
             if (interiorHeaderEl && selectedInt) {
                 if (currentLang === 'ru') {
-                    interiorHeaderEl.innerHTML = `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-slate-400 font-normal ml-1">Включено</span>`;
+                    interiorHeaderEl.innerHTML = `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
                 } else {
-                    interiorHeaderEl.innerHTML = `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-slate-400 font-normal ml-1">Included</span>`;
+                    interiorHeaderEl.innerHTML = `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
                 }
             }
 
@@ -1198,7 +1208,7 @@
                         </div>
                         <div class="flex justify-between items-center text-slate-700 pt-1.5 border-t border-surface-border/40">
                             <span>2. Selected Factory Options:</span>
-                            <span class="font-bold text-slate-900">${totalOptionsUsd > 0 ? '+ $' + totalOptionsUsd.toLocaleString() : 'Included ($0)'}</span>
+                            <span class="font-bold text-slate-900">${totalOptionsUsd > 0 ? '+ $' + totalOptionsUsd.toLocaleString() : 'Standard ($0)'}</span>
                         </div>
                         <div class="flex justify-between items-center text-slate-700 pt-1.5 border-t border-surface-border/40">
                             <span>3. Export License & China Customs:</span>
