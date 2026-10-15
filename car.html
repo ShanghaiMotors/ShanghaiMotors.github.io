@@ -206,28 +206,9 @@
                     </div>
 
                     <!-- Pedestal Shadow for Exterior View -->
-                    <div id="gallery-pedestal-shadow" class="w-full max-w-[85%] -mt-2 mb-3 z-0 flex flex-col items-center pointer-events-none transition-opacity duration-300">
+                    <div id="gallery-pedestal-shadow" class="w-full max-w-[85%] -mt-2 mb-1 z-0 flex flex-col items-center pointer-events-none transition-opacity duration-300">
                         <div class="w-full h-4 bg-slate-700/30 blur-[5px] rounded-[100%]"></div>
                         <div class="w-4/5 h-6 -mt-2 bg-slate-400/20 blur-sm"></div>
-                    </div>
-
-                    <!-- Bottom Thumbnail Strip: Clickable mini previews -->
-                    <div class="w-full pt-2 border-t border-slate-200/70 relative z-20 flex items-center justify-center gap-3">
-                        <button type="button" onclick="switchGalleryView('exterior')" id="thumb-exterior" class="relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-slate-900 shadow-xs">
-                            <img id="thumb-img-exterior" src="assets/banners/banner_6.jpg" class="w-14 h-9 sm:w-16 sm:h-10 object-contain rounded-lg">
-                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-900 text-white rounded shadow-xs" data-lang="ru">Кузов</span>
-                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-900 text-white rounded shadow-xs" data-lang="en">Body</span>
-                        </button>
-                        <button type="button" onclick="switchGalleryView('interior')" id="thumb-interior" class="relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-transparent hover:border-slate-300">
-                            <img id="thumb-img-interior" src="assets/banners/banner_6.jpg" class="w-14 h-9 sm:w-16 sm:h-10 object-cover rounded-lg">
-                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-600 text-white rounded shadow-xs" data-lang="ru">Салон</span>
-                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-600 text-white rounded shadow-xs" data-lang="en">Cabin</span>
-                        </button>
-                        <button type="button" onclick="switchGalleryView('wheels')" id="thumb-wheels" class="relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-transparent hover:border-slate-300">
-                            <img id="thumb-img-wheels" src="assets/banners/banner_6.jpg" class="w-14 h-9 sm:w-16 sm:h-10 object-contain rounded-lg">
-                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-600 text-white rounded shadow-xs" data-lang="ru">Диски</span>
-                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold px-1.5 py-0.2 bg-slate-600 text-white rounded shadow-xs" data-lang="en">Wheels</span>
-                        </button>
                     </div>
                 </div>
 
@@ -307,27 +288,11 @@
                     </div>
                 </div>
 
-                <!-- SECTION 2: WHEEL & RIM OPTIONS (EasyCar Style) -->
+                <!-- SECTION 2: EXTERIOR COLORS (EasyCar Swatches) -->
                 <div class="space-y-3 pt-4 border-t border-surface-border">
                     <div class="flex flex-wrap items-center justify-between gap-1 sm:gap-2">
                         <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2 flex-shrink-0">
                             <span>2.</span>
-                            <span data-lang="ru">Колесные диски</span>
-                            <span data-lang="en">Wheels & Rims</span>
-                        </h2>
-                        <div class="hidden md:block flex-grow h-px bg-slate-200 min-w-[12px]"></div>
-                        <div id="wheels-header-selection" class="text-xs font-bold text-slate-700 text-left sm:text-right max-w-full"></div>
-                    </div>
-                    <div id="wheels-list-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <!-- Populated dynamically with picture cards -->
-                    </div>
-                </div>
-
-                <!-- SECTION 3: EXTERIOR COLORS (EasyCar Swatches) -->
-                <div class="space-y-3 pt-4 border-t border-surface-border">
-                    <div class="flex flex-wrap items-center justify-between gap-1 sm:gap-2">
-                        <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2 flex-shrink-0">
-                            <span>3.</span>
                             <span data-lang="ru">Цвет кузова</span>
                             <span data-lang="en">Exterior Color</span>
                         </h2>
@@ -336,6 +301,22 @@
                     </div>
                     <div id="colors-palette-container" class="flex flex-wrap items-center gap-4 py-1">
                         <!-- Populated dynamically with circular swatches -->
+                    </div>
+                </div>
+
+                <!-- SECTION 3: WHEEL & RIM OPTIONS (EasyCar Style) -->
+                <div class="space-y-3 pt-4 border-t border-surface-border">
+                    <div class="flex flex-wrap items-center justify-between gap-1 sm:gap-2">
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2 flex-shrink-0">
+                            <span>3.</span>
+                            <span data-lang="ru">Колесные диски</span>
+                            <span data-lang="en">Wheels & Rims</span>
+                        </h2>
+                        <div class="hidden md:block flex-grow h-px bg-slate-200 min-w-[12px]"></div>
+                        <div id="wheels-header-selection" class="text-xs font-bold text-slate-700 text-left sm:text-right max-w-full"></div>
+                    </div>
+                    <div id="wheels-list-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Populated dynamically with picture cards -->
                     </div>
                 </div>
 
@@ -642,19 +623,9 @@
             const intImg = selectedInt?.img || currentCar.img;
             const wheelImg = selectedWheel?.img || selectedWheel?.icon || currentCar.img;
 
-            const thumbExt = document.getElementById('thumb-img-exterior');
-            const thumbInt = document.getElementById('thumb-img-interior');
-            const thumbWhl = document.getElementById('thumb-img-wheels');
-            if (thumbExt) thumbExt.src = extImg;
-            if (thumbInt) thumbInt.src = intImg;
-            if (thumbWhl) thumbWhl.src = wheelImg;
-
             const btnExt = document.getElementById('gallery-tab-exterior');
             const btnInt = document.getElementById('gallery-tab-interior');
             const btnWhl = document.getElementById('gallery-tab-wheels');
-            const cardThumbExt = document.getElementById('thumb-exterior');
-            const cardThumbInt = document.getElementById('thumb-interior');
-            const cardThumbWhl = document.getElementById('thumb-wheels');
             const captionEl = document.getElementById('gallery-view-caption');
             const heroImg = document.getElementById('car-hero-img');
             const shadowEl = document.getElementById('gallery-pedestal-shadow');
@@ -662,16 +633,12 @@
             [btnExt, btnInt, btnWhl].forEach(b => {
                 if (b) b.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer text-slate-600 hover:text-slate-950 hover:bg-slate-100';
             });
-            [cardThumbExt, cardThumbInt, cardThumbWhl].forEach(t => {
-                if (t) t.className = 'relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-transparent hover:border-slate-300';
-            });
 
             if (currentGalleryView === 'exterior') {
                 if (btnExt) btnExt.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs';
-                if (cardThumbExt) cardThumbExt.className = 'relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-slate-900 shadow-xs';
                 if (heroImg) {
                     heroImg.src = extImg;
-                    heroImg.className = 'max-h-[220px] sm:max-h-[280px] w-auto max-w-[95%] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)] transition-all duration-300';
+                    heroImg.className = 'max-h-[240px] sm:max-h-[300px] w-auto max-w-[95%] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)] transition-all duration-300';
                 }
                 if (shadowEl) shadowEl.style.opacity = '1';
                 if (captionEl) {
@@ -679,10 +646,9 @@
                 }
             } else if (currentGalleryView === 'interior') {
                 if (btnInt) btnInt.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs';
-                if (cardThumbInt) cardThumbInt.className = 'relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-slate-900 shadow-xs';
                 if (heroImg) {
                     heroImg.src = intImg;
-                    heroImg.className = 'max-h-[220px] sm:max-h-[280px] w-auto max-w-[95%] object-cover rounded-2xl shadow-md transition-all duration-300';
+                    heroImg.className = 'max-h-[240px] sm:max-h-[300px] w-auto max-w-[95%] object-cover rounded-2xl shadow-md transition-all duration-300';
                 }
                 if (shadowEl) shadowEl.style.opacity = '0';
                 if (captionEl) {
@@ -690,10 +656,9 @@
                 }
             } else if (currentGalleryView === 'wheels') {
                 if (btnWhl) btnWhl.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs';
-                if (cardThumbWhl) cardThumbWhl.className = 'relative group p-1 rounded-xl border-2 transition-all cursor-pointer bg-white border-slate-900 shadow-xs';
                 if (heroImg) {
                     heroImg.src = wheelImg;
-                    heroImg.className = 'max-h-[220px] sm:max-h-[280px] w-auto max-w-[95%] object-contain rounded-xl shadow-xs transition-all duration-300';
+                    heroImg.className = 'max-h-[240px] sm:max-h-[300px] w-auto max-w-[95%] object-contain rounded-xl shadow-xs transition-all duration-300';
                 }
                 if (shadowEl) shadowEl.style.opacity = '0';
                 if (captionEl) {
