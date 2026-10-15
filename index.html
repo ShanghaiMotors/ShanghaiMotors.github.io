@@ -297,26 +297,29 @@
                     </button>
                 </div>
 
-                <button onclick="toggleMobileMenu()" aria-label="Toggle navigation" class="lg:hidden text-gray-400 hover:text-white p-1 sm:p-2 flex-shrink-0">
-                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation" class="lg:hidden text-slate-700 hover:text-slate-900 p-1.5 sm:p-2 rounded-lg hover:bg-slate-100 transition flex-shrink-0 cursor-pointer">
+                    <!-- Hamburger Icon (shown when closed) -->
+                    <svg id="hamburger-icon-svg" class="w-6 h-6 stroke-current fill-none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                    <!-- Close X Icon (shown when open) -->
+                    <svg id="close-icon-svg" class="w-6 h-6 stroke-current fill-none hidden text-slate-900" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden border-b border-surface-border bg-white px-4 pt-2 pb-6 space-y-3 shadow-lg">
-            <a href="#hero-banners" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Models</a>
-            <a href="#hero-banners" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Модели</a>
-            <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Catalog</a>
-            <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Каталог</a>
-            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Process</a>
-            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Процесс</a>
-            <a href="#quote" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Quote</a>
-            <a href="#quote" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Расчет</a>
-            <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">About</a>
-            <a href="#offices" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">О нас</a>
-            <a href="#team" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Team</a>
-            <a href="#team" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Команда</a>
-            <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium">FAQ</a>
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-surface-border bg-white px-5 pt-3 pb-6 space-y-3 shadow-2xl relative z-40 max-h-[85vh] overflow-y-auto overscroll-contain">
+            <a href="#hero-banners" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Models</a>
+            <a href="#hero-banners" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Модели</a>
+            <a href="#catalog" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Catalog</a>
+            <a href="#catalog" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Каталог</a>
+            <a href="#process" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Process</a>
+            <a href="#process" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Процесс</a>
+            <a href="#quote" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Quote</a>
+            <a href="#quote" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Расчет</a>
+            <a href="#offices" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">About</a>
+            <a href="#offices" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">О нас</a>
+            <a href="#team" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Team</a>
+            <a href="#team" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Команда</a>
+            <a href="#faq" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium">FAQ</a>
 
             <!-- Mobile RU/EN Language Toggle -->
             <div class="py-2.5 flex items-center justify-between border-t border-b border-surface-border">
@@ -330,13 +333,13 @@
 
             <!-- Mobile CTA Button -->
             <div data-lang="ru" class="pt-1">
-                <button onclick="toggleMobileMenu(); openConsultationModal();" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition shadow-md">
+                <button onclick="closeMobileMenu(); openConsultationModal();" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition shadow-md">
                     <span>Консультация</span>
                     <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
             </div>
             <div data-lang="en" class="pt-1">
-                <button onclick="toggleMobileMenu(); openConsultationModal();" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition shadow-md">
+                <button onclick="closeMobileMenu(); openConsultationModal();" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition shadow-md">
                     <span>Get Quote</span>
                     <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
@@ -372,6 +375,9 @@
             </div>
         </div>
     </header>
+
+    <!-- MOBILE MENU BACKDROP OVERLAY -->
+    <div id="mobile-menu-backdrop" onclick="closeMobileMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-30 hidden transition-opacity duration-200"></div>
 
     <!-- COMPANY IDENTITY STRIP -->
     <div class="w-full bg-surface-card border-b border-surface-border">
@@ -3276,8 +3282,43 @@
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            if (menu) menu.classList.toggle('hidden');
+            if (!menu) return;
+            if (menu.classList.contains('hidden')) {
+                openMobileMenu();
+            } else {
+                closeMobileMenu();
+            }
         }
+
+        function openMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const backdrop = document.getElementById('mobile-menu-backdrop');
+            const iconBurger = document.getElementById('hamburger-icon-svg');
+            const iconClose = document.getElementById('close-icon-svg');
+            
+            if (menu) menu.classList.remove('hidden');
+            if (backdrop) backdrop.classList.remove('hidden');
+            if (iconBurger) iconBurger.classList.add('hidden');
+            if (iconClose) iconClose.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const backdrop = document.getElementById('mobile-menu-backdrop');
+            const iconBurger = document.getElementById('hamburger-icon-svg');
+            const iconClose = document.getElementById('close-icon-svg');
+            
+            if (menu) menu.classList.add('hidden');
+            if (backdrop) backdrop.classList.add('hidden');
+            if (iconBurger) iconBurger.classList.remove('hidden');
+            if (iconClose) iconClose.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
 
         // Consultation Modal Functions
         function openConsultationModal(prefVehicle = '') {
