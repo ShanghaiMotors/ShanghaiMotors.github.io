@@ -219,7 +219,7 @@
 <body class="bg-surface-base text-slate-800 antialiased selection:bg-slate-900 selection:text-white">
 
     <!-- MAIN NAVBAR -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-surface-border shadow-sm w-full max-w-full">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-surface-border shadow-sm w-full max-w-full">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between flex-nowrap">
             <a href="#" class="flex items-center gap-2 flex-shrink-0 mr-1 sm:mr-3 lg:mr-4 xl:mr-6">
                 <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-7 sm:h-8 md:h-10 w-auto object-contain">
@@ -306,7 +306,7 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden border-b border-surface-border bg-white px-5 pt-3 pb-6 space-y-3 shadow-2xl relative z-40 max-h-[85vh] overflow-y-auto overscroll-contain">
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-surface-border bg-white px-5 pt-3 pb-6 space-y-3 shadow-2xl relative z-50 max-h-[85vh] overflow-y-auto overscroll-contain">
             <a href="#hero-banners" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Models</a>
             <a href="#hero-banners" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="ru">Модели</a>
             <a href="#catalog" onclick="closeMobileMenu()" class="block py-2 text-slate-700 hover:text-slate-950 font-medium" data-lang="en">Catalog</a>
@@ -377,7 +377,7 @@
     </header>
 
     <!-- MOBILE MENU BACKDROP OVERLAY -->
-    <div id="mobile-menu-backdrop" onclick="closeMobileMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-30 hidden transition-opacity duration-200"></div>
+    <div id="mobile-menu-backdrop" onclick="closeMobileMenu()" ontouchmove="event.preventDefault()" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 hidden transition-opacity duration-200"></div>
 
     <!-- COMPANY IDENTITY STRIP -->
     <div class="w-full bg-surface-card border-b border-surface-border">
@@ -1812,7 +1812,7 @@
 
     <!-- FLOATING DIRECT MESSENGER DOCK (MOBILE & DESKTOP) -->
     <!-- EN Floating Messenger Dock -->
-    <div data-lang="en" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 sm:gap-2.5">
+    <div data-lang="en" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-30 flex items-center gap-2 sm:gap-2.5">
         <button onclick="openConsultationModal()" title="Contact Channels & Email" aria-label="Contact Channels & Email" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 flex items-center justify-center shadow-lg transition hover:scale-105 active:scale-95 cursor-pointer">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
         </button>
@@ -1824,7 +1824,7 @@
     </div>
 
     <!-- RU Floating Messenger Dock -->
-    <div data-lang="ru" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 sm:gap-2.5">
+    <div data-lang="ru" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-30 flex items-center gap-2 sm:gap-2.5">
         <button onclick="openConsultationModal()" title="Все способы связи" aria-label="Все способы связи" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 flex items-center justify-center shadow-lg transition hover:scale-105 active:scale-95 cursor-pointer">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
         </button>
@@ -1839,7 +1839,7 @@
     </div>
 
     <!-- QUICK CONSULTATION / CONTACT MODAL -->
-    <div id="consultation-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
+    <div id="consultation-modal" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
         <div style="max-width: 480px; width: 100%; margin: auto;" class="bg-white border border-slate-200/90 rounded-2xl relative my-auto p-6 sm:p-7 shadow-2xl overflow-x-hidden">
             <!-- Close Button -->
             <button onclick="closeConsultationModal()" aria-label="Close" class="absolute top-4 right-4 w-8 h-8 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center text-lg leading-none transition cursor-pointer">
@@ -1946,7 +1946,7 @@
     </div>
 
     <!-- OFFICIAL EXPORT LICENSE / KYC VERIFICATION MODAL -->
-    <div id="license-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
+    <div id="license-modal" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
         <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-lg relative my-auto p-6 sm:p-8 shadow-2xl overflow-x-hidden">
             <button onclick="closeLicenseModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-600 hover:text-slate-900 flex items-center justify-center text-lg z-10 transition">
                 &times;
@@ -2058,7 +2058,7 @@
     </div>
 
     <!-- INTERACTIVE CAR DETAILS & PRICE BREAKDOWN MODAL (EASY.CAR CONFIGURATOR CLONE) -->
-    <div id="car-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
+    <div id="car-modal" class="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
         <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-5xl lg:max-w-6xl max-h-[92vh] overflow-y-auto overflow-x-hidden relative my-auto p-5 sm:p-8 lg:p-9 overscroll-contain">
             <button onclick="closeCarModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-600 hover:text-slate-900 flex items-center justify-center text-lg z-10 transition">
                 &times;
@@ -3300,7 +3300,6 @@
             if (backdrop) backdrop.classList.remove('hidden');
             if (iconBurger) iconBurger.classList.add('hidden');
             if (iconClose) iconClose.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden');
         }
 
         function closeMobileMenu() {
@@ -3313,7 +3312,6 @@
             if (backdrop) backdrop.classList.add('hidden');
             if (iconBurger) iconBurger.classList.remove('hidden');
             if (iconClose) iconClose.classList.add('hidden');
-            document.body.classList.remove('overflow-hidden');
         }
 
         document.addEventListener('keydown', (e) => {
