@@ -113,10 +113,10 @@
                     <button onclick="setLanguage('ru')" id="btn-lang-ru" class="px-2.5 py-1 rounded-full bg-slate-900 text-white font-bold text-xs transition shadow-sm">RU</button>
                 </div>
 
-                <a href="https://t.me/vlad_shanghaimotors" target="_blank" class="w-8 h-8 rounded-lg bg-[#24A1DE] text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
+                <a href="https://t.me/vlad_shanghaimotors" data-lang="ru" target="_blank" rel="noopener noreferrer" title="Telegram" class="w-8 h-8 rounded-lg bg-[#24A1DE] text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
                     <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
                 </a>
-                <a href="http://wa.me/8617316540375" target="_blank" class="w-8 h-8 rounded-lg bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
+                <a href="https://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" title="WhatsApp" class="w-8 h-8 rounded-lg bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition shadow-sm">
                     <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 </a>
             </div>
@@ -416,9 +416,11 @@
 
                     <!-- Primary Order Action Buttons -->
                     <div class="space-y-2 pt-1">
-                        <button onclick="orderCarViaTelegram()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm py-3.5 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-md cursor-pointer group">
-                            <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
-                            <span id="summary-order-btn-text">Заказать под ключ в Telegram</span>
+                        <button onclick="orderCarInstant()" id="summary-order-btn" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm py-3.5 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer group">
+                            <span id="summary-order-btn-icon" class="flex-shrink-0 flex items-center justify-center">
+                                <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
+                            </span>
+                            <span id="summary-order-btn-text">Заказать под ключ</span>
                         </button>
                         <button onclick="openCarLeadModal()" class="w-full py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 hover:text-slate-950 font-semibold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
                             <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -468,7 +470,7 @@
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-700 mb-1" data-lang="ru">Телефон / Telegram / WhatsApp:</label>
-                    <label class="block font-semibold text-slate-700 mb-1" data-lang="en">Phone / WhatsApp / Telegram:</label>
+                    <label class="block font-semibold text-slate-700 mb-1" data-lang="en">Phone / WhatsApp / Email:</label>
                     <input type="text" id="lead-input-contact" required placeholder="+7 (999) 000-00-00" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-slate-900">
                 </div>
                 <div>
@@ -496,12 +498,36 @@
                 <img src="assets/logo-trans.png" alt="Shanghai Motors" class="h-6 w-auto object-contain">
                 <span>© 2026 Shanghai Motors. All rights reserved.</span>
             </div>
-            <div class="flex items-center gap-4 text-xs">
-                <a href="index.html#catalog" class="hover:text-slate-900 transition" data-lang="ru">Каталог</a>
-                <a href="index.html#catalog" class="hover:text-slate-900 transition" data-lang="en">Catalog</a>
-                <a href="index.html#process" class="hover:text-slate-900 transition" data-lang="ru">Процесс доставки</a>
-                <a href="index.html#process" class="hover:text-slate-900 transition" data-lang="en">Shipping Process</a>
-                <a href="https://t.me/vlad_shanghaimotors" target="_blank" class="text-blue-600 font-semibold hover:underline">Telegram @vlad_shanghaimotors</a>
+            
+            <!-- RU Footer Links & Direct Desks -->
+            <div data-lang="ru" class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
+                <a href="index.html#catalog" class="hover:text-slate-900 transition">Каталог</a>
+                <span class="text-slate-300">•</span>
+                <a href="index.html#process" class="hover:text-slate-900 transition">Процесс доставки</a>
+                <span class="text-slate-300">•</span>
+                <a href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 hover:bg-sky-100 border border-sky-200 text-sky-700 font-semibold text-[11px] transition shadow-xs">
+                    <svg class="w-3 h-3 fill-[#24A1DE]" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
+                    <span>Отдел экспорта в Telegram</span>
+                </a>
+                <a href="https://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 font-semibold text-[11px] transition shadow-xs">
+                    <svg class="w-3 h-3 fill-[#25D366]" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <span>Консультация в WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- EN Footer Links & Direct Desks (Zero Telegram) -->
+            <div data-lang="en" class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
+                <a href="index.html#catalog" class="hover:text-slate-900 transition">Catalog</a>
+                <span class="text-slate-300">•</span>
+                <a href="index.html#process" class="hover:text-slate-900 transition">Shipping Process</a>
+                <span class="text-slate-300">•</span>
+                <a href="https://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 font-semibold text-[11px] transition shadow-xs">
+                    <svg class="w-3 h-3 fill-[#25D366]" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <span>Export Desk: +86 173 1654 0375</span>
+                </a>
+                <a href="mailto:info@shanghaimotors.net" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-medium text-[11px] transition shadow-xs">
+                    <span>info@shanghaimotors.net</span>
+                </a>
             </div>
         </div>
     </footer>
@@ -667,7 +693,7 @@
             const cityInput = document.getElementById('lead-input-city');
             const notesInput = document.getElementById('lead-input-notes');
             if (nameInput) nameInput.placeholder = (lang === 'ru') ? 'Александр' : 'John Smith';
-            if (contactInput) contactInput.placeholder = (lang === 'ru') ? '+7 (999) 000-00-00' : '+1 (555) 000-0000 / @username';
+            if (contactInput) contactInput.placeholder = (lang === 'ru') ? '+7 (999) 000-00-00' : '+1 ... / WhatsApp / email@example.com';
             if (cityInput) cityInput.placeholder = (lang === 'ru') ? 'Москва, Санкт-Петербург, Минск...' : 'Dubai, Riyadh, Almaty, Tashkent...';
             if (notesInput) notesInput.placeholder = (lang === 'ru') ? 'Цвет, колеса, доп. опции...' : 'Color, wheels, preferred options...';
 
@@ -1178,8 +1204,12 @@
                     `;
                 }
 
+                const orderBtnIcon = document.getElementById('summary-order-btn-icon');
+                if (orderBtnIcon) {
+                    orderBtnIcon.innerHTML = `<svg class="w-4 h-4 fill-white flex-shrink-0 group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>`;
+                }
                 if (orderBtnText) {
-                    orderBtnText.innerText = `Order FOB via Telegram (${trimDisplay}) • $${pricing.fobUsd.toLocaleString()}`;
+                    orderBtnText.innerText = `Order FOB via WhatsApp (${trimDisplay}) • $${pricing.fobUsd.toLocaleString()}`;
                 }
             } else {
                 // ==========================================
@@ -1255,6 +1285,10 @@
                     `;
                 }
 
+                const orderBtnIconRu = document.getElementById('summary-order-btn-icon');
+                if (orderBtnIconRu) {
+                    orderBtnIconRu.innerHTML = `<svg class="w-4 h-4 fill-white flex-shrink-0 group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>`;
+                }
                 if (orderBtnText) {
                     orderBtnText.innerText = `Заказать под ключ (${trimDisplay}) • ${pricing.fullPrice.toLocaleString()} ₽`;
                 }
@@ -1292,7 +1326,7 @@
             `).join('');
         }
 
-        function orderCarViaTelegram() {
+        function orderCarInstant() {
             if (!currentCar) return;
             const visibleTrims = getVisibleTrims();
             const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
@@ -1315,7 +1349,6 @@
             const pricing = calculateTurnkeyPricing(trim, activeRouteMode, liveUsdRate, totalOptionsUsd);
             const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
 
-            let msg = '';
             if (currentLang === 'en') {
                 const optLines = [];
                 if (selectedWheel.priceUsd > 0) optLines.push(`• Wheels: ${selectedWheel.nameEn} (+$${selectedWheel.priceUsd.toLocaleString()})`);
@@ -1323,7 +1356,7 @@
                 if (selectedInt.priceUsd > 0) optLines.push(`• Interior: ${selectedInt.nameEn} (+$${selectedInt.priceUsd.toLocaleString()})`);
                 chosenExtras.forEach(e => optLines.push(`• Option: ${e.nameEn} (+$${e.priceUsd.toLocaleString()})`));
 
-                msg = `Hello Shanghai Motors! I would like to order:
+                const msg = `Hello Shanghai Motors! I would like to order:
 🚗 Vehicle: ${currentCar.fullName}
 📌 Trim: ${trimDisplay}${activeSeatingLayout ? ' (' + activeSeatingLayout + ' Seats)' : ''}
 🎯 Terms: FOB / FCA China Export
@@ -1336,11 +1369,13 @@ Configuration Details:
 ${optLines.length ? 'Selected Paid Options:\n' + optLines.join('\n') : '• Options: Factory Standard'}
 
 Please provide shipping quotation and export delivery timeline.`;
+                const url = `https://wa.me/8617316540375?text=${encodeURIComponent(msg)}`;
+                window.open(url, '_blank');
             } else {
                 const routeTitle = pricing.route === 'transit_kg' ? 'Транзитный через Кыргызстан' : 'Прямой ввоз в РФ';
                 const extraList = chosenExtras.map(e => `• ${e.nameRu}: +$${e.priceUsd.toLocaleString()}`).join('\n');
 
-                msg = `Здравствуйте! Меня интересует автомобиль:
+                const msg = `Здравствуйте! Меня интересует автомобиль:
 🚗 ${currentCar.fullName}
 • Комплектация: ${trimDisplay}${activeSeatingLayout ? ' (' + activeSeatingLayout + ' мест)' : ''}
 • Диски: ${selectedWheel.nameRu || 'Базовые'}
@@ -1355,11 +1390,11 @@ ${chosenExtras.length ? 'Доп. опции:\n' + extraList + '\n' : ''}
 • Комплекс услуг и ЭПТС: +${pricing.servicesRub.toLocaleString()} ₽
 
 Прошу направить договор и забронировать комплектацию.`;
+                const url = `https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(msg)}`;
+                window.open(url, '_blank');
             }
-
-            const url = `https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
         }
+        function orderCarViaTelegram() { orderCarInstant(); }
 
         function openCarLeadModal() {
             const modal = document.getElementById('lead-modal');
@@ -1390,24 +1425,23 @@ ${chosenExtras.length ? 'Доп. опции:\n' + extraList + '\n' : ''}
             const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
             const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
 
-            let text = '';
             if (currentLang === 'en') {
-                text = `Shanghai Motors Website Lead:
+                const text = `Shanghai Motors Website Inquiry:
 Client: ${name}
 Contact: ${contact}
 Destination Port/City: ${city}
 Vehicle: ${currentCar.fullName} (${trimDisplay})
 Notes: ${notes}`;
+                window.open(`https://wa.me/8617316540375?text=${encodeURIComponent(text)}`, '_blank');
             } else {
-                text = `Заявка с сайта:
+                const text = `Заявка с сайта:
 Клиент: ${name}
 Контакт: ${contact}
 Город: ${city}
 Автомобиль: ${currentCar.fullName} (${trimDisplay})
 Пожелания: ${notes}`;
+                window.open(`https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(text)}`, '_blank');
             }
-
-            window.open(`https://t.me/vlad_shanghaimotors?text=${encodeURIComponent(text)}`, '_blank');
             closeCarLeadModal();
         }
 
