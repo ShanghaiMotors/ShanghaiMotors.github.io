@@ -757,7 +757,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
                 <!-- Left Column: Value Prop & Trust -->
-                <div class="lg:col-span-5 space-y-6">
+                <div class="lg:col-span-5 space-y-5">
                     <div>
                         <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">
                             <span data-lang="en">Direct Export Inquiry</span>
@@ -767,16 +767,21 @@
                             <span data-lang="en">Request an Official Export Quotation</span>
                             <span data-lang="ru">Запросите расчет стоимости автомобиля</span>
                         </h2>
-                        <p class="text-slate-600 text-sm mt-3 leading-relaxed" data-lang="ru">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800 mt-2.5 mb-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
+                            <span data-lang="ru">Проверка наличия и расчет за 15 минут</span>
+                            <span data-lang="en">Factory allocation check within 15 minutes</span>
+                        </div>
+                        <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed" data-lang="ru">
                             Укажите интересующую модель и город доставки. Мы проверим наличие на складах и заводах Китая, зафиксируем курс и пришлем детальный расчет.
                         </p>
-                        <p class="text-slate-600 text-sm mt-3 leading-relaxed" data-lang="en">
+                        <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed" data-lang="en">
                             Specify your vehicle of interest and destination port. We will verify factory allocations, lock in the exchange rate, and provide an itemized FOB or CIF quotation.
                         </p>
                     </div>
 
                     <!-- Trust Points -->
-                    <div class="space-y-3 pt-2">
+                    <div class="space-y-3 pt-1">
                         <div class="flex items-start gap-3">
                             <div class="w-6 h-6 rounded-lg bg-slate-100 text-slate-800 border border-slate-200 flex items-center justify-center flex-shrink-0 mt-0.5">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -817,7 +822,7 @@
 
                 <!-- Right Column: Interactive Lead Form Card -->
                 <div class="lg:col-span-7">
-                    <div class="bg-surface-card border border-surface-border rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+                    <div class="bg-surface-card border border-surface-border rounded-2xl p-5 sm:p-7 shadow-xl relative">
                         <form id="lead-form" onsubmit="handleLeadSubmit(event)" class="space-y-4">
                             <!-- Hidden inputs for FormSubmit -->
                             <input type="hidden" name="_subject" id="form-subject" value="Новая заявка с сайта Shanghai Motors">
@@ -1649,7 +1654,7 @@
 
     <!-- SECTION 5: FAQ -->
     <section id="faq" class="py-8 md:py-12 border-b border-surface-border bg-slate-50/60">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-6 md:mb-8">
                 <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">FAQ</span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">
@@ -1658,38 +1663,89 @@
                 </h2>
             </div>
 
-            <div class="space-y-4 text-left">
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="en">How is the price calculated and are there hidden fees?</h3>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="ru">Как формируется стоимость и могут ли быть скрытые доплаты?</h3>
-                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="en">
-                        Pricing is 100% transparent: vehicle purchase cost in China + ocean freight + export licensing. No hidden dealer markups.
-                    </p>
-                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="ru">
-                        В смете четко зафиксированы: инвойс авто в Китае, доставка автовозом, таможенная пошлина, утильсбор и лаборатория. Цена прописывается в договоре и не меняется в процессе доставки.
-                    </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 text-left">
+                <!-- Card 1: Pricing -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">How is the price calculated and are there hidden fees?</h3>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Как формируется стоимость и могут ли быть скрытые доплаты?</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="en">
+                            Pricing is 100% transparent: vehicle purchase cost in China + ocean/rail freight + export licensing. No hidden dealer markups.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="ru">
+                            В смете четко зафиксированы: инвойс авто в Китае, доставка автовозом, таможенная пошлина, утильсбор и лаборатория. Цена фиксируется в договоре и не меняется.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="en">Are vehicles insured during transport?</h3>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="ru">Застрахован ли автомобиль в пути?</h3>
-                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="en">
-                        Yes, 100% full-value Institute Cargo Clauses (A) insurance covers the entire transport journey from port departure to destination delivery.
-                    </p>
-                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="ru">
-                        Да, каждый автомобиль застрахован на полную стоимость от момента погрузки на автовоз в Китае до момента передачи клиенту в его городе.
-                    </p>
+                <!-- Card 2: Insurance -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Are vehicles insured during transport?</h3>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Застрахован ли автомобиль в пути?</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="en">
+                            Yes, 100% full-value Institute Cargo Clauses (A) insurance covers the entire transport journey from port departure to destination delivery.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="ru">
+                            Да, каждый автомобиль застрахован на полную стоимость от момента погрузки на автовоз в Китае до момента передачи клиенту в его городе.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="en">What is the delivery timeline?</h3>
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900" data-lang="ru">Сколько времени занимает доставка?</h3>
-                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="en">
-                        On average, the entire process from direct factory procurement in China to export dispatch and final delivery takes 30 to 45 days.
-                    </p>
-                    <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-lang="ru">
-                        В среднем весь процесс — от выкупа авто в Китае до выдачи с полным пакетом документов (СБКТС и ЭПТС) — занимает от 30 до 45 дней.
-                    </p>
+                <!-- Card 3: Timeline -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">What is the delivery timeline?</h3>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Сколько времени занимает доставка?</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="en">
+                            On average, the entire process from direct factory procurement in China to export dispatch and final delivery takes 30 to 45 days.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="ru">
+                            В среднем весь процесс — от выкупа авто в Китае до выдачи с полным пакетом документов (СБКТС и ЭПТС) — занимает от 30 до 45 дней.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Payment Terms -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">What are the payment terms and currency options?</h3>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Каковы условия оплаты и валюта расчетов?</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="en">
+                            Payments are executed via direct bank wire (SWIFT) under official commercial contracts in USD, EUR, or CNY with transparent milestone billing.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="ru">
+                            Оплата производится по прямому внешнеторговому контракту банковским переводом (SWIFT). Расчет поэтапный: депозит, выкуп на заводе и логистика.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Customs & EPTS -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">How are customs clearance and local registration handled?</h3>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Как происходит таможенное оформление и учет?</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="en">
+                            Full import clearance is conducted at licensed customs terminals with laboratory certification (SBKTS) and active electronic title (EPTS) issuance.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="ru">
+                            Оформление проходит на аккредитованном СВХ. Автомобиль проходит лабораторию, получает действующий ЭПТС со списанным утильсбором для постановки на учет.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Factory Options -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Can I order custom factory options and packages?</h3>
+                        <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Возможен ли заказ индивидуальной комплектации?</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="en">
+                            Yes. We order directly from official manufacturer allocations, allowing full customization of exterior paint, interior leather, and optional packages.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-lang="ru">
+                            Да. Мы заказываем авто напрямую по квотам заводов: доступен любой заводской цвет кузова, отделка салона, диски и оригинальные опции.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
