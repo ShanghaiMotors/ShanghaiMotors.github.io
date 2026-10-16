@@ -1,4 +1,4 @@
-﻿// Shanghai Motors Comprehensive Car Specifications Database
+// Shanghai Motors Comprehensive Car Specifications Database
 // Generated for bilingual support (RU / EN)
 
 window.carDetailedSpecs = {
@@ -3679,8 +3679,8 @@ window.carDetailedSpecs = {
           {
             "labelRu": "Габариты (Д × Ш × В)",
             "labelEn": "Dimensions (L × W × H)",
-            "valRu": "4 600 × 1 850 × 1 660 мм",
-            "valEn": "4,600 × 1,850 × 1,660 mm"
+            "valRu": "4 600 × 1 850 × 1 660 мм (1 645 мм для Pro+ / Pro LiDAR)",
+            "valEn": "4,600 × 1,850 × 1,660 mm (1,645 mm Pro+ / LiDAR)"
           },
           {
             "labelRu": "Колесная база",
@@ -3691,8 +3691,8 @@ window.carDetailedSpecs = {
           {
             "labelRu": "Дорожный просвет",
             "labelEn": "Ground Clearance",
-            "valRu": "175 мм",
-            "valEn": "175 mm"
+            "valRu": "210 мм",
+            "valEn": "210 mm"
           },
           {
             "labelRu": "Количество мест",
@@ -3703,14 +3703,14 @@ window.carDetailedSpecs = {
           {
             "labelRu": "Объем багажника",
             "labelEn": "Trunk Capacity",
-            "valRu": "520 – 1 450 л",
-            "valEn": "520 – 1,450 L"
+            "valRu": "427 л (1 400 л со сложенными сиденьями)",
+            "valEn": "427 L (1,400 L with folded seats)"
           },
           {
             "labelRu": "Тип кузова",
             "labelEn": "Body Style",
-            "valRu": "Электрический кроссовер нового поколения e-TNGA",
-            "valEn": "Next-Gen e-TNGA Electric Crossover"
+            "valRu": "Кроссовер SUV нового поколения e-TNGA",
+            "valEn": "Next-Gen e-TNGA Crossover SUV"
           }
         ]
       },
@@ -3721,14 +3721,8 @@ window.carDetailedSpecs = {
           {
             "labelRu": "Тип силовой установки",
             "labelEn": "Powertrain Architecture",
-            "valRu": "Полностью электрический привод Toyota e-Axle",
-            "valEn": "Pure Electric Toyota e-Axle Platform"
-          },
-          {
-            "labelRu": "Электромотор",
-            "labelEn": "Electric Motor",
-            "valRu": "Синхронный двигатель на постоянных магнитах высокой эффективности",
-            "valEn": "High-Efficiency Permanent Magnet Synchronous Motor"
+            "valRu": "Полностью электрический привод Toyota e-Axle (EV)",
+            "valEn": "Pure Electric Toyota e-Axle (EV)"
           },
           {
             "labelRu": "Пиковая мощность",
@@ -3737,10 +3731,16 @@ window.carDetailedSpecs = {
             "valEn": "204 hp (150 kW)"
           },
           {
+            "labelRu": "Мощность в ЭПТС (30-мин)",
+            "labelEn": "EPTS Certified Power (30-min)",
+            "valRu": "61 л.с. (45 кВт, льготный утильсбор РФ 3 400 ₽)",
+            "valEn": "61 hp (45 kW, preferential 3,400 ₽ scrap fee)"
+          },
+          {
             "labelRu": "Крутящий момент",
             "labelEn": "Peak Torque",
-            "valRu": "266 Н·м",
-            "valEn": "266 N·m"
+            "valRu": "200 Н·м",
+            "valEn": "200 N·m"
           },
           {
             "labelRu": "Разгон 0–100 км/ч",
@@ -3751,7 +3751,7 @@ window.carDetailedSpecs = {
           {
             "labelRu": "Привод",
             "labelEn": "Drivetrain",
-            "valRu": "Передний привод (FWD)",
+            "valRu": "Передний одномоторный (FWD)",
             "valEn": "Front-Wheel Drive (FWD)"
           }
         ]
@@ -3763,26 +3763,32 @@ window.carDetailedSpecs = {
           {
             "labelRu": "Емкость тяговой батареи",
             "labelEn": "Battery Capacity",
-            "valRu": "65.3 кВт⋅ч Blade LFP (BYD-Toyota)",
-            "valEn": "65.3 kWh Blade LFP (BYD-Toyota)"
+            "valRu": "58 кВт⋅ч LFP (литий-железо-фосфатная)",
+            "valEn": "58 kWh Lithium Iron Phosphate (LFP)"
           },
           {
-            "labelRu": "Запас хода",
+            "labelRu": "Запас хода (CLTC)",
             "labelEn": "Cruising Range (CLTC)",
-            "valRu": "520 – 610 км",
-            "valEn": "520 – 610 km"
+            "valRu": "520 км",
+            "valEn": "520 km"
           },
           {
             "labelRu": "Быстрая зарядка",
             "labelEn": "Fast Charging Speed",
-            "valRu": "90 кВт DC (30% – 80% за 27 мин)",
-            "valEn": "90 kW DC (30% – 80% in 27 min)"
+            "valRu": "24 мин (30% – 80%, коэфф. 2.5C)",
+            "valEn": "24 min (30% – 80%, max 2.5C)"
           },
           {
             "labelRu": "Внешнее питание (V2L)",
             "labelEn": "External Power (V2L)",
-            "valRu": "3.3 кВт (питание бытовых приборов)",
-            "valEn": "3.3 kW V2L External Power"
+            "valRu": "6 кВт (автономное электроснабжение 220V)",
+            "valEn": "6 kW V2L External Power"
+          },
+          {
+            "labelRu": "Архитектура",
+            "labelEn": "Electrical Architecture",
+            "valRu": "400В высоковольтная система",
+            "valEn": "400V High-Voltage Architecture"
           }
         ]
       },
@@ -3793,26 +3799,26 @@ window.carDetailedSpecs = {
           {
             "labelRu": "Передняя подвеска",
             "labelEn": "Front Suspension",
-            "valRu": "Независимая подвеска MacPherson",
+            "valRu": "Независимая пружинная MacPherson",
             "valEn": "Independent MacPherson Suspension"
           },
           {
             "labelRu": "Задняя подвеска",
             "labelEn": "Rear Suspension",
-            "valRu": "Независимая многорычажная e-TNGA",
-            "valEn": "e-TNGA Independent Multi-Link"
+            "valRu": "Пружинная, торсионная балка",
+            "valEn": "Torsion Beam Rear Suspension"
           },
           {
-            "labelRu": "Управляемость",
-            "labelEn": "Handling",
-            "valRu": "Низкий центр тяжести благодаря интегрированной батарее",
-            "valEn": "Ultra-Low Center of Gravity with Integrated Battery"
+            "labelRu": "Тормозная система",
+            "labelEn": "Braking System",
+            "valRu": "Дисковые тормоза с электрогидравлическим усилителем iBooster",
+            "valEn": "Disc Brakes with iBooster Electrohydraulic Assist"
           },
           {
             "labelRu": "Рулевое управление",
             "labelEn": "Steering",
-            "valRu": "Электроусилитель EPS с адаптивной настройкой усилия",
-            "valEn": "Variable Gear Ratio Electric Power Steering"
+            "valRu": "Электроусилитель EPS с адаптивной настройкой",
+            "valEn": "Electric Power Steering (EPS)"
           }
         ]
       },
@@ -3821,28 +3827,28 @@ window.carDetailedSpecs = {
         "nameEn": "ADAS & Safety",
         "items": [
           {
-            "labelRu": "Платформа автопилота",
-            "labelEn": "Autopilot Hardware",
-            "valRu": "Toyota Safety Sense 3.0 / Momenta AI L2+",
-            "valEn": "Toyota Safety Sense 3.0 / Momenta AI L2+"
+            "labelRu": "Комплекс безопасности",
+            "labelEn": "Active Safety Suite",
+            "valRu": "Toyota Safety Sense (AHB, DRCC, WD, PCS, LDA, LTA, RSA, SLA)",
+            "valEn": "Toyota Safety Sense (AHB, DRCC, WD, PCS, LDA, LTA, RSA, SLA)"
           },
           {
-            "labelRu": "Лидар и сенсоры",
-            "labelEn": "LiDAR & Sensors",
-            "valRu": "126-линейный LiDAR + 11 HD камер + радары",
-            "valEn": "126-line LiDAR + 11 HD Cameras + Radars"
+            "labelRu": "Сенсоры (Pro LiDAR)",
+            "labelEn": "Sensors (Pro LiDAR)",
+            "valRu": "126-линейный LiDAR + 12 ультразвуковых радаров + радар мм-диапазона + 5 камер",
+            "valEn": "126-line LiDAR + 12 Ultrasonic Sensors + mmWave Radar + 5 Cameras"
           },
           {
-            "labelRu": "Навигация в городе",
-            "labelEn": "Urban Navigation",
-            "valRu": "Городской и трассовый навигационный автопилот L2+",
-            "valEn": "City & Highway Level 2+ Navigation Pilot"
+            "labelRu": "Функции автопилота",
+            "labelEn": "Autonomous Functions",
+            "valRu": "Momenta AI L2+: навигационный обгон ALC, смена полосы NLC, съезд RCA, память парковки ILPP",
+            "valEn": "Momenta AI L2+: ALC Auto Lane Change, NLC Pilot, RCA Ramp Assist, ILPP Parking"
           },
           {
-            "labelRu": "Безопасность",
-            "labelEn": "Toyota Safety",
-            "valRu": "Предотвращение столкновений PCS, распознавание пешеходов и велосипедистов",
-            "valEn": "PCS Pre-Collision System with Pedestrian Detection"
+            "labelRu": "Пассивная безопасность",
+            "labelEn": "Passive Safety",
+            "valRu": "Фронтальные, боковые, центральная подушки и шторки + ISOFIX + TPMS",
+            "valEn": "Front, Side, Center Airbags and Curtains + ISOFIX + TPMS"
           }
         ]
       },
@@ -3859,26 +3865,32 @@ window.carDetailedSpecs = {
           {
             "labelRu": "Центральный дисплей",
             "labelEn": "Center Display",
-            "valRu": "14.6\" 2K парящий сенсорный экран + цифровая панель приборов",
-            "valEn": "14.6\" 2K Floating Touchscreen + Digital Cluster"
+            "valRu": "14.6\" мультимедийный сенсорный дисплей высокой четкости",
+            "valEn": "14.6\" High-Definition Touchscreen"
+          },
+          {
+            "labelRu": "Приборная панель",
+            "labelEn": "Digital Cluster",
+            "valRu": "Электронная 8.8\" цифровая панель приборов",
+            "valEn": "8.8\" Digital Instrument Cluster"
           },
           {
             "labelRu": "Аудиосистема",
             "labelEn": "Audio System",
-            "valRu": "Премиальная аудиосистема JBL 11 динамиков",
-            "valEn": "JBL Premium 11-Speaker Sound System"
+            "valRu": "Премиальная акустика Yamaha (11 динамиков)",
+            "valEn": "Yamaha Premium 11-Speaker Audio"
           },
           {
             "labelRu": "Климатическая система",
-            "labelEn": "Climate & Heat Pump",
-            "valRu": "Двухзонный климат-контроль с тепловым насосом и ионизатором nanoeX",
-            "valEn": "Dual-Zone Climate with Heat Pump & nanoeX Ionizer"
+            "labelEn": "Climate & Air Quality",
+            "valRu": "2-зонный климат-контроль с системой фильтрации PM2.5",
+            "valEn": "Dual-Zone Climate Control with PM2.5 Filtration"
           },
           {
-            "labelRu": "Панорамная крыша",
-            "labelEn": "Panoramic Roof",
-            "valRu": "Большая панорамная крыша с защитой от ультрафиолета",
-            "valEn": "Full Panoramic Glass Roof with UV Protection"
+            "labelRu": "Обивка и комфорт сидений",
+            "labelEn": "Seating & Comfort",
+            "valRu": "Кожаная отделка, подогрев, вентиляция, память, опциональный 8-точечный массаж",
+            "valEn": "Leather Upholstery, Heating, Ventilation, Memory, Optional 8-Point Massage"
           }
         ]
       }

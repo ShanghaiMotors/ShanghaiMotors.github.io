@@ -782,37 +782,49 @@ var catalogDatabase = [
         "model": "bZ3X",
         "fullName": "Toyota bZ3X",
         "category": "Comfort",
-        "year": "2024–2026",
+        "year": "2026",
         "img": "assets/banners/banner_7.jpg",
         "trimsCount": 3,
-        "minPriceFob": 19800,
+        "minPriceFob": 22385,
         "trims": [
             {
                 "name": "520 Pro",
-                "fobUsd": 19800,
+                "cleanNameRu": "520 Pro (204 л.с. / 61 л.с. в ЭПТС)",
+                "cleanNameEn": "520 Pro (204 hp / 61 hp EPTS)",
+                "fobUsd": 22385,
                 "power": "204 л.с.",
+                "eptsHp": 61,
                 "accel": "7.5 сек",
                 "range": "520 км",
                 "drive": "Передний (FWD)",
-                "engineType": "EV (Электро)"
+                "engineType": "EV (Электро)",
+                "easyCarTurnkeyRub": 2920264
             },
             {
                 "name": "520 Pro+",
-                "fobUsd": 21200,
+                "cleanNameRu": "520 Pro+ (панорама, двойные стекла)",
+                "cleanNameEn": "520 Pro+ (Panoramic Roof, Double Glazing)",
+                "fobUsd": 23124,
                 "power": "204 л.с.",
+                "eptsHp": 61,
                 "accel": "7.5 сек",
                 "range": "520 км",
                 "drive": "Передний (FWD)",
-                "engineType": "EV (Электро)"
+                "engineType": "EV (Электро)",
+                "easyCarTurnkeyRub": 3005639
             },
             {
                 "name": "520 Pro LiDAR",
-                "fobUsd": 22800,
+                "cleanNameRu": "520 Pro LiDAR (автопилот NLC/ALC с лидаром)",
+                "cleanNameEn": "520 Pro LiDAR (Momenta AI LiDAR ADAS)",
+                "fobUsd": 25474,
                 "power": "204 л.с.",
+                "eptsHp": 61,
                 "accel": "7.5 сек",
                 "range": "520 км",
                 "drive": "Передний (FWD)",
-                "engineType": "EV (Электро)"
+                "engineType": "EV (Электро)",
+                "easyCarTurnkeyRub": 3277264
             }
         ]
     }
@@ -2957,7 +2969,8 @@ const carOptionsDatabase = {
                 "priceUsd": 0,
                 "tagRu": "Базовые",
                 "tagEn": "Standard",
-                "descRu": "Оригинальный заводской дизайн"
+                "descRu": "Оригинальный заводской дизайн",
+                "icon": "https://api.easy.car/web/content/icons/1780669441_icon.png"
             },
             {
                 "id": "ec-w-303",
@@ -2966,7 +2979,8 @@ const carOptionsDatabase = {
                 "priceUsd": 74,
                 "tagRu": "+74 $",
                 "tagEn": "+ $74",
-                "descRu": "Оригинальный заводской дизайн"
+                "descRu": "Оригинальный заводской дизайн",
+                "icon": "https://api.easy.car/web/content/icons/1780669521_icon.png"
             },
             {
                 "id": "ec-w-304",
@@ -2975,14 +2989,19 @@ const carOptionsDatabase = {
                 "priceUsd": 446,
                 "tagRu": "+446 $",
                 "tagEn": "+ $446",
-                "descRu": "Оригинальный заводской дизайн"
+                "descRu": "Оригинальный заводской дизайн",
+                "icon": "https://api.easy.car/web/content/icons/1780669587_icon.png",
+                "availableTrims": [
+                    "520 Pro",
+                    "520 Pro+"
+                ]
             }
         ],
         "colors": [
             {
                 "id": "ec-c-673",
-                "nameRu": "Белый",
-                "nameEn": "White",
+                "nameRu": "Молочно-белый",
+                "nameEn": "Milky White",
                 "hex": "#F1F1F1",
                 "priceUsd": 0
             },
@@ -3009,8 +3028,8 @@ const carOptionsDatabase = {
             },
             {
                 "id": "ec-c-672",
-                "nameRu": "Белый",
-                "nameEn": "White",
+                "nameRu": "Белый перламутр",
+                "nameEn": "Pearl White",
                 "hex": "#FEFFFF",
                 "priceUsd": 297
             },
@@ -3028,21 +3047,21 @@ const carOptionsDatabase = {
                 "nameRu": "Черный",
                 "nameEn": "Black",
                 "priceUsd": 0,
-                "hex": "#1A1A1A"
+                "hex": "#0C1216"
             },
             {
                 "id": "ec-i-294",
                 "nameRu": "Белый",
                 "nameEn": "White",
                 "priceUsd": 0,
-                "hex": "#FFFFFF:#1A1A1A"
+                "hex": "#D6D2DD"
             },
             {
                 "id": "ec-i-295",
                 "nameRu": "Оранжевый",
                 "nameEn": "Orange",
                 "priceUsd": 0,
-                "hex": "#1A1A1A:#FF7700"
+                "hex": "#DB5245"
             }
         ],
         "additionalOptions": [
@@ -3050,7 +3069,8 @@ const carOptionsDatabase = {
                 "id": "ec-opt-251",
                 "nameRu": "8-точечный массаж передних сидений",
                 "nameEn": "8-Point Pneumatic Front Seat Massage",
-                "priceUsd": 119
+                "priceUsd": 119,
+                "icon": "https://api.easy.car/web/content/icons/1780669693_icon.png"
             }
         ]
     },
@@ -3214,7 +3234,7 @@ function getTrimEngineCategory(trim) {
 
 function calculateTurnkeyPricing(trim, routeMode, liveRate, optionsUsd = 0) {
     const rate = liveRate || 84.43;
-    const powerHp = parseNumericPower(trim.power);
+    const powerHp = (trim.eptsHp !== undefined) ? trim.eptsHp : parseNumericPower(trim.power);
     const category = getTrimEngineCategory(trim);
 
     const isEvOrReev = (category === 'EV' || category === 'REEV');
@@ -3232,7 +3252,9 @@ function calculateTurnkeyPricing(trim, routeMode, liveRate, optionsUsd = 0) {
     let fullPrice = 0;
     let directFullPrice = 0;
 
-    if (isUnder160) {
+    if (trim.utilFeeRub !== undefined) {
+        utilFee = trim.utilFeeRub;
+    } else if (isUnder160) {
         utilFee = 3400;
     } else {
         if (category === 'EV' || category === 'REEV') {
