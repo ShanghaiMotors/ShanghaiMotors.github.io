@@ -1229,7 +1229,7 @@
                     </div>
                     <div class="pt-1.5 border-t ${isSelected ? 'border-white/10' : 'border-slate-100'} flex justify-between items-center">
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${priceTag}</span>
-                        ${isSelected ? '<span class="text-[10px] font-semibold text-white/80">Выбрано</span>' : ''}
+                        ${isSelected ? `<span class="text-[10px] font-semibold text-white/80">${currentLang === 'ru' ? 'Выбрано' : 'Selected'}</span>` : ''}
                     </div>
                 </div>
                 `;
@@ -1301,6 +1301,12 @@
                 const isSelected = (intItem.id === activeInteriorId);
                 const isPaid = (intItem.priceUsd > 0);
                 const rubPrice = Math.round((intItem.priceUsd || 0) * liveUsdRate);
+                let intPriceTag = '';
+                if (isPaid) {
+                    intPriceTag = (currentLang === 'ru')
+                        ? `+${rubPrice.toLocaleString()} ₽`
+                        : `+$${intItem.priceUsd.toLocaleString()}`;
+                }
 
                 let bgStyle = `background: ${intItem.hex || '#1A1A1A'};`;
                 if (intItem.hex && intItem.hex.includes(':')) {
@@ -1314,7 +1320,7 @@
                         ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
                     </button>
                     <span class="text-[11px] font-semibold text-slate-800 leading-tight">${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}</span>
-                    ${isPaid ? `<span class="text-[9px] font-bold text-amber-800 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">+${rubPrice.toLocaleString()} ₽</span>` : ''}
+                    ${isPaid ? `<span class="text-[9px] font-bold ${currentLang === 'ru' ? 'text-amber-800 bg-amber-50 border-amber-200' : 'text-emerald-800 bg-emerald-50 border-emerald-200'} px-1 py-0.2 rounded border">${intPriceTag}</span>` : ''}
                 </div>
                 `;
             }).join('');
@@ -1323,9 +1329,9 @@
             const interiorHeaderEl = document.getElementById('interior-header-selection');
             if (interiorHeaderEl && selectedInt) {
                 if (currentLang === 'ru') {
-                    interiorHeaderEl.innerHTML = `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
+                    interiorHeaderEl.innerHTML = selectedInt.priceUsd > 0 ? `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${Math.round((selectedInt.priceUsd || 0) * liveUsdRate).toLocaleString()} ₽</span>` : `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
                 } else {
-                    interiorHeaderEl.innerHTML = `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
+                    interiorHeaderEl.innerHTML = selectedInt.priceUsd > 0 ? `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedInt.priceUsd.toLocaleString()}</span>` : `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
                 }
             }
 
