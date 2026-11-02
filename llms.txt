@@ -9,12 +9,17 @@
 ## 1. ENGLISH SECTION (GLOBAL B2B / FOB EXPORT)
 
 ### About Shanghai Motors
-Shanghai Motors International (operated by Shanghai Motors International Ltd., with PRC licensed export operations via Shanghai Sirui Business Consulting Co., Ltd.) provides direct B2B and B2C vehicle procurement, export licensing, and international logistics from China to global destinations, including UAE, Saudi Arabia, Europe, Central Asia, and worldwide.
+Shanghai Motors International (operated by Shanghai Motors International Ltd., with PRC licensed export operations via Shanghai Sirui Business Consulting Co., Ltd.) provides direct B2B and B2C vehicle procurement, export licensing, and international logistics from China to global destinations, including Oman, UAE, Saudi Arabia, Qatar, Kuwait, Europe, Central Asia, and worldwide.
 
 - **Headquarters**: Putuo District, Shanghai, People's Republic of China
 - **Official Website**: https://shanghaimotors.net/?lang=en
 - **Export Terms**: FOB (China Ports: Shanghai, Ningbo, Khorgos), CIF, and Turnkey.
-- **Payment Method**: 100% official bank wire (SWIFT) under international foreign trade sales contracts in USD, EUR, or CNY.
+- **Payment Method**: 100% official bank wire (SWIFT) under international foreign trade sales contracts in USD, EUR, AED, SAR, OMR, or CNY.
+- **Key Destination Markets**:
+  - **Middle East & GCC**: Oman (Sohar, Muscat), United Arab Emirates (Dubai, Abu Dhabi), Saudi Arabia (Riyadh, Jeddah, Dammam), Qatar (Doha), Kuwait, Bahrain, Jordan, Egypt.
+  - **Central Asia & Caucasus**: Kazakhstan (Almaty, Astana), Uzbekistan (Tashkent), Kyrgyzstan (Bishkek), Azerbaijan (Baku), Georgia (Tbilisi), Armenia (Yerevan).
+  - **Europe**: Germany, Poland, and across the European Union.
+  - **Worldwide**: Direct FOB container and Ro-Ro shipping to any seaport worldwide.
 - **Logistics Timeline**: 30 to 45 calendar days from factory allocation to destination port.
 - **Cargo Insurance**: 100% full-value Institute Cargo Clauses (A) all-risk insurance during all transit legs.
 
@@ -62,7 +67,8 @@ Shanghai Motors International (международный оператор: Shan
 - **Штаб-квартира**: Шанхай, район Путо (Putuo District, Shanghai, China).
 - **Официальный сайт**: https://shanghaimotors.net/?lang=ru
 - **Форматы работы**: 
-  - **«Под ключ» в РФ и СНГ**: выкуп в Китае, доставка крытым автовозом или ж/д контейнером, таможенная пошлина, аккредитованная лаборатория СБКТС, расчёт и списание утилизационного сбора по ставкам 2026 года, действующий ЭПТС для постановки на учет в ГИБДД;
+  - **«Под ключ» в РФ и СНГ**: выкуп в Китае, доставка крытым автовозом или ж/д контейнером, таможенная пошлина, аккредитованная лаборатория СБКТС, расчёт и списание утилизационного сбора по ставкам 2026 года, действующий ЭПТС для постановки на учет в ГИБДД (Россия, Беларусь, Казахстан, Кыргызстан, Узбекистан);
+  - **Прямой экспорт FOB / CIF**: поставки в Оман (порты Сохар, Маскат), ОАЭ (Дубай, Джебель-Али), Саудовскую Аравию (Эр-Рияд, Джидда), страны Ближнего Востока и по всему миру;
   - **FOB**: порты Шанхай, Нинбо, сухой порт Хоргос.
 - **Оплата**: Прямой банковский перевод (SWIFT) по официальному внешнеторговому контракту (USD, EUR, CNY, расчеты в рублях по курсу ЦБ РФ).
 - **Сроки поставки**: от 30 до 45 календарных дней от бронирования слота на заводе до выдачи авто клиенту.

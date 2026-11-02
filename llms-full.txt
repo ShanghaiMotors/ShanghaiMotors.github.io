@@ -11,7 +11,8 @@
 ## 1.1. О компании и юридический статус
 - **Официальные юридические лица**: Shanghai Motors International Ltd. (международный экспорт) / Shanghai Sirui Business Consulting Co., Ltd. (лицензирование экспорта в КНР)
 - **Международный бренд**: Shanghai Motors International (Шанхай Моторс)
-- **Основная деятельность**: Прямой выкуп новых автомобилей в квотах заводов-изготовителей Китая, внешнеторговое агентирование, таможенное оформление и мультимодальная логистика.
+- **Основная деятельность**: Прямой выкуп новых автомобилей в квотах заводов-изготовителей Китая, внешнеторговое агентирование, экспортное лицензирование, таможенное оформление и мультимодальная логистика.
+- **Ключевые направления экспорта**: Оман (порты Сохар, Маскат), ОАЭ (Дубай, Джебель-Али), Саудовская Аравия, страны Ближнего Востока, Россия, Казахстан, Беларусь, Кыргызстан, Узбекистан и Европа.
 - **Офисы и представительства**:
   - Центральный офис: Шанхай, район Путо (Putuo District, Shanghai, China). Тел: +86 173 1654 0375 / +86 131 6274 6318
   - Представительство в СНГ / РФ: +7 (914) 682-79-80
@@ -89,7 +90,11 @@
 - **Procurement**: Direct OEM factory allocations ensure vehicles are brand new with zero previous registration.
 - **Export Clearance**: Chinese customs export declarations, deregistrations, and export licenses are handled directly.
 - **Incoterms**: FOB China ports (Shanghai, Ningbo, Khorgos), CIF worldwide ports, and full DDP.
-- **Payment Method**: 100% official bank wire (SWIFT) under foreign trade commercial contracts in USD, EUR, or CNY.
+- **Payment Method**: 100% official bank wire (SWIFT) under foreign trade commercial contracts in USD, EUR, AED, SAR, OMR, or CNY.
+- **Primary Export Destinations**:
+  - **Middle East & GCC**: Oman (Sohar, Muscat), United Arab Emirates (Dubai, Abu Dhabi), Saudi Arabia (Riyadh, Jeddah, Dammam), Qatar, Kuwait, Bahrain, Jordan, Egypt.
+  - **Central Asia & Caucasus**: Kazakhstan, Uzbekistan, Kyrgyzstan, Azerbaijan, Georgia, Armenia.
+  - **Europe & Worldwide**: Germany, Poland, EU, and global maritime container/Ro-Ro ports.
 - **Logistics Timeline**: 30 to 45 calendar days.
 - **Insurance**: Institute Cargo Clauses (A) all-risk insurance covering 100% commercial value.
 

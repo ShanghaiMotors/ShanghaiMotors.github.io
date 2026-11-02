@@ -48,11 +48,11 @@
       "url": "https://shanghaimotors.net/",
       "logo": "https://shanghaimotors.net/assets/logo-preview.png",
       "image": "https://shanghaimotors.net/assets/logo-preview.png",
-      "description": "Global Chinese automotive export hub specializing in direct manufacturer vehicle supply: Zeekr, Li Auto, Xiaomi, ROX, Lynk & Co, Avatr, Changan NEVO, Voyah, and XPeng. Transparent FOB/CIF pricing, official export licensing, and worldwide delivery to UAE, Europe, Central Asia, and CIS destinations.",
+      "description": "Global Chinese automotive export hub specializing in direct manufacturer vehicle supply: Zeekr, Li Auto, Xiaomi, ROX, Lynk & Co, Avatr, Changan NEVO, Voyah, and XPeng. Transparent FOB/CIF pricing, official export licensing, and worldwide delivery to Oman, UAE, Saudi Arabia, Europe, Central Asia, and CIS destinations.",
       "telephone": "+86 173 1654 0375",
       "email": "info@shanghaimotors.net",
       "priceRange": "$$$$",
-      "currenciesAccepted": "USD, EUR, AED, CNY, RUB",
+      "currenciesAccepted": "USD, EUR, AED, SAR, OMR, CNY, RUB",
       "paymentAccepted": "Bank Wire, SWIFT",
       "address": {
         "@type": "PostalAddress",
@@ -77,12 +77,14 @@
           "telephone": "+971 58 505 7288",
           "contactType": "sales",
           "areaServed": [
+            "Oman",
             "United Arab Emirates",
             "Saudi Arabia",
             "Qatar",
             "Kuwait",
-            "Oman",
-            "Bahrain"
+            "Bahrain",
+            "Jordan",
+            "Egypt"
           ],
           "availableLanguage": [
             "en",
@@ -111,7 +113,9 @@
           "areaServed": [
             "Russia",
             "Belarus",
-            "Kazakhstan"
+            "Kazakhstan",
+            "Uzbekistan",
+            "Kyrgyzstan"
           ],
           "availableLanguage": [
             "ru"
@@ -121,11 +125,35 @@
       "areaServed": [
         {
           "@type": "Country",
+          "name": "Oman"
+        },
+        {
+          "@type": "Country",
           "name": "United Arab Emirates"
         },
         {
           "@type": "Country",
           "name": "Saudi Arabia"
+        },
+        {
+          "@type": "Country",
+          "name": "Qatar"
+        },
+        {
+          "@type": "Country",
+          "name": "Kuwait"
+        },
+        {
+          "@type": "Country",
+          "name": "Bahrain"
+        },
+        {
+          "@type": "Country",
+          "name": "Jordan"
+        },
+        {
+          "@type": "Country",
+          "name": "Egypt"
         },
         {
           "@type": "Country",
@@ -149,11 +177,31 @@
         },
         {
           "@type": "Country",
+          "name": "Uzbekistan"
+        },
+        {
+          "@type": "Country",
+          "name": "Kyrgyzstan"
+        },
+        {
+          "@type": "Country",
+          "name": "Azerbaijan"
+        },
+        {
+          "@type": "Country",
+          "name": "Georgia"
+        },
+        {
+          "@type": "Country",
+          "name": "Armenia"
+        },
+        {
+          "@type": "Country",
           "name": "Russia"
         },
         {
           "@type": "Country",
-          "name": "Uzbekistan"
+          "name": "Belarus"
         },
         {
           "@type": "AdministrativeArea",
@@ -790,10 +838,10 @@
         },
         {
           "@type": "Question",
-          "name": "What is the delivery timeline from China to UAE, Europe, or CIS destinations?",
+          "name": "What is the delivery timeline from China to Oman, UAE, Europe, or CIS destinations?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "On average, the entire turnkey process from direct factory procurement in China to export dispatch, shipping to Jebel Ali (Dubai), European ports (Rotterdam, Bremerhaven) or CIS delivery takes 30 to 45 calendar days."
+            "text": "On average, the entire turnkey process from direct factory procurement in China to export dispatch, shipping to Sohar/Muscat (Oman), Jebel Ali (Dubai), European ports (Rotterdam, Bremerhaven) or CIS delivery takes 30 to 45 calendar days."
           }
         },
         {
@@ -801,7 +849,7 @@
           "name": "What are the payment terms and currency options?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Payments are executed directly under official commercial foreign trade contracts via international bank wire (SWIFT) in USD, EUR, AED, or CNY with transparent staged milestone billing."
+            "text": "Payments are executed directly under official commercial foreign trade contracts via international bank wire (SWIFT) in USD, EUR, AED, SAR, OMR, or CNY with transparent staged milestone billing."
           }
         },
         {
@@ -3479,7 +3527,7 @@
             const notesInput = document.getElementById('lead-notes');
             if (destInput && nameInput && phoneInput && notesInput) {
                 if (lang === 'en') {
-                    destInput.placeholder = 'Dubai (Jebel Ali), Rotterdam, Lagos, Riyadh...';
+                    destInput.placeholder = 'Muscat (Sohar), Dubai (Jebel Ali), Riyadh, Rotterdam...';
                     nameInput.placeholder = 'David Miller';
                     phoneInput.placeholder = '+971 50 123 4567 or +44 7123 456789';
                     notesInput.placeholder = 'Exterior color, interior options, trim level...';
@@ -3498,7 +3546,7 @@
             if (mqVehicle && mqDest && mqContact) {
                 if (lang === 'en') {
                     mqVehicle.placeholder = 'e.g. Li Auto L9, Zeekr 001, Xiaomi SU7';
-                    mqDest.placeholder = 'e.g. Dubai, Rotterdam, Bishkek, Riyadh';
+                    mqDest.placeholder = 'e.g. Muscat, Dubai, Riyadh, Bishkek, Rotterdam';
                     mqContact.placeholder = '+1 ... / WhatsApp / email@example.com';
                 } else {
                     mqVehicle.placeholder = 'напр. Li Auto L9, Zeekr 001, Xiaomi SU7';
