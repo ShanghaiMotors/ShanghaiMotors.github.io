@@ -136,3 +136,8 @@
 - **How long does it take for a car from China to arrive in Muscat or Dubai?** Ocean shipping from Shanghai or Ningbo to Sohar/Muscat (Oman) and Jebel Ali (Dubai) takes 22 to 30 days. Total delivery timeline from factory quota booking to destination port arrival is 30 to 45 calendar days, with GPS vessel tracking.
 - **Can I pay in OMR, AED, SAR, or USD, and is my payment secure?** Yes. Payments are executed via official bank wire (SWIFT) under binding commercial sales contracts in USD, EUR, AED, SAR, OMR, or CNY with staged milestone invoicing.
 - **Can I pick my own exterior color, interior leather, and wheels directly from the factory?** Yes. Orders are allocated directly with the OEM manufacturer, allowing complete choice of exterior paint, Nappa leather, wheel styles, and optional equipment packs.
+
+## 2.6. Country-Specific Port Delivery Guides & Documentation Packs (2026)
+- **Oman (Port of Sohar & Muscat)**: Complete 2026 CIF Buyer Guide (https://shanghaimotors.net/guides/how-to-import-car-from-china-to-oman-2026.html). Explains direct OEM quota procurement, 22-30 day ocean shipping, complete original document pack via DHL (B/L, Commercial Invoice, COO), 5% GCC customs tariff overview, and OMR landed cost calculation.
+- **UAE (Jebel Ali & Dubai)**: Complete 2026 CIF Buyer Guide (https://shanghaimotors.net/guides/how-to-import-car-from-china-to-uae-2026.html). Details CIF delivery to Jebel Ali, 5% customs duty and 5% VAT overview, electronic VCC procedures, and AED landed cost comparison saving 20-35% vs local showrooms.
+- **Country Guides Directory**: https://shanghaimotors.net/guides/

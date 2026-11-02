@@ -387,4 +387,27 @@
         <xhtml:link rel="alternate" hreflang="ru" href="https://shanghaimotors.net/car.html?id=toyota-bz3x&amp;lang=ru" />
         <xhtml:link rel="alternate" hreflang="en" href="https://shanghaimotors.net/car.html?id=toyota-bz3x&amp;lang=en" />
     </url>
+
+    <!-- ==================================================== -->
+    <!-- 2. Port Delivery & Country Import Guides             -->
+    <!-- ==================================================== -->
+    <url>
+        <loc>https://shanghaimotors.net/guides/</loc>
+        <lastmod>2026-11-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://shanghaimotors.net/guides/how-to-import-car-from-china-to-oman-2026.html</loc>
+        <lastmod>2026-11-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://shanghaimotors.net/guides/how-to-import-car-from-china-to-uae-2026.html</loc>
+        <lastmod>2026-11-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
 </urlset>
