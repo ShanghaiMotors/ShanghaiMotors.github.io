@@ -1,4 +1,4 @@
-# Shanghai Motors — Comprehensive AI Knowledge Base & Technical Export Guide
+# Shanghai Motors International — Comprehensive AI Knowledge Base & Global Export Guide
 
 > Complete documentation, vehicle trim specifications, customs calculation models, and turnkey export procedures for AI assistants, LLM search agents, and buyers.
 > Operated by Shanghai Motors International Ltd. and Shanghai Sirui Business Consulting Co., Ltd., Putuo District, Shanghai, China.
@@ -10,7 +10,7 @@
 
 ## 1.1. О компании и юридический статус
 - **Официальные юридические лица**: Shanghai Motors International Ltd. (международный экспорт) / Shanghai Sirui Business Consulting Co., Ltd. (лицензирование экспорта в КНР)
-- **Коммерческое наименование**: Shanghai Motors (Шанхай Моторс)
+- **Международный бренд**: Shanghai Motors International (Шанхай Моторс)
 - **Основная деятельность**: Прямой выкуп новых автомобилей в квотах заводов-изготовителей Китая, внешнеторговое агентирование, таможенное оформление и мультимодальная логистика.
 - **Офисы и представительства**:
   - Центральный офис: Шанхай, район Путо (Putuo District, Shanghai, China). Тел: +86 173 1654 0375 / +86 131 6274 6318
@@ -69,7 +69,7 @@
 
 ## 2.1. Company Overview & Legal Identity
 - **Legal Entities**: Shanghai Motors International Ltd. (International Operations) & Shanghai Sirui Business Consulting Co., Ltd. (PRC Licensed Export Entity)
-- **Trade Name**: Shanghai Motors
+- **Global Brand**: Shanghai Motors International
 - **Core Operations**: Direct manufacturer vehicle allocations for Chinese NEVs, foreign trade brokerage, international shipping, and export licensing.
 - **HQ Location**: Putuo District, Shanghai, People's Republic of China
 - **Official URLs**: https://shanghaimotors.net/?lang=en

@@ -14,7 +14,7 @@
 
     <!-- Open Graph & Social Cards (AI & Social Discoverability) -->
     <meta property="og:type" content="product">
-    <meta property="og:site_name" content="Shanghai Motors">
+    <meta property="og:site_name" content="Shanghai Motors International">
     <meta property="og:title" id="og-title" content="Конфигуратор и расчет «Под ключ» — SHANGHAI MOTORS">
     <meta property="og:description" id="og-desc" content="Официальный расчет стоимости автомобиля из Китая под ключ в Москве: таможня, утильсбор 2026, комплектации и доставка от Shanghai Motors.">
     <meta property="og:image" id="og-image" content="https://shanghaimotors.net/assets/logo-preview.png">
@@ -29,7 +29,8 @@
         {
           "@type": "AutoDealer",
           "@id": "https://shanghaimotors.net/#organization",
-          "name": "Shanghai Motors (Shanghai Motors International Ltd. / Shanghai Sirui Business Consulting Co., Ltd.)",
+          "name": "Shanghai Motors International",
+          "legalName": "Shanghai Motors International Ltd.",
           "url": "https://shanghaimotors.net/",
           "telephone": "+86 173 1654 0375",
           "email": "info@shanghaimotors.net"
@@ -999,7 +1000,7 @@
             if (canonical) canonical.setAttribute('href', carUrl);
 
             const ogTitle = document.getElementById('og-title');
-            if (ogTitle) ogTitle.setAttribute('content', `${currentCar.fullName} — Export & Turnkey Calculator | Shanghai Motors`);
+            if (ogTitle) ogTitle.setAttribute('content', `${currentCar.fullName} — Export & Turnkey Calculator | Shanghai Motors International`);
             const ogDesc = document.getElementById('og-desc');
             if (ogDesc) ogDesc.setAttribute('content', desc);
             const ogImg = document.getElementById('og-image');
@@ -1015,7 +1016,8 @@
                         {
                             "@type": "AutoDealer",
                             "@id": "https://shanghaimotors.net/#organization",
-                            "name": "Shanghai Motors (Shanghai Motors International Ltd. / Shanghai Sirui Business Consulting Co., Ltd.)",
+                            "name": "Shanghai Motors International",
+          "legalName": "Shanghai Motors International Ltd.",
                             "alternateName": ["Shanghai Motors", "Shanghai Motors International Ltd.", "Шанхай Моторс"],
                             "url": "https://shanghaimotors.net/",
                             "telephone": "+86 173 1654 0375",
@@ -1087,8 +1089,8 @@
             const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
             updateCarSeoAndSchema(trim, trimDisplay);
             document.title = (currentLang === 'ru')
-                ? `${currentCar.fullName} (${trimDisplay}) — Расчет под ключ | SHANGHAI MOTORS`
-                : `${currentCar.fullName} (${trimDisplay}) — Export FOB Configurator | SHANGHAI MOTORS`;
+                ? `${currentCar.fullName} (${trimDisplay}) — Расчет под ключ | Shanghai Motors International`
+                : `${currentCar.fullName} (${trimDisplay}) — Export FOB Configurator | Shanghai Motors International`;
             document.getElementById('breadcrumb-brand').innerText = currentCar.brand;
             document.getElementById('breadcrumb-car').innerText = currentCar.fullName;
 
