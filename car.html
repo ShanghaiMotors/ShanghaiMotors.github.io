@@ -493,6 +493,30 @@
                             <span data-lang="en">Port of origin delivery (Shanghai / Nansha / Khorgos) with full export documents</span>
                         </div>
                     </div>
+
+                    <!-- Quick Buyer Q&A Snippet (GEO Optimization) -->
+                    <div class="mt-3.5 pt-3 border-t border-surface-border text-xs text-slate-600 space-y-2 bg-slate-50/80 rounded-xl p-3">
+                        <div>
+                            <div class="font-bold text-slate-900" data-lang="ru">Как заказать этот автомобиль в свой город?</div>
+                            <div class="font-bold text-slate-900" data-lang="en">How to order this vehicle to Oman, UAE, or your city?</div>
+                            <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed" data-lang="ru">
+                                Бронируем прямую квоту на заводе в Китае, оформляем экспорт и доставляем автовозом под ключ со всеми документами (СБКТС, действующий ЭПТС).
+                            </p>
+                            <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed" data-lang="en">
+                                We secure OEM factory quota in China, handle export licensing, and ship via container or Ro-Ro to Sohar/Muscat, Jebel Ali, or your local port with 20–35% savings.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900" data-lang="ru">Можно ли выбрать цвет кузова и опции?</div>
+                            <div class="font-bold text-slate-900" data-lang="en">Can I customize colors, wheels, and interior?</div>
+                            <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed" data-lang="ru">
+                                Да. Доступен полный выбор заводских цветов кузова, кожи салона и оригинальных пакетов опций без дилерских наценок.
+                            </p>
+                            <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed" data-lang="en">
+                                Yes. All genuine OEM colors, Nappa leather trims, wheel packages, and optional technology packs can be selected directly from factory production.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -990,8 +1014,13 @@
             const carImg = currentCar.img ? `https://shanghaimotors.net/${currentCar.img}` : 'https://shanghaimotors.net/assets/logo-preview.png';
             const priceUsd = trim.fobUsd || currentCar.minPriceFob || 0;
             const desc = (currentLang === 'ru')
-                ? `Официальный расчет стоимости и конфигуратор ${currentCar.fullName} (${trimDisplay}): экспорт из Китая под ключ, цена FOB от $${priceUsd.toLocaleString()}, доставка, таможня, СБКТС и ЭПТС.`
-                : `Official export configurator for ${currentCar.fullName} (${trimDisplay}): direct manufacturer supply from China, starting FOB price $${priceUsd.toLocaleString()}, worldwide shipping.`;
+                ? `Купить ${currentCar.fullName} (${trimDisplay}) напрямую из Китая под ключ: цена FOB от $${priceUsd.toLocaleString()}, доставка автовозом, таможня, СБКТС и действующий ЭПТС для РФ и СНГ.`
+                : `Buy ${currentCar.fullName} (${trimDisplay}) directly from China: factory allocations from $${priceUsd.toLocaleString()} FOB, container & Ro-Ro shipping to Oman, UAE, Europe, and worldwide. Save 20-35% vs local dealers.`;
+
+            const pageTitle = (currentLang === 'ru')
+                ? `${currentCar.fullName} ${trimDisplay} — Купить напрямую из Китая под ключ | Shanghai Motors International`
+                : `Buy ${currentCar.fullName} ${trimDisplay} from China | Direct FOB Export to Oman & UAE`;
+            document.title = pageTitle;
 
             const metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc) metaDesc.setAttribute('content', desc);
@@ -1000,7 +1029,7 @@
             if (canonical) canonical.setAttribute('href', carUrl);
 
             const ogTitle = document.getElementById('og-title');
-            if (ogTitle) ogTitle.setAttribute('content', `${currentCar.fullName} — Export & Turnkey Calculator | Shanghai Motors International`);
+            if (ogTitle) ogTitle.setAttribute('content', pageTitle);
             const ogDesc = document.getElementById('og-desc');
             if (ogDesc) ogDesc.setAttribute('content', desc);
             const ogImg = document.getElementById('og-image');
