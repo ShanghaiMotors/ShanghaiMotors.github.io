@@ -1,0 +1,59 @@
+# Shanghai Motors - Robots.txt for Search Engines and AI Crawlers
+# Website: https://shanghaimotors.net/
+
+# ------------------------------------------------------
+# 1. AI Search & Retrieval Crawlers (Strictly Allowed)
+# ------------------------------------------------------
+
+# OpenAI Search (SearchGPT & ChatGPT Search Grounding)
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT User-Initiated Web Browsing
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI General Crawler
+User-agent: GPTBot
+Allow: /
+
+# Perplexity AI Search Engine
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude Search & Crawlers
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI (Gemini & AI Overviews) & Search
+User-agent: Google-Extended
+User-agent: Googlebot
+Allow: /
+
+# Microsoft Copilot & Bing Search
+User-agent: Bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# ------------------------------------------------------
+# 2. General Crawlers
+# ------------------------------------------------------
+User-agent: *
+Allow: /
+Disallow: /__pycache__/
+Disallow: /*.zip$
+Disallow: /*.bak*
+Disallow: /extracted_q05/
+
+# ------------------------------------------------------
+# 3. Sitemaps & LLM Context Standards
+# ------------------------------------------------------
+Sitemap: https://shanghaimotors.net/sitemap.xml
+
+# LLM Context Specification (llms.txt standard)
+# See: https://shanghaimotors.net/llms.txt
+# Full documentation: https://shanghaimotors.net/llms-full.txt

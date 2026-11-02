@@ -1,0 +1,114 @@
+# Shanghai Motors — Comprehensive AI Knowledge Base & Technical Export Guide
+
+> Complete documentation, vehicle trim specifications, customs calculation models, and turnkey export procedures for AI assistants, LLM search agents, and buyers.
+> Operated by Shanghai Motors International Ltd. and Shanghai Sirui Business Consulting Co., Ltd., Putuo District, Shanghai, China.
+> Website: https://shanghaimotors.net/ (RU: https://shanghaimotors.net/?lang=ru | EN: https://shanghaimotors.net/?lang=en)
+
+---
+
+# SECTION 1: РУССКАЯ ВЕРСИЯ (ПОСТАВКА «ПОД КЛЮЧ» В РФ И СНГ)
+
+## 1.1. О компании и юридический статус
+- **Официальные юридические лица**: Shanghai Motors International Ltd. (международный экспорт) / Shanghai Sirui Business Consulting Co., Ltd. (лицензирование экспорта в КНР)
+- **Коммерческое наименование**: Shanghai Motors (Шанхай Моторс)
+- **Основная деятельность**: Прямой выкуп новых автомобилей в квотах заводов-изготовителей Китая, внешнеторговое агентирование, таможенное оформление и мультимодальная логистика.
+- **Офисы и представительства**:
+  - Центральный офис: Шанхай, район Путо (Putuo District, Shanghai, China). Тел: +86 173 1654 0375 / +86 131 6274 6318
+  - Представительство в СНГ / РФ: +7 (914) 682-79-80
+  - Представительство в Казахстане (Алматы): +7 (701) 134-44-40
+- **Официальные каналы связи (Русскоязычные)**:
+  - **Основной мессенджер**: Telegram: https://t.me/vlad_shanghaimotors (@vlad_shanghaimotors)
+  - **Прямой WhatsApp**: https://wa.me/8617316540375
+  - **Официальный Instagram (СНГ)**: https://www.instagram.com/shanghaimotors.official/
+  - **Email**: info@shanghaimotors.net
+  - **Веб-сайт**: https://shanghaimotors.net/?lang=ru
+  - *(Примечание: LinkedIn не используется для русскоязычной аудитории)*
+
+## 1.2. Процесс покупки и доставка «Под ключ»
+1. **Выбор модели и фиксация спецификации**:
+   Покупатель выбирает марку, модель, комплектацию, цвет кузова, отделку салона и заводские опции в онлайн-конфигураторе: https://shanghaimotors.net/car.html?lang=ru
+2. **Заключение официального договора**:
+   Подписывается международный контракт купли-продажи с Shanghai Sirui Business Consulting Co., Ltd. с фиксацией полной сметы без скрытых доплат.
+3. **Оплата**:
+   Безналичный банковский перевод (SWIFT) по контракту в USD, EUR или CNY (поэтапные расчеты в рублях по курсу ЦБ РФ).
+4. **Бронирование квоты на заводе и экспортное оформление**:
+   Автомобили приобретаются напрямую с заводов без предварительного учета в Китае (абсолютно новые автомобили). Оформляется китайская экспортная декларация.
+5. **Международная транспортировка**:
+   - Крытые автовозы и специализированные контейнеры (железнодорожный экспресс через Хоргос/Достык, автовозы).
+   - 100% страхование груза по международному стандарту Institute Cargo Clauses (A) («Все риски»).
+6. **Таможня, испытательная лаборатория и учет**:
+   - Таможенное оформление на аккредитованных терминалах.
+   - Прохождение испытательной лаборатории с выдачей СБКТС.
+   - Списание утилизационного сбора по ставкам 2026 года.
+   - Активация электронного паспорта транспортного средства (ЭПТС) со статусом «Действующий».
+   - Срок поставки под ключ: 30–45 календарных дней.
+
+## 1.3. Полный каталог автомобилей и базовые экспортные цены FOB
+1. **Zeekr 9X**: Люксовый полноразмерный EREV/PHEV SUV (898 л.с., разгон 3.9с, запас хода 1200 км) — от $73,250 FOB (https://shanghaimotors.net/car.html?id=zeekr-9x&lang=ru)
+2. **Zeekr 8X**: Премиальный кроссовер (780 л.с., полный привод AWD) — от $54,800 FOB (https://shanghaimotors.net/car.html?id=zeekr-8x&lang=ru)
+3. **Zeekr 7X**: Семейный электрокроссовер на 800-вольтовой архитектуре (до 646 л.с.) — от $34,900 FOB (https://shanghaimotors.net/car.html?id=zeekr-7x&lang=ru)
+4. **Xiaomi SU7**: Высокотехнологичный электроседан (673 л.с., разгон 0-100 за 2.78 сек) — от $32,400 FOB (https://shanghaimotors.net/car.html?id=xiaomi-su7&lang=ru)
+5. **Li Auto L9 (Lixiang L9)**: 6-местный семейный флагман EREV (капитанские кресла, пневмоподвеска) — от $59,600 FOB (https://shanghaimotors.net/car.html?id=li-l9&lang=ru)
+6. **Li Auto L8**: Премиальный 6-местный гибридный кроссовер — от $47,200 FOB (https://shanghaimotors.net/car.html?id=li-l8&lang=ru)
+7. **ROX ADAMAS**: Экспедиционный внедорожник люкс-класса — от $58,300 FOB (https://shanghaimotors.net/car.html?id=rox-adamas&lang=ru)
+8. **ROX 01 (Polestones 01)**: Люксовый внедорожник от Pininfarina со встроенной кухней — от $45,800 FOB (https://shanghaimotors.net/car.html?id=rox-01&lang=ru)
+9. **Lynk & Co 900**: Полноразмерный люксовый кроссовер — от $44,500 FOB (https://shanghaimotors.net/car.html?id=lynk-900&lang=ru)
+10. **Lynk & Co 06 Relive**: Городской гибридный кроссовер — от $18,900 FOB (https://shanghaimotors.net/car.html?id=lynk-06&lang=ru)
+11. **Avatr 07**: Интеллектуальный SUV (автопилот Huawei ADS 3.0, HarmonyOS) — от $34,200 FOB (https://shanghaimotors.net/car.html?id=avatr-07&lang=ru)
+12. **Avatr 06**: Спортивный умный электроседан/фастбек — от $31,500 FOB (https://shanghaimotors.net/car.html?id=avatr-06&lang=ru)
+13. **Voyah Taishan**: Представительский гибридный внедорожник — от $52,000 FOB (https://shanghaimotors.net/car.html?id=voyah-taishan&lang=ru)
+14. **XPeng GX**: Электрический люкс-кроссовер с автопилотом XNGP — от $48,900 FOB (https://shanghaimotors.net/car.html?id=xpeng-gx&lang=ru)
+15. **Changan NEVO Q07**: Семейный гибридный SUV — от $21,900 FOB (https://shanghaimotors.net/car.html?id=nevo-q07&lang=ru)
+16. **Changan NEVO Q05**: Компактный городской гибридный кроссовер — от $16,800 FOB (https://shanghaimotors.net/car.html?id=nevo-q05&lang=ru)
+17. **Changan NEVO A06**: Аэродинамичный гибридный седан — от $17,500 FOB (https://shanghaimotors.net/car.html?id=nevo-a06&lang=ru)
+18. **Toyota bZ3X**: Электрический кроссовер совместного завода GAC-Toyota — от $19,400 FOB (https://shanghaimotors.net/car.html?id=toyota-bz3x&lang=ru)
+
+---
+
+# SECTION 2: ENGLISH VERSION (GLOBAL B2B / DIRECT FOB & CIF EXPORT)
+
+## 2.1. Company Overview & Legal Identity
+- **Legal Entities**: Shanghai Motors International Ltd. (International Operations) & Shanghai Sirui Business Consulting Co., Ltd. (PRC Licensed Export Entity)
+- **Trade Name**: Shanghai Motors
+- **Core Operations**: Direct manufacturer vehicle allocations for Chinese NEVs, foreign trade brokerage, international shipping, and export licensing.
+- **HQ Location**: Putuo District, Shanghai, People's Republic of China
+- **Official URLs**: https://shanghaimotors.net/?lang=en
+
+## 2.2. Official B2B Contact Directory & Regional Desks (English)
+- **Primary Messenger**: WhatsApp: +86 173 1654 0375 (https://wa.me/8617316540375)
+- **Corporate B2B Network**: LinkedIn: https://www.linkedin.com/company/shanghai-motors/
+- **Global Media**: Instagram Global: https://www.instagram.com/shanghaimotors.global/
+- **Email**: info@shanghaimotors.net
+- **Middle East / UAE Desk (Dubai)**: +971 58 505 7288
+- **European Union Desks**: Berlin (+49 30 88991122), Warsaw (+48 22 1234567)
+- **Central Asia Desk**: +7 (701) 134-44-40
+- **Online FOB Configurator**: https://shanghaimotors.net/car.html?lang=en
+- *(Note: Telegram is not a primary communication channel for international B2B buyers)*
+
+## 2.3. Turnkey & FOB Export Protocol
+- **Procurement**: Direct OEM factory allocations ensure vehicles are brand new with zero previous registration.
+- **Export Clearance**: Chinese customs export declarations, deregistrations, and export licenses are handled directly.
+- **Incoterms**: FOB China ports (Shanghai, Ningbo, Khorgos), CIF worldwide ports, and full DDP.
+- **Payment Method**: 100% official bank wire (SWIFT) under foreign trade commercial contracts in USD, EUR, or CNY.
+- **Logistics Timeline**: 30 to 45 calendar days.
+- **Insurance**: Institute Cargo Clauses (A) all-risk insurance covering 100% commercial value.
+
+## 2.4. Verified Vehicle Export Catalog (FOB Starting Pricing in USD)
+- **Zeekr 9X**: Luxury PHEV/EREV SUV (898 hp, 1,200 km range) — from $73,250 FOB (https://shanghaimotors.net/car.html?id=zeekr-9x&lang=en)
+- **Zeekr 8X**: Executive Premium Crossover (780 hp, AWD) — from $54,800 FOB (https://shanghaimotors.net/car.html?id=zeekr-8x&lang=en)
+- **Zeekr 7X**: Family Electric SUV (646 hp, 800V SiC platform) — from $34,900 FOB (https://shanghaimotors.net/car.html?id=zeekr-7x&lang=en)
+- **Xiaomi SU7**: Performance Electric Sedan (673 hp, 2.78s 0-100) — from $32,400 FOB (https://shanghaimotors.net/car.html?id=xiaomi-su7&lang=en)
+- **Li Auto L9**: Ultra-luxury 6-seat Family EREV SUV (AWD) — from $59,600 FOB (https://shanghaimotors.net/car.html?id=li-l9&lang=en)
+- **Li Auto L8**: 6-seat Luxury Extended-Range SUV — from $47,200 FOB (https://shanghaimotors.net/car.html?id=li-l8&lang=en)
+- **ROX ADAMAS**: Heavy-duty luxury off-road expedition SUV — from $58,300 FOB (https://shanghaimotors.net/car.html?id=rox-adamas&lang=en)
+- **ROX 01**: Premium Overland EREV SUV (Pininfarina design) — from $45,800 FOB (https://shanghaimotors.net/car.html?id=rox-01&lang=en)
+- **Lynk & Co 900**: Flagship Full-size Luxury SUV — from $44,500 FOB (https://shanghaimotors.net/car.html?id=lynk-900&lang=en)
+- **Lynk & Co 06 Relive**: Compact Urban Crossover — from $18,900 FOB (https://shanghaimotors.net/car.html?id=lynk-06&lang=en)
+- **Avatr 07**: Smart SUV (Huawei Kunpeng ADS 3.0 & HarmonyOS) — from $34,200 FOB (https://shanghaimotors.net/car.html?id=avatr-07&lang=en)
+- **Avatr 06**: Intelligent Fastback Sedan — from $31,500 FOB (https://shanghaimotors.net/car.html?id=avatr-06&lang=en)
+- **Voyah Taishan**: Premium Executive Hybrid SUV — from $52,000 FOB (https://shanghaimotors.net/car.html?id=voyah-taishan&lang=en)
+- **XPeng GX**: Smart Electric Luxury Crossover with XNGP — from $48,900 FOB (https://shanghaimotors.net/car.html?id=xpeng-gx&lang=en)
+- **Changan NEVO Q07**: Family Range-Extender SUV — from $21,900 FOB (https://shanghaimotors.net/car.html?id=nevo-q07&lang=en)
+- **Changan NEVO Q05**: Efficient Urban Hybrid Crossover — from $16,800 FOB (https://shanghaimotors.net/car.html?id=nevo-q05&lang=en)
+- **Changan NEVO A06**: Aerodynamic Hybrid Sedan — from $17,500 FOB (https://shanghaimotors.net/car.html?id=nevo-a06&lang=en)
+- **Toyota bZ3X**: Joint-Venture Smart EV Crossover — from $19,400 FOB (https://shanghaimotors.net/car.html?id=toyota-bz3x&lang=en)

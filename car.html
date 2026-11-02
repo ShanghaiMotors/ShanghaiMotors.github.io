@@ -10,6 +10,50 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
+    <link rel="canonical" id="canonical-url" href="https://shanghaimotors.net/car.html">
+
+    <!-- Open Graph & Social Cards (AI & Social Discoverability) -->
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="Shanghai Motors">
+    <meta property="og:title" id="og-title" content="Конфигуратор и расчет «Под ключ» — SHANGHAI MOTORS">
+    <meta property="og:description" id="og-desc" content="Официальный расчет стоимости автомобиля из Китая под ключ в Москве: таможня, утильсбор 2026, комплектации и доставка от Shanghai Motors.">
+    <meta property="og:image" id="og-image" content="https://shanghaimotors.net/assets/logo-preview.png">
+    <meta property="og:url" id="og-url" content="https://shanghaimotors.net/car.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Schema.org Structured Data (LLM & GEO Optimized) -->
+    <script type="application/ld+json" id="car-schema-jsonld">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "AutoDealer",
+          "@id": "https://shanghaimotors.net/#organization",
+          "name": "Shanghai Motors (Shanghai Motors International Ltd. / Shanghai Sirui Business Consulting Co., Ltd.)",
+          "url": "https://shanghaimotors.net/",
+          "telephone": "+86 173 1654 0375",
+          "email": "info@shanghaimotors.net"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://shanghaimotors.net/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Car Configurator",
+              "item": "https://shanghaimotors.net/car.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- Fonts: Manrope & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -938,6 +982,101 @@
             }).join('');
         }
 
+
+        function updateCarSeoAndSchema(trim, trimDisplay) {
+            if (!currentCar) return;
+            const carUrl = `https://shanghaimotors.net/car.html?id=${currentCar.id}&lang=${currentLang}`;
+            const carImg = currentCar.img ? `https://shanghaimotors.net/${currentCar.img}` : 'https://shanghaimotors.net/assets/logo-preview.png';
+            const priceUsd = trim.fobUsd || currentCar.minPriceFob || 0;
+            const desc = (currentLang === 'ru')
+                ? `Официальный расчет стоимости и конфигуратор ${currentCar.fullName} (${trimDisplay}): экспорт из Китая под ключ, цена FOB от $${priceUsd.toLocaleString()}, доставка, таможня, СБКТС и ЭПТС.`
+                : `Official export configurator for ${currentCar.fullName} (${trimDisplay}): direct manufacturer supply from China, starting FOB price $${priceUsd.toLocaleString()}, worldwide shipping.`;
+
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', desc);
+
+            const canonical = document.getElementById('canonical-url');
+            if (canonical) canonical.setAttribute('href', carUrl);
+
+            const ogTitle = document.getElementById('og-title');
+            if (ogTitle) ogTitle.setAttribute('content', `${currentCar.fullName} — Export & Turnkey Calculator | Shanghai Motors`);
+            const ogDesc = document.getElementById('og-desc');
+            if (ogDesc) ogDesc.setAttribute('content', desc);
+            const ogImg = document.getElementById('og-image');
+            if (ogImg) ogImg.setAttribute('content', carImg);
+            const ogUrl = document.getElementById('og-url');
+            if (ogUrl) ogUrl.setAttribute('content', carUrl);
+
+            const schemaEl = document.getElementById('car-schema-jsonld');
+            if (schemaEl) {
+                const schemaObj = {
+                    "@context": "https://schema.org",
+                    "@graph": [
+                        {
+                            "@type": "AutoDealer",
+                            "@id": "https://shanghaimotors.net/#organization",
+                            "name": "Shanghai Motors (Shanghai Motors International Ltd. / Shanghai Sirui Business Consulting Co., Ltd.)",
+                            "alternateName": ["Shanghai Motors", "Shanghai Motors International Ltd.", "Шанхай Моторс"],
+                            "url": "https://shanghaimotors.net/",
+                            "telephone": "+86 173 1654 0375",
+                            "email": "info@shanghaimotors.net"
+                        },
+                        {
+                            "@type": "BreadcrumbList",
+                            "itemListElement": [
+                                {
+                                    "@type": "ListItem",
+                                    "position": 1,
+                                    "name": currentLang === 'ru' ? "Главная" : "Home",
+                                    "item": `https://shanghaimotors.net/${currentLang === 'ru' ? '?lang=ru' : '?lang=en'}`
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 2,
+                                    "name": currentCar.brand,
+                                    "item": "https://shanghaimotors.net/#catalog"
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 3,
+                                    "name": currentCar.fullName,
+                                    "item": carUrl
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "Car",
+                            "@id": carUrl,
+                            "inLanguage": currentLang,
+                            "name": `${currentCar.fullName} ${trimDisplay}`,
+                            "brand": {
+                                "@type": "Brand",
+                                "name": currentCar.brand
+                            },
+                            "model": currentCar.model,
+                            "modelDate": currentCar.year,
+                            "vehicleConfiguration": trimDisplay,
+                            "image": carImg,
+                            "url": carUrl,
+                            "description": desc,
+                            "offers": {
+                                "@type": "Offer",
+                                "price": priceUsd,
+                                "priceCurrency": "USD",
+                                "priceValidUntil": "2026-12-31",
+                                "availability": "https://schema.org/InStock",
+                                "itemCondition": "https://schema.org/NewCondition",
+                                "seller": {
+                                    "@id": "https://shanghaimotors.net/#organization"
+                                }
+                            }
+                        }
+                    ]
+                };
+                schemaEl.textContent = JSON.stringify(schemaObj, null, 2);
+            }
+        }
+
         function renderAll() {
             if (!currentCar) return;
             const visibleTrims = getVisibleTrims();
@@ -946,6 +1085,7 @@
 
             // Update Header & Breadcrumbs
             const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
+            updateCarSeoAndSchema(trim, trimDisplay);
             document.title = (currentLang === 'ru')
                 ? `${currentCar.fullName} (${trimDisplay}) — Расчет под ключ | SHANGHAI MOTORS`
                 : `${currentCar.fullName} (${trimDisplay}) — Export FOB Configurator | SHANGHAI MOTORS`;
