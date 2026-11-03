@@ -494,7 +494,7 @@ var catalogDatabase = [
         "fullName": "XPeng GX",
         "category": "Premium",
         "year": "2025–2026",
-        "img": "assets/cars/xpeng-gx.png?v=2",
+        "img": "assets/cars/xpeng-gx.png?v=3",
         "trimsCount": 4,
         "minPriceFob": 50300,
         "trims": [
@@ -623,7 +623,7 @@ var catalogDatabase = [
         "fullName": "Lynk & Co 06 Relive",
         "category": "Compact SUV",
         "year": "2025–2026",
-        "img": "assets/cars/lynk-06.png",
+        "img": "assets/cars/lynk-06.png?v=2",
         "trimsCount": 2,
         "minPriceFob": 15120,
         "trims": [
@@ -1645,6 +1645,7 @@ const carOptionsDatabase = {
                 "tagEn": "Standard",
                 "descRu": "Штатные всесезонные шины R18",
                 "descEn": "Standard touring tires R18",
+                "img": "assets/cars/lynk-06-wheel.jpg",
                 "availableTrims": [
                     "MAX",
                     "ULTRA"
@@ -1659,6 +1660,7 @@ const carOptionsDatabase = {
                 "tagEn": "+ $147",
                 "descRu": "Шины 225/45 R19",
                 "descEn": "Performance 225/45 R19 tires",
+                "img": "assets/cars/lynk-06-wheel.jpg",
                 "availableTrims": [
                     "ULTRA"
                 ]
@@ -1672,6 +1674,7 @@ const carOptionsDatabase = {
                 "tagEn": "+ $147",
                 "descRu": "Двухцветная алмазная шлифовка",
                 "descEn": "Diamond cut dual-color styling",
+                "img": "assets/cars/lynk-06-wheel.jpg",
                 "availableTrims": [
                     "ULTRA"
                 ]
@@ -1733,14 +1736,16 @@ const carOptionsDatabase = {
                 "nameRu": "Черно-зеленый",
                 "nameEn": "Black & Green",
                 "priceUsd": 0,
-                "hex": "#1A1A1A"
+                "hex": "#1A1A1A",
+                "img": "assets/cars/lynk-06-interior.jpg"
             },
             {
                 "id": "int-pink-white",
                 "nameRu": "Розово-белый",
                 "nameEn": "Pink & White",
                 "priceUsd": 0,
-                "hex": "#FFFFFF:#1A1A1A"
+                "hex": "#FFFFFF:#1A1A1A",
+                "img": "assets/cars/lynk-06-interior.jpg"
             },
             {
                 "id": "int-purple-white",
@@ -1750,7 +1755,8 @@ const carOptionsDatabase = {
                 "availableTrims": [
                     "ULTRA"
                 ],
-                "hex": "#FFFFFF:#1A1A1A"
+                "hex": "#FFFFFF:#1A1A1A",
+                "img": "assets/cars/lynk-06-interior.jpg"
             },
             {
                 "id": "int-grey-green",
@@ -1760,7 +1766,8 @@ const carOptionsDatabase = {
                 "availableTrims": [
                     "ULTRA"
                 ],
-                "hex": "#1A1A1A"
+                "hex": "#1A1A1A",
+                "img": "assets/cars/lynk-06-interior.jpg"
             }
         ],
         "additionalOptions": [
