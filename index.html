@@ -1141,22 +1141,72 @@
             min-height: 0;
         }
 
-        .hero-slide {
-            transition: opacity 0.6s var(--ease-spring), transform 0.6s var(--ease-spring);
-            will-change: opacity, transform;
-        }
-        .hero-slide.active {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
-            position: relative;
-        }
-        .hero-slide.inactive {
-            opacity: 0;
-            transform: scale(0.98);
-            pointer-events: none;
+        /* High-Performance GPU Hero Banner Slider */
+        .banner-slide {
             position: absolute;
             inset: 0;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .banner-slide.is-active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 10;
+            pointer-events: auto;
+        }
+        .banner-slide.is-inactive {
+            opacity: 0;
+            transform: scale(0.96);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Modal Smooth Spring & GPU Transitions */
+        .modal-backdrop-anim {
+            opacity: 0;
+            transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity;
+        }
+        .modal-backdrop-anim.is-active {
+            opacity: 1;
+        }
+        .modal-backdrop-anim .modal-card-anim {
+            transform: scale(0.96) translateY(6px);
+            opacity: 0;
+            transition: transform 0.28s var(--ease-spring), opacity 0.22s ease;
+            will-change: transform, opacity;
+        }
+        .modal-backdrop-anim.is-active .modal-card-anim {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        /* Mobile Menu Hardware-Accelerated Drawer */
+        #mobile-menu {
+            transform: translateY(-8px);
+            opacity: 0;
+            transition: transform 0.28s var(--ease-spring), opacity 0.22s ease;
+            will-change: transform, opacity;
+        }
+        #mobile-menu.is-open {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        #mobile-menu-backdrop {
+            opacity: 0;
+            transition: opacity 0.24s ease;
+            will-change: opacity;
+        }
+        #mobile-menu-backdrop.is-open {
+            opacity: 1;
+        }
+
+        /* GPU Layer Promotion for Floating Messenger Docks */
+        .floating-dock-btn {
+            will-change: transform;
         }
     </style>
 </head>
@@ -1324,7 +1374,7 @@
     </header>
 
     <!-- MOBILE MENU BACKDROP OVERLAY -->
-    <div id="mobile-menu-backdrop" onclick="closeMobileMenu()" ontouchmove="event.preventDefault()" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 hidden transition-opacity duration-200"></div>
+    <div id="mobile-menu-backdrop" onclick="closeMobileMenu()" ontouchmove="event.preventDefault()" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 hidden"></div>
 
     <!-- COMPANY IDENTITY STRIP -->
     <div class="w-full bg-surface-card border-b border-surface-border">
@@ -2844,10 +2894,10 @@
     <!-- FLOATING DIRECT MESSENGER DOCK (MOBILE & DESKTOP) -->
     <!-- EN Floating Messenger Dock -->
     <div data-lang="en" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-30 flex items-center gap-2 sm:gap-2.5">
-        <button onclick="openConsultationModal()" title="Contact Channels & Email" aria-label="Contact Channels & Email" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 flex items-center justify-center shadow-lg transition hover:scale-105 active:scale-95 cursor-pointer">
+        <button onclick="openConsultationModal()" title="Contact Channels & Email" aria-label="Contact Channels & Email" class="floating-dock-btn tactile-btn w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 flex items-center justify-center shadow-lg transition hover:scale-105 active:scale-95 cursor-pointer">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
         </button>
-        <a href="https://wa.me/8617316540375?text=Hello%20Shanghai%20Motors!%20I%20am%20interested%20in%20vehicle%20export." target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp" class="group flex items-center gap-2 sm:gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-full shadow-2xl shadow-[#25D366]/30 transition transform hover:scale-105 active:scale-95">
+        <a href="https://wa.me/8617316540375?text=Hello%20Shanghai%20Motors!%20I%20am%20interested%20in%20vehicle%20export." target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp" class="floating-dock-btn tactile-btn group flex items-center gap-2 sm:gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-full shadow-2xl shadow-[#25D366]/30 transition transform hover:scale-105 active:scale-95">
             <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
             <svg class="w-5 h-5 fill-white flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             <span class="text-xs sm:text-sm font-bold tracking-wide">WhatsApp</span>
@@ -2856,22 +2906,22 @@
 
     <!-- RU Floating Messenger Dock -->
     <div data-lang="ru" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-30 flex items-center gap-2 sm:gap-2.5">
-        <button onclick="openConsultationModal()" title="Все способы связи" aria-label="Все способы связи" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 flex items-center justify-center shadow-lg transition hover:scale-105 active:scale-95 cursor-pointer">
+        <button onclick="openConsultationModal()" title="Все способы связи" aria-label="Все способы связи" class="floating-dock-btn tactile-btn w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 hover:text-slate-900 flex items-center justify-center shadow-lg transition hover:scale-105 active:scale-95 cursor-pointer">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
         </button>
-        <a href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" title="Написать в Telegram" class="group flex items-center gap-2 bg-[#24A1DE] hover:bg-[#2090c7] text-white px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full shadow-2xl shadow-[#24A1DE]/30 transition transform hover:scale-105 active:scale-95">
+        <a href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" title="Написать в Telegram" class="floating-dock-btn tactile-btn group flex items-center gap-2 bg-[#24A1DE] hover:bg-[#2090c7] text-white px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full shadow-2xl shadow-[#24A1DE]/30 transition transform hover:scale-105 active:scale-95">
             <svg class="w-5 h-5 fill-white flex-shrink-0" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
             <span class="text-xs sm:text-sm font-bold tracking-wide hidden sm:inline">Telegram</span>
         </a>
-        <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" title="Написать в WhatsApp" class="group flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white p-2.5 sm:px-4 sm:py-3 rounded-full shadow-2xl shadow-[#25D366]/30 transition transform hover:scale-105 active:scale-95">
+        <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" title="Написать в WhatsApp" class="floating-dock-btn tactile-btn group flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white p-2.5 sm:px-4 sm:py-3 rounded-full shadow-2xl shadow-[#25D366]/30 transition transform hover:scale-105 active:scale-95">
             <svg class="w-5 h-5 fill-white flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             <span class="text-xs sm:text-sm font-bold tracking-wide hidden sm:inline">WhatsApp</span>
         </a>
     </div>
 
     <!-- QUICK CONSULTATION / CONTACT MODAL -->
-    <div id="consultation-modal" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
-        <div style="max-width: 480px; width: 100%; margin: auto;" class="bg-white border border-slate-200/90 rounded-2xl relative my-auto p-6 sm:p-7 shadow-2xl overflow-x-hidden">
+    <div id="consultation-modal" onclick="if(event.target === this) closeConsultationModal()" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain modal-backdrop-anim">
+        <div style="max-width: 480px; width: 100%; margin: auto;" class="bg-white border border-slate-200/90 rounded-2xl relative my-auto p-6 sm:p-7 shadow-2xl overflow-x-hidden modal-card-anim">
             <!-- Close Button -->
             <button onclick="closeConsultationModal()" aria-label="Close" class="absolute top-4 right-4 w-8 h-8 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center text-lg leading-none transition cursor-pointer">
                 &times;
@@ -2977,8 +3027,8 @@
     </div>
 
     <!-- OFFICIAL EXPORT LICENSE / KYC VERIFICATION MODAL -->
-    <div id="license-modal" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
-        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-lg relative my-auto p-6 sm:p-8 shadow-2xl overflow-x-hidden">
+    <div id="license-modal" onclick="if(event.target === this) closeLicenseModal()" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain modal-backdrop-anim">
+        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-lg relative my-auto p-6 sm:p-8 shadow-2xl overflow-x-hidden modal-card-anim">
             <button onclick="closeLicenseModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-600 hover:text-slate-900 flex items-center justify-center text-lg z-10 transition">
                 &times;
             </button>
@@ -3089,8 +3139,8 @@
     </div>
 
     <!-- INTERACTIVE CAR DETAILS & PRICE BREAKDOWN MODAL (EASY.CAR CONFIGURATOR CLONE) -->
-    <div id="car-modal" class="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain">
-        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-5xl lg:max-w-6xl max-h-[92vh] overflow-y-auto overflow-x-hidden relative my-auto p-5 sm:p-8 lg:p-9 overscroll-contain">
+    <div id="car-modal" onclick="if(event.target === this) closeCarModal()" class="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain modal-backdrop-anim">
+        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-5xl lg:max-w-6xl max-h-[92vh] overflow-y-auto overflow-x-hidden relative my-auto p-5 sm:p-8 lg:p-9 overscroll-contain modal-card-anim">
             <button onclick="closeCarModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-600 hover:text-slate-900 flex items-center justify-center text-lg z-10 transition">
                 &times;
             </button>
@@ -3476,7 +3526,7 @@
             if (cachedRate && cachedDate === today) {
                 currentUsdRate = parseFloat(cachedRate) || 84.43;
                 updateRateDisplay();
-                renderHeroBanners();
+                renderHeroBanners(true);
                 renderCatalog();
                 if (currentModalCar) renderModalTrim(currentModalTrimIndex);
                 return;
@@ -3492,7 +3542,7 @@
                         localStorage.setItem('shanghai_usd_rate', currentUsdRate.toString());
                         localStorage.setItem('shanghai_usd_date', today);
                         updateRateDisplay();
-                        renderHeroBanners();
+                        renderHeroBanners(true);
                         renderCatalog();
                         if (currentModalCar) renderModalTrim(currentModalTrimIndex);
                         return;
@@ -3512,7 +3562,7 @@
                         localStorage.setItem('shanghai_usd_rate', currentUsdRate.toString());
                         localStorage.setItem('shanghai_usd_date', today);
                         updateRateDisplay();
-                        renderHeroBanners();
+                        renderHeroBanners(true);
                         renderCatalog();
                         if (currentModalCar) renderModalTrim(currentModalTrimIndex);
                     }
@@ -3671,7 +3721,7 @@
             }
 
             if (reloadUi) {
-                renderHeroBanners();
+                renderHeroBanners(true);
                 renderCatalog();
                 if (currentModalCar) {
                     renderModalTrim(currentModalTrimIndex);
@@ -3681,68 +3731,85 @@
         }
 
         // 4. HERO BANNERS ENGINE
-        function renderHeroBanners() {
+        function renderHeroBanners(forceRebuild = false) {
             const container = document.getElementById('hero-banner-slides');
             const dotsContainer = document.getElementById('banner-dots');
             if (!container) return;
 
-            container.innerHTML = heroBanners.map((b, idx) => {
-                const minFobRub = Math.round(b.minPriceFob * currentUsdRate);
-                const priceFormatted = (currentLang === 'ru')
-                    ? `от ${minFobRub.toLocaleString()} ₽ <span class="text-xs sm:text-sm font-semibold text-slate-500 font-sans">($${b.minPriceFob.toLocaleString()} FOB)</span>`
-                    : `FOB from $${b.minPriceFob.toLocaleString()}`;
+            const existingSlides = container.querySelectorAll('.banner-slide');
+            const shouldBuildDom = forceRebuild || existingSlides.length !== heroBanners.length;
 
-                return `
-                <div class="banner-slide absolute inset-0 transition-all duration-700 ease-in-out ${idx === activeSlideIndex ? 'opacity-100 z-10 scale-100 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none scale-95'} w-full max-w-full overflow-hidden" id="slide-${idx}">
-                    <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-12 sm:pb-6 flex flex-col justify-center">
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-6 md:gap-8 items-center">
-                            <!-- Left Info -->
-                            <div class="lg:col-span-6 space-y-1.5 sm:space-y-2.5 md:space-y-3 z-20 min-w-0">
-                                <div class="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-gray-400">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
-                                    <span data-lang="en">Direct Factory Export &nbsp;&middot;&nbsp; Shanghai Motors</span>
-                                    <span data-lang="ru">Прямой экспорт &nbsp;&middot;&nbsp; Shanghai Motors</span>
+            if (shouldBuildDom) {
+                container.innerHTML = heroBanners.map((b, idx) => {
+                    const minFobRub = Math.round(b.minPriceFob * currentUsdRate);
+                    const priceFormatted = (currentLang === 'ru')
+                        ? `от ${minFobRub.toLocaleString()} ₽ <span class="text-xs sm:text-sm font-semibold text-slate-500 font-sans">($${b.minPriceFob.toLocaleString()} FOB)</span>`
+                        : `FOB from $${b.minPriceFob.toLocaleString()}`;
+
+                    const isActive = idx === activeSlideIndex;
+                    return `
+                    <div class="banner-slide ${isActive ? 'is-active' : 'is-inactive'}" id="hero-slide-${idx}">
+                        <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-12 sm:pb-6 flex flex-col justify-center">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-6 md:gap-8 items-center">
+                                <!-- Left Info -->
+                                <div class="lg:col-span-6 space-y-1.5 sm:space-y-2.5 md:space-y-3 z-20 min-w-0">
+                                    <div class="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-gray-400">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                                        <span data-lang="en">Direct Factory Export &nbsp;&middot;&nbsp; Shanghai Motors</span>
+                                        <span data-lang="ru">Прямой экспорт &nbsp;&middot;&nbsp; Shanghai Motors</span>
+                                    </div>
+                                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                                        ${b.model}
+                                    </h1>
+                                    <p class="text-xs sm:text-sm md:text-base text-slate-600 leading-snug font-sans max-w-xl">
+                                        ${currentLang === 'ru' ? b.descRu : b.descEn}
+                                    </p>
+                                    <div class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 flex items-baseline gap-2 pt-0.5 tracking-tight font-sans">
+                                        ${priceFormatted}
+                                    </div>
+                                    <div class="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
+                                        <a href="car.html?id=${b.id}" class="tactile-btn bg-slate-900 hover:bg-slate-800 text-white font-extrabold px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs uppercase tracking-wider transition shadow-lg inline-block text-center">
+                                            ${currentLang === 'ru' ? 'Консультация и расчет' : 'Request City Quote'}
+                                        </a>
+                                        <a href="car.html?id=${b.id}" class="tactile-btn px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-xs font-bold hover:border-slate-500 shadow-sm transition inline-block text-center">
+                                            ${currentLang === 'ru' ? 'Комплектации и цены' : 'View Configurations'}
+                                        </a>
+                                    </div>
                                 </div>
-                                <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                                    ${b.model}
-                                </h1>
-                                <p class="text-xs sm:text-sm md:text-base text-slate-600 leading-snug font-sans max-w-xl">
-                                    ${currentLang === 'ru' ? b.descRu : b.descEn}
-                                </p>
-                                <div class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 flex items-baseline gap-2 pt-0.5 tracking-tight font-sans">
-                                    ${priceFormatted}
-                                </div>
-                                <div class="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
-                                    <a href="car.html?id=${b.id}" class="bg-slate-900 hover:bg-slate-800 text-white font-extrabold px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs uppercase tracking-wider transition transform hover:scale-[1.02] shadow-lg inline-block text-center">
-                                        ${currentLang === 'ru' ? 'Консультация и расчет' : 'Request City Quote'}
+                                <!-- Right Visual: Studio Pavilion Staging -->
+                                <div class="lg:col-span-6 flex flex-col items-center justify-center relative min-h-[190px] sm:min-h-[230px] md:min-h-[270px] w-full max-w-full overflow-hidden select-none">
+                                    <!-- Ambient Overhead Studio Spotlight Cone -->
+                                    <div class="absolute -top-16 inset-x-8 h-72 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(255,255,255,0.9),transparent_80%)] pointer-events-none"></div>
+
+                                    <!-- Car Image Render -->
+                                    <a href="car.html?id=${b.id}" class="contents cursor-pointer">
+                                        <img src="${b.img}" alt="${b.model}" class="max-h-[185px] sm:max-h-[230px] md:max-h-[270px] w-full object-contain relative z-10 transition-transform duration-700 hover:scale-[1.03] cursor-pointer filter drop-shadow-[0_16px_24px_rgba(0,0,0,0.15)]" loading="eager">
                                     </a>
-                                    <a href="car.html?id=${b.id}" class="px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 text-xs font-bold hover:border-slate-500 shadow-sm transition inline-block text-center">
-                                        ${currentLang === 'ru' ? 'Комплектации и цены' : 'View Configurations'}
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- Right Visual: Studio Pavilion Staging -->
-                            <div class="lg:col-span-6 flex flex-col items-center justify-center relative min-h-[190px] sm:min-h-[230px] md:min-h-[270px] w-full max-w-full overflow-hidden select-none">
-                                <!-- Ambient Overhead Studio Spotlight Cone -->
-                                <div class="absolute -top-16 inset-x-8 h-72 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(255,255,255,0.9),transparent_80%)] pointer-events-none"></div>
 
-                                <!-- Car Image Render -->
-                                <a href="car.html?id=${b.id}" class="contents cursor-pointer">
-                                    <img src="${b.img}" alt="${b.model}" class="max-h-[185px] sm:max-h-[230px] md:max-h-[270px] w-full object-contain relative z-10 transition-transform duration-700 hover:scale-[1.03] cursor-pointer filter drop-shadow-[0_16px_24px_rgba(0,0,0,0.15)]">
-                                </a>
-
-                                <!-- Studio Ground Staging & Tire Contact Shadow -->
-                                <div class="relative w-full max-w-md -mt-3 sm:-mt-4 z-0 flex flex-col items-center pointer-events-none">
-                                    <div class="w-[84%] h-3.5 sm:h-4.5 bg-slate-700/25 blur-[5px] rounded-[100%]"></div>
-                                    <div class="w-[92%] h-7 sm:h-9 -mt-2.5 bg-slate-300/30 blur-md"></div>
-                                    <div class="w-2/3 h-px -mt-3 bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+                                    <!-- Studio Ground Staging & Tire Contact Shadow -->
+                                    <div class="relative w-full max-w-md -mt-3 sm:-mt-4 z-0 flex flex-col items-center pointer-events-none">
+                                        <div class="w-[84%] h-3.5 sm:h-4.5 bg-slate-700/25 blur-[5px] rounded-[100%]"></div>
+                                        <div class="w-[92%] h-7 sm:h-9 -mt-2.5 bg-slate-300/30 blur-md"></div>
+                                        <div class="w-2/3 h-px -mt-3 bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                `;
-            }).join('');
+                    `;
+                }).join('');
+
+                // Attach pause-on-hover once
+                if (!container.dataset.hoverBound) {
+                    container.dataset.hoverBound = 'true';
+                    container.addEventListener('mouseenter', () => {
+                        if (slideTimer) clearInterval(slideTimer);
+                    });
+                    container.addEventListener('mouseleave', () => {
+                        startBannerAutoplay();
+                    });
+                }
+            }
 
             if (dotsContainer) {
                 dotsContainer.innerHTML = heroBanners.map((_, idx) => `
@@ -3767,8 +3834,35 @@
         }
 
         function goToBanner(idx) {
+            if (idx === activeSlideIndex) return;
+            const oldIdx = activeSlideIndex;
             activeSlideIndex = idx;
-            renderHeroBanners();
+
+            const oldSlide = document.getElementById(`hero-slide-${oldIdx}`);
+            const newSlide = document.getElementById(`hero-slide-${idx}`);
+
+            if (oldSlide && newSlide) {
+                oldSlide.classList.remove('is-active');
+                oldSlide.classList.add('is-inactive');
+                newSlide.classList.remove('is-inactive');
+                newSlide.classList.add('is-active');
+
+                // Smoothly update dots without full DOM rebuild
+                const dotsContainer = document.getElementById('banner-dots');
+                if (dotsContainer) {
+                    const dots = dotsContainer.querySelectorAll('button');
+                    dots.forEach((dot, dIdx) => {
+                        if (dIdx === idx) {
+                            dot.className = 'h-2 rounded-full transition-all duration-300 w-8 bg-brand';
+                        } else {
+                            dot.className = 'h-2 rounded-full transition-all duration-300 w-2 bg-surface-border hover:bg-gray-500';
+                        }
+                    });
+                }
+            } else {
+                renderHeroBanners(true);
+            }
+
             startBannerAutoplay();
         }
 
@@ -4065,10 +4159,17 @@
 
         function closeCarModal() {
             const modal = document.getElementById('car-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.classList.remove('modal-open');
-            document.body.style.overflow = '';
+            if (modal) {
+                modal.classList.remove('is-active');
+                setTimeout(() => {
+                    if (!modal.classList.contains('is-active')) {
+                        modal.classList.add('hidden');
+                        modal.classList.remove('flex');
+                        document.body.classList.remove('modal-open');
+                        document.body.style.overflow = '';
+                    }
+                }, 240);
+            }
 
             // Reset detailed specs toggle state
             isDetailedSpecsOpen = false;
@@ -4076,7 +4177,12 @@
             const chevron = document.getElementById('detailed-specs-chevron');
             const textRu = document.getElementById('detailed-specs-toggle-text-ru');
             const textEn = document.getElementById('detailed-specs-toggle-text-en');
-            if (container) container.classList.add('hidden');
+            if (container) {
+                container.classList.remove('is-expanded');
+                setTimeout(() => {
+                    if (!isDetailedSpecsOpen) container.classList.add('hidden');
+                }, 380);
+            }
             if (chevron) chevron.style.transform = 'rotate(0deg)';
             if (textRu) textRu.innerText = 'Показать';
             if (textEn) textEn.innerText = 'Show specs';
@@ -4365,8 +4471,18 @@
             const iconBurger = document.getElementById('hamburger-icon-svg');
             const iconClose = document.getElementById('close-icon-svg');
             
-            if (menu) menu.classList.remove('hidden');
-            if (backdrop) backdrop.classList.remove('hidden');
+            if (menu) {
+                menu.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    menu.classList.add('is-open');
+                });
+            }
+            if (backdrop) {
+                backdrop.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    backdrop.classList.add('is-open');
+                });
+            }
             if (iconBurger) iconBurger.classList.add('hidden');
             if (iconClose) iconClose.classList.remove('hidden');
         }
@@ -4377,14 +4493,24 @@
             const iconBurger = document.getElementById('hamburger-icon-svg');
             const iconClose = document.getElementById('close-icon-svg');
             
-            if (menu) menu.classList.add('hidden');
-            if (backdrop) backdrop.classList.add('hidden');
+            if (menu) menu.classList.remove('is-open');
+            if (backdrop) backdrop.classList.remove('is-open');
             if (iconBurger) iconBurger.classList.remove('hidden');
             if (iconClose) iconClose.classList.add('hidden');
+
+            setTimeout(() => {
+                if (menu && !menu.classList.contains('is-open')) menu.classList.add('hidden');
+                if (backdrop && !backdrop.classList.contains('is-open')) backdrop.classList.add('hidden');
+            }, 240);
         }
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeMobileMenu();
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+                closeConsultationModal();
+                closeLicenseModal();
+                closeCarModal();
+            }
         });
 
         // Consultation Modal Functions
@@ -4403,6 +4529,9 @@
                 if (success) success.classList.add('hidden');
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+                requestAnimationFrame(() => {
+                    modal.classList.add('is-active');
+                });
                 document.body.classList.add('modal-open');
                 document.body.style.overflow = 'hidden';
             }
@@ -4411,10 +4540,15 @@
         function closeConsultationModal() {
             const modal = document.getElementById('consultation-modal');
             if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.classList.remove('modal-open');
-                document.body.style.overflow = '';
+                modal.classList.remove('is-active');
+                setTimeout(() => {
+                    if (!modal.classList.contains('is-active')) {
+                        modal.classList.add('hidden');
+                        modal.classList.remove('flex');
+                        document.body.classList.remove('modal-open');
+                        document.body.style.overflow = '';
+                    }
+                }, 240);
             }
         }
 
@@ -4655,17 +4789,26 @@
                 }
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+                requestAnimationFrame(() => {
+                    modal.classList.add('is-active');
+                });
                 document.body.classList.add('modal-open');
+                document.body.style.overflow = 'hidden';
             }
         }
 
         function closeLicenseModal() {
             const modal = document.getElementById('license-modal');
             if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.classList.remove('modal-open');
-                document.body.style.overflow = '';
+                modal.classList.remove('is-active');
+                setTimeout(() => {
+                    if (!modal.classList.contains('is-active')) {
+                        modal.classList.add('hidden');
+                        modal.classList.remove('flex');
+                        document.body.classList.remove('modal-open');
+                        document.body.style.overflow = '';
+                    }
+                }, 240);
             }
         }
 
