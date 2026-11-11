@@ -1099,8 +1099,51 @@
             display: none !important;
         }
 
+        /* Emil Kowalski Design Engineering & Spring Physics */
+        :root {
+            --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tactile-btn {
+            transition: transform 0.16s var(--ease-spring), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            will-change: transform;
+        }
+        .tactile-btn:active {
+            transform: scale(0.96) !important;
+        }
+
+        .spring-card {
+            transition: transform 0.25s var(--ease-spring), border-color 0.2s ease, box-shadow 0.25s var(--ease-spring), background-color 0.2s ease;
+            will-change: transform, box-shadow;
+        }
+        .spring-card:hover {
+            transform: translateY(-2px);
+        }
+        .spring-card:active {
+            transform: scale(0.985);
+        }
+
+        /* Zero-CLS Smooth CSS Grid Accordion */
+        .accordion-grid-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            transition: grid-template-rows 0.38s var(--ease-spring), opacity 0.28s ease;
+        }
+        .accordion-grid-wrapper.is-expanded {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+        .accordion-grid-inner {
+            overflow: hidden;
+            min-height: 0;
+        }
+
         .hero-slide {
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            transition: opacity 0.6s var(--ease-spring), transform 0.6s var(--ease-spring);
+            will-change: opacity, transform;
         }
         .hero-slide.active {
             opacity: 1;
@@ -3305,10 +3348,12 @@
                     </div>
                 </button>
 
-                <!-- Detailed Specs Content Container -->
-                <div id="modal-detailed-specs-container" class="hidden mt-6 space-y-6 transition-all duration-300">
-                    <div id="modal-detailed-specs-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                        <!-- Dynamic categories injected here -->
+                <!-- Detailed Specs Content Container (Zero-CLS Smooth Grid) -->
+                <div id="modal-detailed-specs-container" class="accordion-grid-wrapper mt-4">
+                    <div class="accordion-grid-inner">
+                        <div id="modal-detailed-specs-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-4">
+                            <!-- Dynamic categories injected here -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3734,11 +3779,11 @@
             currentBrandFilter = brand;
             isCatalogExpanded = false;
             document.querySelectorAll('.brand-tab').forEach(tab => {
-                tab.className = 'brand-tab px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-slate-600 hover:text-slate-900 whitespace-nowrap transition hover:bg-slate-100';
+                tab.className = 'brand-tab tactile-btn px-4 py-2.5 rounded-lg bg-surface-card border border-surface-border text-slate-600 hover:text-slate-900 whitespace-nowrap transition hover:bg-slate-100';
             });
             const activeBtn = document.getElementById(`brand-btn-${brand}`);
             if (activeBtn) {
-                activeBtn.className = 'brand-tab px-4 py-2.5 rounded-lg bg-slate-900 text-white font-bold whitespace-nowrap transition shadow-sm';
+                activeBtn.className = 'brand-tab tactile-btn px-4 py-2.5 rounded-lg bg-slate-900 text-white font-bold whitespace-nowrap transition shadow-sm';
             }
             renderCatalog();
         }
@@ -3776,7 +3821,7 @@
                     : `${car.trimsCount} trim options`;
 
                 return `
-                <div class="group rounded-2xl bg-surface-card border border-surface-border hover:border-brand/40 transition duration-300 overflow-hidden flex flex-col justify-between">
+                <div class="spring-card group rounded-2xl bg-surface-card border border-surface-border hover:border-slate-400 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between">
                     <a href="car.html?id=${car.id}" class="cursor-pointer block">
                         <!-- Car Image Box: Studio Presentation -->
                         <div class="h-52 sm:h-56 bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 p-4 flex flex-col items-center justify-center relative overflow-hidden group/img">
@@ -4047,6 +4092,49 @@
             renderModalTrim(idx);
         }
 
+        // Emil Kowalski Fluid RAF Price Odometer
+        function animatePriceCounter(el, targetVal, prefix, suffix, duration) {
+            prefix = prefix || '';
+            suffix = suffix || '';
+            duration = duration || 380;
+            if (!el || typeof targetVal !== 'number' || isNaN(targetVal)) return;
+
+            const rawAttr = el.getAttribute('data-numeric-val');
+            const prevVal = rawAttr !== null ? parseInt(rawAttr, 10) : parseInt((el.innerText || '').replace(/[^\d]/g, ''), 10);
+            el.setAttribute('data-numeric-val', targetVal.toString());
+
+            if (isNaN(prevVal) || prevVal === targetVal || prevVal === 0) {
+                el.innerText = prefix + targetVal.toLocaleString() + suffix;
+                return;
+            }
+
+            if (el._rafTimer) {
+                cancelAnimationFrame(el._rafTimer);
+                el._rafTimer = null;
+            }
+
+            const startVal = prevVal;
+            const diff = targetVal - startVal;
+            const startTime = performance.now();
+
+            function updateCounter(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(startVal + diff * ease);
+                el.innerText = prefix + current.toLocaleString() + suffix;
+
+                if (progress < 1) {
+                    el._rafTimer = requestAnimationFrame(updateCounter);
+                } else {
+                    el.innerText = prefix + targetVal.toLocaleString() + suffix;
+                    el._rafTimer = null;
+                }
+            }
+
+            el._rafTimer = requestAnimationFrame(updateCounter);
+        }
+
         function renderModalTrim(idx) {
             if (!currentModalCar) return;
             const trim = currentModalCar.trims[idx] || currentModalCar.trims[0];
@@ -4142,7 +4230,7 @@
             }
 
             // Fill Breakdown Values
-            if (ruPriceRub) ruPriceRub.innerText = `${pricing.fullPrice.toLocaleString()} ₽`;
+            if (ruPriceRub) animatePriceCounter(ruPriceRub, pricing.fullPrice, '', ' ₽');
             if (ruFobUsd) ruFobUsd.innerText = `$${pricing.fobUsd.toLocaleString()} FOB • $1 = ${currentUsdRate.toFixed(2)} ₽`;
             if (ruBtnText) ruBtnText.innerText = `Заказать под ключ (${trim.name}) • ${pricing.fullPrice.toLocaleString()} ₽`;
 
@@ -4154,7 +4242,7 @@
             // --- EN VERSION RENDERING (Unchanged FOB standard) ---
             const enFobVal = document.getElementById('modal-en-fob-val');
             const enBtnText = document.getElementById('modal-en-btn-text');
-            if (enFobVal) enFobVal.innerText = `$${pricing.fobUsd.toLocaleString()}`;
+            if (enFobVal) animatePriceCounter(enFobVal, pricing.fobUsd, '$', '');
             if (enBtnText) enBtnText.innerText = `Request price in your city (${formatTrimName(trim.name, 'en')})`;
         }
 
@@ -4199,17 +4287,10 @@
 
             if (!container) return;
 
-            if (isDetailedSpecsOpen) {
-                container.classList.remove('hidden');
-                if (chevron) chevron.style.transform = 'rotate(180deg)';
-                if (textRu) textRu.innerText = 'Скрыть';
-                if (textEn) textEn.innerText = 'Hide specs';
-            } else {
-                container.classList.add('hidden');
-                if (chevron) chevron.style.transform = 'rotate(0deg)';
-                if (textRu) textRu.innerText = 'Показать';
-                if (textEn) textEn.innerText = 'Show specs';
-            }
+            container.classList.toggle('is-expanded', isDetailedSpecsOpen);
+            if (chevron) chevron.style.transform = isDetailedSpecsOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+            if (textRu) textRu.innerText = isDetailedSpecsOpen ? 'Скрыть' : 'Показать';
+            if (textEn) textEn.innerText = isDetailedSpecsOpen ? 'Hide specs' : 'Show specs';
         }
 
         function renderDetailedSpecs(car) {

@@ -270,6 +270,58 @@
 
         }
 
+        /* Emil Kowalski Design Engineering & Spring Physics */
+        :root {
+            --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tactile-btn {
+            transition: transform 0.16s var(--ease-spring), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            will-change: transform;
+        }
+        .tactile-btn:active {
+            transform: scale(0.96) !important;
+        }
+
+        .spring-card {
+            transition: transform 0.25s var(--ease-spring), border-color 0.2s ease, box-shadow 0.25s var(--ease-spring), background-color 0.2s ease;
+            will-change: transform, box-shadow;
+        }
+        .spring-card:hover {
+            transform: translateY(-1px);
+        }
+        .spring-card:active {
+            transform: scale(0.985);
+        }
+
+        /* Zero-CLS Smooth CSS Grid Accordion */
+        .accordion-grid-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            transition: grid-template-rows 0.38s var(--ease-spring), opacity 0.28s ease;
+        }
+        .accordion-grid-wrapper.is-expanded {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+        .accordion-grid-inner {
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        /* Gallery Image Crossfade & Showcase Animation */
+        .gallery-img-anim {
+            transition: opacity 0.22s var(--ease-spring), transform 0.22s var(--ease-spring);
+            will-change: opacity, transform;
+        }
+        .gallery-img-anim.is-switching {
+            opacity: 0.65;
+            transform: scale(0.985);
+        }
+
     </style>
 
 </head>
@@ -604,13 +656,17 @@
 
 
 
-                    <!-- Collapsible Detailed Technical Specifications Container -->
+                    <!-- Collapsible Detailed Technical Specifications Container (Zero-CLS Smooth Grid) -->
 
-                    <div id="specs-collapsible-wrapper" class="hidden transition-all duration-300 ease-in-out pt-2 space-y-3">
+                    <div id="specs-collapsible-wrapper" class="accordion-grid-wrapper pt-1">
 
-                        <div id="specs-accordion-container" class="space-y-3">
+                        <div class="accordion-grid-inner">
 
-                            <!-- Injected from carDetailedSpecs -->
+                            <div id="specs-accordion-container" class="space-y-3 pt-2">
+
+                                <!-- Injected from carDetailedSpecs -->
+
+                            </div>
 
                         </div>
 
@@ -1451,23 +1507,15 @@
 
             if (wrapper) {
 
-                if (isSpecsExpanded) {
+                wrapper.classList.toggle('is-expanded', isSpecsExpanded);
 
-                    wrapper.classList.remove('hidden');
+                if (chevron) chevron.style.transform = isSpecsExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
 
-                    if (chevron) chevron.style.transform = 'rotate(180deg)';
+                if (statusText) statusText.innerText = (currentLang === 'ru')
 
-                    if (statusText) statusText.innerText = (currentLang === 'ru') ? 'Свернуть' : 'Collapse';
+                    ? (isSpecsExpanded ? 'Свернуть' : 'Развернуть')
 
-                } else {
-
-                    wrapper.classList.add('hidden');
-
-                    if (chevron) chevron.style.transform = 'rotate(0deg)';
-
-                    if (statusText) statusText.innerText = (currentLang === 'ru') ? 'Развернуть' : 'Expand';
-
-                }
+                    : (isSpecsExpanded ? 'Collapse' : 'Expand');
 
             }
 
@@ -1535,17 +1583,35 @@
 
 
 
+            function setHeroImg(targetSrc, extraClass) {
+                if (!heroImg) return;
+                const currentSrc = heroImg.getAttribute('src');
+                if (currentSrc === targetSrc) {
+                    heroImg.className = extraClass + ' gallery-img-anim';
+                    return;
+                }
+                heroImg.classList.add('gallery-img-anim', 'is-switching');
+                const preload = new Image();
+                preload.onload = function() {
+                    heroImg.src = targetSrc;
+                    heroImg.className = extraClass + ' gallery-img-anim';
+                    requestAnimationFrame(() => {
+                        heroImg.classList.remove('is-switching');
+                    });
+                };
+                preload.onerror = function() {
+                    heroImg.src = targetSrc;
+                    heroImg.className = extraClass + ' gallery-img-anim';
+                    heroImg.classList.remove('is-switching');
+                };
+                preload.src = targetSrc;
+            }
+
             if (currentGalleryView === 'exterior') {
 
                 if (btnExt) btnExt.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs';
 
-                if (heroImg) {
-
-                    heroImg.src = extImg;
-
-                    heroImg.className = 'max-h-[240px] sm:max-h-[300px] w-auto max-w-[95%] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)] transition-all duration-300';
-
-                }
+                setHeroImg(extImg, 'max-h-[240px] sm:max-h-[300px] w-auto max-w-[95%] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)]');
 
                 if (shadowEl) shadowEl.style.opacity = '1';
 
@@ -1559,13 +1625,7 @@
 
                 if (btnInt) btnInt.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs';
 
-                if (heroImg) {
-
-                    heroImg.src = intImg;
-
-                    heroImg.className = 'max-h-[240px] sm:max-h-[300px] w-auto max-w-[95%] object-cover rounded-2xl shadow-md transition-all duration-300';
-
-                }
+                setHeroImg(intImg, 'max-h-[240px] sm:max-h-[300px] w-auto max-w-[95%] object-cover rounded-2xl shadow-md');
 
                 if (shadowEl) shadowEl.style.opacity = '0';
 
@@ -1579,13 +1639,7 @@
 
                 if (btnWhl) btnWhl.className = 'px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer bg-slate-900 text-white shadow-xs';
 
-                if (heroImg) {
-
-                    heroImg.src = wheelImg;
-
-                    heroImg.className = 'max-h-[240px] sm:max-h-[300px] w-auto max-w-[95%] object-contain rounded-xl shadow-xs transition-all duration-300';
-
-                }
+                setHeroImg(wheelImg, 'max-h-[240px] sm:max-h-[300px] w-auto max-w-[95%] object-contain rounded-xl shadow-xs');
 
                 if (shadowEl) shadowEl.style.opacity = '0';
 
@@ -1921,224 +1975,500 @@
 
 
 
-        function selectTrim(idx) {
-
-            activeTrimIndex = idx;
-
-            syncOptionsForActiveTrim();
-
-            renderAll();
-
-        }
-
-
-
-        function selectWheel(wheelId) {
-
-            activeWheelId = wheelId;
-
-            currentGalleryView = 'wheels';
-
-            renderAll();
-
-        }
-
-
-
-        function selectColor(colorId) {
-
-            activeColorId = colorId;
-
-            currentGalleryView = 'exterior';
-
-            renderAll();
-
-        }
-
-
-
-        function selectInterior(intId) {
-
-            activeInteriorId = intId;
-
-            currentGalleryView = 'interior';
-
-            renderAll();
-
-        }
-
-
-
-        function setCarRoute(mode) {
-
-            activeRouteMode = mode;
-
-            recalculateSummary();
-
-        }
-
-
-
-        function toggleAdditionalOption(optId) {
-
+        function updateWheelsHeader() {
             if (!currentCar) return;
-
             const visibleTrims = getVisibleTrims();
-
             const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
-
             const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
-
-            const targetOpt = opts.additionalOptions ? opts.additionalOptions.find(o => o.id === optId) : null;
-
-            if (targetOpt && targetOpt.priceUsd === 0) {
-
-                // Standard factory equipment on this trim - permanently included
-
-                return;
-
+            const selectedWheel = opts.wheels ? (opts.wheels.find(w => w.id === activeWheelId) || opts.wheels[0]) : null;
+            const wheelsHeaderEl = document.getElementById('wheels-header-selection');
+            if (wheelsHeaderEl && selectedWheel) {
+                const wRub = Math.round(selectedWheel.priceUsd * liveUsdRate);
+                if (currentLang === 'ru') {
+                    wheelsHeaderEl.innerHTML = selectedWheel.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedWheel.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${wRub.toLocaleString()} ₽</span>`
+                        : `<span class="text-slate-900">${selectedWheel.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
+                } else {
+                    wheelsHeaderEl.innerHTML = selectedWheel.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedWheel.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedWheel.priceUsd.toLocaleString()}</span>`
+                        : `<span class="text-slate-900">${selectedWheel.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
+                }
             }
-
-            if (activeAdditionalOptions.has(optId)) {
-
-                activeAdditionalOptions.delete(optId);
-
-            } else {
-
-                activeAdditionalOptions.add(optId);
-
-            }
-
-            renderAdditionalOptions();
-
-            recalculateSummary();
-
         }
 
-
-
-        function renderAdditionalOptions() {
-
+        function updateColorsHeader() {
+            if (!currentCar) return;
             const visibleTrims = getVisibleTrims();
-
             const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
-
             const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
-
-            const sec = document.getElementById('additional-options-section');
-
-            const container = document.getElementById('additional-options-container');
-
-            const headerSel = document.getElementById('options-header-selection');
-
-            if (!sec || !container) return;
-
-
-
-            if (!opts.additionalOptions || opts.additionalOptions.length === 0) {
-
-                sec.classList.add('hidden');
-
-                return;
-
+            const selectedColor = opts.colors ? (opts.colors.find(c => c.id === activeColorId) || opts.colors[0]) : null;
+            const colorHeaderEl = document.getElementById('color-header-selection');
+            if (colorHeaderEl && selectedColor) {
+                const rubPrice = Math.round(selectedColor.priceUsd * liveUsdRate);
+                if (currentLang === 'ru') {
+                    colorHeaderEl.innerHTML = selectedColor.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedColor.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${rubPrice.toLocaleString()} ₽ ($${selectedColor.priceUsd.toLocaleString()})</span>`
+                        : `<span class="text-slate-900">${selectedColor.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
+                } else {
+                    colorHeaderEl.innerHTML = selectedColor.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedColor.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedColor.priceUsd.toLocaleString()}</span>`
+                        : `<span class="text-slate-900">${selectedColor.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
+                }
             }
+        }
 
+        function updateInteriorsHeader() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const selectedInt = opts.interiors ? (opts.interiors.find(i => i.id === activeInteriorId) || opts.interiors[0]) : null;
+            const interiorHeaderEl = document.getElementById('interior-header-selection');
+            if (interiorHeaderEl && selectedInt) {
+                if (currentLang === 'ru') {
+                    interiorHeaderEl.innerHTML = selectedInt.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${Math.round((selectedInt.priceUsd || 0) * liveUsdRate).toLocaleString()} ₽</span>`
+                        : `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
+                } else {
+                    interiorHeaderEl.innerHTML = selectedInt.priceUsd > 0
+                        ? `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedInt.priceUsd.toLocaleString()}</span>`
+                        : `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
+                }
+            }
+        }
 
-
-            sec.classList.remove('hidden');
-
-
+        function updateOptionsHeader() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const headerSel = document.getElementById('options-header-selection');
+            if (!headerSel || !opts.additionalOptions) return;
 
             let totalChosenUsd = 0;
-
             opts.additionalOptions.forEach(opt => {
-
                 if (activeAdditionalOptions.has(opt.id)) {
-
                     totalChosenUsd += (opt.priceUsd || 0);
-
                 }
-
             });
 
+            const totalRub = Math.round(totalChosenUsd * liveUsdRate);
+            if (currentLang === 'ru') {
+                headerSel.innerHTML = (totalChosenUsd > 0)
+                    ? `<span class="text-slate-900">${activeAdditionalOptions.size} выбрано</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${totalRub.toLocaleString()} ₽ ($${totalChosenUsd.toLocaleString()})</span>`
+                    : `<span class="text-slate-500 font-normal">0 выбрано</span>`;
+            } else {
+                headerSel.innerHTML = (totalChosenUsd > 0)
+                    ? `<span class="text-slate-900">${activeAdditionalOptions.size} selected</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${totalChosenUsd.toLocaleString()}</span>`
+                    : `<span class="text-slate-500 font-normal">0 selected</span>`;
+            }
+        }
 
-
-            if (headerSel) {
-
-                const totalRub = Math.round(totalChosenUsd * liveUsdRate);
-
-                if (currentLang === 'ru') {
-
-                    headerSel.innerHTML = (totalChosenUsd > 0)
-
-                        ? `<span class="text-slate-900">${activeAdditionalOptions.size} выбрано</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${totalRub.toLocaleString()} ₽ ($${totalChosenUsd.toLocaleString()})</span>`
-
-                        : `<span class="text-slate-500 font-normal">0 выбрано</span>`;
-
-                } else {
-
-                    headerSel.innerHTML = (totalChosenUsd > 0)
-
-                        ? `<span class="text-slate-900">${activeAdditionalOptions.size} selected</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${totalChosenUsd.toLocaleString()}</span>`
-
-                        : `<span class="text-slate-500 font-normal">0 selected</span>`;
-
-                }
-
+        function renderTrimsContainer() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const badgeEl = document.getElementById('trims-count-badge');
+            if (badgeEl) {
+                badgeEl.innerText = `${visibleTrims.length} ${currentLang === 'ru' ? 'комплектаций' : 'trims'}`;
             }
 
+            const trimsContainer = document.getElementById('trims-list-container');
+            if (!trimsContainer) return;
 
-
-            container.innerHTML = opts.additionalOptions.map(opt => {
-
-                const isStandardInTrim = (opt.priceUsd === 0);
-
-                const isSelected = isStandardInTrim || activeAdditionalOptions.has(opt.id);
-
-                const rubPrice = Math.round(opt.priceUsd * liveUsdRate);
-
-                let priceLabel = '';
-
-                if (currentLang === 'ru') {
-
-                    priceLabel = isStandardInTrim ? 'В комплектации' : `+ ${rubPrice.toLocaleString()} ₽ ($${opt.priceUsd.toLocaleString()})`;
-
-                } else {
-
-                    priceLabel = isStandardInTrim ? 'Standard on trim' : `+ $${opt.priceUsd.toLocaleString()}`;
-
+            trimsContainer.innerHTML = visibleTrims.map((t, idx) => {
+                const isSelected = (idx === activeTrimIndex);
+                const diffUsd = t.fobUsd - visibleTrims[0].fobUsd;
+                const diffRub = Math.round(diffUsd * liveUsdRate);
+                let diffText = (currentLang === 'ru') ? 'Базовая' : 'Standard';
+                if (diffUsd > 0) {
+                    diffText = (currentLang === 'ru') ? `+ ${diffRub.toLocaleString()} ₽` : `+ $${diffUsd.toLocaleString()}`;
                 }
 
-
+                const trimTitle = (currentLang === 'ru')
+                    ? (t.cleanNameRu || t.name)
+                    : (t.cleanNameEn || formatTrimName(t.name, 'en'));
 
                 return `
-
-                <div onclick="toggleAdditionalOption('${opt.id}')" class="p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-xs' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
-
-                    <div class="flex items-center gap-3">
-
-                        <div class="w-5 h-5 rounded-md border flex items-center justify-center transition-colors flex-shrink-0 ${isSelected ? 'bg-white border-white text-slate-900' : 'border-slate-300 bg-slate-50'}">
-
-                            ${isSelected ? '<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>' : ''}
-
-                        </div>
-
-                        <div>
-
-                            <div class="font-bold text-xs sm:text-[13px] leading-tight">${currentLang === 'ru' ? opt.nameRu : opt.nameEn}</div>
-
-                        </div>
-
+                <div onclick="selectTrim(${idx})" id="trim-card-${idx}" class="spring-card p-4 rounded-2xl border transition-all cursor-pointer ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md scale-[1.01]' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
+                    <div class="flex justify-between items-start">
+                        <span class="font-extrabold text-sm sm:text-base">${trimTitle}</span>
+                        <span class="trim-diff-badge text-[11px] font-bold px-2 py-0.5 rounded transition ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${diffText}</span>
                     </div>
-
-                    <span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0 ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${priceLabel}</span>
-
+                    <div class="trim-card-body mt-2 text-xs space-y-1 transition ${isSelected ? 'text-slate-300' : 'text-slate-500'}">
+                        <div>${formatPower(t.power, currentLang)} • ${formatDrive(t.drive, currentLang)}</div>
+                        <div>${currentLang === 'ru' ? 'Запас хода:' : 'Range:'} ${formatRange(t.range, currentLang)} • ${formatAccel(t.accel, currentLang)}</div>
+                        <div class="trim-fob-price font-semibold pt-1 transition ${isSelected ? 'text-white' : 'text-slate-900'}">$${t.fobUsd.toLocaleString()} FOB</div>
+                    </div>
                 </div>
-
                 `;
-
             }).join('');
+        }
 
+        function renderWheelsContainer() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const wheelsContainer = document.getElementById('wheels-list-container');
+            if (!wheelsContainer || !opts.wheels) return;
+
+            wheelsContainer.innerHTML = opts.wheels.map(w => {
+                const isSelected = (w.id === activeWheelId);
+                const rubPrice = Math.round(w.priceUsd * liveUsdRate);
+                let priceTag = '';
+                if (currentLang === 'ru') {
+                    priceTag = w.priceUsd === 0 ? 'Стандарт (0 ₽)' : `+ ${rubPrice.toLocaleString()} ₽ ($${w.priceUsd.toLocaleString()})`;
+                } else {
+                    priceTag = w.priceUsd === 0 ? 'Standard ($0)' : `+ $${w.priceUsd.toLocaleString()}`;
+                }
+                const descText = (currentLang === 'ru') ? (w.descRu || '') : (w.descEn || '');
+                const wheelImgSrc = w.icon || w.img || currentCar.img;
+
+                return `
+                <div onclick="selectWheel('${w.id}')" id="wheel-card-${w.id}" class="spring-card p-3 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md scale-[1.01]' : 'border-surface-border bg-white hover:border-slate-400 text-slate-800'}">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="wheel-img-wrap w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center p-1 overflow-hidden flex-shrink-0 border transition ${isSelected ? 'border-white/20' : 'border-slate-200/80'}">
+                            <img src="${wheelImgSrc}" alt="${w.nameEn}" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <div class="font-bold text-xs leading-tight">${currentLang === 'ru' ? w.nameRu : w.nameEn}</div>
+                            <p class="wheel-desc text-[10px] mt-0.5 leading-snug transition ${isSelected ? 'text-slate-300' : 'text-slate-500'}">${descText}</p>
+                        </div>
+                    </div>
+                    <div class="wheel-bottom-bar pt-1.5 border-t transition ${isSelected ? 'border-white/10' : 'border-slate-100'} flex justify-between items-center">
+                        <span class="wheel-price-badge text-[10px] font-bold px-2 py-0.5 rounded transition ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${priceTag}</span>
+                        ${isSelected ? `<span class="wheel-selected-tag text-[10px] font-semibold text-white/80">${currentLang === 'ru' ? 'Выбрано' : 'Selected'}</span>` : ''}
+                    </div>
+                </div>
+                `;
+            }).join('');
+            updateWheelsHeader();
+        }
+
+        function renderColorsContainer() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const colorsContainer = document.getElementById('colors-palette-container');
+            if (!colorsContainer || !opts.colors) return;
+
+            colorsContainer.innerHTML = opts.colors.map(c => {
+                const isSelected = (c.id === activeColorId);
+                const isPaid = (c.priceUsd > 0);
+                const rubPrice = Math.round((c.priceUsd || 0) * liveUsdRate);
+                let priceTag = '';
+                if (isPaid) {
+                    priceTag = (currentLang === 'ru') 
+                        ? `+${c.priceUsd.toLocaleString()} $`
+                        : `+$${c.priceUsd.toLocaleString()}`;
+                }
+
+                let bgStyle = `background: ${c.hex};`;
+                if (c.hex && c.hex.includes(':')) {
+                    const parts = c.hex.split(':');
+                    bgStyle = `background: linear-gradient(135deg, ${parts[0]} 0%, ${parts[0]} 50%, ${parts[1]} 50%, ${parts[1]} 100%);`;
+                }
+
+                return `
+                <div class="flex flex-col items-center gap-1.5 w-16 sm:w-20 text-center">
+                    <button type="button" id="color-btn-${c.id}" onclick="selectColor('${c.id}')" title="${currentLang === 'ru' ? c.nameRu : c.nameEn}" class="tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
+                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
+                    </button>
+                    <span class="text-[11px] font-semibold text-slate-800 leading-tight">${currentLang === 'ru' ? c.nameRu : c.nameEn}</span>
+                    ${isPaid ? `<span class="text-[9px] font-bold text-amber-800 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">${priceTag}</span>` : ''}
+                </div>
+                `;
+            }).join('');
+            updateColorsHeader();
+        }
+
+        function renderInteriorsContainer() {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const interiorsContainer = document.getElementById('interiors-list-container');
+            if (!interiorsContainer || !opts.interiors) return;
+
+            interiorsContainer.innerHTML = opts.interiors.map(intItem => {
+                const isSelected = (intItem.id === activeInteriorId);
+                const isPaid = (intItem.priceUsd > 0);
+                const rubPrice = Math.round((intItem.priceUsd || 0) * liveUsdRate);
+                let intPriceTag = '';
+                if (isPaid) {
+                    intPriceTag = (currentLang === 'ru')
+                        ? `+${rubPrice.toLocaleString()} ₽`
+                        : `+$${intItem.priceUsd.toLocaleString()}`;
+                }
+
+                let bgStyle = `background: ${intItem.hex || '#1A1A1A'};`;
+                if (intItem.hex && intItem.hex.includes(':')) {
+                    const parts = intItem.hex.split(':');
+                    bgStyle = `background: linear-gradient(135deg, ${parts[0]} 0%, ${parts[0]} 50%, ${parts[1]} 50%, ${parts[1]} 100%);`;
+                }
+
+                return `
+                <div class="flex flex-col items-center gap-1.5 w-16 sm:w-20 text-center">
+                    <button type="button" id="interior-btn-${intItem.id}" onclick="selectInterior('${intItem.id}')" title="${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}" class="tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
+                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
+                    </button>
+                    <span class="text-[11px] font-semibold text-slate-800 leading-tight">${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}</span>
+                    ${isPaid ? `<span class="text-[9px] font-bold ${currentLang === 'ru' ? 'text-amber-800 bg-amber-50 border-amber-200' : 'text-emerald-800 bg-emerald-50 border-emerald-200'} px-1 py-0.2 rounded border">${intPriceTag}</span>` : ''}
+                </div>
+                `;
+            }).join('');
+            updateInteriorsHeader();
+        }
+
+        function selectTrim(idx) {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            if (!visibleTrims[idx]) return;
+
+            const oldIdx = activeTrimIndex;
+            activeTrimIndex = idx;
+            syncOptionsForActiveTrim();
+
+            const oldCard = document.getElementById(`trim-card-${oldIdx}`);
+            const newCard = document.getElementById(`trim-card-${idx}`);
+
+            if (oldCard && newCard) {
+                oldCard.className = 'spring-card p-4 rounded-2xl border transition-all cursor-pointer border-surface-border bg-white text-slate-800 hover:border-slate-400';
+                const oldBadge = oldCard.querySelector('.trim-diff-badge');
+                if (oldBadge) oldBadge.className = 'trim-diff-badge text-[11px] font-bold px-2 py-0.5 rounded transition bg-slate-100 text-slate-700';
+                const oldBody = oldCard.querySelector('.trim-card-body');
+                if (oldBody) oldBody.className = 'trim-card-body mt-2 text-xs space-y-1 transition text-slate-500';
+                const oldFob = oldCard.querySelector('.trim-fob-price');
+                if (oldFob) oldFob.className = 'trim-fob-price font-semibold pt-1 transition text-slate-900';
+
+                newCard.className = 'spring-card p-4 rounded-2xl border transition-all cursor-pointer border-slate-900 bg-slate-900 text-white shadow-md scale-[1.01]';
+                const newBadge = newCard.querySelector('.trim-diff-badge');
+                if (newBadge) newBadge.className = 'trim-diff-badge text-[11px] font-bold px-2 py-0.5 rounded transition bg-white/20 text-white';
+                const newBody = newCard.querySelector('.trim-card-body');
+                if (newBody) newBody.className = 'trim-card-body mt-2 text-xs space-y-1 transition text-slate-300';
+                const newFob = newCard.querySelector('.trim-fob-price');
+                if (newFob) newFob.className = 'trim-fob-price font-semibold pt-1 transition text-white';
+            } else {
+                renderTrimsContainer();
+            }
+
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const trimDisplay = (currentLang === 'ru') ? (trim.cleanNameRu || trim.name) : (trim.cleanNameEn || formatTrimName(trim.name, 'en'));
+            updateCarSeoAndSchema(trim, trimDisplay);
+
+            document.title = (currentLang === 'ru')
+                ? `${currentCar.fullName} (${trimDisplay}) — Расчет под ключ | Shanghai Motors International`
+                : `${currentCar.fullName} (${trimDisplay}) — Export FOB Configurator | Shanghai Motors International`;
+
+            const engineTypeEl = document.getElementById('car-engine-type');
+            if (engineTypeEl) engineTypeEl.innerText = `${formatEngineType(trim.engineType, currentLang)} • ${currentCar.category}`;
+
+            const accelEl = document.getElementById('metric-accel');
+            const powerEl = document.getElementById('metric-power');
+            const rangeEl = document.getElementById('metric-range');
+            const driveEl = document.getElementById('metric-drive');
+            if (accelEl) accelEl.innerText = formatAccel(trim.accel, currentLang);
+            if (powerEl) powerEl.innerText = formatPower(trim.power, currentLang);
+            if (rangeEl) rangeEl.innerText = formatRange(trim.range, currentLang);
+            if (driveEl) driveEl.innerText = formatDrive(trim.drive, currentLang);
+
+            renderAdditionalOptions();
+            updateGalleryDisplay();
+            recalculateSummary();
+        }
+
+        function selectWheel(wheelId) {
+            if (activeWheelId === wheelId) {
+                currentGalleryView = 'wheels';
+                updateGalleryDisplay();
+                return;
+            }
+            const oldId = activeWheelId;
+            activeWheelId = wheelId;
+
+            const oldCard = document.getElementById(`wheel-card-${oldId}`);
+            const newCard = document.getElementById(`wheel-card-${wheelId}`);
+            if (oldCard && newCard) {
+                oldCard.className = 'spring-card p-3 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between border-surface-border bg-white hover:border-slate-400 text-slate-800';
+                const oldImgWrap = oldCard.querySelector('.wheel-img-wrap');
+                if (oldImgWrap) oldImgWrap.className = 'wheel-img-wrap w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center p-1 overflow-hidden flex-shrink-0 border transition border-slate-200/80';
+                const oldDesc = oldCard.querySelector('.wheel-desc');
+                if (oldDesc) oldDesc.className = 'wheel-desc text-[10px] mt-0.5 leading-snug transition text-slate-500';
+                const oldBottom = oldCard.querySelector('.wheel-bottom-bar');
+                if (oldBottom) oldBottom.className = 'wheel-bottom-bar pt-1.5 border-t transition border-slate-100 flex justify-between items-center';
+                const oldBadge = oldCard.querySelector('.wheel-price-badge');
+                if (oldBadge) oldBadge.className = 'wheel-price-badge text-[10px] font-bold px-2 py-0.5 rounded transition bg-slate-100 text-slate-700';
+                const oldSelectedTag = oldCard.querySelector('.wheel-selected-tag');
+                if (oldSelectedTag) oldSelectedTag.remove();
+
+                newCard.className = 'spring-card p-3 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between border-slate-900 bg-slate-900 text-white shadow-md scale-[1.01]';
+                const newImgWrap = newCard.querySelector('.wheel-img-wrap');
+                if (newImgWrap) newImgWrap.className = 'wheel-img-wrap w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center p-1 overflow-hidden flex-shrink-0 border transition border-white/20';
+                const newDesc = newCard.querySelector('.wheel-desc');
+                if (newDesc) newDesc.className = 'wheel-desc text-[10px] mt-0.5 leading-snug transition text-slate-300';
+                const newBottom = newCard.querySelector('.wheel-bottom-bar');
+                if (newBottom) newBottom.className = 'wheel-bottom-bar pt-1.5 border-t transition border-white/10 flex justify-between items-center';
+                const newBadge = newCard.querySelector('.wheel-price-badge');
+                if (newBadge) newBadge.className = 'wheel-price-badge text-[10px] font-bold px-2 py-0.5 rounded transition bg-white/20 text-white';
+                if (!newCard.querySelector('.wheel-selected-tag') && newBottom) {
+                    const span = document.createElement('span');
+                    span.className = 'wheel-selected-tag text-[10px] font-semibold text-white/80';
+                    span.innerText = (currentLang === 'ru') ? 'Выбрано' : 'Selected';
+                    newBottom.appendChild(span);
+                }
+            } else {
+                renderWheelsContainer();
+            }
+
+            updateWheelsHeader();
+            currentGalleryView = 'wheels';
+            updateGalleryDisplay();
+            recalculateSummary();
+        }
+
+        function selectColor(colorId) {
+            if (activeColorId === colorId) {
+                currentGalleryView = 'exterior';
+                updateGalleryDisplay();
+                return;
+            }
+            const oldId = activeColorId;
+            activeColorId = colorId;
+
+            const oldBtn = document.getElementById(`color-btn-${oldId}`);
+            const newBtn = document.getElementById(`color-btn-${colorId}`);
+            if (oldBtn && newBtn) {
+                oldBtn.className = 'tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center hover:scale-105';
+                oldBtn.innerHTML = '';
+                newBtn.className = 'tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md';
+                newBtn.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>';
+            } else {
+                renderColorsContainer();
+            }
+
+            updateColorsHeader();
+            currentGalleryView = 'exterior';
+            updateGalleryDisplay();
+            recalculateSummary();
+        }
+
+        function selectInterior(intId) {
+            if (activeInteriorId === intId) {
+                currentGalleryView = 'interior';
+                updateGalleryDisplay();
+                return;
+            }
+            const oldId = activeInteriorId;
+            activeInteriorId = intId;
+
+            const oldBtn = document.getElementById(`interior-btn-${oldId}`);
+            const newBtn = document.getElementById(`interior-btn-${intId}`);
+            if (oldBtn && newBtn) {
+                oldBtn.className = 'tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center hover:scale-105';
+                oldBtn.innerHTML = '';
+                newBtn.className = 'tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md';
+                newBtn.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>';
+            } else {
+                renderInteriorsContainer();
+            }
+
+            updateInteriorsHeader();
+            currentGalleryView = 'interior';
+            updateGalleryDisplay();
+            recalculateSummary();
+        }
+
+        function setCarRoute(mode) {
+            activeRouteMode = mode;
+            recalculateSummary();
+        }
+
+        function toggleAdditionalOption(optId) {
+            if (!currentCar) return;
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const targetOpt = opts.additionalOptions ? opts.additionalOptions.find(o => o.id === optId) : null;
+            if (targetOpt && targetOpt.priceUsd === 0) return;
+
+            const isNowActive = !activeAdditionalOptions.has(optId);
+            if (isNowActive) {
+                activeAdditionalOptions.add(optId);
+            } else {
+                activeAdditionalOptions.delete(optId);
+            }
+
+            const optCard = document.getElementById(`opt-card-${optId}`);
+            if (optCard) {
+                if (isNowActive) {
+                    optCard.className = 'spring-card p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 border-slate-900 bg-slate-900 text-white shadow-xs';
+                    const badge = optCard.querySelector('.opt-price-badge');
+                    if (badge) badge.className = 'opt-price-badge text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0 bg-white/20 text-white';
+                    const checkbox = optCard.querySelector('.opt-checkbox');
+                    if (checkbox) {
+                        checkbox.className = 'opt-checkbox w-5 h-5 rounded-md border flex items-center justify-center transition-colors flex-shrink-0 bg-white border-white text-slate-900';
+                        checkbox.innerHTML = '<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>';
+                    }
+                } else {
+                    optCard.className = 'spring-card p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 border-surface-border bg-white text-slate-800 hover:border-slate-400';
+                    const badge = optCard.querySelector('.opt-price-badge');
+                    if (badge) badge.className = 'opt-price-badge text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0 bg-slate-100 text-slate-700';
+                    const checkbox = optCard.querySelector('.opt-checkbox');
+                    if (checkbox) {
+                        checkbox.className = 'opt-checkbox w-5 h-5 rounded-md border flex items-center justify-center transition-colors flex-shrink-0 border-slate-300 bg-slate-50';
+                        checkbox.innerHTML = '';
+                    }
+                }
+            } else {
+                renderAdditionalOptions();
+            }
+
+            updateOptionsHeader();
+            recalculateSummary();
+        }
+
+        function renderAdditionalOptions() {
+            const visibleTrims = getVisibleTrims();
+            const trim = visibleTrims[activeTrimIndex] || visibleTrims[0];
+            const opts = window.getCarOptions(currentCar.id, trim.name, activeSeatingLayout);
+            const sec = document.getElementById('additional-options-section');
+            const container = document.getElementById('additional-options-container');
+            if (!sec || !container) return;
+
+            if (!opts.additionalOptions || opts.additionalOptions.length === 0) {
+                sec.classList.add('hidden');
+                return;
+            }
+
+            sec.classList.remove('hidden');
+            updateOptionsHeader();
+
+            container.innerHTML = opts.additionalOptions.map(opt => {
+                const isStandardInTrim = (opt.priceUsd === 0);
+                const isSelected = isStandardInTrim || activeAdditionalOptions.has(opt.id);
+                const rubPrice = Math.round(opt.priceUsd * liveUsdRate);
+                let priceLabel = '';
+                if (currentLang === 'ru') {
+                    priceLabel = isStandardInTrim ? 'В комплектации' : `+ ${rubPrice.toLocaleString()} ₽ ($${opt.priceUsd.toLocaleString()})`;
+                } else {
+                    priceLabel = isStandardInTrim ? 'Standard on trim' : `+ $${opt.priceUsd.toLocaleString()}`;
+                }
+
+                return `
+                <div onclick="toggleAdditionalOption('${opt.id}')" id="opt-card-${opt.id}" class="spring-card p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-xs' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
+                    <div class="flex items-center gap-3">
+                        <div class="opt-checkbox w-5 h-5 rounded-md border flex items-center justify-center transition-colors flex-shrink-0 ${isSelected ? 'bg-white border-white text-slate-900' : 'border-slate-300 bg-slate-50'}">
+                            ${isSelected ? '<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>' : ''}
+                        </div>
+                        <div>
+                            <div class="font-bold text-xs sm:text-[13px] leading-tight">${currentLang === 'ru' ? opt.nameRu : opt.nameEn}</div>
+                        </div>
+                    </div>
+                    <span class="opt-price-badge text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0 ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${priceLabel}</span>
+                </div>
+                `;
+            }).join('');
         }
 
 
@@ -2461,359 +2791,66 @@
 
 
 
-            // Render Trims
-
-            document.getElementById('trims-count-badge').innerText = `${visibleTrims.length} ${currentLang === 'ru' ? 'комплектаций' : 'trims'}`;
-
-            const trimsContainer = document.getElementById('trims-list-container');
-
-            trimsContainer.innerHTML = visibleTrims.map((t, idx) => {
-
-                const isSelected = (idx === activeTrimIndex);
-
-                const diffUsd = t.fobUsd - visibleTrims[0].fobUsd;
-
-                const diffRub = Math.round(diffUsd * liveUsdRate);
-
-                let diffText = (currentLang === 'ru') ? 'Базовая' : 'Standard';
-
-                if (diffUsd > 0) {
-
-                    diffText = (currentLang === 'ru') ? `+ ${diffRub.toLocaleString()} ₽` : `+ $${diffUsd.toLocaleString()}`;
-
-                }
-
-
-
-                const trimTitle = (currentLang === 'ru')
-
-                    ? (t.cleanNameRu || t.name)
-
-                    : (t.cleanNameEn || formatTrimName(t.name, 'en'));
-
-
-
-                return `
-
-                <div onclick="selectTrim(${idx})" class="p-4 rounded-2xl border transition-all cursor-pointer ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
-
-                    <div class="flex justify-between items-start">
-
-                        <span class="font-extrabold text-sm sm:text-base">${trimTitle}</span>
-
-                        <span class="text-[11px] font-bold px-2 py-0.5 rounded ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${diffText}</span>
-
-                    </div>
-
-                    <div class="mt-2 text-xs space-y-1 ${isSelected ? 'text-slate-300' : 'text-slate-500'}">
-
-                        <div>${formatPower(t.power, currentLang)} • ${formatDrive(t.drive, currentLang)}</div>
-
-                        <div>${currentLang === 'ru' ? 'Запас хода:' : 'Range:'} ${formatRange(t.range, currentLang)} • ${formatAccel(t.accel, currentLang)}</div>
-
-                        <div class="font-semibold pt-1 ${isSelected ? 'text-white' : 'text-slate-900'}">$${t.fobUsd.toLocaleString()} FOB</div>
-
-                    </div>
-
-                </div>
-
-                `;
-
-            }).join('');
-
-
-
-            // Render Wheels (EasyCar Picture Cards)
-
-            const wheelsContainer = document.getElementById('wheels-list-container');
-
-            wheelsContainer.innerHTML = opts.wheels.map(w => {
-
-                const isSelected = (w.id === activeWheelId);
-
-                const rubPrice = Math.round(w.priceUsd * liveUsdRate);
-
-                let priceTag = '';
-
-                if (currentLang === 'ru') {
-
-                    priceTag = w.priceUsd === 0 ? 'Стандарт (0 ₽)' : `+ ${rubPrice.toLocaleString()} ₽ ($${w.priceUsd.toLocaleString()})`;
-
-                } else {
-
-                    priceTag = w.priceUsd === 0 ? 'Standard ($0)' : `+ $${w.priceUsd.toLocaleString()}`;
-
-                }
-
-                const descText = (currentLang === 'ru') ? (w.descRu || '') : (w.descEn || '');
-
-                const wheelImgSrc = w.icon || w.img || currentCar.img;
-
-
-
-                return `
-
-                <div onclick="selectWheel('${w.id}')" class="p-3 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md' : 'border-surface-border bg-white hover:border-slate-400 text-slate-800'}">
-
-                    <div class="flex items-center gap-3 mb-2">
-
-                        <div class="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center p-1 overflow-hidden flex-shrink-0 border ${isSelected ? 'border-white/20' : 'border-slate-200/80'}">
-
-                            <img src="${wheelImgSrc}" alt="${w.nameEn}" class="w-full h-full object-contain">
-
-                        </div>
-
-                        <div>
-
-                            <div class="font-bold text-xs leading-tight">${currentLang === 'ru' ? w.nameRu : w.nameEn}</div>
-
-                            <p class="text-[10px] mt-0.5 leading-snug ${isSelected ? 'text-slate-300' : 'text-slate-500'}">${descText}</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="pt-1.5 border-t ${isSelected ? 'border-white/10' : 'border-slate-100'} flex justify-between items-center">
-
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${priceTag}</span>
-
-                        ${isSelected ? `<span class="text-[10px] font-semibold text-white/80">${currentLang === 'ru' ? 'Выбрано' : 'Selected'}</span>` : ''}
-
-                    </div>
-
-                </div>
-
-                `;
-
-            }).join('');
-
-
-
-            const selectedWheel = opts.wheels.find(w => w.id === activeWheelId) || opts.wheels[0];
-
-            const wheelsHeaderEl = document.getElementById('wheels-header-selection');
-
-            if (wheelsHeaderEl && selectedWheel) {
-
-                const wRub = Math.round(selectedWheel.priceUsd * liveUsdRate);
-
-                if (currentLang === 'ru') {
-
-                    wheelsHeaderEl.innerHTML = selectedWheel.priceUsd > 0
-
-                        ? `<span class="text-slate-900">${selectedWheel.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${wRub.toLocaleString()} ₽</span>`
-
-                        : `<span class="text-slate-900">${selectedWheel.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
-
-                } else {
-
-                    wheelsHeaderEl.innerHTML = selectedWheel.priceUsd > 0
-
-                        ? `<span class="text-slate-900">${selectedWheel.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedWheel.priceUsd.toLocaleString()}</span>`
-
-                        : `<span class="text-slate-900">${selectedWheel.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
-
-                }
-
-            }
-
-
-
-            // Render Exterior Colors (EasyCar Swatches)
-
-            const colorsContainer = document.getElementById('colors-palette-container');
-
-            colorsContainer.innerHTML = opts.colors.map(c => {
-
-                const isSelected = (c.id === activeColorId);
-
-                const isPaid = (c.priceUsd > 0);
-
-                const rubPrice = Math.round((c.priceUsd || 0) * liveUsdRate);
-
-                let priceTag = '';
-
-                if (isPaid) {
-
-                    priceTag = (currentLang === 'ru') 
-
-                        ? `+${c.priceUsd.toLocaleString()} $`
-
-                        : `+$${c.priceUsd.toLocaleString()}`;
-
-                }
-
-
-
-                let bgStyle = `background: ${c.hex};`;
-
-                if (c.hex && c.hex.includes(':')) {
-
-                    const parts = c.hex.split(':');
-
-                    bgStyle = `background: linear-gradient(135deg, ${parts[0]} 0%, ${parts[0]} 50%, ${parts[1]} 50%, ${parts[1]} 100%);`;
-
-                }
-
-
-
-                return `
-
-                <div class="flex flex-col items-center gap-1.5 w-16 sm:w-20 text-center">
-
-                    <button type="button" onclick="selectColor('${c.id}')" title="${currentLang === 'ru' ? c.nameRu : c.nameEn}" class="w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
-
-                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
-
-                    </button>
-
-                    <span class="text-[11px] font-semibold text-slate-800 leading-tight">${currentLang === 'ru' ? c.nameRu : c.nameEn}</span>
-
-                    ${isPaid ? `<span class="text-[9px] font-bold text-amber-800 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">${priceTag}</span>` : ''}
-
-                </div>
-
-                `;
-
-            }).join('');
-
-
-
-            const selectedColor = opts.colors.find(c => c.id === activeColorId) || opts.colors[0];
-
-            const colorHeaderEl = document.getElementById('color-header-selection');
-
-            if (colorHeaderEl && selectedColor) {
-
-                const rubPrice = Math.round(selectedColor.priceUsd * liveUsdRate);
-
-                if (currentLang === 'ru') {
-
-                    colorHeaderEl.innerHTML = selectedColor.priceUsd > 0
-
-                        ? `<span class="text-slate-900">${selectedColor.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${rubPrice.toLocaleString()} ₽ ($${selectedColor.priceUsd.toLocaleString()})</span>`
-
-                        : `<span class="text-slate-900">${selectedColor.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
-
-                } else {
-
-                    colorHeaderEl.innerHTML = selectedColor.priceUsd > 0
-
-                        ? `<span class="text-slate-900">${selectedColor.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedColor.priceUsd.toLocaleString()}</span>`
-
-                        : `<span class="text-slate-900">${selectedColor.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
-
-                }
-
-            }
-
-
-
-            // Render Interiors (EasyCar Split Swatches)
-
-            const interiorsContainer = document.getElementById('interiors-list-container');
-
-            interiorsContainer.innerHTML = opts.interiors.map(intItem => {
-
-                const isSelected = (intItem.id === activeInteriorId);
-
-                const isPaid = (intItem.priceUsd > 0);
-
-                const rubPrice = Math.round((intItem.priceUsd || 0) * liveUsdRate);
-
-                let intPriceTag = '';
-
-                if (isPaid) {
-
-                    intPriceTag = (currentLang === 'ru')
-
-                        ? `+${rubPrice.toLocaleString()} ₽`
-
-                        : `+$${intItem.priceUsd.toLocaleString()}`;
-
-                }
-
-
-
-                let bgStyle = `background: ${intItem.hex || '#1A1A1A'};`;
-
-                if (intItem.hex && intItem.hex.includes(':')) {
-
-                    const parts = intItem.hex.split(':');
-
-                    bgStyle = `background: linear-gradient(135deg, ${parts[0]} 0%, ${parts[0]} 50%, ${parts[1]} 50%, ${parts[1]} 100%);`;
-
-                }
-
-
-
-                return `
-
-                <div class="flex flex-col items-center gap-1.5 w-16 sm:w-20 text-center">
-
-                    <button type="button" onclick="selectInterior('${intItem.id}')" title="${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}" class="w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
-
-                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
-
-                    </button>
-
-                    <span class="text-[11px] font-semibold text-slate-800 leading-tight">${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}</span>
-
-                    ${isPaid ? `<span class="text-[9px] font-bold ${currentLang === 'ru' ? 'text-amber-800 bg-amber-50 border-amber-200' : 'text-emerald-800 bg-emerald-50 border-emerald-200'} px-1 py-0.2 rounded border">${intPriceTag}</span>` : ''}
-
-                </div>
-
-                `;
-
-            }).join('');
-
-
-
-            const selectedInt = opts.interiors.find(i => i.id === activeInteriorId) || opts.interiors[0];
-
-            const interiorHeaderEl = document.getElementById('interior-header-selection');
-
-            if (interiorHeaderEl && selectedInt) {
-
-                if (currentLang === 'ru') {
-
-                    interiorHeaderEl.innerHTML = selectedInt.priceUsd > 0 ? `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded ml-1 font-bold">+${Math.round((selectedInt.priceUsd || 0) * liveUsdRate).toLocaleString()} ₽</span>` : `<span class="text-slate-900">${selectedInt.nameRu}</span> <span class="text-slate-500 font-normal ml-1">Стандарт</span>`;
-
-                } else {
-
-                    interiorHeaderEl.innerHTML = selectedInt.priceUsd > 0 ? `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-1 font-bold">+$${selectedInt.priceUsd.toLocaleString()}</span>` : `<span class="text-slate-900">${selectedInt.nameEn}</span> <span class="text-slate-500 font-normal ml-1">Standard</span>`;
-
-                }
-
-            }
-
-
-
-            // Render Section 5: Additional Options & Packages
-
+            // Render Containers with Emil Kowalski Spring Cards
+            renderTrimsContainer();
+            renderWheelsContainer();
+            renderColorsContainer();
+            renderInteriorsContainer();
             renderAdditionalOptions();
 
-
-
             // Render Technical Specs Accordion
-
             renderDetailedSpecsSection();
 
-
-
             // Refresh Gallery Images & Previews
-
             updateGalleryDisplay();
 
-
-
             // Calculate Turnkey Pricing
-
             recalculateSummary();
-
         }
 
+        // Emil Kowalski Fluid RAF Price Odometer
+        function animatePriceCounter(el, targetVal, prefix, suffix, duration) {
+            prefix = prefix || '';
+            suffix = suffix || '';
+            duration = duration || 380;
+            if (!el || typeof targetVal !== 'number' || isNaN(targetVal)) return;
 
+            const rawAttr = el.getAttribute('data-numeric-val');
+            const prevVal = rawAttr !== null ? parseInt(rawAttr, 10) : parseInt((el.innerText || '').replace(/[^\d]/g, ''), 10);
+            el.setAttribute('data-numeric-val', targetVal.toString());
+
+            if (isNaN(prevVal) || prevVal === targetVal || prevVal === 0) {
+                el.innerText = prefix + targetVal.toLocaleString() + suffix;
+                return;
+            }
+
+            if (el._rafTimer) {
+                cancelAnimationFrame(el._rafTimer);
+                el._rafTimer = null;
+            }
+
+            const startVal = prevVal;
+            const diff = targetVal - startVal;
+            const startTime = performance.now();
+
+            function updateCounter(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Emil Kowalski ease-out cubic curve
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(startVal + diff * ease);
+                el.innerText = prefix + current.toLocaleString() + suffix;
+
+                if (progress < 1) {
+                    el._rafTimer = requestAnimationFrame(updateCounter);
+                } else {
+                    el.innerText = prefix + targetVal.toLocaleString() + suffix;
+                    el._rafTimer = null;
+                }
+            }
+
+            el._rafTimer = requestAnimationFrame(updateCounter);
+        }
 
         function recalculateSummary() {
 
@@ -2929,7 +2966,7 @@
 
 
 
-                if (priceRubEl) priceRubEl.innerText = `$${pricing.fobUsd.toLocaleString()}`;
+                if (priceRubEl) animatePriceCounter(priceRubEl, pricing.fobUsd, '$', '');
 
                 if (fobUsdEl) fobUsdEl.innerText = (activeDestinationPort === 'fob')
 
@@ -3031,7 +3068,7 @@
 
                 const mobilePriceEl = document.getElementById('mobile-bar-price');
 
-                if (mobilePriceEl) mobilePriceEl.innerText = `$${pricing.fobUsd.toLocaleString()}`;
+                if (mobilePriceEl) animatePriceCounter(mobilePriceEl, pricing.fobUsd, '$', '');
 
                 const mobileTrimEl = document.getElementById('mobile-bar-trim');
 
@@ -3133,7 +3170,7 @@
 
 
 
-                if (priceRubEl) priceRubEl.innerText = `${pricing.fullPrice.toLocaleString()} ₽`;
+                if (priceRubEl) animatePriceCounter(priceRubEl, pricing.fullPrice, '', ' ₽');
 
                 if (fobUsdEl) fobUsdEl.innerText = `FOB от $${pricing.fobUsd.toLocaleString()} (${pricing.fobRub.toLocaleString()} ₽) • по курсу ЦБ`;
 
@@ -3205,7 +3242,7 @@
 
                 const mobilePriceElRu = document.getElementById('mobile-bar-price');
 
-                if (mobilePriceElRu) mobilePriceElRu.innerText = `${pricing.fullPrice.toLocaleString()} ₽`;
+                if (mobilePriceElRu) animatePriceCounter(mobilePriceElRu, pricing.fullPrice, '', ' ₽');
 
                 const mobileTrimElRu = document.getElementById('mobile-bar-trim');
 
