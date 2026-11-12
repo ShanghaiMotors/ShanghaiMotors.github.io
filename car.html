@@ -225,13 +225,33 @@
         }
 
         body {
-
             background-color: #F8FAFC;
-
             color: #1E293B;
-
             font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+        }
 
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.025em;
+            text-wrap: balance;
+        }
+        .display-title {
+            letter-spacing: -0.035em;
+            line-height: 1.12;
+            text-wrap: balance;
+        }
+        .eyebrow-tag {
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        p.lead, .text-pretty {
+            text-wrap: pretty;
+        }
+        :focus-visible {
+            outline: 2px solid rgba(15, 23, 42, 0.4);
+            outline-offset: 2px;
         }
 
         .lang-ru [data-lang="en"],
@@ -275,7 +295,20 @@
             --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
             --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+            /* Multi-Layered Studio Lighting & Ambient Occlusion Depth Tokens */
+            --shadow-studio-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.04);
+            --shadow-studio-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.04);
+            --shadow-studio-md: 0 2px 4px 0 rgba(15, 23, 42, 0.03), 0 8px 24px -4px rgba(15, 23, 42, 0.06), 0 16px 32px -8px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.04);
+            --shadow-studio-lg: 0 4px 6px -1px rgba(15, 23, 42, 0.03), 0 16px 40px -8px rgba(15, 23, 42, 0.08), 0 28px 64px -16px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(15, 23, 42, 0.04);
+            --shadow-studio-modal: 0 25px 65px -15px rgba(15, 23, 42, 0.22), 0 10px 25px -8px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.15);
         }
+
+        .shadow-studio-xs { box-shadow: var(--shadow-studio-xs); }
+        .shadow-studio-sm { box-shadow: var(--shadow-studio-sm); }
+        .shadow-studio-md { box-shadow: var(--shadow-studio-md); }
+        .shadow-studio-lg { box-shadow: var(--shadow-studio-lg); }
+        .shadow-studio-modal { box-shadow: var(--shadow-studio-modal); }
 
         .tactile-btn {
             transition: transform 0.16s var(--ease-spring), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -286,11 +319,13 @@
         }
 
         .spring-card {
+            box-shadow: var(--shadow-studio-xs);
             transition: transform 0.25s var(--ease-spring), border-color 0.2s ease, box-shadow 0.25s var(--ease-spring), background-color 0.2s ease;
             will-change: transform, box-shadow;
         }
         .spring-card:hover {
             transform: translateY(-1px);
+            box-shadow: var(--shadow-studio-md);
         }
         .spring-card:active {
             transform: scale(0.985);
@@ -365,6 +400,22 @@
         .chevron-spring {
             transition: transform 0.32s var(--ease-spring);
             will-change: transform;
+        }
+
+        /* 60/120fps Hardware Acceleration & Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .tactile-btn:active, .spring-card:active {
+                transform: none !important;
+            }
+            .accordion-grid-wrapper {
+                transition: none !important;
+            }
         }
 
     </style>
@@ -539,7 +590,7 @@
 
                 <!-- Studio Showcase Card with EasyCar Gallery & View Switcher -->
 
-                <div class="rounded-3xl bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 border border-surface-border p-4 sm:p-6 flex flex-col items-center justify-between relative overflow-hidden shadow-sm min-h-[340px] sm:min-h-[420px]">
+                <div class="rounded-3xl bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 border border-slate-200/80 p-4 sm:p-6 flex flex-col items-center justify-between relative overflow-hidden shadow-studio-sm min-h-[340px] sm:min-h-[420px]">
 
                     <!-- Ambient Radial Lighting -->
 
@@ -915,7 +966,7 @@
 
                 <!-- Main Configuration Calculation Card -->
 
-                <div class="bg-white border border-surface-border rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                <div class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-studio-md space-y-4">
 
                     <div class="flex justify-between items-center pb-3 border-b border-surface-border">
 
@@ -1209,7 +1260,7 @@
 
     <div id="lead-modal" onclick="if(event.target === this) closeCarLeadModal()" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 modal-backdrop-anim">
 
-        <div class="bg-white rounded-2xl border border-surface-border p-6 max-w-md w-full shadow-2xl relative modal-card-anim">
+        <div class="bg-white rounded-2xl border border-surface-border p-6 max-w-md w-full shadow-studio-modal relative modal-card-anim">
 
             <button onclick="closeCarLeadModal()" aria-label="Close" class="tactile-btn absolute top-4 right-4 w-8 h-8 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center text-lg leading-none transition cursor-pointer">&times;</button>
 
@@ -2854,12 +2905,13 @@
             duration = duration || 380;
             if (!el || typeof targetVal !== 'number' || isNaN(targetVal)) return;
 
+            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const rawAttr = el.getAttribute('data-numeric-val');
-            const prevVal = rawAttr !== null ? parseInt(rawAttr, 10) : parseInt((el.innerText || '').replace(/[^\d]/g, ''), 10);
+            const prevVal = rawAttr !== null ? parseInt(rawAttr, 10) : parseInt((el.textContent || '').replace(/[^\d]/g, ''), 10);
             el.setAttribute('data-numeric-val', targetVal.toString());
 
-            if (isNaN(prevVal) || prevVal === targetVal || prevVal === 0) {
-                el.innerText = prefix + targetVal.toLocaleString() + suffix;
+            if (isNaN(prevVal) || prevVal === targetVal || prevVal === 0 || prefersReducedMotion) {
+                el.textContent = prefix + targetVal.toLocaleString() + suffix;
                 return;
             }
 
@@ -2878,12 +2930,12 @@
                 // Emil Kowalski ease-out cubic curve
                 const ease = 1 - Math.pow(1 - progress, 3);
                 const current = Math.round(startVal + diff * ease);
-                el.innerText = prefix + current.toLocaleString() + suffix;
+                el.textContent = prefix + current.toLocaleString() + suffix;
 
                 if (progress < 1) {
                     el._rafTimer = requestAnimationFrame(updateCounter);
                 } else {
-                    el.innerText = prefix + targetVal.toLocaleString() + suffix;
+                    el.textContent = prefix + targetVal.toLocaleString() + suffix;
                     el._rafTimer = null;
                 }
             }

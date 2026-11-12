@@ -1031,7 +1031,26 @@
 
         h1, h2, h3, h4 {
             font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
+            text-wrap: balance;
+        }
+        .display-title {
+            letter-spacing: -0.035em;
+            line-height: 1.12;
+            text-wrap: balance;
+        }
+        .eyebrow-tag {
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        p.lead, .text-pretty {
+            text-wrap: pretty;
+        }
+        :focus-visible {
+            outline: 2px solid rgba(15, 23, 42, 0.4);
+            outline-offset: 2px;
         }
 
         body.modal-open {
@@ -1104,7 +1123,20 @@
             --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
             --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+            /* Multi-Layered Studio Lighting & Ambient Occlusion Depth Tokens */
+            --shadow-studio-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.04);
+            --shadow-studio-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.04);
+            --shadow-studio-md: 0 2px 4px 0 rgba(15, 23, 42, 0.03), 0 8px 24px -4px rgba(15, 23, 42, 0.06), 0 16px 32px -8px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.04);
+            --shadow-studio-lg: 0 4px 6px -1px rgba(15, 23, 42, 0.03), 0 16px 40px -8px rgba(15, 23, 42, 0.08), 0 28px 64px -16px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(15, 23, 42, 0.04);
+            --shadow-studio-modal: 0 25px 65px -15px rgba(15, 23, 42, 0.22), 0 10px 25px -8px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.15);
         }
+
+        .shadow-studio-xs { box-shadow: var(--shadow-studio-xs); }
+        .shadow-studio-sm { box-shadow: var(--shadow-studio-sm); }
+        .shadow-studio-md { box-shadow: var(--shadow-studio-md); }
+        .shadow-studio-lg { box-shadow: var(--shadow-studio-lg); }
+        .shadow-studio-modal { box-shadow: var(--shadow-studio-modal); }
 
         .tactile-btn {
             transition: transform 0.16s var(--ease-spring), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -1115,11 +1147,13 @@
         }
 
         .spring-card {
+            box-shadow: var(--shadow-studio-xs);
             transition: transform 0.25s var(--ease-spring), border-color 0.2s ease, box-shadow 0.25s var(--ease-spring), background-color 0.2s ease;
             will-change: transform, box-shadow;
         }
         .spring-card:hover {
             transform: translateY(-2px);
+            box-shadow: var(--shadow-studio-md);
         }
         .spring-card:active {
             transform: scale(0.985);
@@ -1253,6 +1287,25 @@
         .chevron-spring {
             transition: transform 0.32s var(--ease-spring);
             will-change: transform;
+        }
+
+        /* 60/120fps Hardware Acceleration & Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .banner-slide {
+                transition: none !important;
+            }
+            .tactile-btn:active, .spring-card:active {
+                transform: none !important;
+            }
+            .accordion-grid-wrapper {
+                transition: none !important;
+            }
         }
     </style>
 </head>
@@ -1863,7 +1916,7 @@
 
                 <!-- Right Column: Interactive Lead Form Card -->
                 <div class="lg:col-span-7">
-                    <div class="bg-surface-card border border-surface-border rounded-2xl p-5 sm:p-7 shadow-xl relative overflow-hidden">
+                    <div class="bg-surface-card border border-surface-border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-studio-lg relative overflow-hidden">
                         <form id="lead-form" onsubmit="handleLeadSubmit(event)" class="form-morph-wrap space-y-4">
                             <!-- Hidden inputs for FormSubmit -->
                             <input type="hidden" name="_subject" id="form-subject" value="Новая заявка с сайта Shanghai Motors">
@@ -2706,7 +2759,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 text-left">
                 <!-- Card 1: Pricing & Real Landed Cost -->
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">How much does it cost to buy a car in China and ship it to Oman or the UAE?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Сколько стоит привезти Зикр или Лисянг из Китая под ключ со всеми налогами?</h3>
@@ -2720,7 +2773,7 @@
                 </div>
 
                 <!-- Card 2: Price Comparison vs Local Dealers -->
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Is it cheaper to import a Zeekr or Li Auto directly from China than buying locally?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Почему заказывать напрямую из Китая выгоднее, чем брать у дилеров в наличии?</h3>
@@ -2734,7 +2787,7 @@
                 </div>
 
                 <!-- Card 3: Gulf Climate & Software / Russification -->
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Do Chinese cars work reliably in Gulf summer heat, and is the software in English?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Работает ли русификация и передается ли мастер-аккаунт на китайские электромобили?</h3>
@@ -2748,7 +2801,7 @@
                 </div>
 
                 <!-- Card 4: Timeline -->
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">How long does it take for a car from China to arrive in Muscat or Dubai?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Сколько дней занимает доставка автовозом из Китая до Москвы или Алматы?</h3>
@@ -2762,7 +2815,7 @@
                 </div>
 
                 <!-- Card 5: Payment Terms & Currencies -->
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Can I pay in OMR, AED, SAR, or USD, and is my payment secure?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Каковы условия оплаты и валюта расчетов?</h3>
@@ -2776,7 +2829,7 @@
                 </div>
 
                 <!-- Card 6: Custom Factory Options -->
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Can I pick my own exterior color, interior leather, and wheels from the factory?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Можно ли выбрать свой цвет кузова, салон и колесные диски прямо с завода?</h3>
@@ -2790,7 +2843,7 @@
                 </div>
 
                 <!-- Card 7: Insurance -->
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Is my vehicle insured against damage during transport?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Застрахован ли автомобиль на время перевозки?</h3>
@@ -2804,7 +2857,7 @@
                 </div>
 
                 <!-- Card 8: Documentation / EPTS -->
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between">
+                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">What export documentation is provided for local customs and registration?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Получу ли я действующий ЭПТС для постановки на учет в ГИБДД?</h3>
@@ -3144,7 +3197,7 @@
 
     <!-- INTERACTIVE CAR DETAILS & PRICE BREAKDOWN MODAL (EASY.CAR CONFIGURATOR CLONE) -->
     <div id="car-modal" onclick="if(event.target === this) closeCarModal()" class="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto overflow-x-hidden w-full max-w-full touch-pan-y overscroll-contain modal-backdrop-anim">
-        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-5xl lg:max-w-6xl max-h-[92vh] overflow-y-auto overflow-x-hidden relative my-auto p-5 sm:p-8 lg:p-9 overscroll-contain modal-card-anim">
+        <div class="bg-surface-card border border-surface-border rounded-2xl w-full max-w-5xl lg:max-w-6xl max-h-[92vh] overflow-y-auto overflow-x-hidden relative my-auto p-5 sm:p-8 lg:p-9 overscroll-contain shadow-studio-modal modal-card-anim">
             <button onclick="closeCarModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-600 hover:text-slate-900 flex items-center justify-center text-lg z-10 transition">
                 &times;
             </button>
@@ -3829,6 +3882,17 @@
             }, 6500);
         }
 
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (slideTimer) {
+                    clearInterval(slideTimer);
+                    slideTimer = null;
+                }
+            } else {
+                startBannerAutoplay();
+            }
+        });
+
         function prevBanner() {
             goToBanner((activeSlideIndex - 1 + heroBanners.length) % heroBanners.length);
         }
@@ -4202,19 +4266,20 @@
             renderModalTrim(idx);
         }
 
-        // Emil Kowalski Fluid RAF Price Odometer
+        // Emil Kowalski Fluid RAF Price Odometer with Zero-Reflow & Reduced Motion
         function animatePriceCounter(el, targetVal, prefix, suffix, duration) {
             prefix = prefix || '';
             suffix = suffix || '';
             duration = duration || 380;
             if (!el || typeof targetVal !== 'number' || isNaN(targetVal)) return;
 
+            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const rawAttr = el.getAttribute('data-numeric-val');
-            const prevVal = rawAttr !== null ? parseInt(rawAttr, 10) : parseInt((el.innerText || '').replace(/[^\d]/g, ''), 10);
+            const prevVal = rawAttr !== null ? parseInt(rawAttr, 10) : parseInt((el.textContent || '').replace(/[^\d]/g, ''), 10);
             el.setAttribute('data-numeric-val', targetVal.toString());
 
-            if (isNaN(prevVal) || prevVal === targetVal || prevVal === 0) {
-                el.innerText = prefix + targetVal.toLocaleString() + suffix;
+            if (isNaN(prevVal) || prevVal === targetVal || prevVal === 0 || prefersReducedMotion) {
+                el.textContent = prefix + targetVal.toLocaleString() + suffix;
                 return;
             }
 
@@ -4232,12 +4297,12 @@
                 const progress = Math.min(elapsed / duration, 1);
                 const ease = 1 - Math.pow(1 - progress, 3);
                 const current = Math.round(startVal + diff * ease);
-                el.innerText = prefix + current.toLocaleString() + suffix;
+                el.textContent = prefix + current.toLocaleString() + suffix;
 
                 if (progress < 1) {
                     el._rafTimer = requestAnimationFrame(updateCounter);
                 } else {
-                    el.innerText = prefix + targetVal.toLocaleString() + suffix;
+                    el.textContent = prefix + targetVal.toLocaleString() + suffix;
                     el._rafTimer = null;
                 }
             }
@@ -4853,15 +4918,7 @@
             window.open(url, '_blank');
         }
 
-        // Close modals on Escape or backdrop click
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeCarModal();
-                closeConsultationModal();
-                closeLicenseModal();
-            }
-        });
-
+        // Close modals on backdrop click
         document.getElementById('car-modal')?.addEventListener('click', (e) => {
             if (e.target.id === 'car-modal') closeCarModal();
         });
