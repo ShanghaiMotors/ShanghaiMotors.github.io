@@ -1208,6 +1208,52 @@
         .floating-dock-btn {
             will-change: transform;
         }
+
+        /* Emil Kowalski Micro-Interactions & Spring Pops */
+        @keyframes spring-pop {
+            0% { transform: scale(0.35); opacity: 0; }
+            70% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-spring-pop {
+            animation: spring-pop 0.26s var(--ease-spring) forwards;
+            will-change: transform, opacity;
+        }
+
+        /* Catalog Card GPU Stagger Entrance */
+        @keyframes card-fade-in {
+            0% { opacity: 0; transform: translateY(10px) scale(0.985); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .catalog-card-enter {
+            animation: card-fade-in 0.35s var(--ease-spring) both;
+            will-change: transform, opacity;
+        }
+
+        /* Form to Success Screen Fluid Container Morph */
+        .form-morph-wrap {
+            transition: opacity 0.2s var(--ease-spring), transform 0.2s var(--ease-spring);
+            will-change: opacity, transform;
+        }
+        .form-morph-wrap.morph-out {
+            opacity: 0;
+            transform: scale(0.97) translateY(-4px);
+            pointer-events: none;
+        }
+        .form-morph-wrap.morph-in {
+            animation: card-fade-in 0.36s var(--ease-spring) both;
+        }
+
+        /* Tabular figures for technical digits to avoid horizontal jank */
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Spring rotation for chevrons & expand icons */
+        .chevron-spring {
+            transition: transform 0.32s var(--ease-spring);
+            will-change: transform;
+        }
     </style>
 </head>
 <body class="bg-surface-base text-slate-800 antialiased selection:bg-slate-900 selection:text-white">
@@ -1542,7 +1588,7 @@
                 </div>
                 <button type="button" id="catalog-expand-btn" onclick="toggleCatalogExpand()" class="group inline-flex items-center gap-2.5 px-7 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 hover:border-slate-400 text-slate-800 font-bold text-xs sm:text-sm transition-all duration-300 shadow-sm active:scale-95">
                     <span id="catalog-expand-text"></span>
-                    <svg id="catalog-expand-icon" class="w-4 h-4 text-slate-600 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg id="catalog-expand-icon" class="w-4 h-4 text-slate-600 chevron-spring" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
@@ -1817,8 +1863,8 @@
 
                 <!-- Right Column: Interactive Lead Form Card -->
                 <div class="lg:col-span-7">
-                    <div class="bg-surface-card border border-surface-border rounded-2xl p-5 sm:p-7 shadow-xl relative">
-                        <form id="lead-form" onsubmit="handleLeadSubmit(event)" class="space-y-4">
+                    <div class="bg-surface-card border border-surface-border rounded-2xl p-5 sm:p-7 shadow-xl relative overflow-hidden">
+                        <form id="lead-form" onsubmit="handleLeadSubmit(event)" class="form-morph-wrap space-y-4">
                             <!-- Hidden inputs for FormSubmit -->
                             <input type="hidden" name="_subject" id="form-subject" value="Новая заявка с сайта Shanghai Motors">
                             <input type="hidden" name="_template" value="table">
@@ -1924,8 +1970,8 @@
                         </form>
 
                         <!-- Success State Container (hidden by default) -->
-                        <div id="lead-success-msg" class="hidden text-center py-8 px-4 space-y-4">
-                            <div class="w-16 h-16 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] flex items-center justify-center mx-auto text-2xl font-bold">
+                        <div id="lead-success-msg" class="form-morph-wrap hidden text-center py-8 px-4 space-y-4">
+                            <div class="w-16 h-16 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] flex items-center justify-center mx-auto text-2xl font-bold animate-spring-pop">
                                 ✓
                             </div>
                             <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">
@@ -3629,11 +3675,11 @@
             const ruBtns = [document.getElementById('btn-lang-ru'), document.getElementById('btn-lang-ru-mobile')].filter(Boolean);
             const enBtns = [document.getElementById('btn-lang-en'), document.getElementById('btn-lang-en-mobile')].filter(Boolean);
             if (lang === 'ru') {
-                ruBtns.forEach(b => b.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-900 text-white font-bold text-[11px] sm:text-xs transition shadow-sm');
-                enBtns.forEach(b => b.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-slate-500 hover:text-slate-900 text-[11px] sm:text-xs transition');
+                ruBtns.forEach(b => b.className = 'tactile-btn px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-900 text-white font-bold text-[11px] sm:text-xs transition shadow-sm');
+                enBtns.forEach(b => b.className = 'tactile-btn px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-slate-500 hover:text-slate-900 text-[11px] sm:text-xs transition');
             } else {
-                enBtns.forEach(b => b.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-900 text-white font-bold text-[11px] sm:text-xs transition shadow-sm');
-                ruBtns.forEach(b => b.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-slate-500 hover:text-slate-900 text-[11px] sm:text-xs transition');
+                enBtns.forEach(b => b.className = 'tactile-btn px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-900 text-white font-bold text-[11px] sm:text-xs transition shadow-sm');
+                ruBtns.forEach(b => b.className = 'tactile-btn px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-slate-500 hover:text-slate-900 text-[11px] sm:text-xs transition');
             }
 
             // Update Lead Form placeholders based on language
@@ -3864,7 +3910,7 @@
                 ? filteredCars.slice(0, CATALOG_INITIAL_LIMIT)
                 : filteredCars;
 
-            grid.innerHTML = displayedCars.map(car => {
+            grid.innerHTML = displayedCars.map((car, idx) => {
                 const firstTrim = car.trims[0];
                 const minFob = car.minPriceFob || firstTrim.fobUsd;
                 const minFobRub = Math.round(minFob * currentUsdRate);
@@ -3873,7 +3919,7 @@
                     : `${car.trimsCount} trim options`;
 
                 return `
-                <div class="spring-card group rounded-2xl bg-surface-card border border-surface-border hover:border-slate-400 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                <div class="catalog-card-enter spring-card group rounded-2xl bg-surface-card border border-surface-border hover:border-slate-400 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between" style="animation-delay: ${idx * 35}ms">
                     <a href="car.html?id=${car.id}" class="cursor-pointer block">
                         <!-- Car Image Box: Studio Presentation -->
                         <div class="h-52 sm:h-56 bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 p-4 flex flex-col items-center justify-center relative overflow-hidden group/img">
@@ -3902,7 +3948,7 @@
                                 <span class="text-xs text-slate-500 font-medium">${trimLabel}</span>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-4 font-semibold">
+                            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700 bg-slate-50 p-2.5 rounded-lg border border-slate-200 mb-4 font-semibold tabular-nums">
                                 <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${formatDrive(firstTrim.drive, currentLang)}</div>
                                 <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${formatPower(firstTrim.power, currentLang)}</div>
                                 <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${formatAccel(firstTrim.accel, currentLang)}</div>
@@ -3914,7 +3960,7 @@
                                     <span class="text-xs text-slate-500 uppercase font-medium">
                                         ${currentLang === 'ru' ? 'Готов к отправке:' : 'Price in China (FOB):'}
                                     </span>
-                                    <span class="text-xl font-extrabold text-slate-900 tracking-tight font-sans">
+                                    <span class="text-xl font-extrabold text-slate-900 tracking-tight font-sans tabular-nums">
                                         ${currentLang === 'ru' ? `от ${minFobRub.toLocaleString()} ₽` : `$${minFob.toLocaleString()}`}
                                     </span>
                                 </div>
@@ -3965,7 +4011,7 @@
                                 : 'Show fewer models';
                         }
                         if (expandIcon) {
-                            expandIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />';
+                            expandIcon.classList.add('rotate-180');
                         }
                     } else {
                         const remaining = filteredCars.length - CATALOG_INITIAL_LIMIT;
@@ -3980,7 +4026,7 @@
                                 : `Show all ${filteredCars.length} models`;
                         }
                         if (expandIcon) {
-                            expandIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />';
+                            expandIcon.classList.remove('rotate-180');
                         }
                     }
                 } else {
@@ -4641,23 +4687,36 @@
                 waLink.href = `https://wa.me/8617316540375?text=${encodeURIComponent(waText)}`;
             }
 
-            form.classList.add('hidden');
-            const successMsg = document.getElementById('lead-success-msg');
-            if (successMsg) successMsg.classList.remove('hidden');
-
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-            submitBtn.innerHTML = origContent;
+            form.classList.add('morph-out');
+            setTimeout(() => {
+                form.classList.add('hidden');
+                form.classList.remove('morph-out');
+                const successMsg = document.getElementById('lead-success-msg');
+                if (successMsg) {
+                    successMsg.classList.remove('hidden');
+                    successMsg.classList.add('morph-in');
+                }
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                submitBtn.innerHTML = origContent;
+            }, 190);
         }
 
         function resetLeadForm() {
             const form = document.getElementById('lead-form');
-            if (form) {
-                form.reset();
-                form.classList.remove('hidden');
-            }
             const successMsg = document.getElementById('lead-success-msg');
-            if (successMsg) successMsg.classList.add('hidden');
+            if (successMsg) {
+                successMsg.classList.add('morph-out');
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                    successMsg.classList.remove('morph-out', 'morph-in');
+                    if (form) {
+                        form.reset();
+                        form.classList.remove('hidden');
+                        form.classList.add('morph-in');
+                    }
+                }, 190);
+            }
         }
 
         function openQuoteForCurrentCar() {

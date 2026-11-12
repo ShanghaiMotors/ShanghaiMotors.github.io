@@ -345,6 +345,28 @@
             overflow: hidden;
         }
 
+        /* Spring pop for checkboxes, selection dots & badges */
+        @keyframes spring-pop {
+            0% { transform: scale(0.35); opacity: 0; }
+            70% { transform: scale(1.18); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-spring-pop {
+            animation: spring-pop 0.24s var(--ease-spring) forwards;
+            will-change: transform, opacity;
+        }
+
+        /* Tabular figures for technical digits to avoid horizontal jank */
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Spring rotation for chevrons & expand icons */
+        .chevron-spring {
+            transition: transform 0.32s var(--ease-spring);
+            will-change: transform;
+        }
+
     </style>
 
 </head>
@@ -669,7 +691,7 @@
 
                                 <span id="specs-toggle-status" class="text-[11px] font-semibold">Развернуть</span>
 
-                                <svg id="specs-toggle-chevron" class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                <svg id="specs-toggle-chevron" class="w-4 h-4 transform chevron-spring" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 
                             </div>
 
@@ -1009,13 +1031,13 @@
 
                                 <span class="text-xs text-slate-500 font-semibold block" data-lang="en">Total Export Price:</span>
 
-                                <span id="summary-fob-usd" class="text-[11px] text-slate-500 font-medium block mt-0.5">$62,600 FOB • по курсу ЦБ</span>
+                                <span id="summary-fob-usd" class="text-[11px] text-slate-500 font-medium block mt-0.5 tabular-nums">$62,600 FOB • по курсу ЦБ</span>
 
                             </div>
 
                             <div class="text-right">
 
-                                <span id="summary-price-rub" class="text-2xl sm:text-3xl font-extrabold text-slate-950 block tracking-tight font-sans leading-none">0 ₽</span>
+                                <span id="summary-price-rub" class="text-2xl sm:text-3xl font-extrabold text-slate-950 block tracking-tight font-sans leading-none tabular-nums">0 ₽</span>
 
                                 <span id="summary-price-subtitle" class="text-[10px] text-slate-500 font-medium block mt-1">транзит через Кыргызстан</span>
 
@@ -1369,7 +1391,7 @@
 
             <div class="flex items-baseline gap-1.5 flex-nowrap">
 
-                <span id="mobile-bar-price" class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-tight whitespace-nowrap">
+                <span id="mobile-bar-price" class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-tight whitespace-nowrap tabular-nums">
 
                     —
 
@@ -1725,17 +1747,11 @@
             if (btnEn && btnRu) {
 
                 if (lang === 'ru') {
-
-                    btnRu.className = 'px-2.5 py-1 rounded-full bg-slate-900 text-white font-bold text-xs transition shadow-sm';
-
-                    btnEn.className = 'px-2.5 py-1 rounded-full text-slate-500 hover:text-slate-900 text-xs transition';
-
+                    btnRu.className = 'tactile-btn px-2.5 py-1 rounded-full bg-slate-900 text-white font-bold text-xs transition shadow-sm';
+                    btnEn.className = 'tactile-btn px-2.5 py-1 rounded-full text-slate-500 hover:text-slate-900 text-xs transition';
                 } else {
-
-                    btnEn.className = 'px-2.5 py-1 rounded-full bg-slate-900 text-white font-bold text-xs transition shadow-sm';
-
-                    btnRu.className = 'px-2.5 py-1 rounded-full text-slate-500 hover:text-slate-900 text-xs transition';
-
+                    btnEn.className = 'tactile-btn px-2.5 py-1 rounded-full bg-slate-900 text-white font-bold text-xs transition shadow-sm';
+                    btnRu.className = 'tactile-btn px-2.5 py-1 rounded-full text-slate-500 hover:text-slate-900 text-xs transition';
                 }
 
             }
@@ -2160,7 +2176,7 @@
                     </div>
                     <div class="wheel-bottom-bar pt-1.5 border-t transition ${isSelected ? 'border-white/10' : 'border-slate-100'} flex justify-between items-center">
                         <span class="wheel-price-badge text-[10px] font-bold px-2 py-0.5 rounded transition ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${priceTag}</span>
-                        ${isSelected ? `<span class="wheel-selected-tag text-[10px] font-semibold text-white/80">${currentLang === 'ru' ? 'Выбрано' : 'Selected'}</span>` : ''}
+                        ${isSelected ? `<span class="wheel-selected-tag text-[10px] font-semibold text-white/80 animate-spring-pop">${currentLang === 'ru' ? 'Выбрано' : 'Selected'}</span>` : ''}
                     </div>
                 </div>
                 `;
@@ -2196,7 +2212,7 @@
                 return `
                 <div class="flex flex-col items-center gap-1.5 w-16 sm:w-20 text-center">
                     <button type="button" id="color-btn-${c.id}" onclick="selectColor('${c.id}')" title="${currentLang === 'ru' ? c.nameRu : c.nameEn}" class="tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
-                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
+                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20 animate-spring-pop"></span>' : ''}
                     </button>
                     <span class="text-[11px] font-semibold text-slate-800 leading-tight">${currentLang === 'ru' ? c.nameRu : c.nameEn}</span>
                     ${isPaid ? `<span class="text-[9px] font-bold text-amber-800 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">${priceTag}</span>` : ''}
@@ -2234,7 +2250,7 @@
                 return `
                 <div class="flex flex-col items-center gap-1.5 w-16 sm:w-20 text-center">
                     <button type="button" id="interior-btn-${intItem.id}" onclick="selectInterior('${intItem.id}')" title="${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}" class="tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ${isSelected ? 'ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md' : 'hover:scale-105'}" style="${bgStyle}">
-                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>' : ''}
+                        ${isSelected ? '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20 animate-spring-pop"></span>' : ''}
                     </button>
                     <span class="text-[11px] font-semibold text-slate-800 leading-tight">${currentLang === 'ru' ? intItem.nameRu : intItem.nameEn}</span>
                     ${isPaid ? `<span class="text-[9px] font-bold ${currentLang === 'ru' ? 'text-amber-800 bg-amber-50 border-amber-200' : 'text-emerald-800 bg-emerald-50 border-emerald-200'} px-1 py-0.2 rounded border">${intPriceTag}</span>` : ''}
@@ -2336,7 +2352,7 @@
                 if (newBadge) newBadge.className = 'wheel-price-badge text-[10px] font-bold px-2 py-0.5 rounded transition bg-white/20 text-white';
                 if (!newCard.querySelector('.wheel-selected-tag') && newBottom) {
                     const span = document.createElement('span');
-                    span.className = 'wheel-selected-tag text-[10px] font-semibold text-white/80';
+                    span.className = 'wheel-selected-tag text-[10px] font-semibold text-white/80 animate-spring-pop';
                     span.innerText = (currentLang === 'ru') ? 'Выбрано' : 'Selected';
                     newBottom.appendChild(span);
                 }
@@ -2365,7 +2381,7 @@
                 oldBtn.className = 'tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center hover:scale-105';
                 oldBtn.innerHTML = '';
                 newBtn.className = 'tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md';
-                newBtn.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>';
+                newBtn.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20 animate-spring-pop"></span>';
             } else {
                 renderColorsContainer();
             }
@@ -2391,7 +2407,7 @@
                 oldBtn.className = 'tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center hover:scale-105';
                 oldBtn.innerHTML = '';
                 newBtn.className = 'tactile-btn w-11 h-11 rounded-full border border-slate-300 shadow-xs cursor-pointer transition-all duration-200 relative flex items-center justify-center ring-2 ring-slate-900 ring-offset-2 scale-110 shadow-md';
-                newBtn.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20"></span>';
+                newBtn.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-white shadow-xs border border-black/20 animate-spring-pop"></span>';
             } else {
                 renderInteriorsContainer();
             }
@@ -2431,7 +2447,7 @@
                     const checkbox = optCard.querySelector('.opt-checkbox');
                     if (checkbox) {
                         checkbox.className = 'opt-checkbox w-5 h-5 rounded-md border flex items-center justify-center transition-colors flex-shrink-0 bg-white border-white text-slate-900';
-                        checkbox.innerHTML = '<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>';
+                        checkbox.innerHTML = '<svg class="w-3.5 h-3.5 fill-current animate-spring-pop" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>';
                     }
                 } else {
                     optCard.className = 'spring-card p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 border-surface-border bg-white text-slate-800 hover:border-slate-400';
@@ -2482,7 +2498,7 @@
                 <div onclick="toggleAdditionalOption('${opt.id}')" id="opt-card-${opt.id}" class="spring-card p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-xs' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
                     <div class="flex items-center gap-3">
                         <div class="opt-checkbox w-5 h-5 rounded-md border flex items-center justify-center transition-colors flex-shrink-0 ${isSelected ? 'bg-white border-white text-slate-900' : 'border-slate-300 bg-slate-50'}">
-                            ${isSelected ? '<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>' : ''}
+                            ${isSelected ? '<svg class="w-3.5 h-3.5 fill-current animate-spring-pop" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>' : ''}
                         </div>
                         <div>
                             <div class="font-bold text-xs sm:text-[13px] leading-tight">${currentLang === 'ru' ? opt.nameRu : opt.nameEn}</div>
