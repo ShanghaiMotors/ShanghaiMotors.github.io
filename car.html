@@ -556,9 +556,9 @@
 
     <!-- MAIN TWO-COLUMN CONFIGURATOR -->
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 pb-28 lg:pb-10 flex-grow w-full max-w-full overflow-x-hidden">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 pb-28 lg:pb-10 flex-grow w-full overflow-x-hidden">
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start w-full max-w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start w-full">
 
             
 
@@ -960,7 +960,7 @@
 
             <!-- RIGHT COLUMN: STICKY PRICE COUNTER, ROUTE SELECTION & ORDER CTAS (35%) -->
 
-            <div class="lg:col-span-5 lg:sticky lg:top-24 space-y-4">
+            <div class="lg:col-span-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-6.5rem)] lg:overflow-y-auto custom-scrollbar space-y-4 pr-1">
 
                 
 
@@ -2165,8 +2165,11 @@
             const trimsContainer = document.getElementById('trims-list-container');
             if (!trimsContainer) return;
 
+            const totalTrims = visibleTrims.length;
             trimsContainer.innerHTML = visibleTrims.map((t, idx) => {
                 const isSelected = (idx === activeTrimIndex);
+                const isFullSpan = (totalTrims === 1) || (totalTrims % 2 === 1 && idx === totalTrims - 1);
+                const colSpanClass = isFullSpan ? 'sm:col-span-2' : '';
                 const diffUsd = t.fobUsd - visibleTrims[0].fobUsd;
                 const diffRub = Math.round(diffUsd * liveUsdRate);
                 let diffText = (currentLang === 'ru') ? 'Базовая' : 'Standard';
@@ -2179,7 +2182,7 @@
                     : (t.cleanNameEn || formatTrimName(t.name, 'en'));
 
                 return `
-                <div onclick="selectTrim(${idx})" id="trim-card-${idx}" class="spring-card p-4 rounded-2xl border transition-all cursor-pointer ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md scale-[1.01]' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
+                <div onclick="selectTrim(${idx})" id="trim-card-${idx}" class="spring-card p-4 rounded-2xl border transition-all cursor-pointer ${colSpanClass} ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md scale-[1.01]' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
                     <div class="flex justify-between items-start">
                         <span class="font-extrabold text-sm sm:text-base">${trimTitle}</span>
                         <span class="trim-diff-badge text-[11px] font-bold px-2 py-0.5 rounded transition ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'}">${diffText}</span>
@@ -2202,8 +2205,11 @@
             const wheelsContainer = document.getElementById('wheels-list-container');
             if (!wheelsContainer || !opts.wheels) return;
 
-            wheelsContainer.innerHTML = opts.wheels.map(w => {
+            const totalWheels = opts.wheels.length;
+            wheelsContainer.innerHTML = opts.wheels.map((w, idx) => {
                 const isSelected = (w.id === activeWheelId);
+                const isFullSpan = (totalWheels === 1) || (totalWheels % 2 === 1 && idx === totalWheels - 1);
+                const colSpanClass = isFullSpan ? 'sm:col-span-2' : '';
                 const rubPrice = Math.round(w.priceUsd * liveUsdRate);
                 let priceTag = '';
                 if (currentLang === 'ru') {
@@ -2215,7 +2221,7 @@
                 const wheelImgSrc = w.icon || w.img || currentCar.img;
 
                 return `
-                <div onclick="selectWheel('${w.id}')" id="wheel-card-${w.id}" class="spring-card p-3 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md scale-[1.01]' : 'border-surface-border bg-white hover:border-slate-400 text-slate-800'}">
+                <div onclick="selectWheel('${w.id}')" id="wheel-card-${w.id}" class="spring-card p-3 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${colSpanClass} ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-md scale-[1.01]' : 'border-surface-border bg-white hover:border-slate-400 text-slate-800'}">
                     <div class="flex items-center gap-3 mb-2">
                         <div class="wheel-img-wrap w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center p-1 overflow-hidden flex-shrink-0 border transition ${isSelected ? 'border-white/20' : 'border-slate-200/80'}">
                             <img src="${wheelImgSrc}" alt="${w.nameEn}" class="w-full h-full object-contain">
@@ -2534,9 +2540,12 @@
             sec.classList.remove('hidden');
             updateOptionsHeader();
 
-            container.innerHTML = opts.additionalOptions.map(opt => {
+            const totalOpts = opts.additionalOptions.length;
+            container.innerHTML = opts.additionalOptions.map((opt, idx) => {
                 const isStandardInTrim = (opt.priceUsd === 0);
                 const isSelected = isStandardInTrim || activeAdditionalOptions.has(opt.id);
+                const isFullSpan = (totalOpts === 1) || (totalOpts % 2 === 1 && idx === totalOpts - 1);
+                const colSpanClass = isFullSpan ? 'sm:col-span-2' : '';
                 const rubPrice = Math.round(opt.priceUsd * liveUsdRate);
                 let priceLabel = '';
                 if (currentLang === 'ru') {
@@ -2546,7 +2555,7 @@
                 }
 
                 return `
-                <div onclick="toggleAdditionalOption('${opt.id}')" id="opt-card-${opt.id}" class="spring-card p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-xs' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
+                <div onclick="toggleAdditionalOption('${opt.id}')" id="opt-card-${opt.id}" class="spring-card p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${colSpanClass} ${isSelected ? 'border-slate-900 bg-slate-900 text-white shadow-xs' : 'border-surface-border bg-white text-slate-800 hover:border-slate-400'}">
                     <div class="flex items-center gap-3">
                         <div class="opt-checkbox w-5 h-5 rounded-md border flex items-center justify-center transition-colors flex-shrink-0 ${isSelected ? 'bg-white border-white text-slate-900' : 'border-slate-300 bg-slate-50'}">
                             ${isSelected ? '<svg class="w-3.5 h-3.5 fill-current animate-spring-pop" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>' : ''}
