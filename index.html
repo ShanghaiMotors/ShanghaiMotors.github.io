@@ -1630,9 +1630,44 @@
                 </div>
             </div>
 
-            <!-- Catalog Cards Grid -->
-            <div id="catalog-cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Mobile Carousel Bar: Swipe Hint, Counter, Mode Switcher & Thumb Arrows (visible on mobile < md) -->
+            <div id="catalog-mobile-controls" class="flex md:hidden items-center justify-between mb-3 px-1 text-xs text-slate-500">
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-[11px] font-semibold text-slate-700">
+                        <svg class="w-3.5 h-3.5 text-slate-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                        <span id="carousel-swipe-hint-en" data-lang="en">Swipe to explore</span>
+                        <span id="carousel-swipe-hint-ru" data-lang="ru">Листайте свайпом</span>
+                        <span class="text-slate-300">•</span>
+                        <span id="carousel-counter" class="font-bold text-slate-900">1 / 6</span>
+                    </span>
+                </div>
+                <!-- Prev / Next Arrow Tap Buttons & View Mode Toggle -->
+                <div class="flex items-center gap-1.5">
+                    <button type="button" onclick="scrollCatalogCarousel(-1)" aria-label="Previous car" class="w-8 h-8 rounded-full bg-white border border-slate-200 shadow-xs flex items-center justify-center text-slate-700 active:bg-slate-100 active:scale-95 transition">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button type="button" onclick="scrollCatalogCarousel(1)" aria-label="Next car" class="w-8 h-8 rounded-full bg-white border border-slate-200 shadow-xs flex items-center justify-center text-slate-700 active:bg-slate-100 active:scale-95 transition">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                    <button type="button" id="catalog-view-toggle" onclick="toggleCatalogMobileView()" aria-label="Toggle view mode" class="w-8 h-8 rounded-full bg-white border border-slate-200 shadow-xs flex items-center justify-center text-slate-700 active:bg-slate-100 active:scale-95 transition" title="Toggle Grid / Carousel">
+                        <svg id="view-icon-grid" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                        <svg id="view-icon-carousel" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Catalog Cards Grid (Mobile Horizontal Snap Carousel, Desktop/Tablet 2-3 Column Grid) -->
+            <div id="catalog-cars-grid" class="flex md:grid md:grid-cols-2 lg:grid-cols-3 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none gap-4 md:gap-6 pb-4 md:pb-0 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 no-scrollbar overscroll-x-contain scroll-smooth">
                 <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Mobile Carousel Progress Track (visible on mobile < md) -->
+            <div id="catalog-carousel-progress" class="block md:hidden mt-2 mb-4 px-1">
+                <div class="w-full bg-slate-200/80 rounded-full h-1 overflow-hidden">
+                    <div id="catalog-carousel-bar" class="bg-slate-900 h-1 rounded-full transition-all duration-150" style="width: 16.6%;"></div>
+                </div>
             </div>
 
             <!-- Catalog Expand / Collapse Control -->
@@ -4023,7 +4058,7 @@
                     : `${car.trimsCount} trim options`;
 
                 return `
-                <div class="catalog-card-enter spring-card group rounded-2xl bg-surface-card border border-surface-border hover:border-slate-400 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between" style="animation-delay: ${idx * 35}ms">
+                <div class="catalog-card-enter spring-card group rounded-2xl bg-surface-card border border-surface-border hover:border-slate-400 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between w-[84vw] max-w-[340px] flex-shrink-0 snap-start md:w-auto md:max-w-none md:flex-shrink" style="animation-delay: ${idx * 35}ms">
                     <a href="car.html?id=${car.id}" class="cursor-pointer block">
                         <!-- Car Image Box: Studio Presentation -->
                         <div class="h-52 sm:h-56 bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 p-4 flex flex-col items-center justify-center relative overflow-hidden group/img">
@@ -4137,6 +4172,77 @@
                     expandContainer.classList.add('hidden');
                 }
             }
+
+            grid.scrollLeft = 0;
+            updateCatalogCarouselProgress();
+        }
+
+        let catalogMobileViewMode = 'carousel'; // 'carousel' or 'grid'
+
+        function toggleCatalogMobileView() {
+            catalogMobileViewMode = (catalogMobileViewMode === 'carousel') ? 'grid' : 'carousel';
+            applyCatalogMobileViewMode();
+        }
+
+        function applyCatalogMobileViewMode() {
+            const grid = document.getElementById('catalog-cars-grid');
+            const iconGrid = document.getElementById('view-icon-grid');
+            const iconCarousel = document.getElementById('view-icon-carousel');
+            const progress = document.getElementById('catalog-carousel-progress');
+            if (!grid) return;
+
+            if (catalogMobileViewMode === 'grid') {
+                grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+                if (iconGrid) iconGrid.classList.add('hidden');
+                if (iconCarousel) iconCarousel.classList.remove('hidden');
+                if (progress) progress.classList.add('hidden');
+            } else {
+                grid.className = 'flex md:grid md:grid-cols-2 lg:grid-cols-3 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none gap-4 md:gap-6 pb-4 md:pb-0 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 no-scrollbar overscroll-x-contain scroll-smooth';
+                if (iconGrid) iconGrid.classList.remove('hidden');
+                if (iconCarousel) iconCarousel.classList.add('hidden');
+                if (progress) progress.classList.remove('hidden');
+                grid.scrollLeft = 0;
+                updateCatalogCarouselProgress();
+            }
+        }
+
+        function scrollCatalogCarousel(direction) {
+            const grid = document.getElementById('catalog-cars-grid');
+            if (!grid) return;
+            const card = grid.querySelector('.spring-card');
+            const step = card ? (card.offsetWidth + 16) : 340;
+            grid.scrollBy({ left: direction * step, behavior: 'smooth' });
+        }
+
+        function updateCatalogCarouselProgress() {
+            const grid = document.getElementById('catalog-cars-grid');
+            const counter = document.getElementById('carousel-counter');
+            const bar = document.getElementById('catalog-carousel-bar');
+            if (!grid) return;
+
+            const cards = grid.querySelectorAll('.spring-card');
+            const total = cards.length;
+            if (total === 0) return;
+
+            const card = cards[0];
+            const step = card ? (card.offsetWidth + 16) : 340;
+            const scrollLeft = grid.scrollLeft;
+            const activeIndex = Math.min(total, Math.max(1, Math.round(scrollLeft / step) + 1));
+
+            if (counter) {
+                counter.textContent = `${activeIndex} / ${total}`;
+            }
+            if (bar) {
+                const percent = Math.min(100, Math.max(10, (activeIndex / total) * 100));
+                bar.style.width = `${percent}%`;
+            }
+        }
+
+        const catalogGridElement = document.getElementById('catalog-cars-grid');
+        if (catalogGridElement) {
+            catalogGridElement.addEventListener('scroll', () => {
+                requestAnimationFrame(updateCatalogCarouselProgress);
+            }, { passive: true });
         }
 
         // 6. CAR MODAL & PRICE BREAKDOWN ENGINE
