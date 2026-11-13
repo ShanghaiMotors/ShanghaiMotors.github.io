@@ -972,17 +972,17 @@
                 extend: {
                     colors: {
                         brand: {
-                            DEFAULT: '#0F172A',
-                            hover: '#1E293B',
-                            muted: '#0F172A0D',
-                            border: '#E2E8F0'
+                            DEFAULT: '#090D16',
+                            hover: '#151B28',
+                            muted: '#090D160D',
+                            border: '#E5E7EB'
                         },
                         surface: {
-                            base: '#F8FAFC',
+                            base: '#FFFFFF',
                             card: '#FFFFFF',
-                            elevated: '#F1F5F9',
-                            border: '#E2E8F0',
-                            hover: '#E2E8F0'
+                            elevated: '#F9FAFB',
+                            border: '#E5E7EB',
+                            hover: '#090D16'
                         }
                     },
                     fontFamily: {
@@ -1012,7 +1012,7 @@
             position: relative;
             margin: 0;
             padding: 0;
-            background-color: #F8FAFC;
+            background-color: #FFFFFF;
         }
 
         header.sticky {
@@ -1023,8 +1023,8 @@
         }
 
         body {
-            background-color: #F8FAFC;
-            color: #1E293B;
+            background-color: #FFFFFF;
+            color: #090D16;
             font-family: 'Manrope', system-ui, -apple-system, sans-serif;
             -webkit-text-size-adjust: 100%;
         }
@@ -1306,7 +1306,7 @@
         }
     </style>
 </head>
-<body class="bg-surface-base text-slate-800 antialiased selection:bg-slate-900 selection:text-white">
+<body class="bg-surface-base text-neutral-900 antialiased selection:bg-[#090D16] selection:text-white">
 
     <!-- MAIN NAVBAR -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-surface-border shadow-sm w-full max-w-full">
@@ -3838,22 +3838,22 @@
                             <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-6 md:gap-8 items-center">
                                 <!-- Left Info -->
                                 <div class="lg:col-span-6 space-y-1.5 sm:space-y-2.5 md:space-y-3 z-20 min-w-0">
-                                    <div class="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 border border-neutral-200/90 text-neutral-800">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-[#090D16]"></span>
                                         <span data-lang="en">Direct Factory Export &nbsp;&middot;&nbsp; Shanghai Motors</span>
                                         <span data-lang="ru">Прямой экспорт &nbsp;&middot;&nbsp; Shanghai Motors</span>
                                     </div>
-                                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#090D16] tracking-tight leading-tight">
                                         ${b.model}
                                     </h1>
-                                    <p class="text-xs sm:text-sm md:text-base text-slate-600 leading-snug font-sans max-w-xl">
+                                    <p class="text-xs sm:text-sm md:text-base text-neutral-600 leading-snug font-sans max-w-xl">
                                         ${currentLang === 'ru' ? b.descRu : b.descEn}
                                     </p>
-                                    <div class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 flex items-baseline gap-2 pt-0.5 tracking-tight font-sans">
+                                    <div class="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#090D16] flex items-baseline gap-2 pt-0.5 tracking-tight font-sans">
                                         ${priceFormatted}
                                     </div>
                                     <div class="pt-1.5 sm:pt-2 flex items-center">
-                                        <a href="car.html?id=${b.id}" class="tactile-btn bg-slate-900 hover:bg-slate-800 text-white font-extrabold px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl text-xs uppercase tracking-wider transition shadow-lg inline-flex items-center gap-2 text-center group">
+                                        <a href="car.html?id=${b.id}" class="tactile-btn bg-[#090D16] hover:bg-[#151B28] text-white font-extrabold px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl text-xs uppercase tracking-wider transition shadow-md inline-flex items-center gap-2 text-center group ring-1 ring-white/10">
                                             <span>${currentLang === 'ru' ? 'Конфигуратор' : 'Configure'}</span>
                                             <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                                         </a>
@@ -3862,7 +3862,7 @@
                                 <!-- Right Visual: Studio Pavilion Staging -->
                                 <div class="lg:col-span-6 flex flex-col items-center justify-center relative min-h-[190px] sm:min-h-[230px] md:min-h-[270px] w-full max-w-full overflow-hidden select-none">
                                     <!-- Ambient Overhead Studio Spotlight Cone -->
-                                    <div class="absolute -top-16 inset-x-8 h-72 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(255,255,255,0.9),transparent_80%)] pointer-events-none"></div>
+                                    <div class="absolute -top-16 inset-x-8 h-72 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(0,0,0,0.03),transparent_75%)] pointer-events-none"></div>
 
                                     <!-- Car Image Render -->
                                     <a href="car.html?id=${b.id}" class="contents cursor-pointer">
@@ -3871,9 +3871,8 @@
 
                                     <!-- Studio Ground Staging & Tire Contact Shadow -->
                                     <div class="relative w-full max-w-md -mt-3 sm:-mt-4 z-0 flex flex-col items-center pointer-events-none">
-                                        <div class="w-[84%] h-3.5 sm:h-4.5 bg-slate-700/25 blur-[5px] rounded-[100%]"></div>
-                                        <div class="w-[92%] h-7 sm:h-9 -mt-2.5 bg-slate-300/30 blur-md"></div>
-                                        <div class="w-2/3 h-px -mt-3 bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+                                        <div class="w-[86%] h-3.5 sm:h-4.5 bg-[#090D16]/20 blur-[5px] rounded-[100%]"></div>
+                                        <div class="w-full h-px -mt-2 bg-gradient-to-r from-transparent via-neutral-300 to-transparent"></div>
                                     </div>
                                 </div>
                             </div>
@@ -4032,24 +4031,23 @@
                     : `${car.trimsCount} trim options`;
 
                 return `
-                <div class="catalog-card-enter spring-card group rounded-2xl bg-surface-card border border-surface-border hover:border-slate-400 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between">
+                <div class="catalog-card-enter spring-card group rounded-2xl bg-white border border-neutral-200 hover:border-neutral-900 transition-all duration-200 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-md">
                     <a href="car.html?id=${car.id}" class="cursor-pointer block">
                         <!-- Car Image Box: Studio Presentation -->
-                        <div class="h-40 sm:h-52 bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 p-3 sm:p-4 flex flex-col items-center justify-center relative overflow-hidden group/img">
+                        <div class="h-40 sm:h-52 bg-[#F9FAFB] p-3 sm:p-4 flex flex-col items-center justify-center relative overflow-hidden group/img">
                             <!-- Ambient Top Spotlight Glow -->
-                            <div class="absolute -top-10 inset-x-8 h-32 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(255,255,255,0.8),transparent_70%)] pointer-events-none"></div>
+                            <div class="absolute -top-10 inset-x-8 h-32 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(0,0,0,0.02),transparent_70%)] pointer-events-none"></div>
 
                             <!-- Car Image -->
                             <img src="${car.img}" alt="${car.fullName}" loading="lazy" decoding="async" class="max-h-[120px] sm:max-h-[150px] max-w-[92%] object-contain relative z-10 group-hover:scale-105 transition-transform duration-500 filter drop-shadow-[0_10px_16px_rgba(0,0,0,0.18)]">
 
                             <!-- Ground Contact Shadow & Reflection Pedestal -->
                             <div class="w-full max-w-[85%] -mt-2 z-0 flex flex-col items-center pointer-events-none">
-                                <div class="w-full h-3 bg-slate-700/30 blur-[4px] rounded-[100%]"></div>
-                                <div class="w-4/5 h-4 -mt-1.5 bg-slate-400/20 blur-sm"></div>
+                                <div class="w-full h-3 bg-[#090D16]/20 blur-[4px] rounded-[100%]"></div>
                             </div>
 
                             <!-- Brand Badge (Clean solid backdrop to prevent GPU compositor tile flashes) -->
-                            <div class="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-white/95 border border-slate-200 text-xs font-bold text-slate-800 tracking-wider z-20 shadow-xs">
+                            <div class="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-white border border-neutral-200 text-xs font-bold text-neutral-900 tracking-wider z-20 shadow-xs">
                                 ${car.brand}
                             </div>
                         </div>
@@ -4057,30 +4055,30 @@
                         <!-- Info -->
                         <div class="p-3.5 sm:p-4">
                             <div class="flex justify-between items-baseline mb-2">
-                                <h3 class="text-base sm:text-[17px] font-bold text-slate-900 group-hover:text-slate-700 transition">${car.fullName}</h3>
-                                <span class="text-xs text-slate-500 font-medium">${trimLabel}</span>
+                                <h3 class="text-base sm:text-[17px] font-bold text-neutral-900 group-hover:text-black transition">${car.fullName}</h3>
+                                <span class="text-xs text-neutral-500 font-medium">${trimLabel}</span>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-1 sm:gap-1.5 text-[11px] sm:text-xs text-slate-700 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200 mb-2.5 font-semibold tabular-nums">
-                                <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${formatDrive(firstTrim.drive, currentLang)}</div>
-                                <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${formatPower(firstTrim.power, currentLang)}</div>
-                                <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${formatAccel(firstTrim.accel, currentLang)}</div>
-                                <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Запас хода:' : 'Range:'}</span> ${formatRange(firstTrim.range, currentLang)}</div>
+                            <div class="grid grid-cols-2 gap-1 sm:gap-1.5 text-[11px] sm:text-xs text-neutral-800 bg-[#F9FAFB] px-2.5 py-2 rounded-lg border border-neutral-200/80 mb-2.5 font-semibold tabular-nums">
+                                <div><span class="text-neutral-500 font-normal">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${formatDrive(firstTrim.drive, currentLang)}</div>
+                                <div><span class="text-neutral-500 font-normal">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${formatPower(firstTrim.power, currentLang)}</div>
+                                <div><span class="text-neutral-500 font-normal">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${formatAccel(firstTrim.accel, currentLang)}</div>
+                                <div><span class="text-neutral-500 font-normal">${currentLang === 'ru' ? 'Запас хода:' : 'Range:'}</span> ${formatRange(firstTrim.range, currentLang)}</div>
                             </div>
 
                             <div class="flex items-baseline justify-between pt-2 border-t border-surface-border">
                                 ${currentLang === 'ru' ? `
-                                    <div class="text-xs text-slate-500 font-medium">
+                                    <div class="text-xs text-neutral-500 font-medium">
                                         FOB $${minFob.toLocaleString()} &middot; по курсу ЦБ
                                     </div>
-                                    <div class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight tabular-nums">
+                                    <div class="text-base sm:text-lg font-extrabold text-neutral-900 tracking-tight tabular-nums">
                                         от ${minFobRub.toLocaleString()} ₽
                                     </div>
                                 ` : `
-                                    <div class="text-xs text-slate-500 font-medium">
+                                    <div class="text-xs text-neutral-500 font-medium">
                                         Direct Factory Price
                                     </div>
-                                    <div class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight tabular-nums">
+                                    <div class="text-base sm:text-lg font-extrabold text-neutral-900 tracking-tight tabular-nums">
                                         $${minFob.toLocaleString()} FOB
                                     </div>
                                 `}
@@ -4089,7 +4087,7 @@
                     </a>
 
                     <div class="p-3.5 sm:p-4 pt-0">
-                        <a href="car.html?id=${car.id}" class="w-full py-2 sm:py-2.5 rounded-lg bg-slate-900 group-hover:bg-slate-800 border border-slate-900 text-white shadow-sm text-xs font-bold transition block text-center">
+                        <a href="car.html?id=${car.id}" class="w-full py-2.5 rounded-xl bg-[#090D16] hover:bg-[#151B28] text-white shadow-xs text-xs font-bold uppercase tracking-wider transition block text-center ring-1 ring-white/10">
                             ${currentLang === 'ru' ? 'Конфигуратор' : 'Configure'}
                         </a>
                     </div>
