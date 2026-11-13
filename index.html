@@ -1012,7 +1012,7 @@
             position: relative;
             margin: 0;
             padding: 0;
-            -webkit-overflow-scrolling: touch;
+            background-color: #F8FAFC;
         }
 
         header.sticky {
@@ -1140,7 +1140,6 @@
 
         .tactile-btn {
             transition: transform 0.16s var(--ease-spring), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-            will-change: transform;
         }
         .tactile-btn:active {
             transform: scale(0.96) !important;
@@ -1149,7 +1148,6 @@
         .spring-card {
             box-shadow: var(--shadow-studio-xs);
             transition: transform 0.25s var(--ease-spring), border-color 0.2s ease, box-shadow 0.25s var(--ease-spring), background-color 0.2s ease;
-            will-change: transform, box-shadow;
         }
         .spring-card:hover {
             transform: translateY(-2px);
@@ -1175,15 +1173,14 @@
             min-height: 0;
         }
 
-        /* High-Performance GPU Hero Banner Slider */
+        /* High-Performance Hero Banner Slider */
         .banner-slide {
             position: absolute;
             inset: 0;
             width: 100%;
             max-width: 100%;
             overflow: hidden;
-            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .banner-slide.is-active {
             opacity: 1;
@@ -1254,14 +1251,15 @@
             will-change: transform, opacity;
         }
 
-        /* Catalog Card GPU Stagger Entrance */
-        @keyframes card-fade-in {
-            0% { opacity: 0; transform: translateY(10px) scale(0.985); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .catalog-card-enter {
-            animation: card-fade-in 0.35s var(--ease-spring) both;
-            will-change: transform, opacity;
+        /* Catalog Card Entrance (Desktop smooth stagger) */
+        @media (min-width: 768px) {
+            @keyframes card-fade-in {
+                0% { opacity: 0.9; transform: translateY(4px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            .catalog-card-enter {
+                animation: card-fade-in 0.16s ease-out;
+            }
         }
 
         /* Form to Success Screen Fluid Container Morph */
@@ -1286,7 +1284,6 @@
         /* Spring rotation for chevrons & expand icons */
         .chevron-spring {
             transition: transform 0.32s var(--ease-spring);
-            will-change: transform;
         }
 
         /* 60/120fps Hardware Acceleration & Reduced Motion */
@@ -1571,9 +1568,9 @@
     </section>
 
     <!-- SECTION 2: VEHICLE CATALOG WITH INTERACTIVE MODAL & CALCULATION -->
-    <section id="catalog" class="pt-6 md:pt-8 pb-8 md:pb-12 border-b border-surface-border">
+    <section id="catalog" class="pt-5 sm:pt-6 pb-7 sm:pb-10 border-b border-surface-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-5 gap-3">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-3.5 sm:mb-4 gap-2">
                 <div>
                     <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider" data-lang="en">Live Direct Sourcing</span>
                     <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider" data-lang="ru">Прямой каталог авто</span>
@@ -1581,16 +1578,16 @@
                         <span data-lang="en">Automotive Catalog & Configurations</span>
                         <span data-lang="ru">Каталог автомобилей из Китая</span>
                     </h2>
-                    <p class="text-slate-600 text-xs sm:text-sm mt-1.5 max-w-xl" data-lang="ru">
-                        Нажмите на любой автомобиль, чтобы посмотреть все комплектации, технические характеристики и прозрачный расчет стоимости под ключ.
+                    <p class="text-slate-600 text-xs sm:text-sm mt-1 max-w-xl" data-lang="ru">
+                        Все заводские комплектации, характеристики и прозрачный расчет стоимости под ключ.
                     </p>
-                    <p class="text-slate-600 text-xs sm:text-sm mt-1.5 max-w-xl" data-lang="en">
-                        Click on any vehicle to view all manufacturer trims, specifications, and FOB / CIF export pricing to your destination port.
+                    <p class="text-slate-600 text-xs sm:text-sm mt-1 max-w-xl" data-lang="en">
+                        Factory trims, specifications, and transparent FOB / CIF export pricing.
                     </p>
                 </div>
             </div>
             <!-- Brand Filter Tabs -->
-            <div class="w-full max-w-full min-w-0 flex items-center gap-2 overflow-x-auto pb-3 mb-2.5 sm:mb-3.5 no-scrollbar text-xs font-semibold overscroll-x-contain">
+            <div class="w-full max-w-full min-w-0 flex items-center gap-2 overflow-x-auto pb-2 mb-2 sm:mb-2.5 no-scrollbar text-xs font-semibold overscroll-x-contain">
                 <button onclick="filterBrand('all')" id="brand-btn-all" class="brand-tab px-4 py-2 rounded-lg bg-slate-900 text-white font-bold whitespace-nowrap transition shadow-sm"><span data-lang="en">All Brands</span><span data-lang="ru">Все марки</span></button>
                 <button onclick="filterBrand('Zeekr')" id="brand-btn-Zeekr" class="brand-tab px-4 py-2 rounded-lg bg-surface-card border border-surface-border text-slate-600 hover:text-slate-900 whitespace-nowrap transition hover:bg-slate-100">Zeekr</button>
                 <button onclick="filterBrand('Li Auto')" id="brand-btn-Li Auto" class="brand-tab px-4 py-2 rounded-lg bg-surface-card border border-surface-border text-slate-600 hover:text-slate-900 whitespace-nowrap transition hover:bg-slate-100">Li Auto</button>
@@ -1605,38 +1602,38 @@
             </div>
 
             <!-- Dynamic Daily Exchange Rate Bar (RU ONLY) -->
-            <div data-lang="ru" class="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-surface-card border border-surface-border mb-6">
-                <div class="flex items-center gap-2.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-slate-900 animate-pulse"></span>
-                    <span class="text-xs text-slate-700 font-medium">
-                        Курс ЦБ РФ: <strong id="fx-rate-display" class="text-slate-900 font-extrabold">1 $ = 84.43 ₽</strong> (обновляется ежедневно)
+            <div data-lang="ru" class="flex items-center justify-between gap-2 px-3 py-1.5 sm:py-2 rounded-lg bg-surface-card border border-surface-border mb-3.5 sm:mb-4 text-xs">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-slate-900 animate-pulse flex-shrink-0"></span>
+                    <span class="text-slate-700 font-medium">
+                        Курс ЦБ РФ: <strong id="fx-rate-display" class="text-slate-900 font-bold">1 $ = 84.43 ₽</strong>
                     </span>
                 </div>
-                <div class="text-[11px] text-slate-500 font-medium">
+                <div class="text-[11px] text-slate-500 font-medium hidden sm:inline">
                     Логистика и растаможка рассчитываются отдельно
                 </div>
             </div>
 
             <!-- International Export Terms Bar (EN ONLY) -->
-            <div data-lang="en" class="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-surface-card border border-surface-border mb-6">
-                <div class="flex items-center gap-2.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-slate-900 animate-pulse"></span>
-                    <span class="text-xs text-slate-700 font-medium">
-                        Direct Automotive Export Hub: <strong class="text-slate-900 font-extrabold">Direct Manufacturer Allocation & Rapid Global Dispatch</strong>
+            <div data-lang="en" class="flex items-center justify-between gap-2 px-3 py-1.5 sm:py-2 rounded-lg bg-surface-card border border-surface-border mb-3.5 sm:mb-4 text-xs">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-slate-900 animate-pulse flex-shrink-0"></span>
+                    <span class="text-slate-700 font-medium">
+                        Direct Export Hub: <strong class="text-slate-900 font-bold">Direct OEM Allocation & Worldwide Dispatch</strong>
                     </span>
                 </div>
-                <div class="text-[11px] text-slate-500 font-medium">
-                    FOB Dispatch Ports: Shanghai • Ningbo • Khorgos • Nansha
+                <div class="text-[11px] text-slate-500 font-medium hidden sm:inline">
+                    FOB Ports: Shanghai • Ningbo • Khorgos • Nansha
                 </div>
             </div>
 
             <!-- Catalog Cards Grid (Responsive: 1 column on mobile, 2 on tablet, 3 on desktop) -->
-            <div id="catalog-cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <div id="catalog-cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
                 <!-- Injected via JavaScript -->
             </div>
 
             <!-- Catalog Expand / Collapse Control -->
-            <div id="catalog-expand-wrap" class="hidden mt-10 flex flex-col items-center justify-center text-center">
+            <div id="catalog-expand-wrap" class="hidden mt-6 sm:mt-8 flex flex-col items-center justify-center text-center">
                 <div id="catalog-count-badge" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs text-slate-600 font-medium mb-3">
                     <span id="catalog-count-dot" class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span id="catalog-count-text"></span>
@@ -2784,9 +2781,9 @@
     </section>
 
     <!-- SECTION 5: FAQ -->
-    <section id="faq" class="py-8 md:py-12 border-b border-surface-border bg-slate-50/60">
+    <section id="faq" class="py-6 sm:py-8 border-b border-surface-border bg-slate-50/60">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-6 md:mb-8">
+            <div class="text-center mb-4 sm:mb-6">
                 <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">FAQ</span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">
                     <span data-lang="en">Frequently Asked Questions</span>
@@ -2794,9 +2791,9 @@
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 text-left">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 text-left">
                 <!-- Card 1: Pricing & Real Landed Cost -->
-                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">How much does it cost to buy a car in China and ship it to Oman or the UAE?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Сколько стоит привезти Зикр или Лисянг из Китая под ключ со всеми налогами?</h3>
@@ -2810,7 +2807,7 @@
                 </div>
 
                 <!-- Card 2: Price Comparison vs Local Dealers -->
-                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Is it cheaper to import a Zeekr or Li Auto directly from China than buying locally?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Почему заказывать напрямую из Китая выгоднее, чем брать у дилеров в наличии?</h3>
@@ -2824,7 +2821,7 @@
                 </div>
 
                 <!-- Card 3: Gulf Climate & Software / Russification -->
-                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Do Chinese cars work reliably in Gulf summer heat, and is the software in English?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Работает ли русификация и передается ли мастер-аккаунт на китайские электромобили?</h3>
@@ -2838,7 +2835,7 @@
                 </div>
 
                 <!-- Card 4: Timeline -->
-                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">How long does it take for a car from China to arrive in Muscat or Dubai?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Сколько дней занимает доставка автовозом из Китая до Москвы или Алматы?</h3>
@@ -2852,7 +2849,7 @@
                 </div>
 
                 <!-- Card 5: Payment Terms & Currencies -->
-                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Can I pay in OMR, AED, SAR, or USD, and is my payment secure?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Каковы условия оплаты и валюта расчетов?</h3>
@@ -2866,7 +2863,7 @@
                 </div>
 
                 <!-- Card 6: Custom Factory Options -->
-                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Can I pick my own exterior color, interior leather, and wheels from the factory?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Можно ли выбрать свой цвет кузова, салон и колесные диски прямо с завода?</h3>
@@ -2880,7 +2877,7 @@
                 </div>
 
                 <!-- Card 7: Insurance -->
-                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">Is my vehicle insured against damage during transport?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Застрахован ли автомобиль на время перевозки?</h3>
@@ -2894,7 +2891,7 @@
                 </div>
 
                 <!-- Card 8: Documentation / EPTS -->
-                <div class="spring-card bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="en">What export documentation is provided for local customs and registration?</h3>
                         <h3 class="text-sm sm:text-base font-bold text-slate-900" data-lang="ru">Получу ли я действующий ЭПТС для постановки на учет в ГИБДД?</h3>
@@ -2911,16 +2908,16 @@
     </section>
 
     <!-- FOOTER WITH SOCIALS PARITY -->
-    <footer class="border-t border-slate-800 bg-slate-900 text-slate-300 py-8 sm:py-10">
+    <footer class="border-t border-slate-800 bg-slate-900 text-slate-300 py-6 sm:py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8">
                 <div class="space-y-3">
                     <img src="assets/logo-footer.png" alt="Shanghai Motors" class="h-10 w-auto object-contain">
                     <p class="text-xs text-slate-400 leading-relaxed max-w-sm" data-lang="en">
-                        Shanghai Motors Direct Export Desk. Direct factory allocation, comprehensive pre-shipment inspections, and international container/Ro-Ro shipping from China worldwide.
+                        Direct OEM automotive procurement and export from China worldwide with full logistics & insurance.
                     </p>
                     <p class="text-xs text-slate-400 leading-relaxed max-w-sm" data-lang="ru">
-                        Shanghai Motors. Прямой импорт и поставка автомобилей из Китая под ключ в Россию и страны СНГ без дилерских наценок.
+                        Прямой экспорт и поставка автомобилей из Китая под ключ в Россию и страны СНГ без дилерских наценок.
                     </p>
                     <div class="text-[11px] text-slate-500 font-medium pt-1">
                         © 2026 Shanghai Motors. All rights reserved.
@@ -2928,8 +2925,8 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Navigation</h4>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Навигация</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3 sm:mb-4" data-lang="en">Navigation</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3 sm:mb-4" data-lang="ru">Навигация</h4>
                     <ul class="space-y-2 text-xs text-slate-400" data-lang="en">
                         <li><a href="#hero-banners" class="hover:text-white transition">Top Models</a></li>
                         <li><a href="#catalog" class="hover:text-white transition">Vehicle Catalog</a></li>
@@ -2947,66 +2944,72 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Official Channels</h4>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Официальные контакты</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3 sm:mb-4" data-lang="en">Official Channels</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3 sm:mb-4" data-lang="ru">Официальные контакты</h4>
                     
                     <!-- EN SOCIALS (WhatsApp, Instagram, LinkedIn, Email) -->
-                    <div data-lang="en" class="space-y-2.5 text-xs text-slate-300">
-                        <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2.5 hover:text-white transition">
-                            <span class="w-7 h-7 rounded-lg bg-[#25D366] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#25D366]/20">
-                                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <div data-lang="en" class="space-y-2 text-xs text-slate-300">
+                        <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-[#25D366] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#25D366]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                             </span>
                             <span><strong class="text-white group-hover:text-slate-300 font-medium">WhatsApp:</strong> +86 173 1654 0375</span>
                         </a>
-                        <a href="https://www.instagram.com/shanghaimotors.global/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2.5 hover:text-white transition">
-                            <span class="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#dc2743]/20">
-                                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <a href="https://www.instagram.com/shanghaimotors.global/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#dc2743]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                             </span>
                             <span><strong class="text-white group-hover:text-slate-300 font-medium">Instagram:</strong> @shanghaimotors.global</span>
                         </a>
-                        <a href="https://www.linkedin.com/company/shanghai-motors/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2.5 hover:text-white transition">
-                            <span class="w-7 h-7 rounded-lg bg-[#0A66C2] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#0A66C2]/20">
-                                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        <a href="https://www.linkedin.com/company/shanghai-motors/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-[#0A66C2] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#0A66C2]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                             </span>
                             <span><strong class="text-white group-hover:text-slate-300 font-medium">LinkedIn:</strong> Shanghai Motors</span>
                         </a>
-                        <a href="mailto:info@shanghaimotors.net" class="group flex items-center gap-2.5 hover:text-white transition">
-                            <span class="w-7 h-7 rounded-lg bg-[#EA4335] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#EA4335]/20">
-                                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <a href="mailto:info@shanghaimotors.net" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-[#EA4335] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#EA4335]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                             </span>
                             <span><strong class="text-white group-hover:text-slate-300 font-medium">Email:</strong> info@shanghaimotors.net</span>
                         </a>
                     </div>
 
                     <!-- RU SOCIALS (Telegram, WhatsApp, Instagram, MAX, Email) -->
-                    <div data-lang="ru" class="space-y-2.5 text-xs text-slate-300">
-                        <a href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2.5 hover:text-white transition">
-                            <span class="w-7 h-7 rounded-lg bg-[#24A1DE] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#24A1DE]/20">
-                                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
+                    <div data-lang="ru" class="space-y-2 text-xs text-slate-300">
+                        <a href="https://t.me/vlad_shanghaimotors" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-[#24A1DE] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#24A1DE]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M21.9 4.8L2.2 12.4c-1.3.5-1.3 1.3-.2 1.6l5.1 1.6 11.8-7.4c.6-.4 1.1-.2.7.2L10 16.9l-.4 5.4c.5 0 .8-.2 1.1-.5l2.6-2.5 5.5 4.1c1 .6 1.7.3 2-.9l3.6-17c.4-1.5-.5-2.1-1.5-1.7z"/></svg>
                             </span>
-                            <span><strong class="text-white group-hover:text-slate-300 font-medium">Telegram:</strong> Отдел экспорта (@vlad_shanghaimotors)</span>
+                            <span><strong class="text-white group-hover:text-slate-300 font-medium">Telegram:</strong> @vlad_shanghaimotors</span>
                         </a>
-                        <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2.5 hover:text-white transition">
-                            <span class="w-7 h-7 rounded-lg bg-[#25D366] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#25D366]/20">
-                                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-[#25D366] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#25D366]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            </span>
+                            <span><strong class="text-white group-hover:text-slate-300 font-medium">Telegram:</strong> @vlad_shanghaimotors</span>
+                        </a>
+                        <a href="http://wa.me/8617316540375" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-[#25D366] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#25D366]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                             </span>
                             <span><strong class="text-white group-hover:text-slate-300 font-medium">WhatsApp:</strong> +86 173 1654 0375</span>
                         </a>
-                        <a href="https://www.instagram.com/shanghaimotors.official/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2.5 hover:text-white transition">
-                            <span class="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#dc2743]/20">
-                                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <a href="https://www.instagram.com/shanghaimotors.official/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#dc2743]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                             </span>
                             <span><strong class="text-white group-hover:text-slate-300 font-medium">Instagram:</strong> @shanghaimotors.official</span>
                         </a>
-                        <a href="https://max.ru/u/f9LHodD0cOI3yKIPgCsWDWLtqyLO4_SMjksF41VgLAlzqfgXwkmHr1zUgVc?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAacewzwVedjle3w4OOladYZAtkGvng-e-rpGRo94VKbs84nxHVc1i4osd1L7Uw_aem_xP8D_w-sTn7gHcyQrRV7BA" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2.5 hover:text-white transition">
-                            <span class="w-7 h-7 rounded-lg bg-[#7c42fa] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#7c42fa]/20">
-                                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 100 100"><path d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg>
+                        <a href="https://max.ru/u/f9LHodD0cOI3yKIPgCsWDWLtqyLO4_SMjksF41VgLAlzqfgXwkmHr1zUgVc?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAacewzwVedjle3w4OOladYZAtkGvng-e-rpGRo94VKbs84nxHVc1i4osd1L7Uw_aem_xP8D_w-sTn7gHcyQrRV7BA" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-[#7c42fa] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#7c42fa]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 100 100"><path d="M50.7571 0.261719C78.2929 0.261719 99.8857 22.5974 99.8857 50.1474C99.8857 77.6974 77.6071 99.4903 51.0214 99.4903C41.5857 99.4903 37.0143 98.1617 29.65 92.9474C29.1429 92.5903 28.45 92.6831 28.0214 93.1403C22.3571 99.1831 7.85 103.426 7.18571 95.176C7.18571 80.7903 0 71.4474 0 49.876C0 21.5546 23.2214 0.261719 50.7571 0.261719ZM51.5286 24.8117C38.4643 24.126 28.2643 33.1974 26.0143 47.3831C24.15 59.1332 27.45 73.4546 30.2786 74.176C31.4786 74.4832 34.3571 72.276 36.4571 70.2974C36.85 69.926 37.45 69.8617 37.9071 70.1474C41.1786 72.1474 44.8786 73.6474 48.9571 73.8617C62.3714 74.5617 74.2571 64.0617 74.9643 50.6474C75.6643 37.2331 64.9429 25.5046 51.5286 24.8046V24.8117Z"/></svg>
                             </span>
-                            <span><strong class="text-white group-hover:text-slate-300 font-medium">MAX:</strong> Shanghai Motors</span>
+                            <span><strong class="text-white group-hover:text-slate-300 font-medium">MAX:</strong> shanghaimotors</span>
                         </a>
-                        <a href="mailto:info@shanghaimotors.net" class="group flex items-center gap-2.5 hover:text-white transition">
-                            <span class="w-7 h-7 rounded-lg bg-[#EA4335] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#EA4335]/20">
-                                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <a href="mailto:info@shanghaimotors.net" class="group flex items-center gap-2 hover:text-white transition">
+                            <span class="w-6 h-6 rounded-md bg-[#EA4335] text-white flex items-center justify-center transition flex-shrink-0 shadow-sm shadow-[#EA4335]/20">
+                                <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                             </span>
                             <span><strong class="text-white group-hover:text-slate-300 font-medium">Email:</strong> info@shanghaimotors.net</span>
                         </a>
@@ -3014,23 +3017,23 @@
                 </div>
 
                 <div class="space-y-3">
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="en">Export & Compliance</h4>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-lang="ru">Экспорт и таможня</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3 sm:mb-4" data-lang="en">Export & Compliance</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3 sm:mb-4" data-lang="ru">Экспорт и таможня</h4>
                     <p class="text-xs text-slate-400 leading-relaxed" data-lang="en">
-                        Direct OEM manufacturer procurement backed by official PRC export licensing, SWIFT banking, and 100% full-value maritime transit insurance.
+                        Direct OEM factory procurement under official PRC export license, SWIFT banking, and full transit insurance.
                     </p>
                     <p class="text-xs text-slate-400 leading-relaxed" data-lang="ru">
-                        Прямые поставки с заводов КНР по официальному внешнеторговому контракту с полным пакетом документов (СБКТС, ЭПТС) и юридической гарантией.
+                        Прямые поставки с заводов КНР по официальному внешнеторговому контракту с полным пакетом документов (СБКТС, ЭПТС).
                     </p>
-                    <div class="pt-2 border-t border-slate-800 text-xs text-slate-400 space-y-1.5 font-medium">
-                        <div class="flex items-center gap-2">
+                    <div class="pt-2 border-t border-slate-800 text-xs text-slate-400 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-medium">
+                        <div class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                            <span data-lang="en">PRC MOFCOM Accredited</span>
+                            <span data-lang="en">PRC MOFCOM License</span>
                             <span data-lang="ru">Лицензиат Минкоммерции КНР</span>
                         </div>
                         <div class="text-[11px] text-slate-400 font-mono">
-                            <span data-lang="en">Desk SLA: Verification within 15 min</span>
-                            <span data-lang="ru">Регламент: расчет за 15 минут</span>
+                            <span data-lang="en">Desk SLA: 15 min</span>
+                            <span data-lang="ru">Регламент: 15 минут</span>
                         </div>
                     </div>
                 </div>
@@ -3923,11 +3926,31 @@
             }
         }
 
+        let isHeroInView = true;
         function startBannerAutoplay() {
             if (slideTimer) clearInterval(slideTimer);
+            if (!isHeroInView) return;
             slideTimer = setInterval(() => {
                 nextBanner();
             }, 6500);
+        }
+
+        if (typeof IntersectionObserver !== 'undefined') {
+            const heroBannerEl = document.getElementById('hero-banners');
+            if (heroBannerEl) {
+                const bannerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        isHeroInView = entry.isIntersecting;
+                        if (entry.isIntersecting) {
+                            startBannerAutoplay();
+                        } else if (slideTimer) {
+                            clearInterval(slideTimer);
+                            slideTimer = null;
+                        }
+                    });
+                }, { threshold: 0.05 });
+                bannerObserver.observe(heroBannerEl);
+            }
         }
 
         document.addEventListener('visibilitychange', () => {
@@ -3936,7 +3959,7 @@
                     clearInterval(slideTimer);
                     slideTimer = null;
                 }
-            } else {
+            } else if (isHeroInView) {
                 startBannerAutoplay();
             }
         });
@@ -4034,15 +4057,15 @@
                     : `${car.trimsCount} trim options`;
 
                 return `
-                <div class="catalog-card-enter spring-card group rounded-2xl bg-surface-card border border-surface-border hover:border-slate-400 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between" style="animation-delay: ${idx * 35}ms">
+                <div class="catalog-card-enter spring-card group rounded-2xl bg-surface-card border border-surface-border hover:border-slate-400 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between">
                     <a href="car.html?id=${car.id}" class="cursor-pointer block">
                         <!-- Car Image Box: Studio Presentation -->
-                        <div class="h-44 sm:h-56 bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 p-3 sm:p-4 flex flex-col items-center justify-center relative overflow-hidden group/img">
+                        <div class="h-40 sm:h-52 bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 p-3 sm:p-4 flex flex-col items-center justify-center relative overflow-hidden group/img">
                             <!-- Ambient Top Spotlight Glow -->
                             <div class="absolute -top-10 inset-x-8 h-32 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(255,255,255,0.8),transparent_70%)] pointer-events-none"></div>
 
                             <!-- Car Image -->
-                            <img src="${car.img}" alt="${car.fullName}" loading="lazy" decoding="async" class="max-h-[128px] sm:max-h-[160px] max-w-[92%] object-contain relative z-10 group-hover:scale-105 transition-transform duration-500 filter drop-shadow-[0_10px_16px_rgba(0,0,0,0.18)]">
+                            <img src="${car.img}" alt="${car.fullName}" loading="lazy" decoding="async" class="max-h-[120px] sm:max-h-[150px] max-w-[92%] object-contain relative z-10 group-hover:scale-105 transition-transform duration-500 filter drop-shadow-[0_10px_16px_rgba(0,0,0,0.18)]">
 
                             <!-- Ground Contact Shadow & Reflection Pedestal -->
                             <div class="w-full max-w-[85%] -mt-2 z-0 flex flex-col items-center pointer-events-none">
@@ -4050,54 +4073,48 @@
                                 <div class="w-4/5 h-4 -mt-1.5 bg-slate-400/20 blur-sm"></div>
                             </div>
 
-                            <!-- Brand Badge -->
-                            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md border border-slate-200 text-xs font-bold text-slate-800 tracking-wider z-20 shadow-sm">
+                            <!-- Brand Badge (Clean solid backdrop to prevent GPU compositor tile flashes) -->
+                            <div class="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-white/95 border border-slate-200 text-xs font-bold text-slate-800 tracking-wider z-20 shadow-xs">
                                 ${car.brand}
                             </div>
                         </div>
 
                         <!-- Info -->
-                        <div class="p-4 sm:p-5">
+                        <div class="p-3.5 sm:p-4">
                             <div class="flex justify-between items-baseline mb-2">
                                 <h3 class="text-base sm:text-[17px] font-bold text-slate-900 group-hover:text-slate-700 transition">${car.fullName}</h3>
                                 <span class="text-xs text-slate-500 font-medium">${trimLabel}</span>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-slate-700 bg-slate-50 p-2 sm:p-2.5 rounded-lg border border-slate-200 mb-3 sm:mb-4 font-semibold tabular-nums">
+                            <div class="grid grid-cols-2 gap-1 sm:gap-1.5 text-[11px] sm:text-xs text-slate-700 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200 mb-2.5 font-semibold tabular-nums">
                                 <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Привод:' : 'Drive:'}</span> ${formatDrive(firstTrim.drive, currentLang)}</div>
                                 <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Мощность:' : 'Power:'}</span> ${formatPower(firstTrim.power, currentLang)}</div>
                                 <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Разгон:' : '0-100:'}</span> ${formatAccel(firstTrim.accel, currentLang)}</div>
                                 <div><span class="text-slate-500 font-normal">${currentLang === 'ru' ? 'Запас хода:' : 'Range:'}</span> ${formatRange(firstTrim.range, currentLang)}</div>
                             </div>
 
-                            <div class="pt-2 border-t border-surface-border">
-                                <div class="flex justify-between items-baseline">
-                                    <span class="text-[11px] sm:text-xs text-slate-500 uppercase font-medium">
-                                        ${currentLang === 'ru' ? 'Готов к отправке:' : 'Price in China (FOB):'}
-                                    </span>
-                                    <span class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight font-sans tabular-nums">
-                                        ${currentLang === 'ru' ? `от ${minFobRub.toLocaleString()} ₽` : `$${minFob.toLocaleString()}`}
-                                    </span>
-                                </div>
+                            <div class="flex items-baseline justify-between pt-2 border-t border-surface-border">
                                 ${currentLang === 'ru' ? `
-                                    <div class="flex justify-between items-center text-xs text-slate-500 font-medium mt-0.5">
-                                        <span>FOB от $${minFob.toLocaleString()}</span>
-                                        <span class="text-slate-500 font-medium">по курсу ЦБ</span>
+                                    <div class="text-xs text-slate-500 font-medium">
+                                        FOB $${minFob.toLocaleString()} &middot; по курсу ЦБ
                                     </div>
-                                    <div class="text-[11px] text-slate-500 mt-1">
-                                        * Логистика и растаможка рассчитываются отдельно
+                                    <div class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight tabular-nums">
+                                        от ${minFobRub.toLocaleString()} ₽
                                     </div>
                                 ` : `
-                                    <div class="text-xs text-slate-500 font-medium mt-0.5">
-                                        FOB (Shanghai / Nansha / Khorgos)
+                                    <div class="text-xs text-slate-500 font-medium">
+                                        Direct Factory Price
+                                    </div>
+                                    <div class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight tabular-nums">
+                                        $${minFob.toLocaleString()} FOB
                                     </div>
                                 `}
                             </div>
                         </div>
                     </a>
 
-                    <div class="p-4 sm:p-5 pt-0">
-                        <a href="car.html?id=${car.id}" class="w-full py-2.5 sm:py-3 rounded-lg bg-slate-900 group-hover:bg-slate-800 border border-slate-900 text-white shadow-sm text-xs font-bold transition block text-center">
+                    <div class="p-3.5 sm:p-4 pt-0">
+                        <a href="car.html?id=${car.id}" class="w-full py-2 sm:py-2.5 rounded-lg bg-slate-900 group-hover:bg-slate-800 border border-slate-900 text-white shadow-sm text-xs font-bold transition block text-center">
                             ${currentLang === 'ru' ? 'Конфигуратор и расчет' : 'View Trims & Calculate'}
                         </a>
                     </div>
@@ -4150,9 +4167,19 @@
             }
         }
 
+        let lastWindowWidth = (typeof window !== 'undefined') ? window.innerWidth : 0;
+        let lastInitialLimit = (typeof window !== 'undefined' && window.innerWidth < 768) ? 3 : 6;
+
         window.addEventListener('resize', () => {
-            renderCatalog();
-        });
+            if (window.innerWidth !== lastWindowWidth) {
+                lastWindowWidth = window.innerWidth;
+                const newLimit = getCatalogInitialLimit();
+                if (newLimit !== lastInitialLimit) {
+                    lastInitialLimit = newLimit;
+                    renderCatalog();
+                }
+            }
+        }, { passive: true });
 
         // 6. CAR MODAL & PRICE BREAKDOWN ENGINE
         // 6. CAR MODAL, TURNKEY PRICING & ROUTE CALCULATION ENGINE
